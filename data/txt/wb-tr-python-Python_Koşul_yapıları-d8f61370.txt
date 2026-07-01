@@ -1,0 +1,16 @@
+emir = "emir"
+if(emir == "emir"):
+  print("hello")
+else:
+  print("error")
+
+emir = 5
+if(emir>1):
+  print("hello")
+else:
+  print("error")
+
+emir = 5
+if(emir
+
+Kategori:Python

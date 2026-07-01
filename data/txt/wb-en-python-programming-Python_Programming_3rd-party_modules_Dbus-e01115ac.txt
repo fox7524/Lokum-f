@@ -1,0 +1,42 @@
+In Linux, Dbus is a way for processes to communicate with each other. For example, programs like Pidgin instant messenger allow other programs to find out or change the user's status (Available, Away, etc).  Another example is the network-manager service that publishes which internet connection is active. Programs that sometimes connect to the internet can then pick the best time to download updates to the system. 
+
+
+== Buses ==
+Messages are sent along buses. Services attach themselves to these buses, and allow clients to pass messages to and from them.
+There are two main buses, the system bus and session bus. Services on the system bus affect the whole system, such as providing information about the network or disk drives. Services on the session bus provide access to programs running on the desktop, like Pidgin.
+
+
+== Objects and interfaces ==
+Services attached to a bus can be contacted using their well-known name. While this could be any string, the format is normally that of a reverse domain name: an example for a spreadsheet program called "CalcProgram" from "My Corp Inc." could be "com.mycorp.CalcProgram".
+Services publish objects using slash-separated paths (this is similar to webpages). Someone on dbus can request an object if they know this path.
+The object passed back is not a full object: it just refers to the service's copy of the object. It is called a proxy object.
+
+Before the proxy object can be used, we need to specify what type of object it is. We do this by creating an interface object.
+
+Whatever methods are set up for this type of object can be called:
+
+
+== dbus-python examples ==
+These examples have been tested with dbus-python 0.83.0.  Older library versions may not have the same interface.
+Calling an interface's methods / Listing HAL Devices:
+
+Introspecting an object:
+
+Avahi:
+
+
+== pydbus examples ==
+These examples have been tested with pydbus 0.2 and 0.3.
+Calling an interface's methods / Listing systemd units:
+
+Introspecting an object:
+
+Avahi:
+
+
+== References ==
+dbus-python tutorial, dbus.freedesktop.org, Simon McVittie, 2006-06-14
+pydbus README.rst, github.com
+DbusExamples, wiki.python.org
+D-Bus Howto, developer.pidgin.im
+Rough notes: Python and D-Bus, archived version,  A.M. Kuchling, 2007, originally at www.amk.ca

@@ -1,0 +1,90 @@
+There are five fundamental concepts in Python.
+
+
+=== Semicolons ===
+Python does not normally use semicolons, but they are allowed to separate statements on the same line, if your code has semicolons; your code isn't "Pythonic"
+
+
+=== Case Sensitivity ===
+All variables are case-sensitive.  Python treats 'number' and 'Number' as separate, unrelated entities.
+
+
+=== Spaces and tabs don't mix ===
+Instead of block delimiters (braces → "{}" in the C family of languages), indentation is used to indicate where blocks begin and end. Because whitespace is significant, remember that spaces and tabs don't mix, so use only one or the other when indenting your programs. A common error is to mix them. While they may look the same in editor, the interpreter will read them differently and it will result in either an error or unexpected behavior. Most decent text editors can be configured to let tab key emit spaces instead. 
+Python's Style Guideline described that the preferred way is using 4 spaces.
+Tips: If you invoked python from the command-line, you can give -t or -tt argument to python to make python issue a warning or error on inconsistent tab usage.
+
+pythonprogrammer@wikibook:~$ python -tt myscript.py
+
+This will issue an error if you have mixed spaces and tabs.
+
+
+=== Objects ===
+In Python, like all object-oriented languages, there are aggregations of code and data called objects, which typically represent the pieces in a conceptual model of a system.
+Objects in Python are created (i.e., instantiated) from templates called classes (which are covered later, as much of the language can be used without understanding classes).  They have attributes, which represent the various pieces of code and data which make up the object.  To access attributes, one writes the name of the object followed by a period (henceforth called a dot), followed by the name of the attribute.
+An example is the 'upper' attribute of strings, which refers to the code that returns a copy of the string in which all the letters are uppercase.  To get to this, it is necessary to have a way to refer to the object (in the following example, the way is the literal string that constructs the object).
+
+'bob'.upper
+
+Code attributes are called methods.  So in this example, upper is a method of 'bob' (as it is of all strings).  To execute the code in a method, use a matched pair of parentheses surrounding a comma separated list of whatever arguments the method accepts (upper doesn't accept any arguments).  So to find an uppercase version of the string 'bob', one could use the following:
+
+'bob'.upper()
+
+
+=== Scope ===
+In a large system, it is important that one piece of code does not affect another in difficult to predict ways.  One of the simplest ways to further this goal is to prevent one programmer's choice of a name from blocking another's use of that name.  The concept of scope was invented to do this.  A scope is a "region" of code in which a name can be used and outside of which the name cannot be easily accessed.  There are two ways of delimiting regions in Python: functions or modules.  They each have different ways of providing their content outside of their scope. Functions return data as the result of execution.  Modules leads us to another concept, namespace.
+
+
+=== Namespaces ===
+It would be possible to teach Python without the concept of namespaces because they are so similar to attributes, which we have already mentioned, but the concept of namespaces is one that transcends any particular programming language, and so it is important to teach.  To begin with, there is a built-in function dir() that can be used to help one understand the concept of namespaces.  When you first start the Python interpreter (i.e., in interactive mode), you can list the objects in the current (or default) namespace using this function.
+
+Python 2.3.4 (#53, Oct 18 2004, 20:35:07) [MSC v.1200 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> dir()
+['__builtins__', '__doc__', '__name__']
+
+This function can also be used to show the names available within a module's namespace.  To demonstrate this, first we can use the type() function to show what kind of object __builtins__ is:
+
+>>> type(__builtins__)
+<type 'module'>
+
+Since it is a module, it has a namespace. We can list the names within the __builtins__ namespace, again using the dir() function (note that the complete list of names has been abbreviated):
+
+>>> dir(__builtins__)
+['ArithmeticError', ... 'copyright', 'credits', ... 'help', ... 'license', ... 'zip']
+>>>
+
+Namespaces are a simple concept.  A namespace is a particular place in which names specific to a module reside.  Each name within a namespace is distinct from names outside of that namespace.  This layering of namespaces is called scope.  A name is placed within a namespace when that name is given a value.  For example:
+
+>>> dir()
+['__builtins__', '__doc__', '__name__']
+>>> name = "Bob"
+>>> import math
+>>> dir()
+['__builtins__', '__doc__', '__name__', 'math', 'name']
+
+Note that I was able to add the "name" variable to the namespace using a simple assignment statement.  The import statement was used to add the "math" name to the current namespace.  To see what math is, we can simply:
+
+>>> math
+<module 'math' (built-in)>
+
+Since it is a module, it also has a namespace.  To display the names within this namespace, we:
+
+>>> dir(math)
+['__doc__', '__name__', 'acos', 'asin', 'atan', 'atan2', 'ceil', 'cos', 'cosh', 'degrees', 'e',
+'exp', 'fabs', 'floor', 'fmod', 'frexp', 'hypot', 'ldexp', 'log', 'log10', 'modf', 'pi', 'pow',
+'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh']
+>>>
+
+If you look closely, you will notice that both the default namespace and the math module namespace have a '__name__' object.  The fact that each layer can contain an object with the same name is what scope is all about.
+To access objects inside a namespace, simply use the name of the module, followed by a dot, followed by the name of the object.  This allows us to differentiate between the __name__ object within the current namespace, and that of the object with the same name within the math module.  For example:
+
+>>> print (__name__)
+__main__
+>>> print (math.__name__)
+math
+>>> print (math.__doc__)
+This module is always available.  It provides access to the
+mathematical functions defined by the C standard.
+>>> print (math.pi)
+3.1415926535897931

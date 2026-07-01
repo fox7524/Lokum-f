@@ -1,0 +1,17 @@
+Etkileşimli Python, yani Python'u komut satırında çalıştırarak kodlarımızın çıktısını doğrudan görmek. Bunun için komut satırını Ctrl + Alt + T tuşlarıyla açıp python3 komutunu giriyoruz. Bundan sonra şu tarzda bir çıktı aldıysanız artık Python kodlarınız deneyebilirsiniz:
+
+Python 3.4.3 (default, Mar 26 2015, 22:03:40) 
+[GCC 4.9.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+
+
+== İlk programımız ==
+Aşağıdaki kodları girdiğimizde:
+
+print("Hello world!")
+Şöyle bir çıktı alırız:
+
+'Hello World!'
+Anladığınız gibi print fonksiyonu karakter dizilerini ekrana yansıtmamıza yarıyor.
+Örnekteki gibi bu tür kodlarınızı etkileşimli Python sayesinde test edebilirsiniz. Bundan sonraki konular için bir editöre ihtiyacınız olacak. Kodlarımızı editör aracılığıyla yazıp kaydedeceğiz. İnternet üzerinden indirebileceğiniz bir çok editör bulunmaktadır, Python için uyumlu olan istediğiniz editörü kullanabilirsiniz.

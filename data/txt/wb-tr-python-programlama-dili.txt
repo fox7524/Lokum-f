@@ -1,0 +1,19 @@
+Python programlama dili 1990'lı yıllarda Guido van Rossum tarafından geliştirilmiştir. Bu programlama dilinin adı bir yılan olan "piton"dan değil hayranı olduğu bir komedi grubu olan Monty Python'dan gelmektedir. Fakat çoğu yerde Python simgesi yılan şeklindedir. Python'u diğer dillerden ayıran en önemli özellik sadeliği ve basitliğidir. Hiç programlama bilmeyen bir kişi için bu dil oldukça kolaydır. Google, Yahoo, Dropbox gibi büyük şirketlerde bünyelerinde basit olmasına rağmen çok büyük işler yapabilen Python diline ihtiyaç duymaktadırlar. Guido van Rossum 2005-2012 yılları arasında Google'da çalışmış. Daha sonrasında ise Dropbox'a geçmiştir. Google'da çalışırken Python'un daha ileri seviyelere taşınmasını hedeflemiş ve bunun için çalışmalar yapmıştır. 
+
+
+== Neden Python? ==
+Derleyiciye ihtiyaç duymaz.
+Basittir ve basit olduğu için hızlıdır.
+Büyük şirketler tarafından kullanılmaktadır.
+Masaüstü uygulamaları, oyun programları, web programlama gibi önemli işler yapılabilir. (Fakat işletim sistemi yazamazsınız.)
+Python'a herşeyi tek tek söylemenize gerek yoktur. Bazı isteklerinizi kendisi algılar.
+
+
+== Python Öğrenmek için: ==
+İngilizceniz iyiyse:
+
+           https://developers.google.com/edu/python/
+
+Türkçe çalışmak için:
+
+           http://www.istihza.com/

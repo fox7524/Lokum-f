@@ -1,0 +1,3 @@
+Python veri tiplerinde statik bir veri tipine sahiptir. Yani değişken tanımlarken herhangi bir sayısal, metin ya da liste tanımı yapmak zorunda değiliz. Tanımladığımız değişkene göre veri tipi şekil alır. Diğer dillerde de olduğu gibi tam sayı, kayan noktalı sayılar, diziler, listeler, string değişkenler, sözlük, tuple, file veri tiplerine sahiptir.
+
+Gördüğümüz gibi herhangi bir veri tipi girmeden tüm değişken tiplerini tanımlayabiliriz.

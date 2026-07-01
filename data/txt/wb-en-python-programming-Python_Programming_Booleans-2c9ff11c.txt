@@ -1,0 +1,121 @@
+This book describes Python, an open-source general-purpose interpreted programming language available for the most popular  operating systems. The current versions are 3.x while versions 2.x are no longer supported, since 2020. This book describes primarily the versions 3.x, but does at times reference versions 2.x.
+There are a few implementations of Python 3 (all of which also support Python 2):
+
+CPython, the standard implementation written in C.
+PyPy, a JIT-compiled version written in RPython (a subset of Python).
+IronPython, a C# implementation that runs on the .NET environment.
+Nuitka, a Python 3 to C 11 transpiler.
+Jython, a Java implementation is also available, however it only supports Python 2.
+
+
+== Contents ==
+
+
+=== Intro ===
+
+Overview 
+Getting Python 
+Development Environments
+Interactive mode 
+Self Help 
+
+
+=== Basics ===
+Creating Python programs 
+Variables and Strings 
+Basic syntax 
+Sequences  (Strings, Lists, Tuples, Dictionaries, Sets)
+Data types 
+Numbers 
+Strings 
+Lists 
+Tuples 
+Dictionaries 
+Sets 
+Basic Math  -- redundant to "Operators"
+Operators 
+Control Flow 
+Decision Control 
+Conditional Statements 
+Loops 
+Functions 
+Scoping 
+Input and Output 
+Files 
+Modules 
+Classes 
+Exceptions 
+Errors 
+Source Documentation and Comments 
+Idioms 
+Package management
+Python 2 vs. Python 3
+
+
+=== Advanced ===
+Decorators 
+Context Managers 
+Reflection 
+Metaclasses 
+Performance
+PyPy
+Cython
+Command-line one-liners
+Tips and Tricks 
+
+
+=== Modules ===
+
+
+==== Standard library modules ====
+Standard Library 
+Regular Expression 
+External commands
+XML Tools 
+Email 
+Threading 
+Sockets 
+GUI Programming 
+Tkinter
+CGI interface 
+WSGI web programming 
+Internet 
+Networks 
+Math
+
+
+==== Third-party modules ====
+Databases -- to be merged with the following chapter
+Database Programming 
+numpy
+Game Programming in Python 
+Qt4 
+Dbus 
+pyFormex
+matplotlib
+Sorted Container Types
+Excel
+MS Word
+
+
+==== Writing extension modules ====
+Extending with C 
+Extending with C++ 
+Extending with Pyrex 
+Extending with ctypes 
+Extending with Perl 
+
+
+=== Appendices ===
+Popularity
+Links
+Authors
+Library Modules
+Naming conventions
+
+
+== See also ==
+
+Non-Programmer's Tutorial for Python 2.6
+Non-Programmer's Tutorial for Python 3
+Python as a scripting language in GIMP

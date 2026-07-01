@@ -1,0 +1,739 @@
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Turing Machines 
+
+
+Marcin Sydow 
+
+
+< & 
+
+
+□ ► 
+
+
+
+>0 0.0 
+
+
+
+
+
+Turing Machines - the Role 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Basic tool for complexity theory. An abstract model of 
+computation machine: 
+
+■ conceptually simple 
+
+□ can execute any computation possible on “known” 
+computers 
+
+a resources consumption models well "real” computers 
+
+
+□ ► < g ► < l ► < ! ► i -o<\o 
+
+
+Properties of TM 
+
+
+Turing 
+
+Machines 
+
+
+Marcin 
+
+Sydow 
+
+
+First property is very important, since it makes it possible to 
+formulate and prove theorems concerning machines with the use 
+of only the simplest mathematical concepts. 
+
+
+Second property is connected with famous Church-Turing 
+thesis: each function that can be effectively computed can be 
+computed on a Turing Machine (i.e. TM is a sufficiently 
+powerful computational model) 
+
+
+Third property is particularly important for complexity theory: 
+time and space used by TM do not differ significantly (in 
+asymptotic sense) from those used by ‘‘real” computers. 
+
+
+□ ► < a ► < ! ► < ! ► 1 - 00,0 
+
+
+Computation Model 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Description, time and space consumption of computation is 
+dependent on the particular model. 
+
+Real computers are quite complex, thus there is a need to 
+define something simpler, yet actually not very different. 
+
+There exist many models of computation, including: 
+
+□ Turing Machine 
+
+■ RAM machine 
+
+■ logical circuits 
+
+
+Turing Machine 
+
+
+Turing 
+
+Machines 
+
+
+Alan Turing (1912-1954) 
+
+
+Marcin 
+
+Sydow 
+
+
+Turing machine was proposed as the model of “any possible 
+computation” in 1936, mainly as a notation for expressing 
+algorithms and for logicians to determine which problems are 
+possible to be algorithmically computed. 
+
+
+Simple computation model: 
+
+
+■ unlimited tape divided into cells for storing symbols 
+
+
+■ head that can read/write symbols from/to the tape 
+a control module that can be in one of (finitely) many states 
+and, based on the current state and current symbol, 
+decides on the next steps: 
+
+■ overwrite current symbol with some other symbol 
+
+■ move the head to left or right 
+d change current state 
+
+
+□ ► < & > <!► « ! ► 1 -O 0,0 
+
+
+Formal Definition of Turing Machine 
+
+
+
+M = (Q,T, T, #, <5, qr 0 , F), where: 
+
+
+
+a Q is a finite set of states 
+
+■ I is a finite set of input symbols that represent the input (written on 
+the tape) 
+
+■ T is a finite set of possible symbols to be written on the tape 51 C T 
+
+■ empty symbol # (not an input symbol) that fills almost all cells of 
+the tape 
+
+■ 5 transition function. It is a partial function 
+
+
+0 X r X {«-,-►}. 
+
+
+5-QxV 
+
+
+By <5(A,x) = ( B.y, K ) we denote that TM in state A and reading 
+symbol x gets to state B, writes symbol x and moves the head to left 
+or right: (K =«-), (K =->). 
+
+■ q 0 initial state 
+
+a F is a set of accepting states (subset of Q). TM terminates when any 
+of accepting states is reached 
+
+
+□ 
+
+
+>0 0.0 
+
+
+How does TM work? 
+
+
+Turing 
+
+Machines 
+
+
+We make the following assumptions about the initialisation of 
+TM: 
+
+0 the tape is filled with infinitely many empty symblos except 
+some finite contiguous region filled with input symbols 
+(input word). 
+
+0 head is over the leftmost input symbol 
+■ state is set to qo 
+
+Then, the machine works accordingly to the S function. It will 
+change the state, move the head, read and write symbols, until 
+any of the conditions happen: 
+
+□ TM reaches one of the accepting states (we say “TM 
+accepts the input” or simply “accepts”) 
+a TM in state A reads x and 5(A,x) is not defined (we say 
+“TM halts with an error”) 
+
+It may also happen, that TM never reaches any of the 
+conditions - in such case TM never halts 
+
+
+1 'O <\o 
+
+
+Representation 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+How to represent a particular TM? 
+
+a a tabular representation of the S function. Each row 
+contains sequence: A,x, B,y,K, that represents 
+<5(A,x) = ( B,y, K). Anything else, except the initial state 
+and accepting states can be derived from the table. 
+
+a graph (state diagram): vertices are states, direct edges 
+from A to B represents transition with label of the form 
+x,y,K (meaning 5(A,x) = ( B,y,K )). 
+
+
+Exercises 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Define a TM that solves the following task: 
+n recognises palindromes ww^ : w £ {0,1}* 
+
+■ multiplies 2 given numbers (unary encoded) separated by 0 
+
+■ resets the head to the leftmost symbol 
+
+□ terminates with clear tape (erases the input word) 
+
+
+□ ► < s 
+
+
+•0^0 
+
+
+TM and Languages. Partially Decidable Languages 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+The language of M denoted as L(M) CP, is the set of those 
+input words for which M accepts. We also say that L(M) 
+recognises (or accepts) the language L(M) 
+
+
+Definition 
+
+
+A language L C Z* is called recursively enumerable (or partially 
+decidable) iff there exists machine M such that L = L(M). 
+
+Comment: why "partially?”. Since for w G L, the machine halts 
+(accepts). However for w L, the machine can loop (work 
+endlessly). 
+
+> < 1 ► 4 ! ► 1 -O Q,o 
+
+
+Definition 
+
+
+
+
+Decidable Languages 
+
+
+Turing |*sa A-A-4,"- 
+
+Machines I 
+
+I Definition 
+
+
+Machine M has stop property if for any word w £ Z* M always 
+halts. Language L C Z* is recursive (or decidable) iff there 
+exists TM M with stop property so that L = L(M) 
+
+
+
+Decidable Languages 
+
+
+Turing ;)|]£ i. A-4,", 
+
+Machines I 
+
+I Definition 
+
+
+Machine M has stop property if for any word w £ Z* M always 
+halts. Language L C Z* is recursive (or decidable) iff there 
+exists TM M with stop property so that L = L(M) 
+
+Remark: There exists language that is not decidable. 
+
+
+
+Decidable Languages 
+
+
+Turing ;)|]£ i. A-4,", 
+
+Machines I 
+
+I Definition 
+
+
+Machine M has stop property if for any word w £ Z* M always 
+halts. Language L C Z* is recursive (or decidable) iff there 
+exists TM M with stop property so that L = L(M) 
+
+Remark: There exists language that is not decidable. 
+
+Exercise: Show that if L\ £ Z* and /_2 £ Z* are decidable then 
+Li n Z-2 and L \ U /_2 are decidable. 
+
+
+
+Encoding of Turing Machines 
+
+
+Turing 
+
+Machines 
+
+
+Importantly, any Turing Machine can be encoded as a sequence 
+of symbols so that it can be written as input to some other 
+Turing Machine. 
+
+One of such encodings: 
+
+■ symbols and states can be represented by consecutive natural numbers 
+
+■ q = |Q|, Q = {0,1,..., <7 — 1} 
+
+■ s = | Z| 
+
+■ g = |r|. It is convenient to assume that numbers in 51 C T are compatible 
+with those in T. 
+
+□ the number representing the empty symbol 
+
+■ d - the number of defined (argument,value) pairs of S 
+
+m next, the sequence of d 5-tuples of natural numbers A < q, X < g, B < q, 
+Y < g, K S {0,1} with the following meaning: 
+a 6(A, X) = (B, Y, <—), for K=0. 
+s 5(A, X) = (B, Y, —►), for K=l. 
+
+
+I 
+
+
+Turing machines as input words 
+
+
+Turing 
+
+Machines 
+
+
+Marcin 
+
+Sydow 
+
+
+We can write an encoding of a Turing machine (a sequence of 
+natural numbers defined on the previous slide) with unary 
+encoding, separated by symbols of 0 and treat such a TM 
+encoding sequence as an input word (for some other machine!) 
+over {0,1} alphabet. 
+
+
+It is very important that it is a finite word. 
+
+
+Similarly, we can always encode the current configuration of any 
+TM in similar way. 
+
+
+□ ► < g ► < ! ► < ! ► 1 -00,0 
+
+
+Time complexity of Turing Machine 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Time complexity of Turing Machine M on an input word w, 
+denoted as T(M,w) is the number of steps done by the machine 
+before it halts. If it does not, we set T(M,w) = oo 
+
+We can also define time complexity of a machine itself as 
+follows: 
+
+
+Function f : N —> N is time complexity of M iff 
+
+: f(n) = max{T(M, w) : w e 5I n } (assuming it halts) 
+
+
+□ ► < g ► < ! ► < ! ► 1 -o Q,o 
+
+
+Space complexity of Turing Machine 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Space used by TM M on input word w, denoted as S(M,w) is 
+defined as the number of tape cells that were visited by the 
+head before M halted. If M does not halt, it is not defined. 
+
+We say that f : N -> N is space complexity of M (with stop 
+property) iff V„eN : f{ n ) = max{S(/W, w) : w £ Z n } 
+
+
+Multi-tape Turing Machine 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+The basic model of Turing Machine has many variants. 
+
+
+(Example of extension of the basic TM model) 
+k-tape Turing Machine has k tapes, k independent heads (one 
+for each tape), and the control function depends on all read 
+symbols (and controls all heads independently). We allow that 
+head can stay at the same position in this variant. 
+
+
+The input word is written on the first tape, other are empty, 
+acceptation is defined as previously. 
+
+
+□ ► < g ► < l ► < ! ► i -o<\o 
+
+
+Off-line Turing Machine 
+
+
+Turing 
+
+Machines 
+
+
+(Example of restriction of the k-tape Turing Machine) 
+
+The restriction is that it is not possible to write on the first 
+tape (read-only input tape). Usually, in addition, the head on 
+the last (output) tape can move only to the left (write-only 
+output tape). Other tapes are regarded as "working” space. 
+
+In this case we do not count the space used on input and 
+output tapes. This allows to analyse interesting machines that 
+have sub-linear space complexity. 
+
+Some definitions of the basic Turing Machine assume that the 
+tape is bounded on one (left) end. This model does not restrict 
+the power significantly (e.g. odd and even cells can represent 
+the "left” and "right” part, etc.) 
+
+
+1 'O <v,o 
+
+
+Simulation of a k-tape TM on a basic TM 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+Allowing for multiple tapes does not make the computation 
+model much more powerful. 
+
+
+Lemma 
+
+
+For any language recognised by a k-tape TM M^ in time 
+complexity 0(f(n)) it is possible to construct a basic TM that 
+simulates it in time complexity 0(f(n) 2 ). 
+
+Comment: k-tape TM can be also simulated on 2-tape off-line 
+TM 
+
+
+
+Non-deterministic Turing Machine 
+
+
+Turing 
+
+Machines 
+
+
+Marcin 
+
+Sydow 
+
+
+A very important extension of the basic model of TM that 
+introduces non-determinism into the transition function of TM. 
+
+
+The idea is that, given any particular configuration of 
+non-deterministic TM, it can “choose” one of many steps to 
+follows. 
+
+
+More precisely, the transition function of non-deterministic TM 
+is defined as a partial, multi-valued function as follows: 
+
+5: Qx r ^V{Q x T x {<—,—>}) 
+
+Thus, a non-deterministic TM could be viewed as “random”, but 
+this there is a better interpretation especially in the context of 
+the definition of acceptation of non-deterministic TM. 
+
+
+□ ► < g ► < ! ► < ! ► 1 -00,0 
+
+
+Definition of acceptation of a non-deterministic TM 
+
+
+Turing g|||I ij*f, 
+
+Machines ^ 4 ^ 
+
+Sydow HTr .. . . 
+
+■ Definition 
+
+
+Non-deterministic TM accepts a word m if there exists at least 
+one sequence of transitions that reaches the accepting state. 
+
+Thus, instead of viewing non-deterministic TM as a “random” 
+device it is more precise to view it as a machine that checks all 
+possibilities during the computation. This view better 
+demonstrates the power of non-determinism. 
+
+The question of “how big power does non-determinism give to 
+TM” is represented by the famous problem P vs A/P. 
+
+
+
+Complexity of non-deterministic TM 
+
+
+Turing 
+
+Machines 
+
+
+We say that non-deterministic TM halts on word w iff no 
+computation scenario loops endlessly. 
+
+Time and space used by non-deterministic TM can be defined 
+as: 
+
+□ computation time NT(M,w) as the number of steps of the 
+longest possible computation 
+
+a computation space NS(M,w) as the maximum number of 
+cells needed in a possible computation scenario 
+
+
+Comment: time is represented by the height of the tree of 
+possible computations 
+
+The definitions of time and space complexity are analogous to 
+those of the deterministic one. 
+
+
+Simulation of non-deterministic TM on a 
+deterministic one 
+
+
+Tu r i n g sip."~ ~ 
+
+Machines 
+
+fl Lemma 
+
+
+If language L is recognised by a non-deterministic TM in time 
+0(f(n)), then there exists a deterministic TM recognising L in 
+time 0(c f ^) for some constant c. 
+
+
+Lemma 
+
+
+Any language recognised by a non-deterministic k-tape TM in 
+time 0(f(n)) is also recognised by some 2-tape 
+non-deterministic TM in time 0(f(n)). 
+
+
+
+
+Literature 
+
+
+Turing 
+
+Machines 
+
+
+Marcin 
+
+Sydow 
+
+
+■ Complexity Theory: 
+
+■ Papadimitriou "Computational Complexity”, Addison 
+Wesley Longman, 1994 
+
+■ Garey, Johnson "Computers and Intractability” 
+
+(issued in 1979, not easy to get nowadays) 
+
+0 Introductory Textbooks: 
+
+■ Cormen et al. “Introduction to Algorithms” 3rd edition, 
+MIT Press 
+
+chapters 34,35 
+
+■ Kleinberg, Tardos "Algorithm Design”, Addison Wesley, 
+2006 
+
+chapters 8,10,11 
+
+
+□ ► < g ► < ! ► < ! ► 1 -00,0 
+
+
+Turing 
+
+Machines 
+
+Marcin 
+
+Sydow 
+
+
+
+• 0^0 
+
+
+

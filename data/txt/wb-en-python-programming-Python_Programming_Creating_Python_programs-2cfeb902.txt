@@ -1,0 +1,72 @@
+Welcome to Python! This tutorial will show you how to start writing programs.
+Python programs are nothing more than text files, and they may be edited with a standard text editor program. What text editor you use will probably depend on your operating system: any text editor can create Python programs. However, it is easier to use a text editor that includes Python syntax highlighting.  
+
+
+== Hello, World ==
+The very first program that beginning programmers usually write or learn is the "Hello, World!" program. This program simply outputs the phrase "Hello, World!" then terminates itself. Let's write "Hello, World!" in Python!
+Open up your text editor and create a new file called hello.py containing just this line (you can copy-paste if you want):
+
+print('Hello, World!')
+
+The single quotation marks can also be replaced with double quotation marks in the code above.
+You can also put the below line to pause the program at the end until you press anything.
+
+input()
+
+This program uses the print function, which simply outputs its parameters to the terminal. By default, print appends a newline character to its output, which simply moves the cursor to the next line.
+Now that you've written your first program, let's run it in Python! This process differs slightly depending on your operating system.
+
+
+=== Windows ===
+Create a folder on your computer to use for your Python programs, such as C:\pythonpractice, and save your hello.py program in that folder.
+In the Start menu, select "Run...", and type in cmd. This will cause the Windows terminal to open.
+Type cd \pythonpractice to change directory to your pythonpractice folder, and hit Enter.
+Type hello.py to run your program!
+If it didn't work, make sure your PATH contains the python directory. See Getting Python.
+
+
+=== Mac ===
+Create a folder on your computer to use for your Python programs. A good suggestion would be to name it pythonpractice and place it in your Home folder (the one that contains folders for Documents, Movies, Music, Pictures, etc). Save your hello.py program into it. Open the Applications folder, go into the Utilities folder, and open the Terminal program.
+Type cd pythonpractice to change directory to your pythonpractice folder, and hit Enter.
+Type python ./hello.py to run your program!
+
+
+=== Linux ===
+Create a folder on your computer to use for your Python programs, such as ~/pythonpractice, and save your hello.py program in that folder.
+Open up the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder,  and select Terminal.
+Type cd ~/pythonpractice to change directory to your pythonpractice folder, and hit Enter.
+Don't forget to make the script executable by chmod +x.
+Type python ./hello.py to run your program!
+
+
+=== Linux (advanced) ===
+Create a folder on your computer to use for your Python programs, such as ~/pythonpractice.
+Open up your favorite text editor and create a new file called hello.py containing just the following 2 lines (you can copy-paste if you want):
+#! /usr/bin/python
+print('Hello, world!')
+
+save your hello.py program in the ~/pythonpractice folder.
+Open up the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder,  and select Terminal.
+Type cd ~/pythonpractice to change directory to your pythonpractice folder, and hit Enter.
+Type chmod a+x hello.py to tell Linux that it is an executable program.
+Type ./hello.py to run your program!
+In addition, you can also use ln -s hello.py /usr/bin/hello to make a symbolic link hello.py to /usr/bin under the name hello, then run it by simply executing hello.
+Note that this mainly should be done for complete, compiled programs, if you have a script that you made and use frequently, then it might be a good idea to put it somewhere in your home directory and put a link to it in /usr/bin. If you want a playground, a good idea is to invoke mkdir ~/.local/bin and then put scripts in there. To make ~/.local/bin content executable the same way /usr/bin does type $PATH = $PATH:~/local/bin (you can add this line to your shell rc file, for example ~/.bashrc).
+
+
+=== Result ===
+The program should print:
+
+Hello, world!
+
+Congratulations! You're well on your way to becoming a Python programmer.
+
+
+== Exercises ==
+Modify the hello.py program to say hello to someone from your family or your friends (or to Ada Lovelace).
+Change the program so that after the greeting, it asks, "How did you get here?".
+Re-write the original program to use two print statements: one for "Hello" and one for "world". The program should still only print out on one line.
+Solutions
+
+
+== Notes ==

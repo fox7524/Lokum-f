@@ -1,0 +1,3820 @@
+[
+  {
+    "id": "pg-11",
+    "title": "Alice's Adventures in Wonderland",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/11/11-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-11.txt",
+        "sha256": "a3a27f8edbf7fcd9b8ba8435494440e24952deaa3e2f2d65192d4cb7ca403754",
+        "bytes": 151191
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-11.txt",
+        "sha256": "4e04ea77acf3b0215cae2089c977bc07526fc834597a1d463598d895354ba41d",
+        "bytes": 151094
+      }
+    ]
+  },
+  {
+    "id": "pg-132",
+    "title": "The Art of War",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/132/132-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-132.txt",
+        "sha256": "0aa964ddb252df7f02e84174ff1a65c6fd971c067303c1da320f5734a3b05c37",
+        "bytes": 322409
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-132.txt",
+        "sha256": "0cad92d6aad6a1fffee9ac628307b9ab0ccb39ce0e48b3ceef6998615509f0d6",
+        "bytes": 322309
+      }
+    ]
+  },
+  {
+    "id": "pg-1342",
+    "title": "Pride and Prejudice",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/1342/1342-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-1342.txt",
+        "sha256": "a5666f87abf2cbfdaa27ea8c73bd284da9649b9a2ab27b4e6c8f6aeab1bd1c88",
+        "bytes": 738046
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-1342.txt",
+        "sha256": "2387304e3cec1adb94b811218a27c6cd503cf7eba8c29c5d18f1bf862c67442f",
+        "bytes": 737913
+      }
+    ]
+  },
+  {
+    "id": "pg-1661",
+    "title": "The Adventures of Sherlock Holmes",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/1661/1661-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-1661.txt",
+        "sha256": "b9c105a5c0cf9fcb37c7d0211658851ed56074519c9455d15e20f04c0c5a3174",
+        "bytes": 607504
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-1661.txt",
+        "sha256": "2b7238758a350af441475489c7db10b8d8e9686a3897b1acebd7e81723960f80",
+        "bytes": 587714
+      }
+    ]
+  },
+  {
+    "id": "pg-174",
+    "title": "The Picture of Dorian Gray",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/174/174-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-174.txt",
+        "sha256": "7782dd93e6a457979ef451735c9fe4bd666968c314859d545f0d27a8c9b86aa2",
+        "bytes": 446090
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-174.txt",
+        "sha256": "cff1585005b24cf871b1aadec2b4413ecc742c8f926c6a39ab76322c2fcf19c0",
+        "bytes": 445978
+      }
+    ]
+  },
+  {
+    "id": "pg-2701",
+    "title": "Moby Dick; Or, The Whale",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/2701/2701-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-2701.txt",
+        "sha256": "0670d7bb10b99d05f095a28942801aa74d4921d1b34dbdc76900e2c4c2bd2189",
+        "bytes": 1234609
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-2701.txt",
+        "sha256": "ebd1c0141b4cf038232421fe24937beba1d729cd0f7e44f686b4c700239f7ea7",
+        "bytes": 1234504
+      }
+    ]
+  },
+  {
+    "id": "pg-84",
+    "title": "Frankenstein; Or, The Modern Prometheus",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/84/84-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-84.txt",
+        "sha256": "06c37d2c52d208d3d81eb12c3b10b5edbd7728b73554325ddceadbe2fb427e77",
+        "bytes": 421633
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-84.txt",
+        "sha256": "3839fa35c116713f811903545470041a86079268307ae9fd3ed4d04c88788bc0",
+        "bytes": 421535
+      }
+    ]
+  },
+  {
+    "id": "pg-98",
+    "title": "A Tale of Two Cities",
+    "language": "en",
+    "source_name": "Project Gutenberg",
+    "source_url": "https://www.gutenberg.org/files/98/98-0.txt",
+    "license": "Public Domain (Project Gutenberg terms apply)",
+    "license_url": "https://www.gutenberg.org/policy/license.html",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/pg-98.txt",
+        "sha256": "e3dfeb67feb904ac0f73a35204a175c58248422c2be8556802cb8820d958d67c",
+        "bytes": 771600
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/pg-98.txt",
+        "sha256": "68f9a91b64b42adee3282d918cdcca8a37310e17c76b597a2a5fcc7724d9db02",
+        "bytes": 771502
+      }
+    ]
+  },
+  {
+    "id": "wb-en-c-programming",
+    "title": "programming (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-c-programming.json",
+        "sha256": "079ea8ed78f0ea25a29f5fa1b3a8b4e44eb5c123906ee2af4f0ae1b33fad1bdb",
+        "bytes": 1504
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-c-programming.txt",
+        "sha256": "3a57166da9aba104abe8a86357d04607e2bed03a8c27d73118a190d51752aeee",
+        "bytes": 1311
+      }
+    ]
+  },
+  {
+    "id": "wb-en-c-programming-root",
+    "title": "C Programming (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/C_Programming",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-c-programming-root.json",
+        "sha256": "079ea8ed78f0ea25a29f5fa1b3a8b4e44eb5c123906ee2af4f0ae1b33fad1bdb",
+        "bytes": 1504
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-c-programming-root.txt",
+        "sha256": "3a57166da9aba104abe8a86357d04607e2bed03a8c27d73118a190d51752aeee",
+        "bytes": 1311
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming",
+    "title": "programming (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming.json",
+        "sha256": "74b57574e0c5ab1c03d7cd1a7cde7f3a965e093b5cc958ee69ca90d30af8a940",
+        "bytes": 2485
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_Databases-85364de6",
+    "title": "programming-Python Programming 3rd-party modules Databases (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_Databases",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_Databases-85364de6.json",
+        "sha256": "e6c781304b20080d6306992101fccd0c03d8f3ecc7a129fa58c391bed4717139",
+        "bytes": 7419
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_Databases-85364de6.txt",
+        "sha256": "b66d6f4d1da9a12a391385cc691a798c8fa168827eecd1d6647c9568ef5eacc3",
+        "bytes": 7049
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_Dbus-e01115ac",
+    "title": "programming-Python Programming 3rd-party modules Dbus (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_Dbus",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_Dbus-e01115ac.json",
+        "sha256": "419bdda9b0c338a5422215a40c7f315652b22f67b51063499b5f4fb0c42cf3a2",
+        "bytes": 2543
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_Dbus-e01115ac.txt",
+        "sha256": "a5de0ef1f733ca98989af6639346cfc9c1078171d90ed92bf91ebbf35c567549",
+        "bytes": 2277
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_GUI-564201aa",
+    "title": "programming-Python Programming 3rd-party modules GUI (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_GUI",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_GUI-564201aa.json",
+        "sha256": "2a44a72cb53ab107d5215a62099702325d256b9eaa9ada43288ef2c2c8ba9d58",
+        "bytes": 3727
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_GUI-564201aa.txt",
+        "sha256": "d115d0016b97630cfcd875f5579d9c16109a31c30b2264cf9bb54f46f78b77d1",
+        "bytes": 3420
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_Numpy-5d8ea4cc",
+    "title": "programming-Python Programming 3rd-party modules Numpy (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_Numpy",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_Numpy-5d8ea4cc.json",
+        "sha256": "b53760dbc5f7512330901548d8a53e3cebff1e2895db796f465ff297cf359743",
+        "bytes": 1488
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_Numpy-5d8ea4cc.txt",
+        "sha256": "69ef62b5365a9afebcfdf5caa62e56c03330f955d28624685359861a1b243eef",
+        "bytes": 1229
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_Progress_Ba-b85f8680",
+    "title": "programming-Python Programming 3rd-party modules Progress Ba (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_Progress_Ba",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_Progress_Ba-b85f8680.json",
+        "sha256": "a2c78572351319da6079213eb08685ceb4003b849b7e887eb57629d8315289cd",
+        "bytes": 1400
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_Progress_Ba-b85f8680.txt",
+        "sha256": "a2bc36bae190c178f84579dec50f08dfdd0ef5cd2ef7dc527dea7366a2762537",
+        "bytes": 1117
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules_Web-d61c1c09",
+    "title": "programming-Python Programming 3rd-party modules Web (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules_Web",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules_Web-d61c1c09.json",
+        "sha256": "f6f68ba12f074fdaf7f640a7c325119621b3201797572d90dbe70f2c2749e026",
+        "bytes": 3397
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules_Web-d61c1c09.txt",
+        "sha256": "12290deae234fb6f0d832f2a7e6c575b039fffd49f9e30a32222b715ffcca73e",
+        "bytes": 3129
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_3rd-party_modules-d6eb8b6e",
+    "title": "programming-Python Programming 3rd-party modules (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_3rd-party_modules",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_3rd-party_modules-d6eb8b6e.json",
+        "sha256": "1511e7a5c99acdaf9debfe77119ef5a9a83118e345281694da22c054ae59ba2e",
+        "bytes": 2573
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_3rd-party_modules-d6eb8b6e.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Arrays-5eb9965f",
+    "title": "programming-Python Programming Arrays (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Arrays",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Arrays-5eb9965f.json",
+        "sha256": "d856737e1d4924748ad8f7d3bd0a96a2023bea4149522ed6c1736c6030317cf3",
+        "bytes": 12350
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Arrays-5eb9965f.txt",
+        "sha256": "f8300e38389c5fc8c3ba9a843387ee32609f4d2198f875f5558270538549de32",
+        "bytes": 11727
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Authors-d0bfe528",
+    "title": "programming-Python Programming Authors (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Authors",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Authors-d0bfe528.json",
+        "sha256": "7e345c3183279bb5e72eea37cdfa2d91708b1860e592ed11d7ea82b1b77fa1d8",
+        "bytes": 254
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Authors-d0bfe528.txt",
+        "sha256": "526a0dce2f9a352c14689139025c6151a110395e21587aa3d4ae65bc453cd2f3",
+        "bytes": 118
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Basic_Math_Solutions-430cc7fc",
+    "title": "programming-Python Programming Basic Math Solutions (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Basic_Math_Solutions",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Basic_Math_Solutions-430cc7fc.json",
+        "sha256": "ab261f357e49937893a62b8bd3cff9938434a7663628acb9bb5228b335b79bc6",
+        "bytes": 2576
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Basic_Math_Solutions-430cc7fc.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Basic_Math-ef533850",
+    "title": "programming-Python Programming Basic Math (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Basic_Math",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Basic_Math-ef533850.json",
+        "sha256": "e6f64674b2e0b8caac877f1a2e19a6718bb4d42cf8289066a3c2ee8627d9a816",
+        "bytes": 4677
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Basic_Math-ef533850.txt",
+        "sha256": "73dce564d2e5c6dd8cba5a06396165280b7a93ae01dfad0e20ef9b2fde0a9759",
+        "bytes": 4411
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Basic_Syntax-cb16aa3b",
+    "title": "programming-Python Programming Basic Syntax (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Basic_Syntax",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Basic_Syntax-cb16aa3b.json",
+        "sha256": "151d5a542887341b498bf3b353626f845bf4273801d10db364a610e1875ca25e",
+        "bytes": 6662
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Basic_Syntax-cb16aa3b.txt",
+        "sha256": "3d2a77c66a7fb6b5ea676d5d1b9700ac9bf4c74912a18d7aa48c9dc706b890bb",
+        "bytes": 6425
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Basic_syntax-fde70235",
+    "title": "programming-Python Programming Basic syntax (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Basic_syntax",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Basic_syntax-fde70235.json",
+        "sha256": "53ee19a4b790fc6df0a70d15358ca274cbd08c9fadb8573a56dde09de2dd8ce2",
+        "bytes": 6758
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Basic_syntax-fde70235.txt",
+        "sha256": "3d2a77c66a7fb6b5ea676d5d1b9700ac9bf4c74912a18d7aa48c9dc706b890bb",
+        "bytes": 6425
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Booleans-2c9ff11c",
+    "title": "programming-Python Programming Booleans (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Booleans",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Booleans-2c9ff11c.json",
+        "sha256": "d7e14d8ea746a1cccaf9b700eef009c335f5e78ab015d3b734b154cfdf62543e",
+        "bytes": 2564
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Booleans-2c9ff11c.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Builtins-7fc3d695",
+    "title": "programming-Python Programming Builtins (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Builtins",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Builtins-7fc3d695.json",
+        "sha256": "9f494e08f7455d3865eb8a5c4b044910e6869fb3b8551d1724dcb99c781bdfaf",
+        "bytes": 2564
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Builtins-7fc3d695.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_CGI_interface-1b04fc8b",
+    "title": "programming-Python Programming CGI interface (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_CGI_interface",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_CGI_interface-1b04fc8b.json",
+        "sha256": "2dc35869ec5826156716fca6f40005154f3d8b9256b3480b94b48844ca4c2da3",
+        "bytes": 868
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_CGI_interface-1b04fc8b.txt",
+        "sha256": "ba13027a9a324583980070a9e1c9aa147561f68d097696f028a18e12550b98a3",
+        "bytes": 718
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Classes-276fb5a7",
+    "title": "programming-Python Programming Classes (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Classes",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Classes-276fb5a7.json",
+        "sha256": "b25c1af373d9237dd61c26a43882e436fa20e0777ceae88fa65f6e641d5dfa70",
+        "bytes": 20575
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Classes-276fb5a7.txt",
+        "sha256": "8c3aa2806efc8529379c07c1f4c3333835cf47f22ceab547f52a031661b289df",
+        "bytes": 19859
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Command-line_one-liners-44ec2af5",
+    "title": "programming-Python Programming Command-line one-liners (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Command-line_one-liners",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Command-line_one-liners-44ec2af5.json",
+        "sha256": "817340ee171571e30cefa235e021f580cf4fa40ca3ce9d29586c3f84c6d7ab01",
+        "bytes": 1651
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Command-line_one-liners-44ec2af5.txt",
+        "sha256": "de1ad3ee0f746712e3c10aa7b0c3c51333ed13b6a1c8b7491fea84c250ed3f9d",
+        "bytes": 1469
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Cond-eaa83b99",
+    "title": "programming-Python Programming Cond (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Cond",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Cond-eaa83b99.json",
+        "sha256": "e316767dbdc07c345a3570c214a6b7c158578c676a58032fafc567a3b116638b",
+        "bytes": 247
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Cond-eaa83b99.txt",
+        "sha256": "644caebbcca2fac77100c18dff37ad93c135ca4b85904c19778ced3a20a81dc5",
+        "bytes": 126
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Conditional_Statements-2ee0a1f6",
+    "title": "programming-Python Programming Conditional Statements (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Conditional_Statements",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Conditional_Statements-2ee0a1f6.json",
+        "sha256": "c14640e03d0d1aa647dfd073116441da9e8e43d7f6b594681378121e91df0cbf",
+        "bytes": 13841
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Conditional_Statements-2ee0a1f6.txt",
+        "sha256": "a9c1ee42512c03a65507757ef82a4f258384dc24c860131cc3f5fe3c6537a82b",
+        "bytes": 13069
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Context_Managers-35c791c5",
+    "title": "programming-Python Programming Context Managers (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Context_Managers",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Context_Managers-35c791c5.json",
+        "sha256": "2f51697d06a930a5ef1ccc7134807ef85aa0a0d743277850529e5952062fda04",
+        "bytes": 8380
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Context_Managers-35c791c5.txt",
+        "sha256": "c53c21b03fff6af8c72f25912421572c868e6ffc960e7f684f363ff39e0d6fe5",
+        "bytes": 8169
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Control_Flow-3c527be3",
+    "title": "programming-Python Programming Control Flow (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Control_Flow",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Control_Flow-3c527be3.json",
+        "sha256": "aafbccb9f4c533c35f48b24de29abc1d3d756fda5fa99d0ce367820daee491f3",
+        "bytes": 8944
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Control_Flow-3c527be3.txt",
+        "sha256": "1747812d16dca1e09b253aef34f857f71984999a4b2fd74080040c89e326fafd",
+        "bytes": 8418
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Creating_Python_programs_Solu-d2c139b0",
+    "title": "programming-Python Programming Creating Python programs Solu (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Creating_Python_programs_Solu",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Creating_Python_programs_Solu-d2c139b0.json",
+        "sha256": "2db0c458982853a924a5f4712d82039ce3c5df5c9d46c1525a6d48585e07e34c",
+        "bytes": 1081
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Creating_Python_programs_Solu-d2c139b0.txt",
+        "sha256": "22178f192fe76cc41271b9a289906458ea99f31541ec7e8c179a41d095c60f99",
+        "bytes": 916
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Creating_Python_Programs-15e1475f",
+    "title": "programming-Python Programming Creating Python Programs (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Creating_Python_Programs",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Creating_Python_Programs-15e1475f.json",
+        "sha256": "ae7b339af42b880da8cb608a131968540b10f72755e00bcde672d2fdaa527eaf",
+        "bytes": 5031
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Creating_Python_Programs-15e1475f.txt",
+        "sha256": "7b20ffb9f8ca45a35c6a0a5555a02af85671f32124b36b9e91f4ec8bea144a09",
+        "bytes": 4801
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming_Creating_Python_programs-2cfeb902",
+    "title": "programming-Python Programming Creating Python programs (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming_Creating_Python_programs",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming_Creating_Python_programs-2cfeb902.json",
+        "sha256": "2349ce4702af88e4c8683c6ecf6f3314ebcf9fe0eecfbdfa5e36e168be102671",
+        "bytes": 5151
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming_Creating_Python_programs-2cfeb902.txt",
+        "sha256": "7b20ffb9f8ca45a35c6a0a5555a02af85671f32124b36b9e91f4ec8bea144a09",
+        "bytes": 4801
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-Python_Programming-f5197e2f",
+    "title": "programming-Python Programming (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/programming-Python_Programming",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-Python_Programming-f5197e2f.json",
+        "sha256": "de26e16a596b85cfb708ee7d8e3d361928ba76bb112dc9235ee1263698039272",
+        "bytes": 2556
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-Python_Programming-f5197e2f.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-en-python-programming-root",
+    "title": "Python Programming (en.wikibooks.org)",
+    "language": "en",
+    "source_name": "en.wikibooks.org",
+    "source_url": "https://en.wikibooks.org/wiki/Python_Programming",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-en-python-programming-root.json",
+        "sha256": "74b57574e0c5ab1c03d7cd1a7cde7f3a965e093b5cc958ee69ca90d30af8a940",
+        "bytes": 2485
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-en-python-programming-root.txt",
+        "sha256": "f58adc0d8a75a2949e33cfa94dd9b91a9696e2460a84ffd76e9c63fb8c7703f8",
+        "bytes": 2251
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python",
+    "title": "Python (Vikikitap) (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_(Vikikitap)",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python.json",
+        "sha256": "6964c928c5cf93b0cf6d28b86cc1237b1d233fe86de4c5fa628efda05fc4705a",
+        "bytes": 656
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python.txt",
+        "sha256": "6c25d3425ad508b47564ebe40448cfb0ae246a91e41aa2d0f52b5f675a912c60",
+        "bytes": 416
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-programlama-dili",
+    "title": "Python Programlama Dili (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_Programlama_Dili",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-programlama-dili.json",
+        "sha256": "63f053f76ea661075fbb18f9344bd1a33d9cc606f86a849421c46ccc968fb4c2",
+        "bytes": 1917
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-programlama-dili.txt",
+        "sha256": "0c1178e59a7a4bd61df7f7fdf920b577a0b4d1268ae3cbd658ea803f09b856f5",
+        "bytes": 1378
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_3_x_Etkileşimli_Python-3bdd25b2",
+    "title": "Python 3 x Etkileşimli Python (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_3_x_Etkile%C5%9Fimli_Python",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_3_x_Etkileşimli_Python-3bdd25b2.json",
+        "sha256": "c2e72baa0cd1dbb0c1c2cadca9ca0b53436fbc2c603cc3e04854cff3a5997cfe",
+        "bytes": 1531
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_3_x_Etkileşimli_Python-3bdd25b2.txt",
+        "sha256": "90d6de68b41c3283e7d43dc52cc5ae4a0aad83dcf172cf72f6a527598245f364",
+        "bytes": 1031
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_3_x_Giriş-bddc1e1d",
+    "title": "Python 3 x Giriş (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_3_x_Giri%C5%9F",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_3_x_Giriş-bddc1e1d.json",
+        "sha256": "20f15f4a80d136fdc338dc1e8338113390c878fec691de76cd71ef9c9309fc91",
+        "bytes": 1276
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_3_x_Giriş-bddc1e1d.txt",
+        "sha256": "3a47702ad35696797952884ac65a00b477b33ecf45e1f46d2d3a71c4b736fb65",
+        "bytes": 895
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_3_x_Komut_satırı-7f79d83d",
+    "title": "Python 3 x Komut satırı (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_3_x_Komut_sat%C4%B1r%C4%B1",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_3_x_Komut_satırı-7f79d83d.json",
+        "sha256": "cfa1e55129a20b02fa0efa0d43287ab8cca65bea8e3add66379a12c0ae56e8b3",
+        "bytes": 4640
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_3_x_Komut_satırı-7f79d83d.txt",
+        "sha256": "6c172ef6ece27452560422c6db0eb9cf17611ed50af527b0b83ef8f8d7574789",
+        "bytes": 3362
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_3_x-5eb258b7",
+    "title": "Python 3 x (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_3_x",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_3_x-5eb258b7.json",
+        "sha256": "fd1c367d78d74cd3b886e8c9a897e2b73905afc6b8ed842ae9da5e775c1fad06",
+        "bytes": 165
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_3_x-5eb258b7.txt",
+        "sha256": "312e19667177e124b515444afa57d91897ac2440b402096c2ce2747ced6e82aa",
+        "bytes": 41
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Değişkenler-a268369b",
+    "title": "Python Değişkenler (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_De%C4%9Fi%C5%9Fkenler",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Değişkenler-a268369b.json",
+        "sha256": "c3d3c8c835e079e7309777fd3ad30602653c40cc9e5ac3939e5fe5aa0174e186",
+        "bytes": 1909
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Değişkenler-a268369b.txt",
+        "sha256": "23a121aa7883d2c94fd0f3644d6391fa8cc9567bcf186d0f682e0b881f560332",
+        "bytes": 1361
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Fonksiyonlar-569ce8c3",
+    "title": "Python Fonksiyonlar (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_Fonksiyonlar",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Fonksiyonlar-569ce8c3.json",
+        "sha256": "a1b6547134f311f47c38f472b6f8371a908286555252818fb864c9bcc2437cf2",
+        "bytes": 178
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Fonksiyonlar-569ce8c3.txt",
+        "sha256": "05050225ee1ca5bf7f40d757ffba26deda6fd4b12f1511517c974448ee836123",
+        "bytes": 43
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Giriş-b64452d4",
+    "title": "Python Giriş (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_Giri%C5%9F",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Giriş-b64452d4.json",
+        "sha256": "33177402613e4031fb0e9b72a4729ef4b328d5c9b654ecb05d4dcc813dc567c4",
+        "bytes": 1748
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Giriş-b64452d4.txt",
+        "sha256": "85481eeb2fb8a0c45a26c1c20da8d24877b5384bde99ae4d9b2763648b8c11fe",
+        "bytes": 1269
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_İlk_programımız-da075adb",
+    "title": "Python İlk programımız (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_%C4%B0lk_program%C4%B1m%C4%B1z",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_İlk_programımız-da075adb.json",
+        "sha256": "8bdac726f763bbc9db5ecaf9e936c959aafb8af3eac2781decc5044a34c5013e",
+        "bytes": 1439
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_İlk_programımız-da075adb.txt",
+        "sha256": "3066c44b55c63b04d58ec36ef30cd4a00a2b87aea03702f9d8edf767591f4375",
+        "bytes": 938
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Koşul_yapıları-d8f61370",
+    "title": "Python Koşul yapıları (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_Ko%C5%9Ful_yap%C4%B1lar%C4%B1",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Koşul_yapıları-d8f61370.json",
+        "sha256": "0c981e320f28357b46c4152f58171a028f61ecb4c253bd8d000b84ef940dc742",
+        "bytes": 132
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Koşul_yapıları-d8f61370.txt",
+        "sha256": "8eda557e11d304c9780244b8735d841f61db58507ac9d1e6e7f97209b674d5ff",
+        "bytes": 170
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Sınıflar-d0abe9fb",
+    "title": "Python Sınıflar (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_S%C4%B1n%C4%B1flar",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Sınıflar-d0abe9fb.json",
+        "sha256": "f16d3480cfc93969992c354fb0324e8d21f7ac7cdb6fee9deef52cf20518f22f",
+        "bytes": 241
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Sınıflar-d0abe9fb.txt",
+        "sha256": "90a784c9d0ebc80c0516aa121e201ae95316886880fb0cc946db209478a0824e",
+        "bytes": 90
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-Python_Veri_tipleri-a800ded9",
+    "title": "Python Veri tipleri (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python_Veri_tipleri",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-Python_Veri_tipleri-a800ded9.json",
+        "sha256": "3bd72a7a2ef52fa82970798529a5d05ec9b1e95d3aea149aa1a1ed229f66dd4a",
+        "bytes": 733
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-Python_Veri_tipleri-a800ded9.txt",
+        "sha256": "86dc3d3ac2e5b134783da434759f226e48b072c94f2236e6dca5f341fa99f639",
+        "bytes": 476
+      }
+    ]
+  },
+  {
+    "id": "wb-tr-python-root",
+    "title": "Python (tr.wikibooks.org)",
+    "language": "tr",
+    "source_name": "tr.wikibooks.org",
+    "source_url": "https://tr.wikibooks.org/wiki/Python",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved_at": "2026-05-29T12:33:33Z",
+    "notes": "",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/wb-tr-python-root.json",
+        "sha256": "6964c928c5cf93b0cf6d28b86cc1237b1d233fe86de4c5fa628efda05fc4705a",
+        "bytes": 656
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/wb-tr-python-root.txt",
+        "sha256": "6c25d3425ad508b47564ebe40448cfb0ae246a91e41aa2d0f52b5f675a912c60",
+        "bytes": 416
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.102927",
+    "title": "Trade Defict (23-Jul-2002)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.102927",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:43:28Z",
+    "notes": "downloaded_file=IQ_196_23072002_U648_p86_p87_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.102927-IQ_196_23072002_U648_p86_p87_djvu.txt",
+        "sha256": "5b8a090a3cee11b2cce82e5b81c709235b1b9f5f7b60a7b340ae0c55380a5b26",
+        "bytes": 4204
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.102927.txt",
+        "sha256": "5b8a090a3cee11b2cce82e5b81c709235b1b9f5f7b60a7b340ae0c55380a5b26",
+        "bytes": 4204
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.114443",
+    "title": "Purchase of wireless sets by Delhi Police (17-May-2000)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.114443",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:43:36Z",
+    "notes": "downloaded_file=IQ_189_17052000_U5548_p81_p81_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.114443-IQ_189_17052000_U5548_p81_p81_djvu.txt",
+        "sha256": "61124f10e2bd3b4c0c8226a9795f129ac08da464aafce6456ed7e2e272774a4e",
+        "bytes": 1791
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.114443.txt",
+        "sha256": "61124f10e2bd3b4c0c8226a9795f129ac08da464aafce6456ed7e2e272774a4e",
+        "bytes": 1791
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.209511",
+    "title": "General situation at Ayodhya in the context of the Proposed Karsewa (3-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.209511",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:43:46Z",
+    "notes": "downloaded_file=ID_165_03121992_8_p394_p448_26_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.209511-ID_165_03121992_8_p394_p448_26_djvu.txt",
+        "sha256": "68f57a5be7c07c73539d67d1b6bea43246faf0680e830f8fcb1c278fcd5580ab",
+        "bytes": 114130
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.209511.txt",
+        "sha256": "68f57a5be7c07c73539d67d1b6bea43246faf0680e830f8fcb1c278fcd5580ab",
+        "bytes": 114130
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.235087",
+    "title": "Joint Meeting of State Power Ministers (17-Mar-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.235087",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:43:53Z",
+    "notes": "downloaded_file=IQ_162_17031992_U3008_p168_p169_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.235087-IQ_162_17031992_U3008_p168_p169_djvu.txt",
+        "sha256": "c63d2b5ec8be57fc1a26bf3b29e0ad7e30badaaed4911eded5f6278a662c4429",
+        "bytes": 9540
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.235087.txt",
+        "sha256": "c63d2b5ec8be57fc1a26bf3b29e0ad7e30badaaed4911eded5f6278a662c4429",
+        "bytes": 9540
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.649.215.224",
+    "title": "Mysore Town and Country Planning ( Amendment ) Bill 1963 Motion to Consider\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.649.215.224",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:44:04Z",
+    "notes": "downloaded_file=649_215_224_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.649.215.224-649_215_224_djvu.txt",
+        "sha256": "99e37af89ea7b6fec898b572d9be789c2696abbb4ce23a7c87e17ec45f97a777",
+        "bytes": 40659
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.649.215.224.txt",
+        "sha256": "99e37af89ea7b6fec898b572d9be789c2696abbb4ce23a7c87e17ec45f97a777",
+        "bytes": 40659
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.665.748.784",
+    "title": "Mysore Local Authorities ( Postponement of Elections and Continuance ) Bill 1965 motion to consider\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.665.748.784",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:44:13Z",
+    "notes": "downloaded_file=665_748_784_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.665.748.784-665_748_784_djvu.txt",
+        "sha256": "dc7c54e5471648200979288758bd417196bea7b9aa70ea44a839781711003020",
+        "bytes": 178205
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.665.748.784.txt",
+        "sha256": "dc7c54e5471648200979288758bd417196bea7b9aa70ea44a839781711003020",
+        "bytes": 178205
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.723.34.36",
+    "title": "Mode of Acquisition of food grains\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.723.34.36",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:44:25Z",
+    "notes": "downloaded_file=723_34_36_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.723.34.36-723_34_36_djvu.txt",
+        "sha256": "1f0c9a99215754753f25ee5ff6f3b7d61167239949d88262f4ae38284e28507f",
+        "bytes": 16303
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.723.34.36.txt",
+        "sha256": "1f0c9a99215754753f25ee5ff6f3b7d61167239949d88262f4ae38284e28507f",
+        "bytes": 16303
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.740.633.634",
+    "title": "Menials in the Revenue Dept\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.740.633.634",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T12:44:31Z",
+    "notes": "downloaded_file=740_633_634_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.740.633.634-740_633_634_djvu.txt",
+        "sha256": "3691ded0fd55d2cd3a89957fb599d10f663edfb4861166848d70cb0b069f964b",
+        "bytes": 9065
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.740.633.634.txt",
+        "sha256": "3691ded0fd55d2cd3a89957fb599d10f663edfb4861166848d70cb0b069f964b",
+        "bytes": 9065
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-SUMMARY.md",
+    "title": "Rust Edition Guide: SUMMARY.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/SUMMARY.md",
+        "sha256": "c5d2bfb9a37d916f87db3f284039802c61a462d8b94bd9871027df8f24496c9f",
+        "bytes": 3603
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/SUMMARY.txt",
+        "sha256": "c5d2bfb9a37d916f87db3f284039802c61a462d8b94bd9871027df8f24496c9f",
+        "bytes": 3603
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-editions_advanced-migrations.md",
+    "title": "Rust Edition Guide: editions/advanced-migrations.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/editions__advanced-migrations.md",
+        "sha256": "a7126865e3d8ff44c87c45dc5f74cfbe6089f03a22d8f69bf702325852d5688b",
+        "bytes": 12569
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/editions__advanced-migrations.txt",
+        "sha256": "a7126865e3d8ff44c87c45dc5f74cfbe6089f03a22d8f69bf702325852d5688b",
+        "bytes": 12569
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-editions_creating-a-new-project.md",
+    "title": "Rust Edition Guide: editions/creating-a-new-project.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/editions__creating-a-new-project.md",
+        "sha256": "d5772f5eb063aa5de0c524c503de9bb2817691537f2561b58d2837f79460335d",
+        "bytes": 1699
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/editions__creating-a-new-project.txt",
+        "sha256": "d5772f5eb063aa5de0c524c503de9bb2817691537f2561b58d2837f79460335d",
+        "bytes": 1699
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-editions_index.md",
+    "title": "Rust Edition Guide: editions/index.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/editions__index.md",
+        "sha256": "584ba05348d3dda23837ca4c64154f39fc6e44f2f257fd9272bd8714fa1a4ec6",
+        "bytes": 3353
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/editions__index.txt",
+        "sha256": "584ba05348d3dda23837ca4c64154f39fc6e44f2f257fd9272bd8714fa1a4ec6",
+        "bytes": 3353
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-editions_transitioning-an-existing-project-to-a-new-edition.md",
+    "title": "Rust Edition Guide: editions/transitioning-an-existing-project-to-a-new-edition.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/editions__transitioning-an-existing-project-to-a-new-edition.md",
+        "sha256": "df076fd1a4ae4b0193505a0aab551fef8c3c1e35e3d5bba6fbcfcda759dce94e",
+        "bytes": 6865
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/editions__transitioning-an-existing-project-to-a-new-edition.txt",
+        "sha256": "df076fd1a4ae4b0193505a0aab551fef8c3c1e35e3d5bba6fbcfcda759dce94e",
+        "bytes": 6865
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-introduction.md",
+    "title": "Rust Edition Guide: introduction.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/introduction.md",
+        "sha256": "9788751e60c8e4146d3220cbb66df9ad2484cea8b9d306c74432a81582b4a1bd",
+        "bytes": 321
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/introduction.txt",
+        "sha256": "9788751e60c8e4146d3220cbb66df9ad2484cea8b9d306c74432a81582b4a1bd",
+        "bytes": 321
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2015_index.md",
+    "title": "Rust Edition Guide: rust-2015/index.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2015__index.md",
+        "sha256": "c7579cfe523247217815ffa33144700a70502d680fda7f92fd5c65b7cfa02864",
+        "bytes": 942
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2015__index.txt",
+        "sha256": "c7579cfe523247217815ffa33144700a70502d680fda7f92fd5c65b7cfa02864",
+        "bytes": 942
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_cargo.md",
+    "title": "Rust Edition Guide: rust-2018/cargo.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__cargo.md",
+        "sha256": "b4299eea357f989277214686bda418c183219148ac3e3e3cae846c22e316f7a8",
+        "bytes": 430
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__cargo.txt",
+        "sha256": "b4299eea357f989277214686bda418c183219148ac3e3e3cae846c22e316f7a8",
+        "bytes": 430
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_index.md",
+    "title": "Rust Edition Guide: rust-2018/index.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__index.md",
+        "sha256": "66bcdf06b9acfa7c41e00fecbe103d89ebd8a30b61417f1d4a8fb1d3f7a71446",
+        "bytes": 658
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__index.txt",
+        "sha256": "66bcdf06b9acfa7c41e00fecbe103d89ebd8a30b61417f1d4a8fb1d3f7a71446",
+        "bytes": 658
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_new-keywords.md",
+    "title": "Rust Edition Guide: rust-2018/new-keywords.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__new-keywords.md",
+        "sha256": "6e93f3801a4da5e5689a38a59aa9824330cdf367390c6c80248a0a49e2f1f708",
+        "bytes": 2078
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__new-keywords.txt",
+        "sha256": "6e93f3801a4da5e5689a38a59aa9824330cdf367390c6c80248a0a49e2f1f708",
+        "bytes": 2078
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_path-changes.md",
+    "title": "Rust Edition Guide: rust-2018/path-changes.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__path-changes.md",
+        "sha256": "0caacaab443857f7daf059a06ccf28c3430dae1137aba5a3c037e9cfcd43101d",
+        "bytes": 9811
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__path-changes.txt",
+        "sha256": "0caacaab443857f7daf059a06ccf28c3430dae1137aba5a3c037e9cfcd43101d",
+        "bytes": 9811
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_trait-fn-parameters.md",
+    "title": "Rust Edition Guide: rust-2018/trait-fn-parameters.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__trait-fn-parameters.md",
+        "sha256": "25187030f67f4b87521e867e8e9ca83b8218b1de49cee21c6701044080c05866",
+        "bytes": 793
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__trait-fn-parameters.txt",
+        "sha256": "25187030f67f4b87521e867e8e9ca83b8218b1de49cee21c6701044080c05866",
+        "bytes": 793
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2018_tyvar-behind-raw-pointer.md",
+    "title": "Rust Edition Guide: rust-2018/tyvar-behind-raw-pointer.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2018__tyvar-behind-raw-pointer.md",
+        "sha256": "42a4931d43d915e3551d3e33f0e5f07615ca0189b74143410fb91ca9a7f1b806",
+        "bytes": 247
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2018__tyvar-behind-raw-pointer.txt",
+        "sha256": "42a4931d43d915e3551d3e33f0e5f07615ca0189b74143410fb91ca9a7f1b806",
+        "bytes": 247
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_IntoIterator-for-arrays.md",
+    "title": "Rust Edition Guide: rust-2021/IntoIterator-for-arrays.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__IntoIterator-for-arrays.md",
+        "sha256": "d3fd76a36919577df0fd490edaddc56e8037053d00474004b1c421a5c1d0ed2f",
+        "bytes": 3822
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__IntoIterator-for-arrays.txt",
+        "sha256": "d3fd76a36919577df0fd490edaddc56e8037053d00474004b1c421a5c1d0ed2f",
+        "bytes": 3822
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_c-string-literals.md",
+    "title": "Rust Edition Guide: rust-2021/c-string-literals.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__c-string-literals.md",
+        "sha256": "36b65a09bbeff135cd9f196733ad2ec2e96561fd5aaab51fb9c64118fb7f4c4d",
+        "bytes": 2864
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__c-string-literals.txt",
+        "sha256": "36b65a09bbeff135cd9f196733ad2ec2e96561fd5aaab51fb9c64118fb7f4c4d",
+        "bytes": 2864
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_default-cargo-resolver.md",
+    "title": "Rust Edition Guide: rust-2021/default-cargo-resolver.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__default-cargo-resolver.md",
+        "sha256": "cc01f8ff722dfbbbe40b0b5d93ef47012b9fe8a242f03b1daa77bf74c4079f77",
+        "bytes": 8371
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__default-cargo-resolver.txt",
+        "sha256": "cc01f8ff722dfbbbe40b0b5d93ef47012b9fe8a242f03b1daa77bf74c4079f77",
+        "bytes": 8371
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_disjoint-capture-in-closures.md",
+    "title": "Rust Edition Guide: rust-2021/disjoint-capture-in-closures.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__disjoint-capture-in-closures.md",
+        "sha256": "eb91d6a5960bf4219d3828b5dc311d389d06f3ab58610a6f848d78577ec388e4",
+        "bytes": 7199
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__disjoint-capture-in-closures.txt",
+        "sha256": "eb91d6a5960bf4219d3828b5dc311d389d06f3ab58610a6f848d78577ec388e4",
+        "bytes": 7199
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_index.md",
+    "title": "Rust Edition Guide: rust-2021/index.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__index.md",
+        "sha256": "9d315dbaeba07f009be3cdd85a9a58b841da80bd443a054449aedf78a92e688c",
+        "bytes": 465
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__index.txt",
+        "sha256": "9d315dbaeba07f009be3cdd85a9a58b841da80bd443a054449aedf78a92e688c",
+        "bytes": 465
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_or-patterns-macro-rules.md",
+    "title": "Rust Edition Guide: rust-2021/or-patterns-macro-rules.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__or-patterns-macro-rules.md",
+        "sha256": "e9f94cf1f0463c5e34c8fdf7334935f103c9b9a3502190ce05d69d64e167dace",
+        "bytes": 2819
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__or-patterns-macro-rules.txt",
+        "sha256": "e9f94cf1f0463c5e34c8fdf7334935f103c9b9a3502190ce05d69d64e167dace",
+        "bytes": 2819
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_panic-macro-consistency.md",
+    "title": "Rust Edition Guide: rust-2021/panic-macro-consistency.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__panic-macro-consistency.md",
+        "sha256": "a363c24d782807200361014abe60fab058de801c59ff1b2aa77b341dd0a99590",
+        "bytes": 3851
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__panic-macro-consistency.txt",
+        "sha256": "a363c24d782807200361014abe60fab058de801c59ff1b2aa77b341dd0a99590",
+        "bytes": 3851
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_prelude.md",
+    "title": "Rust Edition Guide: rust-2021/prelude.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__prelude.md",
+        "sha256": "d44493be87efe65dc7ce23c77aaae0bc34de43b7559472830816f7d4008fba1a",
+        "bytes": 7517
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__prelude.txt",
+        "sha256": "d44493be87efe65dc7ce23c77aaae0bc34de43b7559472830816f7d4008fba1a",
+        "bytes": 7517
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_raw-lifetimes.md",
+    "title": "Rust Edition Guide: rust-2021/raw-lifetimes.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__raw-lifetimes.md",
+        "sha256": "af8641322e39852fb4f06da206cbd452f4dd0f2054cc2fbacc277d77176f06eb",
+        "bytes": 1819
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__raw-lifetimes.txt",
+        "sha256": "af8641322e39852fb4f06da206cbd452f4dd0f2054cc2fbacc277d77176f06eb",
+        "bytes": 1819
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_reserved-syntax.md",
+    "title": "Rust Edition Guide: rust-2021/reserved-syntax.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__reserved-syntax.md",
+        "sha256": "793a46aba71aa95e6ef372072250ae749f4bce8a729d95b1c0ca457441e8b703",
+        "bytes": 3310
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__reserved-syntax.txt",
+        "sha256": "793a46aba71aa95e6ef372072250ae749f4bce8a729d95b1c0ca457441e8b703",
+        "bytes": 3310
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2021_warnings-promoted-to-error.md",
+    "title": "Rust Edition Guide: rust-2021/warnings-promoted-to-error.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2021__warnings-promoted-to-error.md",
+        "sha256": "4c6444cf085678becfcd830ac595997e02031b403dc0884f7da1c06f12577c34",
+        "bytes": 1722
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2021__warnings-promoted-to-error.txt",
+        "sha256": "4c6444cf085678becfcd830ac595997e02031b403dc0884f7da1c06f12577c34",
+        "bytes": 1722
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_cargo-inherited-default-features.md",
+    "title": "Rust Edition Guide: rust-2024/cargo-inherited-default-features.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__cargo-inherited-default-features.md",
+        "sha256": "82364f4f1374397ad654443abdae58394e538e9acb5688de12d25a7a297c88cf",
+        "bytes": 2300
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__cargo-inherited-default-features.txt",
+        "sha256": "82364f4f1374397ad654443abdae58394e538e9acb5688de12d25a7a297c88cf",
+        "bytes": 2300
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_cargo-resolver.md",
+    "title": "Rust Edition Guide: rust-2024/cargo-resolver.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__cargo-resolver.md",
+        "sha256": "136b8548a63650cddd4cc6a5835451e064a218adeda9ccf999bd7ec185b6179f",
+        "bytes": 1781
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__cargo-resolver.txt",
+        "sha256": "136b8548a63650cddd4cc6a5835451e064a218adeda9ccf999bd7ec185b6179f",
+        "bytes": 1781
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_cargo-table-key-names.md",
+    "title": "Rust Edition Guide: rust-2024/cargo-table-key-names.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__cargo-table-key-names.md",
+        "sha256": "da087ddab10af14d9f2a80378671e783c1daef37e4114328193bb8a16cf95e30",
+        "bytes": 1564
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__cargo-table-key-names.txt",
+        "sha256": "da087ddab10af14d9f2a80378671e783c1daef37e4114328193bb8a16cf95e30",
+        "bytes": 1564
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_cargo.md",
+    "title": "Rust Edition Guide: rust-2024/cargo.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__cargo.md",
+        "sha256": "58d3a8b0ac9ad05a9df0d315e29b2ec3ab0c4fb0dae212f6d0f89594f625464e",
+        "bytes": 77
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__cargo.txt",
+        "sha256": "58d3a8b0ac9ad05a9df0d315e29b2ec3ab0c4fb0dae212f6d0f89594f625464e",
+        "bytes": 77
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_gen-keyword.md",
+    "title": "Rust Edition Guide: rust-2024/gen-keyword.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__gen-keyword.md",
+        "sha256": "2b6e9ea54de8af70869dd9e61866baf808d50a3d3c29d96ec9933ff602015a75",
+        "bytes": 1813
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__gen-keyword.txt",
+        "sha256": "2b6e9ea54de8af70869dd9e61866baf808d50a3d3c29d96ec9933ff602015a75",
+        "bytes": 1813
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_index.md",
+    "title": "Rust Edition Guide: rust-2024/index.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__index.md",
+        "sha256": "31d07691f4854298f93d736a534bd4df1db28ad20fb846007d4422d80f6fa271",
+        "bytes": 196
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__index.txt",
+        "sha256": "31d07691f4854298f93d736a534bd4df1db28ad20fb846007d4422d80f6fa271",
+        "bytes": 196
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_intoiterator-box-slice.md",
+    "title": "Rust Edition Guide: rust-2024/intoiterator-box-slice.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__intoiterator-box-slice.md",
+        "sha256": "691132ee93bedd42a9a9a8767e7263f737bb2d4ac685a5a97d201c113ab8c680",
+        "bytes": 3551
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__intoiterator-box-slice.txt",
+        "sha256": "691132ee93bedd42a9a9a8767e7263f737bb2d4ac685a5a97d201c113ab8c680",
+        "bytes": 3551
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_language.md",
+    "title": "Rust Edition Guide: rust-2024/language.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__language.md",
+        "sha256": "3a0e0911fc0709d999ef9b075b06f8d058acecdc34d69b38c4ebe031bf85be63",
+        "bytes": 87
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__language.txt",
+        "sha256": "3a0e0911fc0709d999ef9b075b06f8d058acecdc34d69b38c4ebe031bf85be63",
+        "bytes": 87
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_let-chains.md",
+    "title": "Rust Edition Guide: rust-2024/let-chains.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__let-chains.md",
+        "sha256": "af67e4d662edfa1adc98cb459abdac09565930f30cda58c35467fce0fd54aafb",
+        "bytes": 1264
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__let-chains.txt",
+        "sha256": "af67e4d662edfa1adc98cb459abdac09565930f30cda58c35467fce0fd54aafb",
+        "bytes": 1264
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_macro-fragment-specifiers.md",
+    "title": "Rust Edition Guide: rust-2024/macro-fragment-specifiers.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__macro-fragment-specifiers.md",
+        "sha256": "3fcc4983f987512a49482a5ccfa244eddf1ecb8ed60a36f2f8c393161f231bdf",
+        "bytes": 2762
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__macro-fragment-specifiers.txt",
+        "sha256": "3fcc4983f987512a49482a5ccfa244eddf1ecb8ed60a36f2f8c393161f231bdf",
+        "bytes": 2762
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_match-ergonomics.md",
+    "title": "Rust Edition Guide: rust-2024/match-ergonomics.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__match-ergonomics.md",
+        "sha256": "3d459cacc71d04a9da5fd2cc71b171db789808f5c49c13a65bb1e84547e55b78",
+        "bytes": 5169
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__match-ergonomics.txt",
+        "sha256": "3d459cacc71d04a9da5fd2cc71b171db789808f5c49c13a65bb1e84547e55b78",
+        "bytes": 5169
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_missing-macro-fragment-specifiers.md",
+    "title": "Rust Edition Guide: rust-2024/missing-macro-fragment-specifiers.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__missing-macro-fragment-specifiers.md",
+        "sha256": "372c2e50eb09a35f53f31827784f9d53537762f6e100444e08aff38b0104c8f9",
+        "bytes": 1373
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__missing-macro-fragment-specifiers.txt",
+        "sha256": "372c2e50eb09a35f53f31827784f9d53537762f6e100444e08aff38b0104c8f9",
+        "bytes": 1373
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_never-type-fallback.md",
+    "title": "Rust Edition Guide: rust-2024/never-type-fallback.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__never-type-fallback.md",
+        "sha256": "c1bfd94faf93da6681ef13f3908df07fb08b107d5449a202d1c74a2a54ac152c",
+        "bytes": 5198
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__never-type-fallback.txt",
+        "sha256": "c1bfd94faf93da6681ef13f3908df07fb08b107d5449a202d1c74a2a54ac152c",
+        "bytes": 5198
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_newly-unsafe-functions.md",
+    "title": "Rust Edition Guide: rust-2024/newly-unsafe-functions.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__newly-unsafe-functions.md",
+        "sha256": "3038bd255a0b385b9e26feeba9021678b2cbb81292bc226924b7003074940f63",
+        "bytes": 4069
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__newly-unsafe-functions.txt",
+        "sha256": "3038bd255a0b385b9e26feeba9021678b2cbb81292bc226924b7003074940f63",
+        "bytes": 4069
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_prelude.md",
+    "title": "Rust Edition Guide: rust-2024/prelude.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__prelude.md",
+        "sha256": "717533324d2c51eda4f13b48573dc01b239dc5f6d3917a81b67ceacdb9507199",
+        "bytes": 3017
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__prelude.txt",
+        "sha256": "717533324d2c51eda4f13b48573dc01b239dc5f6d3917a81b67ceacdb9507199",
+        "bytes": 3017
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_reserved-syntax.md",
+    "title": "Rust Edition Guide: rust-2024/reserved-syntax.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__reserved-syntax.md",
+        "sha256": "d0a046d31227df3528afe15e2f67425dcd889901650c64f867869b6610362530",
+        "bytes": 2313
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__reserved-syntax.txt",
+        "sha256": "d0a046d31227df3528afe15e2f67425dcd889901650c64f867869b6610362530",
+        "bytes": 2313
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rpit-lifetime-capture.md",
+    "title": "Rust Edition Guide: rust-2024/rpit-lifetime-capture.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rpit-lifetime-capture.md",
+        "sha256": "fdb3397334c5e5609e94745c34dfc0429e5947f3533db3b1cd677e70af71a7fa",
+        "bytes": 11303
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rpit-lifetime-capture.txt",
+        "sha256": "fdb3397334c5e5609e94745c34dfc0429e5947f3533db3b1cd677e70af71a7fa",
+        "bytes": 11303
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustdoc-doctests.md",
+    "title": "Rust Edition Guide: rust-2024/rustdoc-doctests.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustdoc-doctests.md",
+        "sha256": "0d9eb1c2b8c26bbac7bd1f46cfd37f21d794b2200bfcca352a664f22dbcb65b3",
+        "bytes": 4681
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustdoc-doctests.txt",
+        "sha256": "0d9eb1c2b8c26bbac7bd1f46cfd37f21d794b2200bfcca352a664f22dbcb65b3",
+        "bytes": 4681
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustdoc-nested-includes.md",
+    "title": "Rust Edition Guide: rust-2024/rustdoc-nested-includes.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustdoc-nested-includes.md",
+        "sha256": "f327494fb9c6c3712c66231c7dc0018c2a5bc4b909eab27f9c8eac6d968b161c",
+        "bytes": 2087
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustdoc-nested-includes.txt",
+        "sha256": "f327494fb9c6c3712c66231c7dc0018c2a5bc4b909eab27f9c8eac6d968b161c",
+        "bytes": 2087
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustdoc.md",
+    "title": "Rust Edition Guide: rust-2024/rustdoc.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustdoc.md",
+        "sha256": "2ae68572abb91cf74d583f6f747d08e84a8215fa968116214537f41a21130435",
+        "bytes": 81
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustdoc.txt",
+        "sha256": "2ae68572abb91cf74d583f6f747d08e84a8215fa968116214537f41a21130435",
+        "bytes": 81
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustfmt-formatting-fixes.md",
+    "title": "Rust Edition Guide: rust-2024/rustfmt-formatting-fixes.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustfmt-formatting-fixes.md",
+        "sha256": "a9f1bc0f7089514bbdb9dffc2b3a7c7f05c197029b72164f56f7ad211fa027c4",
+        "bytes": 14179
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustfmt-formatting-fixes.txt",
+        "sha256": "a9f1bc0f7089514bbdb9dffc2b3a7c7f05c197029b72164f56f7ad211fa027c4",
+        "bytes": 14179
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustfmt-raw-identifier-sorting.md",
+    "title": "Rust Edition Guide: rust-2024/rustfmt-raw-identifier-sorting.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustfmt-raw-identifier-sorting.md",
+        "sha256": "c2810a8bb4cf8ab32176cba064cd0fdf19b1ea41abd1744ecf525cafa5208b97",
+        "bytes": 1121
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustfmt-raw-identifier-sorting.txt",
+        "sha256": "c2810a8bb4cf8ab32176cba064cd0fdf19b1ea41abd1744ecf525cafa5208b97",
+        "bytes": 1121
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustfmt-style-edition.md",
+    "title": "Rust Edition Guide: rust-2024/rustfmt-style-edition.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustfmt-style-edition.md",
+        "sha256": "109d6920ba925ed05f7fc46b43897a16f88b35b16c7ec8ed6f06be1845611619",
+        "bytes": 3278
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustfmt-style-edition.txt",
+        "sha256": "109d6920ba925ed05f7fc46b43897a16f88b35b16c7ec8ed6f06be1845611619",
+        "bytes": 3278
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustfmt-version-sorting.md",
+    "title": "Rust Edition Guide: rust-2024/rustfmt-version-sorting.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustfmt-version-sorting.md",
+        "sha256": "2c36a3505e73a1cbe052583104ad3d48cf63d64f847bd28a40c4977575d82cf6",
+        "bytes": 1371
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustfmt-version-sorting.txt",
+        "sha256": "2c36a3505e73a1cbe052583104ad3d48cf63d64f847bd28a40c4977575d82cf6",
+        "bytes": 1371
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_rustfmt.md",
+    "title": "Rust Edition Guide: rust-2024/rustfmt.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__rustfmt.md",
+        "sha256": "771bc86eab16f6856a2b30a35f00181cbb9820da7180db94dd3b7bbe1f503d60",
+        "bytes": 81
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__rustfmt.txt",
+        "sha256": "771bc86eab16f6856a2b30a35f00181cbb9820da7180db94dd3b7bbe1f503d60",
+        "bytes": 81
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_standard-library.md",
+    "title": "Rust Edition Guide: rust-2024/standard-library.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__standard-library.md",
+        "sha256": "2291bb413671057c4dd9ce9107cfb89359db95e48b88670aca428caac8d613d1",
+        "bytes": 103
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__standard-library.txt",
+        "sha256": "2291bb413671057c4dd9ce9107cfb89359db95e48b88670aca428caac8d613d1",
+        "bytes": 103
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_static-mut-references.md",
+    "title": "Rust Edition Guide: rust-2024/static-mut-references.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__static-mut-references.md",
+        "sha256": "5cc86874e0813057cf73aaa71a6099100de7dfc2dfe10ead8c82043feb3326d6",
+        "bytes": 14238
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__static-mut-references.txt",
+        "sha256": "5cc86874e0813057cf73aaa71a6099100de7dfc2dfe10ead8c82043feb3326d6",
+        "bytes": 14238
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_temporary-if-let-scope.md",
+    "title": "Rust Edition Guide: rust-2024/temporary-if-let-scope.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__temporary-if-let-scope.md",
+        "sha256": "e1185817f15b842f231b7b89f362db10aeb1ffd1af6ee128f95a848548ef5969",
+        "bytes": 4385
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__temporary-if-let-scope.txt",
+        "sha256": "e1185817f15b842f231b7b89f362db10aeb1ffd1af6ee128f95a848548ef5969",
+        "bytes": 4385
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_temporary-tail-expr-scope.md",
+    "title": "Rust Edition Guide: rust-2024/temporary-tail-expr-scope.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__temporary-tail-expr-scope.md",
+        "sha256": "4a5b00fed6e2e7328dd2c03bf94fa2dbead59ff37d162b367442a7bbdd4bc677",
+        "bytes": 5363
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__temporary-tail-expr-scope.txt",
+        "sha256": "4a5b00fed6e2e7328dd2c03bf94fa2dbead59ff37d162b367442a7bbdd4bc677",
+        "bytes": 5363
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_unsafe-attributes.md",
+    "title": "Rust Edition Guide: rust-2024/unsafe-attributes.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__unsafe-attributes.md",
+        "sha256": "01434755dd633ec754c8bbcd6bbd90ca54d81c149750d5c5df537665458ae645",
+        "bytes": 3191
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__unsafe-attributes.txt",
+        "sha256": "01434755dd633ec754c8bbcd6bbd90ca54d81c149750d5c5df537665458ae645",
+        "bytes": 3191
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_unsafe-extern.md",
+    "title": "Rust Edition Guide: rust-2024/unsafe-extern.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__unsafe-extern.md",
+        "sha256": "afe440bf401866b3260551a8817940e6c86b89d662d5c739182e35ccb1be6147",
+        "bytes": 2467
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__unsafe-extern.txt",
+        "sha256": "afe440bf401866b3260551a8817940e6c86b89d662d5c739182e35ccb1be6147",
+        "bytes": 2467
+      }
+    ]
+  },
+  {
+    "id": "rust-edition-guide-rust-2024_unsafe-op-in-unsafe-fn.md",
+    "title": "Rust Edition Guide: rust-2024/unsafe-op-in-unsafe-fn.md",
+    "language": "en",
+    "source_name": "github.com/rust-lang/edition-guide",
+    "source_url": "https://github.com/rust-lang/edition-guide",
+    "license": "MIT OR Apache-2.0 (per repo LICENSE files)",
+    "license_url": "https://github.com/rust-lang/edition-guide",
+    "retrieved_at": "2026-05-29T12:44:36Z",
+    "notes": "Extracted markdown page from repo src/",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/rust/rust-2024__unsafe-op-in-unsafe-fn.md",
+        "sha256": "cd28fe84b207569e0e0caf7f91ff5605049d7842baabb1693dd88c4b1201c0b9",
+        "bytes": 2057
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/rust/rust-2024__unsafe-op-in-unsafe-fn.txt",
+        "sha256": "cd28fe84b207569e0e0caf7f91ff5605049d7842baabb1693dd88c4b1201c0b9",
+        "bytes": 2057
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.441235",
+    "title": "PRIVATE SECURITY AGENCY (4-Mar-2003)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.441235",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:04:47Z",
+    "notes": "downloaded_file=54989_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.441235-54989_djvu.txt",
+        "sha256": "f4a4746726c8257e3c34fec41eec530523aa73b3de576619f8fbc4928db1a159",
+        "bytes": 1061
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.441235.txt",
+        "sha256": "f4a4746726c8257e3c34fec41eec530523aa73b3de576619f8fbc4928db1a159",
+        "bytes": 1061
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.433202",
+    "title": "POST BASED ROSTER (9-May-2002)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.433202",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:04:55Z",
+    "notes": "downloaded_file=47610_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.433202-47610_djvu.txt",
+        "sha256": "6565fec077b565016702e4ea1297cf2621b0d4bc75f2413301aa36bc027c7df4",
+        "bytes": 4489
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.433202.txt",
+        "sha256": "6565fec077b565016702e4ea1297cf2621b0d4bc75f2413301aa36bc027c7df4",
+        "bytes": 4489
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.436417",
+    "title": "IODINE DEFICIENCY DISORDERS (4-Dec-2002)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.436417",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:03Z",
+    "notes": "downloaded_file=50564_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.436417-50564_djvu.txt",
+        "sha256": "fa179feda570da603e3204a6d53eed9299bb08f9260f27a84e1fd4eadb31dad1",
+        "bytes": 1833
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.436417.txt",
+        "sha256": "fa179feda570da603e3204a6d53eed9299bb08f9260f27a84e1fd4eadb31dad1",
+        "bytes": 1833
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.695806",
+    "title": "Construction Tender Process for National Highways (9-Feb-2017)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.695806",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:11Z",
+    "notes": "downloaded_file=47364_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.695806-47364_djvu.txt",
+        "sha256": "31a916b795515ee52c604b9f63e904c145e5289e85049ecac5c75eada5b7538f",
+        "bytes": 1360
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.695806.txt",
+        "sha256": "31a916b795515ee52c604b9f63e904c145e5289e85049ecac5c75eada5b7538f",
+        "bytes": 1360
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.726.616.617",
+    "title": "Power Supply in Hiriyur Chitaldrug and Challakere taluks\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.726.616.617",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:20Z",
+    "notes": "downloaded_file=726_616_617_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.726.616.617-726_616_617_djvu.txt",
+        "sha256": "d8a7d3bd1bdbb885d59bc19858419a59a1727750999f0755dab15390dbb13829",
+        "bytes": 10712
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.726.616.617.txt",
+        "sha256": "d8a7d3bd1bdbb885d59bc19858419a59a1727750999f0755dab15390dbb13829",
+        "bytes": 10712
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.745.1237.1239",
+    "title": "Prospecting and Mining Licences in Tiptur and Chikkanayakanahalli Taluks\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.745.1237.1239",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:28Z",
+    "notes": "downloaded_file=745_1237_1239_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.745.1237.1239-745_1237_1239_djvu.txt",
+        "sha256": "130e74ec43c4568be626aafdfc53f96c88fd89d0aec7d267eeef64c9e8aecf2a",
+        "bytes": 12776
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.745.1237.1239.txt",
+        "sha256": "130e74ec43c4568be626aafdfc53f96c88fd89d0aec7d267eeef64c9e8aecf2a",
+        "bytes": 12776
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.100.514.515",
+    "title": "ಗ್ರಾಮ ನ್ಯಾಯಾಲಯ ಮಾಡುವುದು ",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.100.514.515",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:36Z",
+    "notes": "downloaded_file=100_514_515_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.100.514.515-100_514_515_djvu.txt",
+        "sha256": "a5ffee8bd1081883be518ea0755b45007fad7a7643133f747282bf402ac2ad7f",
+        "bytes": 7332
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.100.514.515.txt",
+        "sha256": "a5ffee8bd1081883be518ea0755b45007fad7a7643133f747282bf402ac2ad7f",
+        "bytes": 7332
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.106.732.733",
+    "title": "ಚುನಾವಣಾ ಪಟ್ಟಿ ಮತದಾರರ ಪಟ್ಟಿ ಯಲ್ಲಿ ಹೆಸರುಗಳನ್ನು ಬಿಟ್ಟುಹೋಗಿರುವ ಬಗ್ಗೆ",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.106.732.733",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:45Z",
+    "notes": "downloaded_file=106_732_733_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.106.732.733-106_732_733_djvu.txt",
+        "sha256": "975b8e3010917f6614270fda7ef85780aa5760ef885ba69d56fd45675dfd76cc",
+        "bytes": 5375
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.106.732.733.txt",
+        "sha256": "975b8e3010917f6614270fda7ef85780aa5760ef885ba69d56fd45675dfd76cc",
+        "bytes": 5375
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.136.273.278",
+    "title": "ರಾಜ್ಯದ ಅರಣ್ಯ ಪ್ರದೇಶ ನಾಶವಾಗುತ್ತಿರುವುದು\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.136.273.278",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:05:53Z",
+    "notes": "downloaded_file=136_273_278_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.136.273.278-136_273_278_djvu.txt",
+        "sha256": "84419d8e35e10a4bb8965a7c66fe04914d8f5b99b8934de215cad37b634f95a0",
+        "bytes": 26240
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.136.273.278.txt",
+        "sha256": "84419d8e35e10a4bb8965a7c66fe04914d8f5b99b8934de215cad37b634f95a0",
+        "bytes": 26240
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.411.149.149",
+    "title": "ಯಾದಗಿರಿ ತಾಲ್ಲೂಕಿನಲ್ಲಿ ಮುಳುಗಡೆಯಾದ ಜಮೀನುಗಳಿಗೆ ಪರಿಹಾರ ಧನ\n",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.411.149.149",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:01Z",
+    "notes": "downloaded_file=411_149_149_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.411.149.149-411_149_149_djvu.txt",
+        "sha256": "6f6854403e566c08c966f7987755c5cf8e598ce4fc8961f2c22707b646774991",
+        "bytes": 4504
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.411.149.149.txt",
+        "sha256": "6f6854403e566c08c966f7987755c5cf8e598ce4fc8961f2c22707b646774991",
+        "bytes": 4504
+      }
+    ]
+  },
+  {
+    "id": "ia-karnatakalegislativeassembly.debates.485.179.180",
+    "title": "Bridge near Keralapura Arkalgud Taluk ",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnatakalegislativeassembly.debates.485.179.180",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:10Z",
+    "notes": "downloaded_file=485_179_180_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnatakalegislativeassembly.debates.485.179.180-485_179_180_djvu.txt",
+        "sha256": "c899d3f0ff1a2a099fd94e3347e25bc4905cf2833b347f12e61bffe8836009ca",
+        "bytes": 9996
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnatakalegislativeassembly.debates.485.179.180.txt",
+        "sha256": "c899d3f0ff1a2a099fd94e3347e25bc4905cf2833b347f12e61bffe8836009ca",
+        "bytes": 9996
+      }
+    ]
+  },
+  {
+    "id": "ia-keralalegislativeassembly.proceedings.518794",
+    "title": "Step to Efficient Work of Guest Houses / അതിഥി മന്ദിരങ്ങളുടെ പ്രവര്‍ത്തനം കാര്യക്ഷമമാക്കാന്‍ നടപടി",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/keralalegislativeassembly.proceedings.518794",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:17Z",
+    "notes": "downloaded_file=518794_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/keralalegislativeassembly.proceedings.518794-518794_djvu.txt",
+        "sha256": "f8d7a41519c57887abc825593eb21d7cbec44cb1002677fbeff497ca96345c74",
+        "bytes": 11697
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/keralalegislativeassembly.proceedings.518794.txt",
+        "sha256": "f8d7a41519c57887abc825593eb21d7cbec44cb1002677fbeff497ca96345c74",
+        "bytes": 11697
+      }
+    ]
+  },
+  {
+    "id": "ia-keralalegislativeassembly.proceedings.485399",
+    "title": "Step to Bought Photostat Machine for Panchayats / പഞ്ചായത്തുകള്‍ക്ക് ഫോട്ടോസ്റ്റാറ്റ് മെഷീന്‍ വാങ്ങുന്ന നടപടി",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/keralalegislativeassembly.proceedings.485399",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:26Z",
+    "notes": "downloaded_file=485399_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/keralalegislativeassembly.proceedings.485399-485399_djvu.txt",
+        "sha256": "0fc19dbfa3927c8276f68c2c9af0fc639b2a59f47a7acb7a253ab37308bb9939",
+        "bytes": 8948
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/keralalegislativeassembly.proceedings.485399.txt",
+        "sha256": "0fc19dbfa3927c8276f68c2c9af0fc639b2a59f47a7acb7a253ab37308bb9939",
+        "bytes": 8948
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.168652",
+    "title": "Guidelines for Selection of Programme Executives in AllIndia Radio (25-Apr-1995)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.168652",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:35Z",
+    "notes": "downloaded_file=IQ_173_25041995_U3425_p303_p304_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.168652-IQ_173_25041995_U3425_p303_p304_djvu.txt",
+        "sha256": "f9f9db69db8d8805faf2d18fcd025a95589124d64189a443024e9b40d08d4992",
+        "bytes": 5410
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.168652.txt",
+        "sha256": "f9f9db69db8d8805faf2d18fcd025a95589124d64189a443024e9b40d08d4992",
+        "bytes": 5410
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.199003",
+    "title": "Sale of sales-tax forms (16-Mar-1994)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.199003",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:43Z",
+    "notes": "downloaded_file=IQ_170_16031994_U2879_p160_p161_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.199003-IQ_170_16031994_U2879_p160_p161_djvu.txt",
+        "sha256": "3070eb80301744d06f5f843b3e0080ff2371d085023adeb6730f1c910d3a7ab7",
+        "bytes": 6866
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.199003.txt",
+        "sha256": "3070eb80301744d06f5f843b3e0080ff2371d085023adeb6730f1c910d3a7ab7",
+        "bytes": 6866
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.210008",
+    "title": "Licence to Cable T.V. Operators (1-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.210008",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:06:52Z",
+    "notes": "downloaded_file=IQ_165_01121992_U1310_p219_p219_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.210008-IQ_165_01121992_U1310_p219_p219_djvu.txt",
+        "sha256": "e26e4594636b670d7c7a87b85301b1dfdf39b078e0bd26bea86295136c30407f",
+        "bytes": 4254
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.210008.txt",
+        "sha256": "e26e4594636b670d7c7a87b85301b1dfdf39b078e0bd26bea86295136c30407f",
+        "bytes": 4254
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.211238",
+    "title": "Constitution of National Cable Authority (8-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.211238",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:00Z",
+    "notes": "downloaded_file=IQ_165_08121992_U2352_p244_p244_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.211238-IQ_165_08121992_U2352_p244_p244_djvu.txt",
+        "sha256": "9a00918a9e055e06fde091f23e9746f46739b42858d88f2a6928ae2401833e88",
+        "bytes": 4218
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.211238.txt",
+        "sha256": "9a00918a9e055e06fde091f23e9746f46739b42858d88f2a6928ae2401833e88",
+        "bytes": 4218
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.212437",
+    "title": "Parliamentary Bill on I.C.W.A (16-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.212437",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:07Z",
+    "notes": "downloaded_file=IQ_165_16121992_S253_p266_p266_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.212437-IQ_165_16121992_S253_p266_p266_djvu.txt",
+        "sha256": "637be6441e51549059efbb89183438e01dbb6e65c280c93a80bf00c420cb1c96",
+        "bytes": 6159
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.212437.txt",
+        "sha256": "637be6441e51549059efbb89183438e01dbb6e65c280c93a80bf00c420cb1c96",
+        "bytes": 6159
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.143322",
+    "title": "Postponment of the Launch of RPDS (24-Feb-1997)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.143322",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:13Z",
+    "notes": "downloaded_file=IQ_180_24021997_U125_p74_p75_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.143322-IQ_180_24021997_U125_p74_p75_djvu.txt",
+        "sha256": "5ec41b529d5fe9ad7901cf0fce8b4e4b507d3e9bb62e78e686dba6a5459f5cd1",
+        "bytes": 6501
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.143322.txt",
+        "sha256": "5ec41b529d5fe9ad7901cf0fce8b4e4b507d3e9bb62e78e686dba6a5459f5cd1",
+        "bytes": 6501
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.166822",
+    "title": "A common 'logo' for Air India and Indian Airlines (21-Mar-1995)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.166822",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:21Z",
+    "notes": "downloaded_file=IQ_173_21031995_U1015_p92_p93_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.166822-IQ_173_21031995_U1015_p92_p93_djvu.txt",
+        "sha256": "e58ea3b14b1d58386892a8017ce1c9199ead43d9472d182ad104f5ba249f4f09",
+        "bytes": 7658
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.166822.txt",
+        "sha256": "e58ea3b14b1d58386892a8017ce1c9199ead43d9472d182ad104f5ba249f4f09",
+        "bytes": 7658
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.210328",
+    "title": "Re operating Trains by Bhavnagar Division (2-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.210328",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:30Z",
+    "notes": "downloaded_file=IQ_165_02121992_U1511_p206_p206_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.210328-IQ_165_02121992_U1511_p206_p206_djvu.txt",
+        "sha256": "bb16e4b6ad46b9dfc1591df20f5f431b3a50b276f2cf68237271afd8ac7d5949",
+        "bytes": 5807
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.210328.txt",
+        "sha256": "bb16e4b6ad46b9dfc1591df20f5f431b3a50b276f2cf68237271afd8ac7d5949",
+        "bytes": 5807
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.211791",
+    "title": "Targets for implementation of National Rural Employment Programme in Rajasthan (16-Dec-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.211791",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:38Z",
+    "notes": "downloaded_file=IQ_165_16121992_U2803_p463_p463_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.211791-IQ_165_16121992_U2803_p463_p463_djvu.txt",
+        "sha256": "1c065ae051323fd62e4177c804c351e6d4efab494954809e227570381584ac46",
+        "bytes": 5359
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.211791.txt",
+        "sha256": "1c065ae051323fd62e4177c804c351e6d4efab494954809e227570381584ac46",
+        "bytes": 5359
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.215926",
+    "title": "Amendment of Consumer Protection Act (6-Aug-1992)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.215926",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:07:46Z",
+    "notes": "downloaded_file=IQ_164_06081992_U3113_p101_p102_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.215926-IQ_164_06081992_U3113_p101_p102_djvu.txt",
+        "sha256": "0b0745c549e45dcfd6d3aaa5a0472d3107a0d74ba6b26be1da1fd05540395cf0",
+        "bytes": 3531
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.215926.txt",
+        "sha256": "0b0745c549e45dcfd6d3aaa5a0472d3107a0d74ba6b26be1da1fd05540395cf0",
+        "bytes": 3531
+      }
+    ]
+  },
+  {
+    "id": "ia-turingMachines1",
+    "title": "Sydow turing Machines ",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/turingMachines1",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/publicdomain/zero/1.0/)",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "retrieved_at": "2026-05-29T13:08:00Z",
+    "notes": "downloaded_file=turingMachines1_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/turingMachines1-turingMachines1_djvu.txt",
+        "sha256": "ee42fedb0318c9be3f4a4365e76244bb0e00400e3fd282a0b6449ab3ad100fb2",
+        "bytes": 12954
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/turingMachines1.txt",
+        "sha256": "ee42fedb0318c9be3f4a4365e76244bb0e00400e3fd282a0b6449ab3ad100fb2",
+        "bytes": 12954
+      }
+    ]
+  },
+  {
+    "id": "ia-rajasthanlegislature.assembly5.session7.03-03-1975",
+    "title": "Assembly 5, Session 7, 03/03/1975",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rajasthanlegislature.assembly5.session7.03-03-1975",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:08:23Z",
+    "notes": "downloaded_file=03-03-1975_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rajasthanlegislature.assembly5.session7.03-03-1975-03-03-1975_djvu.txt",
+        "sha256": "b45da017e3fab81c14362b18a1be0f2894eb4ef15fd12d0c68e869abf394896e",
+        "bytes": 688319
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rajasthanlegislature.assembly5.session7.03-03-1975.txt",
+        "sha256": "b45da017e3fab81c14362b18a1be0f2894eb4ef15fd12d0c68e869abf394896e",
+        "bytes": 688319
+      }
+    ]
+  },
+  {
+    "id": "ia-rajasthanlegislature.assembly1.session2.06-10-1952",
+    "title": "Assembly 1, Session 2, 06/10/1952",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rajasthanlegislature.assembly1.session2.06-10-1952",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:08:32Z",
+    "notes": "downloaded_file=06-10-1952_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rajasthanlegislature.assembly1.session2.06-10-1952-06-10-1952_djvu.txt",
+        "sha256": "4c98facce4a52555448c5a527803d5f979375eeabd78381a5b9f8b933d0cbe02",
+        "bytes": 53921
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rajasthanlegislature.assembly1.session2.06-10-1952.txt",
+        "sha256": "4c98facce4a52555448c5a527803d5f979375eeabd78381a5b9f8b933d0cbe02",
+        "bytes": 53921
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.132112",
+    "title": "Urban Housing and Employment in Assam (13-Jul-1998)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.132112",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:08:41Z",
+    "notes": "downloaded_file=IQ_184_13071998_U2886_p218_p219_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.132112-IQ_184_13071998_U2886_p218_p219_djvu.txt",
+        "sha256": "45cba0ecc3c95eb4995fe4217d32610b04829ca80c9f8ebcbc65d24fcd6bbfa6",
+        "bytes": 5515
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.132112.txt",
+        "sha256": "45cba0ecc3c95eb4995fe4217d32610b04829ca80c9f8ebcbc65d24fcd6bbfa6",
+        "bytes": 5515
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.313944",
+    "title": "Rise in population in border areas of West Bengal and Bibar (3-Mar-1987)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.313944",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:08:51Z",
+    "notes": "downloaded_file=IQ_141_03031987_U744_p115_p115_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.313944-IQ_141_03031987_U744_p115_p115_djvu.txt",
+        "sha256": "bedc86ab379082b5d3bfb8213a265cb0f7e2a273d2c8657c679c7d20535920a6",
+        "bytes": 3214
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.313944.txt",
+        "sha256": "bedc86ab379082b5d3bfb8213a265cb0f7e2a273d2c8657c679c7d20535920a6",
+        "bytes": 3214
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrOTQwMzQ-RGVlcGFrMw",
+    "title": "71_PART_1_4_JAN_JUN_1902_19.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrOTQwMzQ-RGVlcGFrMw",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:10Z",
+    "notes": "downloaded_file=71_PART_1_4_JAN_JUN_1902_71_PART_1_4_JAN_JUN_1902_19_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrOTQwMzQ-RGVlcGFrMw-71_PART_1_4_JAN_JUN_1902_71_PART_1_4_JAN_JUN_1902_19_djvu.txt",
+        "sha256": "73dc4d58d30c035b56f8dfcaa88b4ce4d825758eceb936654e8c7d810f425633",
+        "bytes": 11433
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrOTQwMzQ-RGVlcGFrMw.txt",
+        "sha256": "73dc4d58d30c035b56f8dfcaa88b4ce4d825758eceb936654e8c7d810f425633",
+        "bytes": 11433
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrNzI3MTU-RGVlcGFrMw",
+    "title": "42_PART_2_JAN_JUN_1892_56.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrNzI3MTU-RGVlcGFrMw",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:18Z",
+    "notes": "downloaded_file=42_PART_2_JAN_JUN_1892_42_PART_2_JAN_JUN_1892_56_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrNzI3MTU-RGVlcGFrMw-42_PART_2_JAN_JUN_1892_42_PART_2_JAN_JUN_1892_56_djvu.txt",
+        "sha256": "de0740806ae155cbf9d93c575a2e5a656b808b044e1dcf565f4a313f09694481",
+        "bytes": 2986
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrNzI3MTU-RGVlcGFrMw.txt",
+        "sha256": "de0740806ae155cbf9d93c575a2e5a656b808b044e1dcf565f4a313f09694481",
+        "bytes": 2986
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrNTAxNjQ3-RGVlcGFrMQ",
+    "title": "1980_PART_II_SET_I&II_JAN_DEC_786.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrNTAxNjQ3-RGVlcGFrMQ",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:27Z",
+    "notes": "downloaded_file=1980_PART_II_SET_I_II_JAN_DEC_1980_PART_II_SET_III_JAN_DEC_786_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrNTAxNjQ3-RGVlcGFrMQ-1980_PART_II_SET_I_II_JAN_DEC_1980_PART_II_SET_III_JAN_DEC_786_djvu.txt",
+        "sha256": "c47638141c77f56a25b8b5d51f021bcd6ee073283bc3bd379cc32c247209b01e",
+        "bytes": 5721
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrNTAxNjQ3-RGVlcGFrMQ.txt",
+        "sha256": "c47638141c77f56a25b8b5d51f021bcd6ee073283bc3bd379cc32c247209b01e",
+        "bytes": 5721
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrNTc0OTQ-RGVlcGFrMw",
+    "title": "12_PART_1_TO_4_JAN_JUN_1882_128.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrNTc0OTQ-RGVlcGFrMw",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:35Z",
+    "notes": "downloaded_file=12_PART_1_TO_4_JAN_JUN_1882_12_PART_1_TO_4_JAN_JUN_1882_128_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrNTc0OTQ-RGVlcGFrMw-12_PART_1_TO_4_JAN_JUN_1882_12_PART_1_TO_4_JAN_JUN_1882_128_djvu.txt",
+        "sha256": "d0fa20393da4eed16790bb847986182de2c775cd7a40a8b5504226642731d2cb",
+        "bytes": 3101
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrNTc0OTQ-RGVlcGFrMw.txt",
+        "sha256": "d0fa20393da4eed16790bb847986182de2c775cd7a40a8b5504226642731d2cb",
+        "bytes": 3101
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrNjMzNDk2-RGVlcGFrMQ",
+    "title": "1974_PART_2_SEC_1_2_JAN_DEC_0317.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrNjMzNDk2-RGVlcGFrMQ",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:43Z",
+    "notes": "downloaded_file=1974_PART_2_SEC_1_2_JAN_DEC_1974_PART_2_SEC_1_2_JAN_DEC_0317_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrNjMzNDk2-RGVlcGFrMQ-1974_PART_2_SEC_1_2_JAN_DEC_1974_PART_2_SEC_1_2_JAN_DEC_0317_djvu.txt",
+        "sha256": "00dc56a59afaf6ec33d4351b40fc35bcb3e036dcef064e21ce86bd307a8fc3dd",
+        "bytes": 4345
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrNjMzNDk2-RGVlcGFrMQ.txt",
+        "sha256": "00dc56a59afaf6ec33d4351b40fc35bcb3e036dcef064e21ce86bd307a8fc3dd",
+        "bytes": 4345
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.683570",
+    "title": "Ocean Energy (21-Jul-2016)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.683570",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:09:51Z",
+    "notes": "downloaded_file=36326_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.683570-36326_djvu.txt",
+        "sha256": "9299bcd2732acde524ab64f28aa4960ee51bc21a6483f4f1109973a966478e99",
+        "bytes": 1172
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.683570.txt",
+        "sha256": "9299bcd2732acde524ab64f28aa4960ee51bc21a6483f4f1109973a966478e99",
+        "bytes": 1172
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.693039",
+    "title": "CSR and Social Audit (9-Dec-2016)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.693039",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:10:00Z",
+    "notes": "downloaded_file=44866_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.693039-44866_djvu.txt",
+        "sha256": "b29fce0b72fcdd5d2e3a1c498d494ff7c756fb9b696d2ce6715bc15afa7f4382",
+        "bytes": 2071
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.693039.txt",
+        "sha256": "b29fce0b72fcdd5d2e3a1c498d494ff7c756fb9b696d2ce6715bc15afa7f4382",
+        "bytes": 2071
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.695907",
+    "title": "Higher Freight Cost on Coal (9-Feb-2017)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.695907",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:10:10Z",
+    "notes": "downloaded_file=47455_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.695907-47455_djvu.txt",
+        "sha256": "2a8a12567a6a69a8564465efe66d36f7120a345feeaa450f09130c3cb41ac593",
+        "bytes": 3402
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.695907.txt",
+        "sha256": "2a8a12567a6a69a8564465efe66d36f7120a345feeaa450f09130c3cb41ac593",
+        "bytes": 3402
+      }
+    ]
+  },
+  {
+    "id": "ia-eparlib.nic.in.698501",
+    "title": "Scrapping of Flights (23-Mar-2017)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/eparlib.nic.in.698501",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:10:18Z",
+    "notes": "downloaded_file=49791_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/eparlib.nic.in.698501-49791_djvu.txt",
+        "sha256": "0a16d35fdf89b4ade8e4d65b262af7b3673e30c5c08765b1d14bd851e46c1bc5",
+        "bytes": 3957
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/eparlib.nic.in.698501.txt",
+        "sha256": "0a16d35fdf89b4ade8e4d65b262af7b3673e30c5c08765b1d14bd851e46c1bc5",
+        "bytes": 3957
+      }
+    ]
+  },
+  {
+    "id": "ia-paper-doi-10_1098_rspl_1896_0002",
+    "title": "Obituary Notices of Fellows Deceased",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/paper-doi-10_1098_rspl_1896_0002",
+    "license": "Public Domain / CC (licenseurl: https://creativecommons.org/publicdomain/mark/1.0/)",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "retrieved_at": "2026-05-29T13:10:26Z",
+    "notes": "downloaded_file=paper-doi-10_1098_rspl_1896_0002_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/paper-doi-10_1098_rspl_1896_0002-paper-doi-10_1098_rspl_1896_0002_djvu.txt",
+        "sha256": "45780ce7873623fff730bea3b93d4538e5e45d2679534c7b7c7d24c590e29f78",
+        "bytes": 101066
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/paper-doi-10_1098_rspl_1896_0002.txt",
+        "sha256": "45780ce7873623fff730bea3b93d4538e5e45d2679534c7b7c7d24c590e29f78",
+        "bytes": 101066
+      }
+    ]
+  },
+  {
+    "id": "ia-paper-doi-10_1038_072391a0",
+    "title": "\n              Societies and Academies\n            ",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/paper-doi-10_1038_072391a0",
+    "license": "Public Domain / CC (licenseurl: https://creativecommons.org/publicdomain/mark/1.0/)",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "retrieved_at": "2026-05-29T13:10:34Z",
+    "notes": "downloaded_file=paper-doi-10_1038_072391a0_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/paper-doi-10_1038_072391a0-paper-doi-10_1038_072391a0_djvu.txt",
+        "sha256": "5bef9d6fcec9320c7c1cfb50ce5bb1a1107c9b2aeffe3d468291fd1df9408ee5",
+        "bytes": 17509
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/paper-doi-10_1038_072391a0.txt",
+        "sha256": "5bef9d6fcec9320c7c1cfb50ce5bb1a1107c9b2aeffe3d468291fd1df9408ee5",
+        "bytes": 17509
+      }
+    ]
+  },
+  {
+    "id": "ia-karnataka-state-archives-RGVlcGFrNjU2ODg1-RGVlcGFrMQ",
+    "title": "1973_PART_3_SEC_1_JAN_FEB_053.pdf",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/karnataka-state-archives-RGVlcGFrNjU2ODg1-RGVlcGFrMQ",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:10:42Z",
+    "notes": "downloaded_file=1973_PART_3_SEC_1_JAN_FEB_1973_PART_3_SEC_1_JAN_FEB_053_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/karnataka-state-archives-RGVlcGFrNjU2ODg1-RGVlcGFrMQ-1973_PART_3_SEC_1_JAN_FEB_1973_PART_3_SEC_1_JAN_FEB_053_djvu.txt",
+        "sha256": "3b62deb046f9f9080426c0d6b8ab23c784191d24ba4887b98796f7658f2edf8f",
+        "bytes": 3974
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/karnataka-state-archives-RGVlcGFrNjU2ODg1-RGVlcGFrMQ.txt",
+        "sha256": "3b62deb046f9f9080426c0d6b8ab23c784191d24ba4887b98796f7658f2edf8f",
+        "bytes": 3974
+      }
+    ]
+  },
+  {
+    "id": "ia-uplegislature.assembly14.session2.12-11-2006",
+    "title": "Assembly 14, Session 2, 12-11-2006",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/uplegislature.assembly14.session2.12-11-2006",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:10:55Z",
+    "notes": "downloaded_file=12-11-2006_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/uplegislature.assembly14.session2.12-11-2006-12-11-2006_djvu.txt",
+        "sha256": "4d329bc5a06e7bb745c5cadd16f683b99c5e9d7bd9752afdf7cc4f13e6113918",
+        "bytes": 676127
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/uplegislature.assembly14.session2.12-11-2006.txt",
+        "sha256": "4d329bc5a06e7bb745c5cadd16f683b99c5e9d7bd9752afdf7cc4f13e6113918",
+        "bytes": 676127
+      }
+    ]
+  },
+  {
+    "id": "ia-uplegislature.assembly8.session2.12-09-1983",
+    "title": "Assembly 8, Session 2, 12-09-1983",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/uplegislature.assembly8.session2.12-09-1983",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:11Z",
+    "notes": "downloaded_file=12-09-1983_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/uplegislature.assembly8.session2.12-09-1983-12-09-1983_djvu.txt",
+        "sha256": "7b244882a45bb9b7562fc5d5fe5b2f9a6e1620eccec781a633bbdfa4123d370c",
+        "bytes": 1211414
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/uplegislature.assembly8.session2.12-09-1983.txt",
+        "sha256": "7b244882a45bb9b7562fc5d5fe5b2f9a6e1620eccec781a633bbdfa4123d370c",
+        "bytes": 1211414
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.296457",
+    "title": "Howrah TB Hospital (1-Dec-1987)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.296457",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:21Z",
+    "notes": "downloaded_file=IQ_144_01121987_U2414_p68_p69_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.296457-IQ_144_01121987_U2414_p68_p69_djvu.txt",
+        "sha256": "22b14780c581ed4fa4ab4dacdcddfe94d476af332127f4d6bef911488c46eb7f",
+        "bytes": 7788
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.296457.txt",
+        "sha256": "22b14780c581ed4fa4ab4dacdcddfe94d476af332127f4d6bef911488c46eb7f",
+        "bytes": 7788
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.252331",
+    "title": "Relaxation of \"No construction zone limit\" for beach resorts (7-Aug-1990)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.252331",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:30Z",
+    "notes": "downloaded_file=IQ_155_07081990_U68_p113_p113_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.252331-IQ_155_07081990_U68_p113_p113_djvu.txt",
+        "sha256": "0b59f512af552602a39b1ea857a57b1fd150cf966d508d0e219593ef9a0721ad",
+        "bytes": 3264
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.252331.txt",
+        "sha256": "0b59f512af552602a39b1ea857a57b1fd150cf966d508d0e219593ef9a0721ad",
+        "bytes": 3264
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.287140",
+    "title": "Improving CGHS scheme (7-Aug-2009)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.287140",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:38Z",
+    "notes": "downloaded_file=IQ_217_07082009_U3754_p127_p129_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.287140-IQ_217_07082009_U3754_p127_p129_djvu.txt",
+        "sha256": "909c8b5853757a4e46b9826753ffcba672c12f4881095a8ae79b466459e97cc7",
+        "bytes": 8100
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.287140.txt",
+        "sha256": "909c8b5853757a4e46b9826753ffcba672c12f4881095a8ae79b466459e97cc7",
+        "bytes": 8100
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.287723",
+    "title": "Workers returning due to work loss (23-Jul-2009)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.287723",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:50Z",
+    "notes": "downloaded_file=IQ_217_23072009_U2181_p96_p97_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.287723-IQ_217_23072009_U2181_p96_p97_djvu.txt",
+        "sha256": "e52b382ca5e965f6e81a44adafe05989c8a1c993dbb57397be126085999ee439",
+        "bytes": 4908
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.287723.txt",
+        "sha256": "e52b382ca5e965f6e81a44adafe05989c8a1c993dbb57397be126085999ee439",
+        "bytes": 4908
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.194302",
+    "title": "Import of Coal from Australia and South Africa (2-May-1994)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.194302",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:11:58Z",
+    "notes": "downloaded_file=IQ_170_02051994_U5271_p125_p126_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.194302-IQ_170_02051994_U5271_p125_p126_djvu.txt",
+        "sha256": "4b87a851771cc77e3a37461ddcd99616dd9721f443c572cbfa943b04217bf25c",
+        "bytes": 3511
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.194302.txt",
+        "sha256": "4b87a851771cc77e3a37461ddcd99616dd9721f443c572cbfa943b04217bf25c",
+        "bytes": 3511
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.224856",
+    "title": "Probe into violations of foreign exchange and anti-money laundering laws (19-Feb-2009)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.224856",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:12:06Z",
+    "notes": "downloaded_file=IQ_215_19022009_U453_p117_p117_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.224856-IQ_215_19022009_U453_p117_p117_djvu.txt",
+        "sha256": "bd8f29fc326afbe444723e8add4b7e57fcb3e1e8522b86044fbf636b2b5f7a4b",
+        "bytes": 2546
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.224856.txt",
+        "sha256": "bd8f29fc326afbe444723e8add4b7e57fcb3e1e8522b86044fbf636b2b5f7a4b",
+        "bytes": 2546
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.163396",
+    "title": "Seminar on \"Sanitation and Pollution\" (4-May-1995)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.163396",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:12:14Z",
+    "notes": "downloaded_file=IQ_173_04051995_U4732_p101_p101_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.163396-IQ_173_04051995_U4732_p101_p101_djvu.txt",
+        "sha256": "7ab5a7638e00cc2fe7dc445abb2da3f26b9695e864c9d0ad717eb77f53734856",
+        "bytes": 2868
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.163396.txt",
+        "sha256": "7ab5a7638e00cc2fe7dc445abb2da3f26b9695e864c9d0ad717eb77f53734856",
+        "bytes": 2868
+      }
+    ]
+  },
+  {
+    "id": "ia-rsdebate.nic.in.170079",
+    "title": "Proposals for development of handlooms sectors in Gujarat (28-Mar-1995)",
+    "language": "en",
+    "source_name": "archive.org",
+    "source_url": "https://archive.org/details/rsdebate.nic.in.170079",
+    "license": "Public Domain / CC (licenseurl: http://creativecommons.org/licenses/publicdomain/)",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "retrieved_at": "2026-05-29T13:12:22Z",
+    "notes": "downloaded_file=IQ_173_28031995_U2376_p269_p269_djvu.txt; format=DjVuTXT",
+    "files": [
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/raw/ia/rsdebate.nic.in.170079-IQ_173_28031995_U2376_p269_p269_djvu.txt",
+        "sha256": "217c43b0fca0d262502e30ae603d7f96ef210e78df6acc15874d899dfa268e98",
+        "bytes": 4932
+      },
+      {
+        "path": "/sessions/6a198098398c0351a0028577/workspace/data/txt/ia/rsdebate.nic.in.170079.txt",
+        "sha256": "217c43b0fca0d262502e30ae603d7f96ef210e78df6acc15874d899dfa268e98",
+        "bytes": 4932
+      }
+    ]
+  }
+]

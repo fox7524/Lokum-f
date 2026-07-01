@@ -1,0 +1,38 @@
+Progress bars in Python are abundant. There are several well-known packages for progress bars out there. 
+
+
+== External Progress Bars ==
+Some of the top bars are from the progress and the tqdm library.
+
+
+=== Progress ===
+
+The progress module provides 7 different progress bars to use. They are:
+
+Bar
+ChargingBar
+FillingSquaresBar
+FillingCirclesBar
+IncrementalBar
+PixelBar
+ShadyBar
+The module also provides 6 spinners. These do not have a finish. They are:
+
+Spinner
+PieSpinner
+MoonSpinner
+LineSpinner
+PixelSpinner
+In order to access a bar/spinner, you run progress.a.b, where a is the type of indicator you want (bar or spinner) and b is the name of the bar/spinner. Furthermore, you have to import the module as progress.a or else it cannot see the bar/spinner.
+
+
+==== Example code ====
+We can also make it an iterator so we can put it into a for loop.
+
+
+=== Tqdm ===
+
+The tqdm module relies off of one main class, the tqdm class. It has a GUI version, and a jupyter notebook-compatible version, and one for pandas. It will run as an iterator, a callable bar, and an action in a with statement.
+
+
+==== Basic Code ====

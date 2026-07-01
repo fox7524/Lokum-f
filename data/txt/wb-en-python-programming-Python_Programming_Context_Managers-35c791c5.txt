@@ -1,0 +1,67 @@
+A basic issue in programming is resource management: a resource is anything in limited supply, notably file handles, network sockets, locks, etc., and a key problem is making sure these are released after they are acquired. If they are not released, you have a resource leak, and the system may slow down or crash. More generally, you may want cleanup actions to always be done, other than simply releasing resources.
+Python provides special syntax for this in the with statement, which automatically manages resources encapsulated within context manager types, or more generally performs startup and cleanup actions around a block of code. You should  always use a with statement for resource management. There are many built-in context manager types, including the basic example of File, and it is easy to write your own. The code is not hard, but the concepts are slightly subtle, and it is easy to make mistakes.
+
+
+== Basic resource management ==
+Basic resource management uses an explicit pair of open()...close() functions, as in basic file opening and closing. Don't do this, for the reasons we are about to explain:
+
+The key problem with this simple code is that it fails if there is an early return, either due to a return statement or an exception, possibly raised by called code. To fix this, ensuring that the cleanup code is called when the block is exited, one uses a try...finally clause:
+
+However, this still requires manually releasing the resource, which might be forgotten, and the release code is distant from the acquisition code. The release can be done automatically by instead using with, which works because File is a context manager type:
+
+This assigns the value of open(filename) to f (this point is subtle and varies between context managers), and then automatically releases the resource, in this case calling f.close(), when the block exits.
+
+
+== Technical details ==
+Newer objects are context managers (formally context manager types: subtypes, as they implement the context manager interface, which consists of __enter__(), __exit__()), and thus can be used in with statements easily (see With Statement Context Managers).
+For older file-like objects that have a close method but not __exit__(), you can use the @contextlib.closing decorator. If you need to roll your own, this is very easy, particularly using the @contextlib.contextmanager decorator.
+Context managers work by calling __enter__() when the with context is entered, binding the return value to the target of as, and calling __exit__() when the context is exited. There's some subtlety about handling exceptions during exit, but you can ignore it for simple use.
+More subtly, __init__() is called when an object is created, but __enter__() is called when a with context is entered.
+The __init__()/__enter__() distinction is important to distinguish between single use, reusable and reentrant context managers. It's not a meaningful distinction for the common use case of instantiating an object in the with clause, as follows:
+
+...in which case any single use context manager is fine.
+However, in general it is a difference, notably when distinguishing a reusable context manager from the resource it is managing, as in here:
+
+Putting resource acquisition in __enter__() instead of __init__() gives a reusable context manager.
+Notably, File() objects do the initialization in __init__() and then just returns itself when entering a context, as in def __enter__(): return self. This is fine if you want the target of the as to be bound to an object (and allows you to use factories like open as the source of the with clause), but if you want it to be bound to something else, notably a handle (file name or file handle/file descriptor), you want to wrap the actual object in a separate context manager. For example:
+
+For simple uses you don't need to do any __init__() code, and only need to pair __enter__()/__exit__(). For more complicated uses you can have reentrant context managers, but that's not necessary for simple use.
+
+
+== Caveats ==
+
+
+=== try...finally ===
+Note that a try...finally clause is necessary with @contextlib.contextmanager, as this does not catch any exceptions raised after the yield, but is not necessary in __exit__(), which is called even if an exception is raised.
+
+
+=== Context, not scope ===
+The term context manager is carefully chosen, particularly in contrast to “scope”. Local variables in Python have function scope, and thus the target of a with statement, if any, is still visible after the block has exited, though __exit__() has already been called on the context manager (the argument of the with statement), and thus is often not useful or valid. This is a technical point, but it's worth distinguishing the with statement context from the overall function scope.
+
+
+=== Generators ===
+Generators that hold or use resources are a bit tricky.
+Beware that creating generators within a with statement and then using them outside the block does not work, because generators have deferred evaluation, and thus when they are evaluated, the resource has already been released. This is most easily seen using a file, as in this generator expression to convert a file to a list of lines, stripping the end-of-line character:
+
+When lines is then used – evaluation can be forced with list(lines) – this fails with ValueError: I/O operation on closed file. This is because the file is closed at the end of the with statement, but the lines are not read until the generator is evaluated.
+The simplest solution is to avoid generators, and instead use lists, such as list comprehensions. This is generally appropriate in this case (reading a file) since one wishes to minimize system calls and just read the file all at once (unless the file is very large):
+
+In case that one does wish to use a resource in a generator, the resource must be held within the generator, as in this generator function:
+
+As the nesting makes clear, the file is kept open while iterating through it.
+To release the resource, the generator must be explicitly closed, using generator.close(), just as with other objects that hold resources (this is the dispose pattern). This can in turn be automated by making the generator into a context manager, using @contextlib.closing, as:
+
+
+=== Not RAII ===
+Resource Acquisition Is Initialization is an alternative form of resource management, particularly used in C++. In RAII, resources are acquired during object construction, and released during object destruction. In Python the analogous functions are __init__() and __del__() (finalizer), but RAII does not work in Python, and releasing resources in __del__() does not work. This is because there is no guarantee that __del__() will be called: it's just for memory manager use, not for resource handling.
+In more detail, Python object construction is two-phase, consisting of (memory) allocation in __new__() and (attribute) initialization in __init__(). Python is garbage-collected via reference counting, with objects being finalized (not destructed) by __del__(). However, finalization is non-deterministic (objects have non-deterministic lifetimes), and the finalizer may be called much later or not at all, particularly if the program crashes. Thus using __del__() for resource management will generally leak resources.
+It is possible to use finalizers for resource management, but the resulting code is implementation-dependent (generally working in CPython but not other implementations, such as PyPy) and fragile to version changes. Even if this is done, it requires great care to ensure references drop to zero in all circumstances, including: exceptions, which contain references in tracebacks if caught or if running interactively; and references in global variables, which last until program termination. Prior to Python 3.4, finalizers on objects in cycles were also a serious problem, but this is no longer a problem; however, finalization of objects in cycles is not done in a deterministic order.
+
+
+== References ==
+
+
+== External links ==
+Get With the Program as Contextmanager
+PyMOTW (Module of the Week): contextlib
+Markus Gattol: Context Manager

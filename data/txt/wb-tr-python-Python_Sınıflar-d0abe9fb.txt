@@ -1,0 +1,7 @@
+
+= Sınıf Oluşturma =
+Paremetre Atıyoruz
+
+Objeye Fonksiyon Ekliyoruz
+
+Sınıf Kullanma:

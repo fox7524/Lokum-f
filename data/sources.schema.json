@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open corpus sources manifest",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "title",
+      "language",
+      "source_name",
+      "source_url",
+      "license",
+      "retrieved_at",
+      "files"
+    ],
+    "properties": {
+      "id": { "type": "string" },
+      "title": { "type": "string" },
+      "language": { "type": "string", "description": "BCP-47 (en, tr, en-US ...)" },
+      "source_name": { "type": "string" },
+      "source_url": { "type": "string" },
+      "license": { "type": "string" },
+      "license_url": { "type": "string" },
+      "retrieved_at": { "type": "string", "description": "ISO-8601 timestamp" },
+      "notes": { "type": "string" },
+      "files": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["path", "sha256", "bytes"],
+          "properties": {
+            "path": { "type": "string" },
+            "sha256": { "type": "string" },
+            "bytes": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}
+

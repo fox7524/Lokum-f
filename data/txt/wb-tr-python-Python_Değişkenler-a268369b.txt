@@ -1,0 +1,15 @@
+Python size esnek ve geniş bir değişken imkanı ve özellikleri sunar. Python'da kullancabileceğiniz, sayı, metin, liste, sözlük ve tüpler bulunur. Diğer dillere göre değişken tipi belirlemeye gerek yoktur. Örnek bir sayısal değer tanımlayacak olursak;
+
+Metin olayında da kurallar yine aynıdır;
+
+Örnekte birinde tek tırnak '' diğerinde çift tırnak "" kullanmamızın sebebi Python'un bu konuda da esnek olmasından kaynaklanıyor.
+Liste değişkeni Python'un iddialı olduğu konulardan biridir. Python'da listeler metotlarıyla güçlüdür ve esnektir.
+
+Listeyle beraber gelen sıralama, ekleme, çıkarma gibi metotlara diğer konulardan ulaşabilirsiniz.
+Listeye öge eklerken tıpkı değer oluşturur gibi tipini belirlemeden ekleyebiliriz;
+
+Sözlük tipinde ise veriler bir anahtar - değer ilişkisine dayanır. Tıpkı özelden genele sıralama yapar gibidir. Örneğin; hayvan sınıfı genel bir ifade ancak kedi bu sınıfın özel bir ifadesidir.
+
+Tüpler listelerin benzeridir. Aralarında bir çok metot farkı vardır. En temel özellik, listeye sonradan öge ekleyip çıkarabiliriz ancak tüplere bu değişiklikleri yapamazsınız.
+
+Oluşturduğumuz bir tüp ve bu tüpün listeye göre avantajı yanlışlıkla da olsa değiştirilemiyor olmasıdır. Bu yönüyle tüpler güvenilirlik açısından tercih edilebilir.

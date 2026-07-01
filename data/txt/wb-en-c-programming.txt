@@ -1,0 +1,85 @@
+
+== Table of contents ==
+
+
+=== Introduction ===
+ Why learn C?
+ History
+ What you need before you can learn
+ Obtaining a compiler
+
+
+=== Beginning C ===
+ Intro exercise
+ Preliminaries
+ Basics of compilation
+ Simple output
+ Variables
+ Simple input
+ Operators and type casting
+ Arrays and strings
+ Program flow control
+ Procedures and functions
+ Headers and libraries
+ Beginning exercises
+
+
+=== Intermediate C ===
+ Advanced data types
+ Pointers and arrays
+ Side effects and sequence points
+ Memory management
+ Error handling
+ Stream I/O
+ String manipulation
+ Further math
+ Standard libraries
+
+
+=== Advanced C ===
+ Common practices
+ Preprocessor directives and macros
+ Networking in UNIX
+ X macros and serialization
+ Coroutines
+
+
+=== C and beyond ===
+ Particularities of C
+ Low-level I/O
+ Mixing languages
+ GObject
+
+
+=== Reference tables ===
+This section has some tables and lists of C entities.
+
+ Standard library reference
+ Statements
+ Preprocessor reference
+ Language Reference
+Table of Keywords
+Table of Operators
+Table of Data Types
+
+
+==== Platform reference ====
+ POSIX
+ GNU C Library
+ MS Windows
+
+
+=== Appendices ===
+ Alternative tokens
+ C Compilers Reference List
+ Code style
+ Exercise solutions
+ Index
+ Links
+
+
+== Related Wikibooks ==
+A Little C Primer
+Data Structures
+GCC Debugging
+GNU C Compiler Internals

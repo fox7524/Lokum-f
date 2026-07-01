@@ -1,0 +1,32 @@
+Numpy is a numeric library for python. Its main purpose is to provide fast manipulation of multidimensional arrays. 
+
+
+== Installation ==
+It's provided with the main Linux distribution, however it can be installed through the Debian package python-numpy. On systems with pip, running pip install numpy will work. On Windows, it can be downloaded on http://sourceforge.net/projects/numpy/files/.
+Then, once the .zip unpacked, the installation is done by entering into the console:
+
+python setup.py install
+
+In case of error:
+
+ImportError “No Module named Setuptools”, save the file https://bootstrap.pypa.io/ez_setup.py into the Python folder, and install it with: python ez_setup.py install.
+Microsoft Visual C++ 9.0 is required, download it on https://www.microsoft.com/en-us/download/details.aspx?id=44266
+
+
+== Arrays ==
+Arrays in numpy are of type numpy.ndarray. However, the most common way of defining them is using numpy.array, which is a function. For example,
+
+There are other ways to initialize numpy arrays. For example, to initialize a random array,
+
+Some other ways of initialization are:
+
+
+== Histogram ==
+
+ 
+
+
+== See also ==
+http://numpy.scipy.org/
+http://docs.scipy.org/doc/numpy/reference/
+Research using FOSS

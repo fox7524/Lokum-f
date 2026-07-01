@@ -1,0 +1,25 @@
+Python programlama dili, 2.x ve 3.x serileri olarak ikiye ayrılmaktadır. Bu kitapta ikisi hakkında da bilgilere ayrı ayrı ulaşabilirsiniz.
+
+
+== İçindekiler ==
+Ön söz
+
+
+=== Python 2.x serisi ===
+Giriş
+İlk programımız
+Değişkenler
+Veri tipleri
+Operatörler
+Klavye girişi
+Koşul yapıları
+Döngüler
+Listeler
+Fonksiyonlar
+Sınıflar
+
+
+=== Python 3.x serisi ===
+Giriş
+Komut satırı
+Etkileşimli Python

@@ -1,0 +1,53 @@
+Python web requests/parsing is very simple, and there are several must-have modules to help with this.
+
+
+== Urllib ==
+Urllib is the built in python module for html requests, main article is Python Programming/Internet.
+
+
+== Requests ==
+
+The python requests library simplifies http requests. It has functions for each of the http requests
+
+GET (requests.get)
+POST (requests.post)
+HEAD (requests.head)
+PUT (requests.put)
+DELETE (requests.delete)
+OPTIONS (requests.options)
+
+
+=== Basic request ===
+
+
+=== The response object ===
+The response from the last function has many variables/data retrieval.
+r.content and r.text provide similar html content, but r.text is preferred.
+r.encoding will display the encoding of the website.
+r.headers shows the headers returned by the website.
+r.is_redirect and r.is_permanent_redirect shows whether or not the original link was a redirect.
+r.iter_content will iterate each character in the html as a byte. To convert bytes to string, it must be decoded with the encoding in r.encoding.
+r.iter_lines is like r.iter_content, but will iterate each line of the html. It is also in bytes
+r.json will convert json to a python dict if the return output is json.
+r.rawwill return the base urllib3.response.HTTPResponse object.
+r.status_code will return the html code sent by the server. Code 200 is success, while any other code is an error. r.raise_for_status will return an exception if the status code is not 200.
+r.url will return the url sent.
+
+
+=== Authentication ===
+Requests has built-in authentication. Here is an example with basic authentication.If it is Basic Authentication, you can just pass a tuple.All of the other types of authentication are at the requests documentation. 
+
+
+=== Queries ===
+Queries in html pass values. For example, when you make a google search, the search url is a form of https://www.google.com/search?q=My+Search+Here&.... Anything after the ? is the query. Queries are url?name1=value1&name2=value2.... Requests has a system for automatically making these queries.
+The true power is noticed in multiple entries.
+Not only does it pass these values but also changes special characters & whitespace to html-compatible versions.
+
+
+== BeautifulSoup4 ==
+
+BeautifulSoup4 is a powerful html parsing command. Let's try with some example html.
+
+
+=== Getting elements ===
+There are two ways to access elements. The first way is to manually type in the tags, going down in order, until you get to the tag you want.However, this is inconvenient with large html. There is a function, find_all, to find all instances of a certain element. It takes in a html tag, such as h1 or p, and returns all instances of it.This is still inconvenient in a large website because there will be thousands of entries. You can simplify it by finding classes or ids.However, it does not bring up any results. Therefore, we might want to use our own finding system.This checks to see if there are any classes in each of the elements and then checks to see if the class b is in the classes if there are classes. From the list, we can do something to each element, such as retrieve the text inside.

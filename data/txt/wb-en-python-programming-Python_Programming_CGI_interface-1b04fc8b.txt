@@ -1,0 +1,21 @@
+The Common Gateway Interface (CGI) allows to execute some Python programs on an HTTP server.
+
+
+== Installation ==
+By default, open a .py file in HTTP returns its content. In order to make the server compile and execute the source code, it must be placed in a directory including an .htaccess file, with the lines:
+
+AddHandler cgi-script .py
+Options +ExecCGI
+
+Attention: on the Unix-like servers the files aren't executable by default, so this must be set with the command: chmod +x *.py.
+
+
+== Examples ==
+The module cgitb is used for debugging:
+
+The usage of a form needs an import cgi. 
+For a MySQL database, its import MySQLdb.
+The following file is called CGI_MySQL.py, and uses the both modules:
+
+
+== References ==

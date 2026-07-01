@@ -1,0 +1,8 @@
+
+== Authors of Python textbook ==
+Quartz25
+Jesdisciple
+Hannes Röst
+David Ross
+Lawrence D’Oliveiro
+User:BLibrestez55

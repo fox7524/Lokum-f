@@ -1,0 +1,303 @@
+As with most imperative languages, there are three main categories of program control flow:
+
+loops
+branches
+function calls
+Function calls are covered in the next section.
+Generators and list comprehensions are advanced forms of program control flow, but they are not covered here.
+
+
+=== Overview ===
+Control flow in Python at a glance:
+
+x = -6                              # Branching
+if x > 0:                           # If
+  print("Positive")
+elif x == 0:                        # Else if AKA elseif
+  print("Zero")
+else:                               # Else
+  print("Negative")
+list1 = [100, 200, 300]
+for i in list1: print(i)            # A for loop
+for i in range(0, 5): print(i)      # A for loop from 0 to 4
+for i in range(5, 0, -1): print(i)  # A for loop from 5 to 1
+for i in range(0, 5, 2): print(i)   # A for loop from 0 to 4, step 2
+list2 = [(1, 1), (2, 4), (3, 9)]
+for x, xsq in list2: print(x, xsq)  # A for loop with a two-tuple as its iterator
+l1 = [1, 2]; l2 = ['a', 'b']
+for i1, i2 in zip(l1, l2): print(i1, i2) # A for loop iterating two lists at once.
+i = 5
+while i > 0:                        # A while loop
+  i -= 1
+list1 = ["cat", "dog", "mouse"]
+i = -1 # -1 if not found
+for item in list1:
+  i += 1
+  if item=="dog":
+    break                           # Break; also usable with while loop
+print("Index of dog:", i)
+for i in range(1,6):
+  if i <= 4:
+    continue                        # Continue; also usable with while loop
+  print("Greater than 4:", i)
+
+
+=== Loops ===
+In Python, there are two kinds of loops, 'for' loops and 'while' loops.
+
+
+==== For loops ====
+A for loop iterates over elements of a sequence (tuple or list). A variable is created to represent the object in the sequence.  For example,
+
+x = [100,200,300]
+for i in x:
+      print (i)
+
+This will output
+
+100
+200
+300
+
+The for loop loops over each of the elements of a list or iterator, assigning the current element to the variable name given. In the example above, each of the elements in x is assigned to i.
+A built-in function called range exists to make creating sequential lists such as the one above easier.  The loop above is equivalent to:
+
+l = range(100, 301,100)
+for i in l:
+    print (i)
+
+Similar to the slicing operation, in the range function, the first argument is the starting integer (we can just pass one argument to the range, which will be interpreted as the second argument, and then the default value: 0 is used for the first argument), and the second argument is the ending integer but excluded from the list.>>> range(5)
+range(0, 5)
+>>> list(range(5)) #need to use list() to really print the list out
+[0, 1, 2, 3, 4]
+>>> set(range(5)) #we can also print a set out
+{0, 1, 2, 3, 4}
+>>> list(range(1,5))
+[1, 2, 3, 4]
+>>> list(range(1,1)) #starting from 1, but 1 itself is excluded from the list
+[]
+The next example uses a negative step (the third argument for the built-in range function, which is similar to the slicing operation):
+for i in range(5, 0, -1):
+    print (i)
+
+This will output
+
+5
+4
+3
+2
+1
+
+The negative step can be -2:
+
+for i in range(10, 0, -2):
+    print (i)
+
+This will output
+
+10
+8
+6
+4
+2
+
+For loops can have names for each element of a tuple, if it loops over a sequence of tuples:
+
+l = [(1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+for x, xsquared in l:
+    print(x, ':', xsquared)
+
+This will output
+
+1 : 1
+2 : 4
+3 : 9
+4 : 16
+5 : 25
+
+Links:
+
+4.2. for Statements, The Python Tutorial, docs.python.org
+4.3. The range() Function, The Python Tutorial, docs.python.org
+
+
+==== While loops ====
+A while loop repeats a sequence of statements until the condition becomes false. For example:
+
+x = 5
+while x > 0:
+    print (x)
+    x = x - 1
+
+Will output:
+
+5
+4
+3
+2
+1
+
+Python's while loops can also have an 'else' clause, which is a block of statements that is executed (once) when the while condition evaluates to false. The break statement (see the next section) inside the while loop will not direct the program flow to the else clause. For example:
+
+x = 5
+y = x
+while y > 0:
+    print (y)
+    y = y - 1
+else:
+    print (x)
+
+This will output:
+
+5
+4
+3
+2
+1
+5
+
+Unlike some languages, there is no post-condition loop.
+
+When the while condition never evaluates to false, i.e., is always true, then we have an infinite loop. For example,x = 1
+while x > 0:
+    print(x)
+    x += 1
+This results in an infinite loop, which prints 1,2,3,4,... . To stop an infinite loop, we need to use the break statement.
+Links:
+
+3.2. First Steps Towards Programming, The Python Tutorial, docs.python.org
+
+
+==== Breaking and continuing ====
+Python includes statements to exit a loop (either a for loop or a while loop) prematurely.  To exit a loop, use the break statement:
+
+x = 5
+while x > 0:
+    print(x)
+    break
+    x -= 1
+    print(x)
+
+This will output
+
+5
+
+The statement to begin the next iteration of the loop without waiting for the end of the current loop is 'continue'.
+
+l = [5,6,7]
+for x in l:
+    continue
+    print(x)
+
+This will not produce any output.
+
+
+==== Else clause of loops ====
+The else clause of loops will be executed if no break statements are met in the loop.
+
+l = range(1,100)
+for x in l:
+    if x == 100:
+        print(x)
+        break
+    else:
+        print(x, " is not 100")
+else:
+    print("100 not found in range")
+
+Another example of a while loop using the break statement and the else statement:
+
+expected_str = "melon"
+received_str = "apple"
+basket = ["banana", "grapes", "strawberry", "melon", "orange"]
+x = 0
+step = int(raw_input("Input iteration step: "))
+ 
+while received_str != expected_str:
+    if x >= len(basket): print("No more fruits left on the basket."); break
+    received_str = basket[x]
+    x += step # Change this to 3 to make the while statement
+              # evaluate to false, avoiding the break statement, using the else clause.
+    if received_str==basket[2]: print("I hate", basket[2], "!"); break
+    if received_str != expected_str: print("I am waiting for my ", expected_str,".")
+else:
+    print("Finally got what I wanted! my precious ", expected_str, "!")
+print("Going back home now !")
+
+This will output:
+
+Input iteration step: 2
+I am waiting for my  melon .
+I hate strawberry !
+Going back home now !
+
+
+==== White Space ====
+Python determines where a loop repeats itself by the indentation in the whitespace. Everything that is indented is part of the loop, the next entry that is not indented is not. For example, the code below prints "1 1 2 1 1 2"
+
+for i in [0, 1]:
+    for j in ["a","b"]:
+        print("1")
+    print("2")
+
+On the other hand, the code below prints "1 2 1 2 1 2 1 2"
+
+for i in [0, 1]:
+    for j in ["a","b"]:
+        print("1")
+        print("2")
+
+
+=== Branches ===
+There is basically only one kind of branch in Python, the 'if' statement.  The simplest form of the if statement simple executes a block of code only if a given predicate is true, and skips over it if the predicate is false
+For instance,
+
+>>> x = 10
+>>> if x > 0:
+...    print("Positive")
+...
+Positive
+>>> if x < 0:
+...    print("Negative")
+...
+
+You can also add "elif" (short for "else if") branches onto the if statement.  If the predicate on the first “if” is false, it will test the predicate on the first elif, and run that branch if it’s true.  If the first elif is false, it tries the second one, and so on.  Note, however, that it will stop checking branches as soon as it finds a true predicate, and skip the rest of the if statement.  You can also end your if statements with an "else" branch.  If none of the other branches are executed, then python will run this branch.
+
+>>> x = -6
+>>> if x > 0:
+...    print("Positive")
+... elif x == 0:
+...    print("Zero")
+... else:
+...    print("Negative")
+...
+'Negative'
+
+Links:
+
+4.1. if Statements, The Python Tutorial, docs.python.org
+
+
+=== Conclusion ===
+Any of these loops, branches, and function calls can be nested in any way desired.  A loop can loop over a loop, a branch can branch again, and a function can call other functions, or even call itself.
+
+
+== Exercises ==
+Print the numbers from 0 to 1000 (including both 0 and 1000).
+Print the numbers from 0 to 1000 that are multiples of 5.
+Print the numbers from 1 to 1000 that are multiples of 5.
+Use a nested for-loop to prints the 3x3 multiplication table below
+1 2 3 
+2 4 6 
+3 6 9 
+
+Print the 3x3 multiplication table below.
+  1 2 3 
+ ------
+1|1 2 3 
+2|2 4 6 
+3|3 6 9 
+
+
+== External links ==
+4. More Control Flow Tools, The Python Tutorial, docs.python.org

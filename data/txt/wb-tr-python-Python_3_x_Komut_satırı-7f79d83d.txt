@@ -1,0 +1,92 @@
+Python programlama dili ile ilgili ilk denemelerimizi yapmadan önce komut satırını kullanmayı bilmemiz gerekmektedir. Komut satırı bizim için kodlarımızı deneyip hızlıca sonuçlarını göreceğimiz bir ortamdır. Bu ortamın kullanılması ile ilgili temel bilgiler bu konu altında bulunmaktadır.
+
+
+== Komut satırına ulaşmak ==
+Ctrl + Alt + T tuşlarıyla komut satırına ulaşılabilir.
+
+
+== Hangi dizinde olduğunu öğrenmek ==
+Aşağıdaki komut ile hangi dizin altında olduğunuzu öğrenebilirsiniz.
+
+pwd
+Bu komutu verdikten sonra şuna benzer bir çıktı alırsınız:
+
+/home/Kullanıcı adınız
+
+
+== Dizin içeriğini listelemek ==
+Dizin altındaki içerikleri listelemeniz gereken durumlar olabilir. Dizin içeriğini öğrenip içerikle ilgili işlemler yapabilirsiniz. Bunun için şu komut kullanılmaktadır:
+
+ls
+
+
+== Dizinler arasında geçiş yapmak ==
+Dizinler arasında geçiş yapmak için cd komutu kullanılmaktadır. /home/PC dizini altında bulunduğumuzu varsayalım, masaüstüne geçmek için örnek komut kullanımı:
+
+cd Masaüstü
+Masaüstündeki "klasör" dosyasına geçiş yapmak için örnek komut kullanımı:
+
+cd /Masaüstü/klasör
+Masaüstündeki "klasör" dosyasından tekrar masaüstüne dönmek için yani bir üst dizine geçiş yapmak için örnek komut kullanımı:
+
+cd ..
+
+
+== Çevre değişkenleri ==
+Mesela yaptığınız bir program farklı bilgisayarlarda çalıştırılacak. Fakat bunun şöyle bir sıkıntısı var, her bilgisayar sahibinin kullanıcı adı farklıdır. Yani sizin bilgisayarınız /home/mehmet olabilir ama başkasının bilgisayarında bu /home/ahmet de olabilir. Bu tür sıkıntıları önlemek için çevre değişkenleri kullanılır. Çevre değişkeni:
+
+$HOME
+Örnek kullanım:
+
+cd $HOME/Masaüstü/ProgramAdı
+Ayrıca $HOME yerine ~ (tilde) de kullanılabilir:
+
+cd ~/Masaüstü
+Durumu anlamak için echo $HOME komutuyla bu değişkenin bilgisayarınızda nasıl bir çıktı verdiğini görebilirsiniz.
+
+
+== Dizin adı tamamlama ==
+Komut satırında bir dizin isminin baş harflerini yazıp tab (sekme) tuşuna basarsanız, komut satırı dizinin geri kalan ismini tamamlar.
+
+
+== Sembolik bağlar ==
+Bir dosyaya veya dizine bağlantı içeren dosyalar denir. Mesela karışık ve uzun bir dosyanız var ve buna daha kolay şekilde ulaşmak istiyorsunuz. O halde aşağıdaki komut ile bunu yapabilirsiniz:
+
+ln -s $HOME/çok_uzun_bir_dosya_adı $HOME/dosya
+Gördüğünüz gibi gayet kolay.
+
+
+== Çalıştırma yetkisi ==
+./deneme komutuyla "deneme" isimli dosyayı çalıştırmanız gerekecek fakat dosyayı çalıştırma yetkiniz yoksa şöyle bir hata verir:
+
+-bash: ./deneme: Permission denied
+Böyle bir durumda şu komut ile çalıştırma yetkilerini alabilirsiniz:
+
+chmod +x deneme
+İşletim sisteminin tüm kullanıcıları için yetkiyi açmak için:
+
+chmod a+x deneme
+Sadece size yani o an açık olan kullanıcı oturumuna yetki vermek için:
+
+chmod u+x deneme
+Yetkileri geri almak için:
+
+chmod -x deneme
+
+
+== Dosya kopyalama, taşıma ve silme ==
+Kopyalama:
+
+cp özgün_konumdaki_dosya hedef_konumdaki_dosya
+Bir dizinin tamamını hedef dizine kopyalamak istiyorsanız:
+
+cp -rf özgün_dizin hedef_dizin_adresi
+Silme:
+
+rm silinecek_dosya
+Tüm dizini silecekseniz:
+
+rm -rf silinecek_dizin
+Taşıma:
+
+mv özgün_konumdaki_dosya hedef_konumdaki_dosya

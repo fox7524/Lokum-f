@@ -1,0 +1,300 @@
+Sequences allow you to store multiple values in an organized and efficient fashion. There are seven sequence types: strings, bytes, lists, tuples, bytearrays, buffers, and range objects. Dictionaries and sets are containers for sequential data.
+
+
+== Strings ==
+We already covered strings, but that was before you knew what a sequence is.  In other languages, the elements in arrays and sometimes the characters in strings may be accessed with the square brackets, or subscript operator.  This works in Python too:
+
+>>> "Hello, world!"[0]
+'H'
+>>> "Hello, world!"[1]
+'e'
+>>> "Hello, world!"[2]
+'l'
+>>> "Hello, world!"[3]
+'l'
+>>> "Hello, world!"[4]
+'o'
+
+Indexes are numbered from 0 to n-1 where n is the number of items (or characters), and they are given to the characters from the start of the string:
+
+ H  e  l  l  o  ,     w  o  r  l  d  !
+ 0  1  2  3  4  5  6  7  8  9 10 11 12
+
+Negative indexes (numbered from -1 to -n) are counted from the end of the string:
+
+ H   e   l   l   o   ,       w   o   r  l  d  !
+-13 -12 -11 -10 -9  -8  -7  -6  -5  -4 -3 -2 -1
+
+>>> "Hello, world!"[-2]
+'d'
+>>> "Hello, world!"[-9]
+'o'
+>>> "Hello, world!"[-13]
+'H'
+>>> "Hello, world!"[-1]
+'!'
+
+If the number given in the bracket is less than -n or greater than n-1, then we will get an IndexError.
+But in Python, the colon : allows the square brackets to take two numbers.  For any sequence which only uses numeric indexes, this will return the portion which is between the specified indexes.  This is known as "slicing" and the result of slicing a string is often called a "substring."
+
+>>> "Hello, world!"[3:9]
+'lo, wo'
+>>> string = "Hello, world!"
+>>> string[:5]
+'Hello'
+>>> string[-6:-1]
+'world'
+>>> string[-9:]
+'o, world!'
+>>> string[:-8]
+'Hello'
+>>> string[:]
+'Hello, world!'
+
+As demonstrated above, if the first and second number is omitted, then they take their default values, which are 0 and n-1 respectively, corresponding to the beginning and end of the sequence respectively (in this case). Note also that the brackets are inclusive on the left but exclusive on the right: in the first example above with [3:9] the character at index 3, 'l', is included while the character at index 9, 'r', is excluded.
+We can add a third number in the bracket, by adding one more colon in the bracket, which indicates the increment step of the slicing:
+
+>>> s = "Hello, world!"
+>>> s[3:9:2] #returns the substring s[3]s[5]s[7]
+'l,w'
+>>> s[3:6:3] #returns the substring s[3]
+'l'
+>>> s[:5:2] #returns the substring s[0]s[2]s[4]
+'Hlo'
+>>> s[::-1] #returns the inverted string
+'!dlrow ,olleH'
+>>> s[::-2] #returns the substring s[-1]s[-3]s[-5]s[-7]s[-9]s[-11]s[-13]
+'!lo olH'
+
+The increment step can be positive or negative. For positive increment step, the slicing is from left to right, and for negative increment step, the slicing is from right to left. Also, we should aware that
+
+the default value of the increment step is 1
+the default value for the first and second number becomes -1 (or n) and -n (or 0) respectively, when the increment step is negative (same default value as above when the increment step is positive)
+the increment step cannot be 0
+
+
+== Lists ==
+A list is just what it sounds like: a list of values, organized in order. A list is created using square brackets. For example, an empty list would be initialized like this:
+
+spam = []
+
+The values of the list are separated by commas. For example:
+
+spam = ["bacon", "eggs", 42]
+
+Lists may contain objects of varying types. It may hold both the strings "eggs" and "bacon" as well as the number 42.
+Like characters in a string, items in a list can be accessed by indexes starting at 0.  To access a specific item in a list, you refer to it by the name of the list, followed by the item's number in the list inside brackets. For example:
+
+>>> spam
+['bacon', 'eggs', 42]
+>>> spam[0]
+'bacon'
+>>> spam[1]
+'eggs'
+>>> spam[2]
+42
+
+You can also use negative numbers, which count backwards from the end of the list:
+
+>>> spam[-1]
+42
+>>> spam[-2]
+'eggs'
+>>> spam[-3]
+'bacon'
+
+The len() function also works on lists, returning the number of items in the array:
+
+>>> len(spam)
+3
+
+Note that the len() function counts the number of item inside a list, so the last item in spam (42) has the index (len(spam) - 1).
+The items in a list can also be changed, just like the contents of an ordinary variable:
+
+>>> spam = ["bacon", "eggs", 42]
+>>> spam
+['bacon', 'eggs', 42]
+>>> spam[1]
+'eggs'
+>>> spam[1] = "ketchup"
+>>> spam
+['bacon', 'ketchup', 42]
+
+(Strings, being immutable, are impossible to modify.)  As with strings, lists may be sliced:
+
+>>> spam[1:]
+['eggs', 42]
+>>> spam[:-1]
+['bacon', 'eggs']
+
+It is also possible to add items to a list. There are many ways to do it, the easiest way is to use the append() method of list:
+
+>>> spam.append(10)
+>>> spam
+['bacon', 'eggs', 42, 10]
+
+Note that you cannot manually insert an element by specifying the index outside of its range. The following code would fail:
+
+>>> spam[4] = 10
+IndexError: list assignment index out of range
+
+Instead, you must use the insert() function. If you want to insert an item inside a list at a certain index, you may use the insert() method of list, for example:
+
+>>> spam.insert(1, 'and')
+>>> spam
+['bacon', 'and', 'eggs', 42, 10]
+
+You can also delete items from a list using the del statement:
+
+>>> spam
+['bacon', 'and', 'eggs', 42, 10]
+>>> del spam[1]
+>>> spam
+['bacon', 'eggs', 42, 10]
+>>> spam[0]
+'bacon'
+>>> spam[1]
+'eggs'
+>>> spam[2]
+42
+>>> spam[3]
+10
+
+As you can see, the list re-orders itself, so there are no gaps in the numbering.
+Lists have an unusual characteristic. Given two lists a and b, if you set b to a, and change a, b will also be changed.
+
+>>> a=[2, 3, 4, 5]
+>>> b=a
+>>> del a[3]
+>>> print(a)
+[2, 3, 4]
+>>> print(b)
+[2, 3, 4]
+
+This can easily be worked around by using b=a[:] instead.
+For further explanation on lists, or to find out how to make 2D arrays, see Data Structure/Lists
+
+
+== Tuples ==
+Tuples are similar to lists, except they are immutable. Once you have set a tuple, there is no way to change it whatsoever: you cannot add, change, or remove elements of a tuple. Otherwise, tuples work identically to lists.
+To declare a tuple, you use commas:
+
+unchanging = "rocks", 0, "the universe"
+
+It is often necessary to use parentheses to differentiate between different tuples, such as when doing multiple assignments on the same line:
+
+foo, bar = "rocks", 0, "the universe" # 3 elements here fail - too many values
+foo, bar = "rocks", (0, "the universe") # 2 elements here because the second element is a tuple
+
+Unnecessary parentheses can be used without harm, but nested parentheses denote nested tuples:
+
+>>> var = "me", "you", "us", "them"
+>>> var = ("me", "you", "us", "them")
+
+both produce:
+
+>>> print(var)
+('me', 'you', 'us', 'them')
+
+but:
+
+>>> var = ("me", "you", ("us", "them"))
+>>> print(var)
+('me', 'you', ('us', 'them')) # A tuple of 3 elements, the last of which is itself a tuple.
+
+For further explanation on tuple, see Data Structure/Tuples
+
+
+== Dictionaries ==
+Dictionaries are also like lists, and they are mutable -- you can add, change, and remove elements from a dictionary. However, the elements in a dictionary are not bound to numbers, the way a list is. Every element in a dictionary has two parts: a key, and a value. Calling a key of a dictionary returns the value linked to that key. You could consider a list to be a special kind of dictionary, in which the key of every element is a number, in numerical order.
+Dictionaries are declared using curly braces, and each element is declared first by its key, then a colon, and then its value. For example:
+
+>>> definitions = {"guava": "a tropical fruit", "python": "a programming language", "the answer": 42}
+>>> definitions
+{'python': 'a programming language', 'the answer': 42, 'guava': 'a tropical fruit'}
+>>> definitions["the answer"]
+42
+>>> definitions["guava"]
+'a tropical fruit'
+>>> len(definitions)    
+3
+
+Also, adding an element to a dictionary is much simpler: simply declare it as you would a variable.
+
+>>> definitions["new key"] = "new value"
+>>> definitions
+{'python': 'a programming language', 'the answer': 42, 'guava': 'a tropical fruit', 'new key': 'new value'}
+
+For further explanation on dictionary, see Data Structure/Dictionaries
+
+
+== Sets ==
+Sets are just like lists except that they are unordered and they do not allow duplicate values. Elements of a set are neither bound to a number (like list and tuple) nor to a key (like dictionary). The reason for using a set over other data types is that a set is much faster for a large number of items than a list or tuple and sets provide fast data insertion, deletion, and membership testing.  Sets also support mathematical set operations such as testing for subsets and finding the union or intersection of two sets.
+
+>>> mind = set([42, 'a string', (23, 4)]) #equivalently, we can use {42, 'a string', (23, 4)}
+>>> mind
+set([(23, 4), 42, 'a string'])
+
+>>> mind = set([42, 'a string', 40, 41])
+>>> mind
+set([40, 41, 42, 'a string'])
+>>> mind = set([42, 'a string', 40, 0])
+>>> mind
+set([40, 0, 42, 'a string'])
+>>> mind.add('hello')
+>>> mind
+set([40, 0, 42, 'a string', 'hello'])
+
+Note that sets are unordered, items you add into sets will end up in an indeterminable position, and it may also change from time to time.
+
+>>> mind.add('duplicate value')
+>>> mind.add('duplicate value')
+>>> mind
+set([0, 'a string', 40, 42, 'hello', 'duplicate value'])
+
+Sets cannot contain a single value more than once. Unlike lists, which can contain anything, the types of data that can be included in sets are restricted. A set can only contain hashable, immutable data types. Integers, strings, and tuples are hashable; lists, dictionaries, and other sets (except frozensets, see below) are not.
+
+
+=== Frozenset ===
+The relationship between frozenset and set is like the relationship between tuple and list. Frozenset is an immutable version of set. An example:
+
+>>> frozen=frozenset(['life','universe','everything'])
+>>> frozen
+frozenset(['universe', 'life', 'everything'])
+
+
+== Other data types ==
+Python also has other types of sequences, though these are used less frequently and need to be imported from the standard library before being used. We will only brush over them here.
+
+array
+A typed-list, an array may only contain homogeneous values.
+collections.defaultdict
+A dictionary that, when an element is not found, returns a default value instead of error.
+collections.deque
+A double ended queue, allows fast manipulation on both sides of the queue.
+heapq
+A priority queue.
+Queue
+A thread-safe multi-producer, multi-consumer queue for use with multi-threaded programs. Note that a list can also be used as queue in a single-threaded code.
+For further explanation on set, see Data Structure/Sets
+
+
+=== 3rd party data structure ===
+Some useful data types in Python do not come in the standard library. Some of these are very specialized in their use. We will mention some of the more well known 3rd party types.
+
+numpy.array
+useful for heavy number crunching => see numpy section
+sorteddict
+like the name says, a sorted dictionary
+
+
+== Exercises ==
+Write a program that puts 5, 10, and "twenty" into a list. Then remove 10 from the list.
+Write a program that puts 5, 10, and "twenty" into a tuple.
+Write a program that puts 5, 10, and "twenty" into a set. Put "twenty", 10, and 5 into another set purposefully in a different order. Print both of them out and notice the ordering.
+Write a program that constructs a tuple, one element of which is a frozenset.
+Write a program that creates a dictionary mapping 1 to "Monday," 2 to "Tuesday," etc.
+
+
+== External links ==
+Sequence Types — list, tuple, range in The Python Library Reference, docs.python.org

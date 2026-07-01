@@ -1,0 +1,5 @@
+Python 3.x serisi 2.x serisine göre daha güçlüdür ve 2.x serisinin hatalarından arındırılmıştır. 2.x serisi ile yazılmış bir program 3.x serisi altında çalışmamaktadır. Ters durumda da aynısı geçerlidir. Geliştiriciler hem 2.x hem de 3.x serisi üzerinde çalışmaya devam etmektedirler. Python programlama diline yeni başlayanlar için 3.x serisini öğrenmek, 2.x serisinin ileride kullanılmayacağı düşünüldüğünde daha mantıklıdır.
+
+
+== Neler anlatılacak ==
+Bu kitapta Python 3.x serisi Ubuntu (GNU/Linux) üzerinden anlatılacak olup komut satırı ile ilgili temel bilgilerden sonra dil hakkında konular anlatılmaya başlanacaktır. Ubuntu'nun 12.10 sürümünden itibaren hem 2.x hem de 3.x serisi kurulu olarak gelmektedir. Eğer bilgisayarınızda Python 3.x yüklü değilse, kurulumunu yaptıktan sonra kitaba devam etmeniz isabetli olacaktır.

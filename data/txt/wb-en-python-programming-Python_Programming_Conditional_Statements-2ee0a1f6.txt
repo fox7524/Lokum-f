@@ -1,0 +1,409 @@
+
+== Decisions ==
+A Decision is when a program has more than one choice of actions depending on a variable's value. Think of a traffic light. When it is green, we continue our drive. When we see the light turn yellow, we reduce our speed, and when it is red, we stop. These are logical decisions that depend on the value of the traffic light. Luckily, Python has a decision statement to help us when our application needs to make such decision for the user.
+
+
+== If statements ==
+Here is a warm-up exercise - a short program to compute the absolute value of a number:
+
+absoval.py
+
+n = input("Integer? ")#Pick an integer. And remember, if raw_input is not supported by your OS, use input()
+n = int(n)#Defines n as the integer you chose. (Alternatively, you can define n yourself)
+if n < 0:
+    print ("The absolute value of",n,"is",-n)
+else:
+    print ("The absolute value of",n,"is",n)
+
+Here is the output from the two times that I ran this program:
+
+Integer? -34
+The absolute value of -34 is 34
+
+Integer? 1
+The absolute value of 1 is 1
+
+What does the computer do when it sees this piece of code? First it prompts the user for a number with the statement "n = input("Integer? ")". Next it reads the line "if n < 0:". If  n is less than zero Python runs the line "print ("The absolute value of",n,"is",-n)". Otherwise python runs the line "print ("The absolute value of",n,"is",n)".  
+More formally, Python looks at whether the expression  n < 0 is true or false. An  if statement is followed by an indented block of statements that are run when the expression is true. After the  if statement is an optional  else statement and another indented block of statements. This 2nd block of statements is run if the expression is false.  
+Expressions can be tested several different ways. Here is a table of all of them:
+
+Another feature of the  if command is the  elif  statement. It stands for "else if," which means that if the original  if statement is false and the  elif statement is true, execute the block of code following the elif statement. Here's an example:
+
+ifloop.py
+
+a = 0
+while a < 10:
+    a = a + 1
+    if a > 5:
+        print (a,">",5)
+    elif a <= 7:
+        print (a,"<=",7)
+    else:
+        print ("Neither test was true")
+
+and the output:
+
+1 <= 7
+2 <= 7
+3 <= 7
+4 <= 7
+5 <= 7
+6 > 5
+7 > 5
+8 > 5
+9 > 5
+10 > 5
+
+Notice how the  elif a <= 7 is only tested when the  if statement fails to be true.  elif allows multiple tests to be done in a single if statement.
+
+
+=== If Example ===
+High_low.py
+
+# Plays the guessing game higher or lower
+# (originally written by Josh Cogliati, improved by Quique, now improved
+# by Sanjith, further improved by VorDd, with continued improvement from
+# the various Wikibooks contributors.)
+ 
+# This should actually be something that is semi random like the
+# last digits of the time or something else, but that will have to
+# wait till a later chapter.  (Extra Credit, modify it to be random
+# after the Modules chapter)
+ 
+# This is for demonstration purposes only.
+# It is not written to handle invalid input like a full program would.
+ 
+answer = 23
+question = 'What number am I thinking of?  '
+print ('Let\'s play the guessing game!')
+
+while True:
+    guess = int(input(question))
+
+    if guess < answer:
+        print ('Little higher')
+    elif guess > answer:
+        print ('Little lower')
+    else: # guess == answer
+        print ('MINDREADER!!!')
+        break
+
+Sample run:
+
+Let's play the guessing game!
+What number am I thinking of?  22
+Little higher
+What number am I thinking of?  25
+Little Lower
+What number am I thinking of?  23
+MINDREADER!!!
+
+As it states in its comments, this code is not prepared to handle invalid input (i.e., strings instead of numbers). If you are wondering how you would implement such functionality in Python, you are referred to the Errors Chapter of this book, where you will learn about error handling. For the above code you may try this slight modification of the while loop:
+
+while True:
+	inp = input(question)
+	try:
+		guess = int(inp)
+	except ValueError:
+		print('Your guess should be a number')
+	else:
+		if guess < answer:
+			print ('Little higher')
+		elif guess > answer:
+			print ('Little lower')
+		else: # guess == answer
+			print ('MINDREADER!!!')
+			break
+
+even.py
+
+#Asks for a number.
+#Prints if it is even or odd
+
+print ("Input [x] for exit.")
+
+while True:
+	inp = input("Tell me a number: ")
+	if inp == 'x':
+		break
+	# catch any resulting ValueError during the conversion to float
+	try:
+		number = float(inp)
+	except ValueError:
+		print('I said: Tell me a NUMBER!')
+	else:
+		test = number % 2
+		if test == 0:
+			print (int(number),"is even.")
+		elif test == 1:
+			print (int(number),"is odd.")
+		else:
+			print (number,"is very strange.")
+
+Sample runs.
+
+Tell me a number: 3
+3 is odd.
+
+Tell me a number: 2
+2 is even.
+
+Tell me a number: 3.14159
+3.14159 is very strange.
+
+average1.py
+
+#Prints the average value.
+ 
+print ("Welcome to the average calculator program")
+print ("NOTE- THIS PROGRAM ONLY CALCULATES AVERAGES FOR 3 NUMBERS")
+x = int(input("Please enter the first number "))
+y = int(input("Please enter the second number "))
+z = int(input("Please enter the third number "))
+str = x+y+z
+print (float (str/3.0))
+#MADE BY SANJITH sanrubik@gmail.com
+
+Sample runs
+
+Welcome to the average calculator program
+NOTE- THIS PROGRAM ONLY CALCULATES AVERAGES FOR 3 NUMBERS
+Please enter the first number 7
+Please enter the second number 6
+Please enter the third number 4
+5.66666666667
+
+average2.py
+
+#keeps asking for numbers until count have been entered.
+#Prints the average value.
+
+sum = 0.0
+
+print ("This program will take several numbers, then average them.")
+count = int(input("How many numbers would you like to sum:  "))
+current_count = 0
+ 
+while current_count < count:
+	print ("Number",current_count)
+	number = float(input("Enter a number:  "))
+	sum = sum + number
+	current_count += 1
+ 
+print("The average was:",sum/count)
+
+Sample runs
+
+This program will take several numbers, then average them.
+How many numbers would you like to sum:  2
+Number 0
+Enter a number:  3
+Number 1
+Enter a number:  5
+The average was: 4.0
+
+This program will take several numbers, then average them.
+How many numbers would you like to sum:  3
+Number 0
+Enter a number:  1
+Number 1
+Enter a number:  4
+Number 2
+Enter a number:  3
+The average was: 2.66666666667
+
+average3.py
+
+#Continuously updates the average as new numbers are entered.
+
+print ("Welcome to the Average Calculator, please insert a number")
+currentaverage = 0
+numofnums = 0
+while True:
+    newnumber = int(input("New number "))
+    numofnums = numofnums + 1
+    currentaverage = (round((((currentaverage * (numofnums - 1)) + newnumber) / numofnums), 3))
+    print ("The current average is " + str((round(currentaverage, 3))))
+
+Sample runs
+
+Welcome to the Average Calculator, please insert a number
+New number 1
+The current average is 1.0
+New number 3
+The current average is 2.0
+New number 6
+The current average is 3.333
+New number 6
+The current average is 4.0
+New number
+
+
+=== If Exercises ===
+Write a password guessing program to keep track of how many times the user has entered the password wrong. If it is more than 3 times, print You have been denied access. and terminate the program. If the password is correct, print You have successfully logged in. and terminate the program.
+Write a program that asks for two numbers. If the sum of the numbers is greater than 100, print That is a big number and terminate the program.
+Write a program that asks the user their name. If they enter your name, say "That is a nice name."  If they enter "John Cleese" or "Michael Palin", tell them how you feel about them ;), otherwise tell them "You have a nice name."
+Ask the user to enter the password. If the password is correct print "You have successfully logged in" and exit the program. If the password is wrong print "Sorry the password is wrong" and ask the user to enter the password 3 times. If the password is wrong print "You have been denied access" and exit the program.
+##   Password guessing program using if statement and while statement only
+###  source by zain
+
+guess_count = 0
+
+correct_pass = 'dee234'
+
+while True:
+	pass_guess = input("Please enter your password: ")
+
+	guess_count += 1
+
+	if pass_guess == correct_pass:
+		print ('You have successfully logged in.')
+		break
+
+	elif pass_guess != correct_pass:
+		if guess_count >= 3:
+			print ("You have been denied access.")
+			break
+
+def mard():
+    for i in range(1,4):
+        a = input("enter a password:  ") # to ask password
+        b = "sefinew" # the password
+        if a == b: # if the password entered and the password are the same to print.
+            print("You have successfully logged in")
+            exit()# to terminate the program.  Using 'break' instead of 'exit()' will allow your shell or idle to dump the block and continue to run.
+        else: # if the password entered and the password are not the same to print.
+            print("Sorry the password is wrong ")
+            if i == 3:
+                print("You have been denied access")
+                exit() # to terminate the program
+
+mard()
+
+#Source by Vanchi
+import time
+import getpass
+
+password = getpass.getpass("Please enter your password")
+
+print ("Waiting for 3 seconds")
+time.sleep(3)
+got_it_right = False
+for number_of_tries in range(1,4):
+    reenter_password = getpass.getpass("Please reenter your password")
+    if password == reenter_password:
+        print ("You are Logged in! Welcome User :)")
+        got_it_right = True
+        break
+
+if not got_it_right:
+    print ("Access Denied!!")
+        
+
+
+=== Conditional Statements ===
+Many languages (like Java and PHP) have the concept of a one-line conditional (called The Ternary Operator), often used to simplify conditionally accessing a value.  For instance (in Java):
+
+For many years Python did not have the same construct natively, however you could replicate it by constructing a tuple of results and calling the test as the index of the tuple, like so:
+
+number = int(input("Enter a number to get its absolute value:"))
+res = (-number, number)[number > 0]
+
+It is important to note that, unlike a built in conditional statement, both the true and false branches are evaluated before returning, which can lead to unexpected results and slower executions if you're not careful.  To resolve this issue, and as a better practice, wrap whatever you put in the tuple in anonymous function calls (lambda notation) to prevent them from being evaluated until the desired branch is called:
+
+number = int(input("Enter a number to get its absolute value:"))
+res = (lambda: number, lambda: -number)[number < 0]()
+
+Since Python 2.5 however, there has been an equivalent operator to The Ternary Operator (though not called such, and with a totally different syntax):
+
+number = int(input("Enter a number to get its absolute value:"))
+res = -number if number < 0 else number
+
+
+== Switch ==
+A switch is a control statement present in most computer programming languages to minimize a bunch of If - elif statements. The switch case functionality was added to Python 3.10 with a new syntax called match case. Prior to version 3.10 switch was not officially supported. The switch statement can be recreated by cleverly using an array or dictionary.
+
+x = 1
+
+def hello():
+  print ("Hello")
+
+def bye():
+  print ("Bye")
+
+def hola():
+  print ("Hola is Spanish for Hello")
+
+def adios():
+  print ("Adios is Spanish for Bye")
+
+# Notice that our switch statement is a regular variable, only that we added the function's name inside
+# and there are no quotes
+menu = [hello,bye,hola,adios]
+
+# To call our switch statement, we simply make reference to the array with a pair of parentheses
+# at the end to call the function
+menu[3]()   # calls the adios function since is number 3 in our array.
+
+menu[0]()   # Calls the hello function being our first element in our array.
+
+menu[x]()   # Calls the bye function as is the second element on the array x = 1
+
+This works because Python stores a reference of the function in the array at its particular index, and by adding a pair of parentheses we are actually calling the function. Here the last line is equivalent to:
+
+
+== Another way. Using function through user Input ==
+
+go = "y"
+x = 0
+def hello():
+  print ("Hello")
+ 
+def bye():
+  print ("Bye")
+ 
+def hola():
+  print ("Hola is Spanish for Hello")
+ 
+def adios():
+  print ("Adios is Spanish for Bye")
+
+menu = [hello, bye, hola, adios]
+ 
+
+while x < len(menu) :
+    print ("function", menu[x].__name__, ", press " , "[" + str(x) + "]")
+    x += 1
+    
+while go != "n":
+    c = int(input("Select Function: "))
+    menu[c]()
+    go = input("Try again? [y/n]: ")
+
+print ("\nBye!")
+   
+
+#end
+
+
+=== Another way ===
+if x == 0:
+    hello()
+elif x == 1:
+    bye()
+elif x == 2:
+    hola()
+else:
+    adios()
+
+
+=== Another way ===
+Another way is to use lambdas. Code pasted here with permissions1 
+
+result = {
+  'a': lambda x: x * 5,
+  'b': lambda x: x + 7,
+  'c': lambda x: x - 2
+}[value](x)
+
+For more information on lambda see anonymous functions in the function section.
