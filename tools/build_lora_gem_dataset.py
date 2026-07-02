@@ -583,7 +583,7 @@ def build_dataset(
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out-dir", default=str(Path("lora_data") / "lora-gem"))
-    ap.add_argument("--rag-dir", default=str(Path(os.path.expanduser("~")) / ".lokumai" / "rag"))
+    ap.add_argument("--rag-dir", default=str(Path(os.path.expanduser("~")) / ".lokumf" / "rag"))
     ap.add_argument("--seed", type=int, default=1337)
     ap.add_argument("--train-size", type=int, default=60000)
     ap.add_argument("--valid-size", type=int, default=3000)

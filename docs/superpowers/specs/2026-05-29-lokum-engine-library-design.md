@@ -54,10 +54,10 @@ from lokum_engine import RAGEngine, FinetuneEngine
 
 Keep existing conventions:
 
-- Base: `~/.lokumai` (override: `LOKUMAI_HOME`)
-- RAG store: `~/.lokumai/rag` (override: `LOKUMAI_RAG_DIR`)
-- LoRA artifacts: `~/.lokumai/lora_data` (override: `LOKUMAI_LORA_DIR`)
-- Chat DB: `~/.lokumai/app.db` (override: `LOKUMAI_CHAT_DB`)
+- Base: `~/.lokumf` (override: `LOKUMF_HOME`)
+- RAG store: `~/.lokumf/rag` (override: `LOKUMF_RAG_DIR`)
+- LoRA artifacts: `~/.lokumf/lora_data` (override: `LOKUMF_LORA_DIR`)
+- Chat DB: `~/.lokumf/app.db` (override: `LOKUMF_CHAT_DB`)
 
 These path utilities live in `lokum_engine.paths`.
 

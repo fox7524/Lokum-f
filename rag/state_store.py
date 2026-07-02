@@ -30,7 +30,7 @@ def content_hash_for_path(path: str, size: int | None = None) -> str | None:
     if ext == ".zim":
         return None
 
-    raw_max = (os.environ.get("LOKUMAI_RAG_CONTENT_HASH_MAX_BYTES") or "").strip()
+    raw_max = (os.environ.get("LOKUMF_RAG_CONTENT_HASH_MAX_BYTES") or "").strip()
     max_bytes = 50 * 1024 * 1024
     if raw_max:
         try:

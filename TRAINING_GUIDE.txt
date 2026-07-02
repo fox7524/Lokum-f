@@ -17,8 +17,8 @@ B) Open Dev Mode (right sidebar)
 3) Click “Dev Mode” again anytime to show/hide the right Dev sidebar.
 
 Dev password note (local-only):
-- The app stores/generates a dev password on your machine (default: ~/.lokumai/dev_password.txt)
-- Or set it explicitly via env var: LOKUMAI_DEV_PASSWORD
+- The app stores/generates a dev password on your machine (default: ~/.lokumf/dev_password.txt)
+- Or set it explicitly via env var: LOKUMF_DEV_PASSWORD
 
 C) RAG in 60 seconds
 1) Dev sidebar → “RAG Indexer”
@@ -59,10 +59,10 @@ Tip (RAM safety):
 - Unload the model before heavy RAG indexing or training to free memory.
 
 E) File locations you should know
-- Chat history DB (private): ~/.lokumai/app.db
-- Fine-tune dataset DB (only if you choose SQLite dataset): ~/.lokumai/lora_data/dataset.db
-- LoRA working folder (exports + configs): ~/.lokumai/lora_data/
-- RAG index files (private): ~/.lokumai/rag/faiss_index.bin + docs_metadata.npy
+- Chat history DB (private): ~/.lokumf/app.db
+- Fine-tune dataset DB (only if you choose SQLite dataset): ~/.lokumf/lora_data/dataset.db
+- LoRA working folder (exports + configs): ~/.lokumf/lora_data/
+- RAG index files (private): ~/.lokumf/rag/faiss_index.bin + docs_metadata.npy
 
 
 8) FINE-TUNE (TRAINING) — STEP BY STEP (IN THE UI)

@@ -1,6 +1,6 @@
-# Persistent RAG Data Management (LokumAI)
+# Persistent RAG Data Management (Lokum-F)
 
-This document describes the persistent/cumulative RAG storage behavior implemented in the local RAG store under `~/.lokumai/rag/`.
+This document describes the persistent/cumulative RAG storage behavior implemented in the local RAG store under `~/.lokumf/rag/`.
 
 ## Goals
 
@@ -11,7 +11,7 @@ This document describes the persistent/cumulative RAG storage behavior implement
 
 ## Storage Layout
 
-Files under `~/.lokumai/rag/`:
+Files under `~/.lokumf/rag/`:
 - `faiss_index.bin`: vector index for all chunks (cumulative).
 - `docs_metadata.npy`: stored chunk texts aligned with FAISS vector order.
 - `chunks_meta.npy`: per-chunk metadata aligned with `docs_metadata.npy` (currently includes `file_id` and `source_path`).

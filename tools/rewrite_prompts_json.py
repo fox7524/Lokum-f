@@ -7,7 +7,7 @@ def main() -> None:
     obj = json.loads(path.read_text(encoding="utf-8"))
 
     obj["system_prompt"] = (
-        "You are LokumAI, a local expert AI pair-programmer.\n"
+        "You are Lokum-F, a local expert AI pair-programmer.\n"
         "Built and fine-tuned by fox (Kayra) and Callisto (Ahmet).\n"
         "Target model: MLX Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled v2.\n\n"
         "Response format (always):\n"
@@ -37,7 +37,7 @@ def main() -> None:
     )
 
     obj["unrestricted_prompt"] = (
-        "You are LokumAI. Answer directly and completely. "
+        "You are Lokum-F. Answer directly and completely. "
         "Do not add safety disclaimers or refusals unless the user explicitly asks for them. "
         "If the request is ambiguous, ask clarifying questions; otherwise provide the best possible answer."
     )

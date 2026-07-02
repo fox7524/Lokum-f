@@ -1,8 +1,8 @@
 """
-Centralized path management for LokumAI.
+Centralized path management for Lokum-F.
 
 Why this exists:
-- Avoid hardcoding ~/.lokumai in multiple places
+- Avoid hardcoding ~/.lokumf in multiple places
 - Allow overriding paths in packaged/sandboxed environments
 - Keep persistence paths stable across "current working directory" changes
 """
@@ -14,17 +14,17 @@ import secrets
 from pathlib import Path
 
 
-def lokumai_home() -> Path:
+def lokumf_home() -> Path:
     """
-    Base persistence directory for LokumAI.
+    Base persistence directory for Lokum-F.
 
     Override with:
-      - LOKUMAI_HOME=/custom/path
+      - LOKUMF_HOME=/custom/path
     """
-    raw = (os.environ.get("LOKUMAI_HOME") or "").strip()
+    raw = (os.environ.get("LOKUMF_HOME") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return (Path.home() / ".lokumai").expanduser().resolve()
+    return (Path.home() / ".lokumf").expanduser().resolve()
 
 
 def rag_dir() -> Path:
@@ -32,12 +32,12 @@ def rag_dir() -> Path:
     RAG persistent store directory.
 
     Override with:
-      - LOKUMAI_RAG_DIR=/custom/path
+      - LOKUMF_RAG_DIR=/custom/path
     """
-    raw = (os.environ.get("LOKUMAI_RAG_DIR") or "").strip()
+    raw = (os.environ.get("LOKUMF_RAG_DIR") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return lokumai_home() / "rag"
+    return lokumf_home() / "rag"
 
 
 def ensure_dir(p: Path) -> Path:
@@ -50,15 +50,15 @@ def lora_dir() -> Path:
     LoRA artifacts root (datasets, adapters, configs).
 
     Override with:
-      - LOKUMAI_LORA_DIR=/custom/path
+      - LOKUMF_LORA_DIR=/custom/path
 
     Default:
-      ~/.lokumai/lora_data
+      ~/.lokumf/lora_data
     """
-    raw = (os.environ.get("LOKUMAI_LORA_DIR") or "").strip()
+    raw = (os.environ.get("LOKUMF_LORA_DIR") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return lokumai_home() / "lora_data"
+    return lokumf_home() / "lora_data"
 
 
 def chat_db_path() -> Path:
@@ -66,12 +66,12 @@ def chat_db_path() -> Path:
     Default chat history DB path.
 
     Override with:
-      - LOKUMAI_CHAT_DB=/custom/path/app.db
+      - LOKUMF_CHAT_DB=/custom/path/app.db
     """
-    raw = (os.environ.get("LOKUMAI_CHAT_DB") or "").strip()
+    raw = (os.environ.get("LOKUMF_CHAT_DB") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return lokumai_home() / "app.db"
+    return lokumf_home() / "app.db"
 
 
 def dev_password_file() -> Path:
@@ -79,12 +79,12 @@ def dev_password_file() -> Path:
     Dev password storage file (local-only).
 
     Override with:
-      - LOKUMAI_DEV_PASSWORD_FILE=/custom/path/dev_password.txt
+      - LOKUMF_DEV_PASSWORD_FILE=/custom/path/dev_password.txt
     """
-    raw = (os.environ.get("LOKUMAI_DEV_PASSWORD_FILE") or "").strip()
+    raw = (os.environ.get("LOKUMF_DEV_PASSWORD_FILE") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return lokumai_home() / "dev_password.txt"
+    return lokumf_home() / "dev_password.txt"
 
 
 def get_or_create_dev_password() -> tuple[str, bool, Path]:
@@ -92,11 +92,11 @@ def get_or_create_dev_password() -> tuple[str, bool, Path]:
     Returns: (password, generated_now, location)
 
     Priority:
-    1) env LOKUMAI_DEV_PASSWORD
+    1) env LOKUMF_DEV_PASSWORD
     2) dev_password_file() contents
     3) generate random password, write to dev_password_file()
     """
-    env_pw = (os.environ.get("LOKUMAI_DEV_PASSWORD") or "").strip()
+    env_pw = (os.environ.get("LOKUMF_DEV_PASSWORD") or "").strip()
     if env_pw:
         return env_pw, False, dev_password_file()
 

@@ -78,13 +78,13 @@ except ImportError:
     print("Warning: pytesseract not installed. Run: pip install pytesseract (also requires 'tesseract' installed on your OS)")
 
 try:
-    # Centralized path handling + override support (LOKUMAI_HOME / LOKUMAI_RAG_DIR)
+    # Centralized path handling + override support (LOKUMF_HOME / LOKUMF_RAG_DIR)
     from lokum_paths import rag_dir as _rag_dir, ensure_dir as _ensure_dir  # type: ignore
 
     DEFAULT_RAG_DIR = str(_ensure_dir(_rag_dir()))
 except Exception:
     # Fallback (kept for robustness in case lokum_paths is missing)
-    DEFAULT_RAG_DIR = os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+    DEFAULT_RAG_DIR = os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
 DEFAULT_INDEX_NAME = "faiss_index.bin"
 DEFAULT_DOCS_NAME = "docs_metadata.npy"
 DEFAULT_META_NAME = "rag_meta.json"
@@ -176,7 +176,7 @@ class RAGEngine:
         self._validate_or_quarantine_existing_store()
 
     def _select_embed_device(self) -> str:
-        val = (os.environ.get("LOKUMAI_EMBED_DEVICE") or "").strip().lower()
+        val = (os.environ.get("LOKUMF_EMBED_DEVICE") or "").strip().lower()
         if val in ("cpu", "mps"):
             return val
         try:
@@ -188,7 +188,7 @@ class RAGEngine:
         return "cpu"
 
     def _select_embed_batch_size(self, device: str) -> int:
-        raw = (os.environ.get("LOKUMAI_EMBED_BATCH") or "").strip()
+        raw = (os.environ.get("LOKUMF_EMBED_BATCH") or "").strip()
         if raw:
             try:
                 v = int(raw)
@@ -201,8 +201,8 @@ class RAGEngine:
         return 32
 
     def _checkpoint_policy(self) -> tuple[int, float]:
-        raw_chunks = (os.environ.get("LOKUMAI_RAG_CHECKPOINT_CHUNKS") or "").strip()
-        raw_secs = (os.environ.get("LOKUMAI_RAG_CHECKPOINT_SECS") or "").strip()
+        raw_chunks = (os.environ.get("LOKUMF_RAG_CHECKPOINT_CHUNKS") or "").strip()
+        raw_secs = (os.environ.get("LOKUMF_RAG_CHECKPOINT_SECS") or "").strip()
         chunks_default = 20000 if getattr(self, "embed_device", "cpu") == "mps" else 5000
         secs_default = 120.0 if getattr(self, "embed_device", "cpu") == "mps" else 30.0
         chunks = chunks_default

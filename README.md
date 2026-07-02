@@ -1,4 +1,4 @@
-# LokumAI — Local AI Chat Studio
+# Lokum-F — Local AI Chat Studio
 
 <p align="center">
   <strong>A commercial-grade, local-first AI desktop app for macOS.</strong><br/>
@@ -16,7 +16,7 @@
 
 ## Overview
 
-LokumAI is a **desktop-first AI chat studio** that runs fully on your machine:
+Lokum-F is a **desktop-first AI chat studio** that runs fully on your machine:
 - A polished **chat UI** with streaming responses
 - **RAG** (Retrieval-Augmented Generation) over your local files with persistent storage
 - Optional **MLX LoRA** fine-tuning with a safe dataset pipeline (including ChatML-aware presplitting)
@@ -89,19 +89,19 @@ Wait until the UI shows: `Service: ready`.
 ### Environment variables (advanced)
 
 #### Storage (local-first)
-- `LOKUMAI_HOME` — base app data folder (default: `~/.lokumai`)
-- `LOKUMAI_RAG_DIR` — RAG store directory (default: `~/.lokumai/rag`)
-- `LOKUMAI_LORA_DIR` — LoRA artifacts directory (default: `~/.lokumai/lora_data`)
-- `LOKUMAI_CHAT_DB` — chat history DB path (default: `~/.lokumai/app.db`)
+- `LOKUMF_HOME` — base app data folder (default: `~/.lokumf`)
+- `LOKUMF_RAG_DIR` — RAG store directory (default: `~/.lokumf/rag`)
+- `LOKUMF_LORA_DIR` — LoRA artifacts directory (default: `~/.lokumf/lora_data`)
+- `LOKUMF_CHAT_DB` — chat history DB path (default: `~/.lokumf/app.db`)
 
 #### Dev Mode password (no leaks)
-- `LOKUMAI_DEV_PASSWORD` — set your own password
-- otherwise the app stores/uses `~/.lokumai/dev_password.txt`
+- `LOKUMF_DEV_PASSWORD` — set your own password
+- otherwise the app stores/uses `~/.lokumf/dev_password.txt`
 
 #### Fine-tune memory shaping
-- `LOKUMAI_FT_PRESPLIT=1` — enable presplitting (recommended)
-- `LOKUMAI_FT_PRESPLIT_CHARS_PER_TOKEN` (default `4.0`) — lower = more aggressive split
-- `LOKUMAI_FT_CLEAR_CACHE_THRESHOLD` — lower = more frequent cache clears
+- `LOKUMF_FT_PRESPLIT=1` — enable presplitting (recommended)
+- `LOKUMF_FT_PRESPLIT_CHARS_PER_TOKEN` (default `4.0`) — lower = more aggressive split
+- `LOKUMF_FT_CLEAR_CACHE_THRESHOLD` — lower = more frequent cache clears
 
 ---
 
@@ -117,7 +117,7 @@ Typical files:
 - `rag_meta.json` — convenience metadata
 
 Reliability note:
-- If loading fails, LokumAI **quarantines** the store files (renames with `.corrupt.<timestamp>`) instead of silently appearing empty.
+- If loading fails, Lokum-F **quarantines** the store files (renames with `.corrupt.<timestamp>`) instead of silently appearing empty.
 
 ---
 
@@ -146,12 +146,12 @@ python3 tools/build_prompt_dataset.py
 ```
 
 Outputs (default):
-- `~/.lokumai/lora_data/train.jsonl`
-- `~/.lokumai/lora_data/valid.jsonl`
+- `~/.lokumf/lora_data/train.jsonl`
+- `~/.lokumf/lora_data/valid.jsonl`
 
 Change dataset size:
 ```bash
-LOKUMAI_PROMPT_DATASET_SIZE=20000 python3 tools/build_prompt_dataset.py
+LOKUMF_PROMPT_DATASET_SIZE=20000 python3 tools/build_prompt_dataset.py
 ```
 
 ---
@@ -169,7 +169,7 @@ Core modules:
 
 ## Security & privacy
 
-- The app is **local-first**: chats, RAG, and LoRA artifacts are stored under `~/.lokumai/` by default.
+- The app is **local-first**: chats, RAG, and LoRA artifacts are stored under `~/.lokumf/` by default.
 - Repo `.gitignore` is configured to ignore sensitive/large artifacts (DBs, datasets, adapters, binaries).
 - See internal notes: [`INTERNAL_SECURITY.md`](./INTERNAL_SECURITY.md)
 

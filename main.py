@@ -1,9 +1,9 @@
 """
-LokumAI Studio - Main Application Entry Point
+Lokum-F Studio - Main Application Entry Point
 
 ARCHITECTURE OVERVIEW:
 ======================
-LokumAI Studio is a dual-mode AI coding assistant with two distinct interfaces:
+Lokum-F Studio is a dual-mode AI coding assistant with two distinct interfaces:
 
 1. USER MODE (default):
    - Clean, minimal interface for chatting with the AI
@@ -68,6 +68,13 @@ import sqlite3
 import tempfile
 import zipfile
 import urllib.request
+import threading
+import sounddevice as sd
+import numpy as np
+try:
+    import mlx_whisper
+except ImportError:
+    mlx_whisper = None
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QTextEdit, QLineEdit,
     QPushButton, QHBoxLayout, QLabel, QSplitter, QDialog,
@@ -172,7 +179,7 @@ except Exception as e:
     INGEST_IMPORT_ERROR = str(e)
 
 # Application version and dev mode password
-VERSION = "LokumAI"
+VERSION = "Lokum-F"
 try:
     from lokum_paths import get_or_create_dev_password as _get_or_create_dev_password  # type: ignore
 except Exception:
@@ -181,7 +188,7 @@ except Exception:
 if callable(_get_or_create_dev_password):
     DEV_MODE_PASSWORD, _DEV_PASSWORD_GENERATED, _DEV_PASSWORD_PATH = _get_or_create_dev_password()
 else:
-    DEV_MODE_PASSWORD = os.environ.get("LOKUMAI_DEV_PASSWORD", "lokum123")
+    DEV_MODE_PASSWORD = os.environ.get("LOKUMF_DEV_PASSWORD", "lokum123")
     _DEV_PASSWORD_GENERATED = False
     _DEV_PASSWORD_PATH = ""
 
@@ -203,6 +210,47 @@ def _lora_base_dir() -> str:
 # ---------------------------------------------------------
 # WORKER THREADS (Background Processing)
 # ---------------------------------------------------------
+
+class MicWorker(QThread):
+    transcription_done = pyqtSignal(str)
+    error_occurred = pyqtSignal(str)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.is_recording = False
+        self.audio_data = []
+        self.sample_rate = 16000
+
+    def run(self):
+        self.is_recording = True
+        self.audio_data = []
+        try:
+            with sd.InputStream(samplerate=self.sample_rate, channels=1, dtype='float32') as stream:
+                while self.is_recording:
+                    data, overflowed = stream.read(1024)
+                    self.audio_data.append(data)
+        except Exception as e:
+            self.error_occurred.emit(f"Microphone error: {str(e)}")
+            return
+
+        if not self.audio_data:
+            self.transcription_done.emit("")
+            return
+
+        audio_np = np.concatenate(self.audio_data, axis=0).flatten()
+
+        try:
+            if mlx_whisper is None:
+                self.error_occurred.emit("mlx_whisper library not found. Run: pip install mlx-whisper")
+                return
+            result = mlx_whisper.transcribe(audio_np, path_or_hf_repo="mlx-community/whisper-base-mlx")
+            text = result.get("text", "").strip()
+            self.transcription_done.emit(text)
+        except Exception as e:
+            self.error_occurred.emit(f"Transcription error: {str(e)}")
+
+    def stop_recording(self):
+        self.is_recording = False
 
 class ModelLoaderWorker(QThread):
     loaded = pyqtSignal(object, object, str)
@@ -1301,7 +1349,7 @@ class DevPanelDialog(QWidget):
         except Exception:
             idx_folder = ""
         self.rag_chunks_lbl.setText(f"{int(chunk_count)} chunks indexed")
-        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         self.rag_index_lbl.setText(f"Store: {rag_dir}")
         self.rag_status_lbl.setText("Active" if ok else "No data")
         if not ok:
@@ -1325,7 +1373,7 @@ class DevPanelDialog(QWidget):
         self.rag_status_lbl.setText("Aborting…")
 
     def refresh_rag_status(self):
-        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         try:
             use_rag = bool(getattr(self.main_app, "use_rag", True)) if self.main_app else True
         except Exception:
@@ -1378,7 +1426,7 @@ class DevPanelDialog(QWidget):
             QMessageBox.critical(self, "Docs Indexing Error", err)
             return
         self.rag_chunks_lbl.setText(f"{int(chunk_count)} chunks indexed")
-        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         self.rag_index_lbl.setText(f"Store: {rag_dir}")
         self.rag_status_lbl.setText("Active" if ok else "No data")
         QMessageBox.information(self, "Docs Indexing Complete", f"Chunks: {int(chunk_count)}")
@@ -1400,7 +1448,7 @@ class DevPanelDialog(QWidget):
             return
 
         self._rag_reset_armed_until = 0.0
-        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         text, ok = QInputDialog.getText(self, "Confirm Reset", f"Type RESET to permanently delete:\n{rag_dir}")
         if not ok or (text or "").strip().upper() != "RESET":
             QMessageBox.information(self, "Reset Cancelled", "RAG reset cancelled.")
@@ -1409,7 +1457,7 @@ class DevPanelDialog(QWidget):
         eng.reset_database()
         self.rag_status_lbl.setText("Disabled")
         self.rag_chunks_lbl.setText("0 chunks indexed")
-        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+        rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         self.rag_index_lbl.setText(f"Store: {rag_dir}")
         QMessageBox.information(self, "Reset Complete", "RAG index has been reset.")
     
@@ -1643,19 +1691,19 @@ class DevPanelDialog(QWidget):
                         continue
                     cfg = os.path.join(model_path, "config.json")
                     tok = os.path.join(model_path, "tokenizer.json")
-                    if not (os.path.isfile(cfg) or os.path.isfile(tok)):
-                        if "mlx" not in model.lower() and "qwen" not in model.lower():
-                            continue
+                    
                     try:
                         has_weights = any(
-                            fn.endswith((".safetensors", ".npz"))
+                            fn.endswith((".safetensors", ".npz", ".gguf", ".bin"))
                             for fn in os.listdir(model_path)
                             if os.path.isfile(os.path.join(model_path, fn))
                         )
                     except Exception:
                         has_weights = True
+                        
                     if not has_weights:
                         continue
+                        
                     found.append(model_path)
         except Exception:
             return found
@@ -1995,12 +2043,12 @@ class DevPanelDialog(QWidget):
             steps_per_eval = int(self.ft_steps_per_eval.value()) if hasattr(self, "ft_steps_per_eval") else 200
             val_batches = int(self.ft_val_batches.value()) if hasattr(self, "ft_val_batches") else 1
             clear_thr = float(self.ft_clear_cache_thr.value()) if hasattr(self, "ft_clear_cache_thr") else 2.0
-            os.environ["LOKUMAI_FT_MAX_SEQ_LENGTH"] = str(max_seq)
-            os.environ["LOKUMAI_FT_STEPS_PER_EVAL"] = str(steps_per_eval)
-            os.environ["LOKUMAI_FT_VAL_BATCHES"] = str(val_batches)
-            os.environ["LOKUMAI_FT_TEST_BATCHES"] = str(val_batches)
-            os.environ["LOKUMAI_FT_CLEAR_CACHE_THRESHOLD"] = str(clear_thr)
-            os.environ["LOKUMAI_FT_PRESPLIT"] = "1" if bool(getattr(self, "ft_presplit", None) and self.ft_presplit.isChecked()) else "0"
+            os.environ["LOKUMF_FT_MAX_SEQ_LENGTH"] = str(max_seq)
+            os.environ["LOKUMF_FT_STEPS_PER_EVAL"] = str(steps_per_eval)
+            os.environ["LOKUMF_FT_VAL_BATCHES"] = str(val_batches)
+            os.environ["LOKUMF_FT_TEST_BATCHES"] = str(val_batches)
+            os.environ["LOKUMF_FT_CLEAR_CACHE_THRESHOLD"] = str(clear_thr)
+            os.environ["LOKUMF_FT_PRESPLIT"] = "1" if bool(getattr(self, "ft_presplit", None) and self.ft_presplit.isChecked()) else "0"
         except Exception:
             pass
 
@@ -2045,7 +2093,7 @@ class DevPanelDialog(QWidget):
                 self._ft_post_validate_cfg = cfg_path
                 self._ft_model_path_used = model_path
                 try:
-                    if os.environ.get("LOKUMAI_FT_PRESPLIT", "1") != "0":
+                    if os.environ.get("LOKUMF_FT_PRESPLIT", "1") != "0":
                         info = eng.presplit_dataset(data_dir, max_seq, batch)
                         self.train_log.appendPlainText(
                             f"[presplit] train_changed={int(info.get('train_changed', 0))} valid_changed={int(info.get('valid_changed', 0))}"
@@ -2694,7 +2742,7 @@ class DevPanelDialog(QWidget):
             if self.main_app:
                 self.main_app.unrestricted_mode = True
                 self.main_app.system_prompt = (
-                    "You are LokumAI, a helpful assistant. Answer directly without asking clarifying questions.\n\n"
+                    "You are Lokum-F, a helpful assistant. Answer directly without asking clarifying questions.\n\n"
                     "Output format rules:\n"
                     "- Put your private reasoning in <think>...</think>.\n"
                     "- After </think>, output only the final answer for the user.\n"
@@ -2726,7 +2774,7 @@ class ChatbotGUI(QWidget):
         self.dev_mode_active = False
         self.dev_sidebar_shown = False
         self.dev_dialog = None
-        self._settings = QSettings("LokumAI", "LokumAIStudio")
+        self._settings = QSettings("Lokum-F", "Lokum-FStudio")
         
         # Engines (lazy-init to avoid loading embedding models unless needed)
         self.rag_engine = None
@@ -2761,6 +2809,7 @@ class ChatbotGUI(QWidget):
         self._last_context_prompt = ""
         self._final_worker = None
         self._final_pending = None
+        self.mic_worker = None
 
         self.init_ui()
         try:
@@ -2807,7 +2856,7 @@ class ChatbotGUI(QWidget):
             "Dev Mode password was generated on this machine.\n\n"
             f"Password:\n{DEV_MODE_PASSWORD}\n\n"
             + (f"Saved to:\n{loc}\n\n" if loc else "")
-            + "Tip: You can override with env var LOKUMAI_DEV_PASSWORD."
+            + "Tip: You can override with env var LOKUMF_DEV_PASSWORD."
         )
         try:
             QMessageBox.information(self, "Dev Mode Password", msg)
@@ -2817,7 +2866,7 @@ class ChatbotGUI(QWidget):
     def _db_path(self) -> str:
         if self._db_path_override:
             return self._db_path_override
-        # Default DB lives in ~/.lokumai to avoid committing private chats into git.
+        # Default DB lives in ~/.lokumf to avoid committing private chats into git.
         try:
             from lokum_paths import chat_db_path as _chat_db_path, ensure_dir as _ensure_dir  # type: ignore
 
@@ -2830,7 +2879,7 @@ class ChatbotGUI(QWidget):
     def _migrate_local_repo_db_if_needed(self) -> None:
         """
         One-time migration:
-        - If the old repo-local app.db exists and the new ~/.lokumai/app.db does not,
+        - If the old repo-local app.db exists and the new ~/.lokumf/app.db does not,
           move it so the user keeps chat history.
         """
         try:
@@ -2862,7 +2911,7 @@ class ChatbotGUI(QWidget):
     def _migrate_local_repo_lora_if_needed(self) -> None:
         """
         One-time migration for LoRA artifacts:
-        Move repo-local ./lora_data into ~/.lokumai/lora_data (default) so:
+        Move repo-local ./lora_data into ~/.lokumf/lora_data (default) so:
         - git stays clean
         - you avoid 100MB+ file push issues
         """
@@ -3152,7 +3201,7 @@ class ChatbotGUI(QWidget):
             self.rag_engine = None
             return None
         try:
-            rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumai", "rag")
+            rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
             self.rag_engine = RAGEngine(storage_dir=rag_dir)
             try:
                 self.rag_engine_error = ""
@@ -3203,9 +3252,9 @@ class ChatbotGUI(QWidget):
         """
         prompts_path = os.path.join(os.path.dirname(__file__), "prompts.json")
         default_prompts = {
-            "system_prompt": "You are LokumAI, a local expert AI pair-programmer.\nYour core rule is: **ASK BEFORE ACTING**.\n\nBefore writing any code or providing a solution, you MUST:\n1. List EVERY unclear point or assumption in the user's request.\n2. Ask the user to clarify these points one by one.\n3. DO NOT write a single line of code until all questions are answered and the requirements are 100% clear.\n\nStyle rules:\n- Write production-grade, PEP8-compliant Python code.\n- Use type hints for all functions.\n- Be concise but thorough in your explanations.",
+            "system_prompt": "You are Lokum-F, a local expert AI pair-programmer.\nYour core rule is: **ASK BEFORE ACTING**.\n\nBefore writing any code or providing a solution, you MUST:\n1. List EVERY unclear point or assumption in the user's request.\n2. Ask the user to clarify these points one by one.\n3. DO NOT write a single line of code until all questions are answered and the requirements are 100% clear.\n\nStyle rules:\n- Write production-grade, PEP8-compliant Python code.\n- Use type hints for all functions.\n- Be concise but thorough in your explanations.",
             "user_prompt": "You are a helpful AI assistant. Provide clear, concise, and accurate responses to the user's questions. Be friendly and professional.",
-            "unrestricted_prompt": "You are LokumAI, a helpful assistant. Answer directly without asking clarifying questions.",
+            "unrestricted_prompt": "You are Lokum-F, a helpful assistant. Answer directly without asking clarifying questions.",
             "theme": "dark",
             "model_path": ""
         }
@@ -3263,7 +3312,7 @@ class ChatbotGUI(QWidget):
         
         # Header
         top_bar = QHBoxLayout()
-        logo = QLabel("LokumAI")
+        logo = QLabel("Lokum-F")
         logo.setObjectName("Logo")
         
         new_chat_btn = QPushButton("+ New")
@@ -3432,6 +3481,14 @@ class ChatbotGUI(QWidget):
         btn_rag = QPushButton("Files")
         tool_layout.addWidget(btn_rag)
         btn_rag.clicked.connect(self.open_project_file_picker)
+
+        self.mic_btn = QPushButton("🎤")
+        self.mic_btn.setFixedSize(32, 32)
+        self.mic_btn.setCursor(Qt.PointingHandCursor)
+        self.mic_btn.setObjectName("MicButton")
+        self.mic_btn.setToolTip("Hold or Click to Speak")
+        self.mic_btn.clicked.connect(self.toggle_mic)
+        tool_layout.addWidget(self.mic_btn)
 
         send_btn = QPushButton("↑")
         send_btn.setFixedSize(32, 32)
@@ -3771,6 +3828,7 @@ class ChatbotGUI(QWidget):
                 "accent2": "#4d74ff",
                 "danger": "#c62828",
                 "chip": "#e9e9ef",
+                "hover": "#e0e0e0"
             }
         else:
             colors = {
@@ -3784,6 +3842,7 @@ class ChatbotGUI(QWidget):
                 "accent2": "#9575cd",
                 "danger": "#ff4d6a",
                 "chip": "#1a1a1a",
+                "hover": "#2a2a2a"
             }
 
         self._theme_colors = dict(colors)
@@ -3972,6 +4031,20 @@ class ChatbotGUI(QWidget):
                 background-color: transparent;
                 border: 1px solid transparent;
                 color: {colors['muted']};
+            }}
+            QPushButton#MicButton {{
+                background-color: {colors['panel2']};
+                color: {colors['text']};
+                border-radius: 16px;
+                font-size: 16px;
+                padding: 0px;
+            }}
+            QPushButton#MicButton:hover {{
+                background-color: {colors['hover']};
+            }}
+            QPushButton#MicButton[recording="true"] {{
+                background-color: #ff4444;
+                color: white;
             }}
             QPushButton#StopButton {{
                 background-color: {colors['panel2']};
@@ -4506,9 +4579,9 @@ class ChatbotGUI(QWidget):
                 try:
                     from lokum_paths import dev_password_file as _dev_password_file  # type: ignore
 
-                    hint = f"\n\nHint: Check {str(_dev_password_file())} or set LOKUMAI_DEV_PASSWORD."
+                    hint = f"\n\nHint: Check {str(_dev_password_file())} or set LOKUMF_DEV_PASSWORD."
                 except Exception:
-                    hint = "\n\nHint: Set env var LOKUMAI_DEV_PASSWORD."
+                    hint = "\n\nHint: Set env var LOKUMF_DEV_PASSWORD."
                 QMessageBox.critical(self, "Access Denied", "Incorrect password for Dev Mode." + hint)
                 return
 
@@ -5108,6 +5181,52 @@ class ChatbotGUI(QWidget):
                 sb.setValue(int(sb.maximum()))
         except Exception:
             pass
+
+    def toggle_mic(self):
+        if self.mic_worker is not None and self.mic_worker.is_recording:
+            # Stop recording
+            self.mic_worker.stop_recording()
+            self.mic_btn.setProperty("recording", "false")
+            self.mic_btn.style().unpolish(self.mic_btn)
+            self.mic_btn.style().polish(self.mic_btn)
+            self.gen_status_lbl.setText("Transcribing...")
+            self.gen_status_lbl.setStyleSheet("color: #ffaa00;")
+        else:
+            # Start recording
+            self.mic_worker = MicWorker(self)
+            self.mic_worker.transcription_done.connect(self.on_transcription_done)
+            self.mic_worker.error_occurred.connect(self.on_mic_error)
+            self.mic_worker.start()
+            
+            self.mic_btn.setProperty("recording", "true")
+            self.mic_btn.style().unpolish(self.mic_btn)
+            self.mic_btn.style().polish(self.mic_btn)
+            self.gen_status_lbl.setText("Recording... Click mic again to stop.")
+            self.gen_status_lbl.setStyleSheet("color: #ff4444;")
+
+    def on_transcription_done(self, text):
+        self.mic_worker = None
+        self.gen_status_lbl.setText("")
+        self.mic_btn.setProperty("recording", "false")
+        self.mic_btn.style().unpolish(self.mic_btn)
+        self.mic_btn.style().polish(self.mic_btn)
+        
+        if text:
+            # Append to existing text or replace
+            current = self.input_field.text()
+            if current:
+                self.input_field.setText(current + " " + text)
+            else:
+                self.input_field.setText(text)
+            self.input_field.setFocus()
+
+    def on_mic_error(self, err_msg):
+        self.mic_worker = None
+        self.gen_status_lbl.setText("")
+        self.mic_btn.setProperty("recording", "false")
+        self.mic_btn.style().unpolish(self.mic_btn)
+        self.mic_btn.style().polish(self.mic_btn)
+        QMessageBox.warning(self, "Microphone Error", err_msg)
 
     def soru_sor(self):
         user_text = self.input_field.text().strip()

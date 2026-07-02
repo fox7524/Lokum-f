@@ -1,19 +1,19 @@
-# LokumAI — Technical Documentation (Architecture + GUI + RAG + Fine-tune)
+# Lokum-F — Technical Documentation (Architecture + GUI + RAG + Fine-tune)
 
-This document explains how the LokumAI app works end-to-end: architecture, GUI structure, RAG pipeline, fine-tuning pipeline, storage, and integration points. It is written to be usable for demos and technical presentations.
+This document explains how the Lokum-F app works end-to-end: architecture, GUI structure, RAG pipeline, fine-tuning pipeline, storage, and integration points. It is written to be usable for demos and technical presentations.
 
 ---
 
 ## 1) High-level architecture
 
-LokumAI is a single-process desktop application built with PyQt.
+Lokum-F is a single-process desktop application built with PyQt.
 
 Core subsystems:
 - **GUI (PyQt)**: sidebar chats + main chat view + developer tools panel.
 - **Inference (MLX / mlx_lm)**: local model loading + token streaming.
 - **RAG (FAISS + sentence-transformers)**: optional local retrieval over indexed files.
 - **Fine-tuning (MLX LoRA)**: optional LoRA training via a subprocess, logs streamed into UI.
-- **Persistence (SQLite)**: chat history stored locally (default: `~/.lokumai/app.db`).
+- **Persistence (SQLite)**: chat history stored locally (default: `~/.lokumf/app.db`).
 
 Everything runs locally on the same machine. No HTTP server is required.
 
@@ -70,7 +70,7 @@ Generation uses `mlx_lm.stream_generate(...)` in a worker thread:
 
 ## 4) Thinking vs final answer separation
 
-LokumAI separates “thinking” text from final answers using:
+Lokum-F separates “thinking” text from final answers using:
 1) **Streaming parser**: detects `<think>...</think>` / `<analysis>...</analysis>` blocks and routes them into a hidden/collapsible “Thought” section.
 2) **Finalization logic**: when the model doesn’t provide clean tags or a final answer, the app can run a short second pass to request “final answer only”.
 

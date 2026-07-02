@@ -1,4 +1,4 @@
-# LokumAI Code Audit & Fix Report
+# Lokum-F Code Audit & Fix Report
 
 This report documents issues found during a systematic code review of the repository, along with the implemented fixes and the tests that verify them.
 

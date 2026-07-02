@@ -1,5 +1,5 @@
 ---
-title: "LokumAI macOS DMG + HF Model Downloader + LM Studio Compatibility"
+title: "Lokum-F macOS DMG + HF Model Downloader + LM Studio Compatibility"
 date: "2026-05-29"
 status: draft
 owners:
@@ -11,7 +11,7 @@ owners:
 1) Ship a **macOS (Apple Silicon) .app + .dmg** so other people can install via drag-to-Applications.
 2) Keep the project **open-source** while ensuring **private + large artifacts never leak to git**.
 3) Add an **optional Hugging Face model downloader** in **User Settings**.
-4) Ensure models remain **visible to LM Studio**, even if we standardize on `~/.lokumai/models`.
+4) Ensure models remain **visible to LM Studio**, even if we standardize on `~/.lokumf/models`.
 
 Non-goals (for this iteration):
 - App Store distribution
@@ -21,9 +21,9 @@ Non-goals (for this iteration):
 # Current repo context (what exists today)
 
 - GUI: PyQt app (`main.py`)
-- RAG store: persisted under `~/.lokumai/rag` (override via env)
-- LoRA datasets/adapters: moved to `~/.lokumai/lora_data` by default
-- Dev Mode password: local-only via `~/.lokumai/dev_password.txt` (or env)
+- RAG store: persisted under `~/.lokumf/rag` (override via env)
+- LoRA datasets/adapters: moved to `~/.lokumf/lora_data` by default
+- Dev Mode password: local-only via `~/.lokumf/dev_password.txt` (or env)
 - `.gitignore` updated to ignore DBs, large binaries, lora artifacts, and internal docs
 
 # Proposed architecture
@@ -33,11 +33,11 @@ Non-goals (for this iteration):
 **Approach:** PyInstaller → `.app`, then a DMG wrapper for distribution.
 
 ### Outputs
-- `dist/LokumAI.app` (arm64)
-- `dist/LokumAI-macos-arm64.dmg`
+- `dist/Lokum-F.app` (arm64)
+- `dist/Lokum-F-macos-arm64.dmg`
 
 ### DMG contents
-- `LokumAI.app`
+- `Lokum-F.app`
 - `/Applications` symlink
 - small `README` / `First Run` note (Gatekeeper + LM Studio compatibility)
 
@@ -51,17 +51,17 @@ Phase 2 (optional): **signed + notarized**
 
 ## 2) Storage conventions (privacy + git hygiene)
 
-Default base folder: `~/.lokumai` (override: `LOKUMAI_HOME`)
+Default base folder: `~/.lokumf` (override: `LOKUMF_HOME`)
 
 ### Paths
-- Chats DB: `~/.lokumai/app.db` (override: `LOKUMAI_CHAT_DB`)
-- RAG store: `~/.lokumai/rag` (override: `LOKUMAI_RAG_DIR`)
-- LoRA artifacts: `~/.lokumai/lora_data` (override: `LOKUMAI_LORA_DIR`)
-- Models: `~/.lokumai/models` (new; override: `LOKUMAI_MODELS_DIR`)
+- Chats DB: `~/.lokumf/app.db` (override: `LOKUMF_CHAT_DB`)
+- RAG store: `~/.lokumf/rag` (override: `LOKUMF_RAG_DIR`)
+- LoRA artifacts: `~/.lokumf/lora_data` (override: `LOKUMF_LORA_DIR`)
+- Models: `~/.lokumf/models` (new; override: `LOKUMF_MODELS_DIR`)
 
 ### Migration rules (one-time)
 On app start:
-- If repo-local `./app.db` exists and `~/.lokumai/app.db` does not → migrate.
+- If repo-local `./app.db` exists and `~/.lokumf/app.db` does not → migrate.
 - If repo-local `./lora_data` exists → migrate selected subfolders + top-level train/valid.
 
 No background deletion: original files are preserved whenever migration cannot safely move.
@@ -74,7 +74,7 @@ Add a Settings section:
 UI fields:
 - `Repo ID` (e.g. `org/model`)
 - `Revision` (optional)
-- `Destination` (read-only default): `~/.lokumai/models/<repo-id>/<revision-or-main>/`
+- `Destination` (read-only default): `~/.lokumf/models/<repo-id>/<revision-or-main>/`
 - Optional `HF Token` input (NOT persisted to disk)
 Actions:
 - Download (with progress)
@@ -90,9 +90,9 @@ Security:
 
 ### 3.2 LM Studio compatibility (visibility)
 
-Requirement: models downloaded to `~/.lokumai/models` should still be visible in LM Studio.
+Requirement: models downloaded to `~/.lokumf/models` should still be visible in LM Studio.
 
-**Recommended approach:** symlink `~/.lmstudio/models -> ~/.lokumai/models`
+**Recommended approach:** symlink `~/.lmstudio/models -> ~/.lokumf/models`
 
 UI section in Settings:
 - Toggle (default ON): “Keep models visible in LM Studio”
@@ -101,7 +101,7 @@ UI section in Settings:
 
 Symlink setup flow (with dialogs):
 1) Detect:
-   - if `~/.lmstudio/models` is already a symlink to `~/.lokumai/models` → show “Already configured”.
+   - if `~/.lmstudio/models` is already a symlink to `~/.lokumf/models` → show “Already configured”.
    - if `~/.lmstudio/models` exists as a directory:
      - confirm with user
      - backup to `~/.lmstudio/models.bak-YYYYMMDD-HHMMSS`
@@ -131,7 +131,7 @@ Guardrails:
 # Testing plan
 
 Unit tests (non-GUI):
-- Path resolution for `~/.lokumai/models` + overrides
+- Path resolution for `~/.lokumf/models` + overrides
 - Symlink flow: detection + intended operations (dry-run unit tests)
 - Downloader: validate inputs; mock download call
 
@@ -142,7 +142,7 @@ Manual smoke test:
 
 # Rollout checklist
 
-- [ ] Add `LOKUMAI_MODELS_DIR` support in `lokum_paths.py`
+- [ ] Add `LOKUMF_MODELS_DIR` support in `lokum_paths.py`
 - [ ] Add Settings UI: HF downloader + LM Studio symlink buttons
 - [ ] Add packaging scripts: PyInstaller spec + DMG creation script
 - [ ] Document first-run + Gatekeeper instructions

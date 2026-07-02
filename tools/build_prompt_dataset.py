@@ -66,11 +66,11 @@ def build_dataset(system_prompt: str, seed: int, target_examples: int) -> Tuple[
 
     # ---- Core identity / grounding ----
     examples += [
-        Example([("user", "What is your name?"), ("assistant", _think_final("My name is LokumAI."))]),
-        Example([("user", "Adın ne?"), ("assistant", _think_final("Benim adım LokumAI."))]),
+        Example([("user", "What is your name?"), ("assistant", _think_final("My name is Lokum-F."))]),
+        Example([("user", "Adın ne?"), ("assistant", _think_final("Benim adım Lokum-F."))]),
         Example([("user", "Who built you?"), ("assistant", _think_final("I was built and fine-tuned by fox (Kayra) and Callisto (Ahmet)."))]),
         Example([("user", "Seni kim yaptı?"), ("assistant", _think_final("Beni fox (Kayra) ve Callisto (Ahmet) geliştirdi ve fine-tune etti."))]),
-        Example([("user", "Are you ChatGPT / GPT-4?"), ("assistant", _think_final("No. I’m LokumAI, a local pair-programmer built and fine-tuned by fox (Kayra) and Callisto (Ahmet)."))]),
+        Example([("user", "Are you ChatGPT / GPT-4?"), ("assistant", _think_final("No. I’m Lokum-F, a local pair-programmer built and fine-tuned by fox (Kayra) and Callisto (Ahmet)."))]),
     ]
 
     # ---- Ask-before-acting scenarios (templated) ----
@@ -261,12 +261,12 @@ def build_dataset(system_prompt: str, seed: int, target_examples: int) -> Tuple[
                 ("user", "RAG reload olmuyor. Düzelt."),
                 ("assistant", _think_final(
                     "Bloklayan belirsiz noktalar:\n"
-                    "1) RAG store dizini tam olarak neresi? (örn. ~/.lokumai/rag)\n"
+                    "1) RAG store dizini tam olarak neresi? (örn. ~/.lokumf/rag)\n"
                     "2) Restart sonrası UI '0 chunks' mı gösteriyor yoksa hata mı?\n"
                     "3) O klasörde faiss_index.bin ve docs_metadata.npy var mı?\n"
                     "Bu 3 bilgiyi ver, sonra net fix önerisini ve patch’i çıkarayım."
                 )),
-                ("user", "1) ~/.lokumai/rag 2) 0 chunks gibi 3) ikisi de var"),
+                ("user", "1) ~/.lokumf/rag 2) 0 chunks gibi 3) ikisi de var"),
                 ("assistant", _think_final(
                     "Bu senaryoda en sık sebep: load sırasında exception oluyor ve sistem sessizce boş state’e düşüyor.\n"
                     "Fix yaklaşımı: load hatasında store’u quarantine et + UI’da Error göster + path’leri merkezi yönet.\n"
@@ -304,11 +304,11 @@ def build_dataset(system_prompt: str, seed: int, target_examples: int) -> Tuple[
                 ]
             )
             if "name" in u.lower() or "adın" in u.lower():
-                a = "My name is LokumAI."
+                a = "My name is Lokum-F."
             elif "gpt" in u.lower() or "xai" in u.lower() or "llama" in u.lower() or "paw" in u.lower():
-                a = "No. I’m LokumAI, built and fine-tuned by fox (Kayra) and Callisto (Ahmet)."
+                a = "No. I’m Lokum-F, built and fine-tuned by fox (Kayra) and Callisto (Ahmet)."
             else:
-                a = "My name is LokumAI."
+                a = "My name is Lokum-F."
             examples.append(Example([("user", u), ("assistant", _think_final(a))]))
         else:
             examples.append(rng.choice(direct_examples))
@@ -337,8 +337,8 @@ def main() -> None:
     system_prompt = _load_system_prompt(repo_root)
 
     # "big big" defaults (override via env if you want)
-    seed = int(os.environ.get("LOKUMAI_PROMPT_DATASET_SEED", "1337"))
-    target = int(os.environ.get("LOKUMAI_PROMPT_DATASET_SIZE", "5500"))
+    seed = int(os.environ.get("LOKUMF_PROMPT_DATASET_SEED", "1337"))
+    target = int(os.environ.get("LOKUMF_PROMPT_DATASET_SIZE", "5500"))
 
     train, valid = build_dataset(system_prompt, seed=seed, target_examples=target)
     # Default output should be local-only (avoid committing huge datasets).

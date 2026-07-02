@@ -53,7 +53,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lokum-engine"
 version = "0.1.0"
-description = "LokumAI engines: RAG + MLX LoRA fine-tuning utilities"
+description = "Lokum-F engines: RAG + MLX LoRA fine-tuning utilities"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -92,7 +92,7 @@ Minimal library README:
 ```md
 # lokum-engine
 
-LokumAI engines packaged as a Python library:
+Lokum-F engines packaged as a Python library:
 - RAG (FAISS + sentence-transformers)
 - Fine-tuning runner (MLX LoRA) + ChatML-safe presplitting
 
@@ -150,7 +150,7 @@ Copy logic from the current repo’s `lokum_paths.py`, but:
 
 Required API (minimum):
 ```python
-def lokumai_home() -> Path: ...
+def lokumf_home() -> Path: ...
 def rag_dir() -> Path: ...
 def lora_dir() -> Path: ...
 def models_dir() -> Path: ...
@@ -161,13 +161,13 @@ def get_or_create_dev_password() -> tuple[str, bool, Path]: ...
 ```
 
 Env vars (supported):
-- `LOKUMAI_HOME`
-- `LOKUMAI_RAG_DIR`
-- `LOKUMAI_LORA_DIR`
-- `LOKUMAI_MODELS_DIR`
-- `LOKUMAI_CHAT_DB`
-- `LOKUMAI_DEV_PASSWORD`
-- `LOKUMAI_DEV_PASSWORD_FILE`
+- `LOKUMF_HOME`
+- `LOKUMF_RAG_DIR`
+- `LOKUMF_LORA_DIR`
+- `LOKUMF_MODELS_DIR`
+- `LOKUMF_CHAT_DB`
+- `LOKUMF_DEV_PASSWORD`
+- `LOKUMF_DEV_PASSWORD_FILE`
 
 - [ ] **Step 2: Add unit test `lokum-engine/tests/test_paths.py`**
 
@@ -176,16 +176,16 @@ import os
 import unittest
 from pathlib import Path
 
-from lokum_engine.paths import lokumai_home, rag_dir, lora_dir, models_dir
+from lokum_engine.paths import lokumf_home, rag_dir, lora_dir, models_dir
 
 
 class TestPaths(unittest.TestCase):
     def test_overrides(self):
-        os.environ["LOKUMAI_HOME"] = "/tmp/lokumai_home_test"
-        self.assertEqual(str(lokumai_home()), "/tmp/lokumai_home_test")
-        self.assertEqual(str(rag_dir()), "/tmp/lokumai_home_test/rag")
-        self.assertEqual(str(lora_dir()), "/tmp/lokumai_home_test/lora_data")
-        self.assertEqual(str(models_dir()), "/tmp/lokumai_home_test/models")
+        os.environ["LOKUMF_HOME"] = "/tmp/lokumf_home_test"
+        self.assertEqual(str(lokumf_home()), "/tmp/lokumf_home_test")
+        self.assertEqual(str(rag_dir()), "/tmp/lokumf_home_test/rag")
+        self.assertEqual(str(lora_dir()), "/tmp/lokumf_home_test/lora_data")
+        self.assertEqual(str(models_dir()), "/tmp/lokumf_home_test/models")
 ```
 
 - [ ] **Step 3: Run tests**

@@ -13,7 +13,7 @@ from finetune_engine import _presplit_jsonl_file
 class TestFinetunePresplitChatML(unittest.TestCase):
     def test_presplit_never_breaks_tags(self):
         # Force small limit so we actually split.
-        os.environ["LOKUMAI_FT_PRESPLIT_CHARS_PER_TOKEN"] = "1.0"
+        os.environ["LOKUMF_FT_PRESPLIT_CHARS_PER_TOKEN"] = "1.0"
 
         chatml = (
             "<|im_start|>system\nS\n<|im_end|>\n"

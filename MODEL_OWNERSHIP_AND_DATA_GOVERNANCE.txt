@@ -1,4 +1,4 @@
-MODEL OWNERSHIP & DATA GOVERNANCE (LokumAI)
+MODEL OWNERSHIP & DATA GOVERNANCE (Lokum-F)
 
 This is a practical, non-legal summary of common ownership and governance topics when you fine-tune local models and use RAG. For legal certainty, consult your own counsel.
 
