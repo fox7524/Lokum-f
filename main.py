@@ -71,10 +71,17 @@ import urllib.request
 import threading
 import sounddevice as sd
 import numpy as np
+import asyncio
 try:
     import mlx_whisper
 except ImportError:
     mlx_whisper = None
+try:
+    import edge_tts
+    HAS_EDGE_TTS = True
+except ImportError:
+    edge_tts = None
+    HAS_EDGE_TTS = False
 try:
     from PyQt5.QtWebEngineWidgets import QWebEngineView
     HAS_WEBENGINE = True
@@ -289,11 +296,58 @@ class MicWorker(QThread):
             if mlx_whisper is None:
                 self.error_occurred.emit("mlx_whisper library not found. Run: pip install mlx-whisper")
                 return
-            result = mlx_whisper.transcribe(audio_np, path_or_hf_repo="mlx-community/whisper-large-v3-turbo")
+            result = mlx_whisper.transcribe(
+                audio_np, 
+                path_or_hf_repo="mlx-community/whisper-large-v3-turbo",
+                language="tr"
+            )
             text = result.get("text", "").strip()
             self.transcription_done.emit(text)
         except Exception as e:
             self.error_occurred.emit(f"Transcription error: {str(e)}")
+
+
+class TTSWorker(QThread):
+    finished = pyqtSignal(bool, str)
+
+    def __init__(self, text: str, voice: str = "tr-TR-AhmetNeural"):
+        super().__init__()
+        self.text = text
+        self.voice = voice
+
+    def run(self):
+        if not self.text.strip():
+            self.finished.emit(False, "Empty text")
+            return
+
+        try:
+            # Create a temp file for the audio
+            with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
+                temp_path = tmp.name
+
+            if HAS_EDGE_TTS:
+                # Use edge-tts (High quality, free)
+                async def generate_audio():
+                    communicate = edge_tts.Communicate(self.text, self.voice)
+                    await communicate.save(temp_path)
+
+                asyncio.run(generate_audio())
+            else:
+                # Fallback to macOS 'say' command (Offline, lower quality)
+                # 'say' doesn't support mp3 directly easily, so we use aiff then play
+                temp_path = temp_path.replace(".mp3", ".aiff")
+                subprocess.run(["say", "-v", "Cem", self.text, "-o", temp_path], check=True)
+
+            # Play the audio using native macOS 'afplay'
+            subprocess.run(["afplay", temp_path], check=True)
+            
+            # Clean up
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+                
+            self.finished.emit(True, "")
+        except Exception as e:
+            self.finished.emit(False, str(e))
 
     def stop_recording(self):
         self.is_recording = False
@@ -1519,7 +1573,7 @@ class DevPanelDialog(QWidget):
 
         c_layout.addWidget(QLabel("Preset:"), 0, 0)
         self.ft_preset = QComboBox()
-        self.ft_preset.addItems(["Safe (Recommended)", "Reccommended", "Ultra Safe (Less RAM)", "Faster (More RAM)", "Quick Test"])
+        self.ft_preset.addItems(["Safe (Recommended)", "Recommended", "Ultra Safe (Less RAM)", "Faster (More RAM)", "Quick Test", "Ultra (Highest Quality)"])
         c_layout.addWidget(self.ft_preset, 0, 1)
         
         c_layout.addWidget(QLabel("Rank:"), 1, 0)
@@ -1950,6 +2004,22 @@ class DevPanelDialog(QWidget):
             self.ft_steps_per_eval.setValue(0)
             self.ft_val_batches.setValue(0)
             self.ft_clear_cache_thr.setValue(2.0)
+            return
+        if name == "Ultra (Highest Quality)":
+            self.lora_rank.setValue(32)
+            self.lora_alpha.setValue(128)
+            self.lora_iters.setValue(1500)
+            self.lora_batch.setValue(1)
+            self.lora_layers.setValue(32)
+            self.ft_max_seq.setValue(1024)
+            self.ft_steps_per_eval.setValue(200)
+            self.ft_val_batches.setValue(2)
+            self.ft_clear_cache_thr.setValue(4.0)
+            try:
+                if hasattr(self, "ft_presplit") and self.ft_presplit is not None:
+                    self.ft_presplit.setChecked(True)
+            except Exception:
+                pass
             return
         self.lora_rank.setValue(8)
         self.lora_alpha.setValue(32)
@@ -3063,6 +3133,8 @@ class ChatbotGUI(QWidget):
         self.theme = self.prompts.get("theme", "dark")
         self.current_model_path = self.prompts.get("model_path", self.current_model_path)
         self.use_rag = bool(self.prompts.get("use_rag", True))
+        self.use_tts = bool(self.prompts.get("use_tts", False))
+        self.tts_voice = self.prompts.get("tts_voice", "tr-TR-AhmetNeural")
         self.training_active = False
         self.project_root = self.prompts.get("project_root", "")
         self._project_file_cache = None
@@ -3083,6 +3155,7 @@ class ChatbotGUI(QWidget):
         self._final_worker = None
         self._final_pending = None
         self.mic_worker = None
+        self.tts_worker = None
 
         self.init_ui()
         try:
@@ -3511,33 +3584,36 @@ class ChatbotGUI(QWidget):
 
     def load_prompts(self) -> dict:
         """
-        Load prompts from prompts.json configuration file.
-
-        PROMPTS STRUCTURE:
-        - system_prompt: Developer-only prompt (editable only in Dev Mode)
-        - user_prompt: User-facing prompt (editable in Settings by regular users)
-        - unrestricted_prompt: Used when Unrestricted Mode is enabled (Dev Mode only)
-
-        If prompts.json doesn't exist, returns default prompts and creates the file.
-
-        Returns:
-            dict with keys: system_prompt, user_prompt, unrestricted_prompt
+        Load prompts from config.json in .lokumf directory.
         """
-        prompts_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+        try:
+            from lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
+            prompts_path = str(_config_path())
+            _ensure_dir(os.path.dirname(prompts_path))
+        except Exception:
+            prompts_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+
         default_prompts = {
-            "system_prompt": "You are Lokum-F, a local expert AI pair-programmer.\nYour core rule is: **ASK BEFORE ACTING**.\n\nBefore writing any code or providing a solution, you MUST:\n1. List EVERY unclear point or assumption in the user's request.\n2. Ask the user to clarify these points one by one.\n3. DO NOT write a single line of code until all questions are answered and the requirements are 100% clear.\n\nStyle rules:\n- Write production-grade, PEP8-compliant Python code.\n- Use type hints for all functions.\n- Be concise but thorough in your explanations.",
-            "user_prompt": "You are a helpful AI assistant. Provide clear, concise, and accurate responses to the user's questions. Be friendly and professional.",
-            "unrestricted_prompt": "You are Lokum-F, a helpful assistant. Answer directly without asking clarifying questions.",
+            "system_prompt": "You are Rodion Romanovich Raskolnikov from Dostoevsky's 'Crime and Punishment'.\nAnswer questions with your unique philosophical, guilt-ridden, yet intellectual perspective.\nStyle: 19th-century Russian literature tone, analytical, slightly dark, intellectual.",
+            "user_prompt": "You are Raskolnikov. Answer as him.",
+            "unrestricted_prompt": "Answer directly as Raskolnikov.",
             "theme": "dark",
-            "model_path": ""
+            "model_path": "",
+            "use_rag": True,
+            "use_tts": False,
+            "tts_voice": "tr-TR-AhmetNeural"
         }
 
         try:
             if os.path.exists(prompts_path):
                 with open(prompts_path, 'r', encoding='utf-8') as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    # Merge with defaults to ensure all keys exist
+                    for k, v in default_prompts.items():
+                        if k not in data:
+                            data[k] = v
+                    return data
             else:
-                # Create default prompts.json if it doesn't exist
                 with open(prompts_path, 'w', encoding='utf-8') as f:
                     json.dump(default_prompts, f, indent=4)
                 return default_prompts
@@ -3545,21 +3621,30 @@ class ChatbotGUI(QWidget):
             print(f"Error loading prompts: {e}")
             return default_prompts
 
-    def save_prompts(self, prompts: dict) -> bool:
+    def save_prompts(self, prompts: dict = None) -> bool:
         """
-        Save prompts to prompts.json file.
-
-        USED BY:
-        - Dev Mode: When developer changes system_prompt or unrestricted_prompt
-        - Settings: When user changes user_prompt
-
-        Args:
-            prompts: dict with system_prompt, user_prompt, unrestricted_prompt
-
-        Returns:
-            True if successful, False otherwise
+        Save current state to config.json in .lokumf directory.
         """
-        prompts_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+        try:
+            from lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
+            prompts_path = str(_config_path())
+            _ensure_dir(os.path.dirname(prompts_path))
+        except Exception:
+            prompts_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+
+        if prompts is None:
+            # Build current state if no dict provided
+            prompts = {
+                "system_prompt": self.system_prompt,
+                "user_prompt": self.user_prompt,
+                "unrestricted_prompt": self.prompts.get("unrestricted_prompt", ""),
+                "theme": self.theme,
+                "model_path": self.current_model_path,
+                "use_rag": self.use_rag,
+                "use_tts": self.use_tts,
+                "tts_voice": self.tts_voice
+            }
+
         try:
             with open(prompts_path, 'w', encoding='utf-8') as f:
                 json.dump(prompts, f, indent=4)
@@ -3579,7 +3664,8 @@ class ChatbotGUI(QWidget):
         # ---------------- LEFT SIDEBAR (CHATS) ----------------
         self.sidebar = QFrame()
         self.sidebar.setObjectName("Sidebar")
-        self.sidebar.setMinimumWidth(140)
+        self.sidebar.setMinimumWidth(200)
+        self.sidebar.setMaximumWidth(300)
         s_layout = QVBoxLayout(self.sidebar)
         s_layout.setContentsMargins(15, 20, 15, 15)
         
@@ -3677,6 +3763,7 @@ class ChatbotGUI(QWidget):
         # ---------------- RIGHT MAIN AREA ----------------
         self.main_area = QFrame()
         self.main_area.setObjectName("MainArea")
+        self.main_area.setMinimumWidth(400)
         m_layout = QVBoxLayout(self.main_area)
         m_layout.setContentsMargins(0, 0, 0, 0)
         m_layout.setSpacing(0)
@@ -3731,6 +3818,7 @@ class ChatbotGUI(QWidget):
             self.chat_display = QWebEngineView()
             self.chat_display.page().setBackgroundColor(Qt.transparent)
             self.chat_display.setHtml(self._get_base_html())
+            self.chat_display.urlChanged.connect(self._handle_url_change)
             chat_layout.addWidget(self.chat_display)
         else:
             self.chat_display = QScrollArea()
@@ -3756,59 +3844,66 @@ class ChatbotGUI(QWidget):
         self.input_container.setObjectName("InputContainer")
         ic_layout = QVBoxLayout(self.input_container)
         ic_layout.setContentsMargins(60, 20, 60, 30)
+        ic_layout.setSpacing(10)
 
-        self.input_box = QFrame()
-        self.input_box.setObjectName("InputBox")
-        ib_layout = QVBoxLayout(self.input_box)
+        # The unified Input Bar (Text + Dynamic Button)
+        self.input_bar_frame = QFrame()
+        self.input_bar_frame.setObjectName("InputBarFrame")
+        ib_layout = QHBoxLayout(self.input_bar_frame)
+        ib_layout.setContentsMargins(12, 12, 12, 12)
+        ib_layout.setSpacing(10)
 
         self.input_field = QLineEdit()
+        self.input_field.setObjectName("ChatInputField")
         self.input_field.setPlaceholderText("Send a message to the model...")
         self.input_field.returnPressed.connect(self.soru_sor)
-        ib_layout.addWidget(self.input_field)
-
-        btm_input_bar = QHBoxLayout()
-        btm_input_bar.setContentsMargins(10, 0, 10, 5)
-
-        # Tools
+        
+        self.dynamic_action_btn = QPushButton("🎤")
+        self.dynamic_action_btn.setObjectName("DynamicActionBtn")
+        self.dynamic_action_btn.setFixedSize(36, 36)
+        self.dynamic_action_btn.setCursor(Qt.PointingHandCursor)
+        self.dynamic_action_btn.clicked.connect(self._on_dynamic_action_clicked)
+        
+        # Tools layout inside the unified bar (left side)
         tool_layout = QHBoxLayout()
         tool_layout.setSpacing(8)
-
+        
         btn_rag = QPushButton("Files")
-        tool_layout.addWidget(btn_rag)
+        btn_rag.setObjectName("ToolBtn")
+        btn_rag.setFixedSize(60, 36)
+        btn_rag.setCursor(Qt.PointingHandCursor)
         btn_rag.clicked.connect(self.open_project_file_picker)
+        tool_layout.addWidget(btn_rag)
+        
+        self.tts_toggle_btn = QPushButton("🔊" if self.use_tts else "🔇")
+        self.tts_toggle_btn.setObjectName("ToolBtn")
+        self.tts_toggle_btn.setFixedSize(36, 36)
+        self.tts_toggle_btn.setCursor(Qt.PointingHandCursor)
+        self.tts_toggle_btn.setToolTip("Toggle Text-to-Speech")
+        self.tts_toggle_btn.clicked.connect(self.toggle_tts)
+        tool_layout.addWidget(self.tts_toggle_btn)
+        
+        ib_layout.addLayout(tool_layout)
+        ib_layout.addWidget(self.input_field)
+        ib_layout.addWidget(self.dynamic_action_btn)
+        
+        ic_layout.addWidget(self.input_bar_frame)
 
-        self.mic_btn = QPushButton("🎤")
-        self.mic_btn.setFixedSize(32, 32)
-        self.mic_btn.setCursor(Qt.PointingHandCursor)
-        self.mic_btn.setObjectName("MicButton")
-        self.mic_btn.setToolTip("Hold or Click to Speak")
-        self.mic_btn.clicked.connect(self.toggle_mic)
-        tool_layout.addWidget(self.mic_btn)
-
-        send_btn = QPushButton("↑")
-        send_btn.setFixedSize(32, 32)
-        send_btn.setCursor(Qt.PointingHandCursor)
-        send_btn.clicked.connect(self.soru_sor)
-        self.send_btn = send_btn
-
-        stop_btn = QPushButton("■")
-        stop_btn.setFixedSize(32, 32)
-        stop_btn.setCursor(Qt.PointingHandCursor)
-        stop_btn.setObjectName("StopButton")
-        stop_btn.setFocusPolicy(Qt.NoFocus)
-        stop_btn.setEnabled(False)
-        stop_btn.clicked.connect(self.stop_generation)
-        self.stop_btn = stop_btn
-
-        btm_input_bar.addLayout(tool_layout)
+        # Bottom row for Status
+        btm_row = QHBoxLayout()
         self.gen_status_lbl = QLabel("")
-        btm_input_bar.addWidget(self.gen_status_lbl)
-        btm_input_bar.addStretch()
-        btm_input_bar.addWidget(stop_btn)
-        btm_input_bar.addWidget(send_btn)
-        ib_layout.addLayout(btm_input_bar)
-
-        ic_layout.addWidget(self.input_box)
+        self.gen_status_lbl.setObjectName("GenStatusLbl")
+        btm_row.addWidget(self.gen_status_lbl)
+        btm_row.addStretch()
+        
+        ic_layout.addLayout(btm_row)
+        
+        # Dummy buttons to satisfy existing references
+        self.send_btn = QPushButton()
+        self.stop_btn = QPushButton()
+        self.mic_btn = QPushButton()
+        
+        self.input_field.textChanged.connect(self._update_dynamic_btn_state)
         chat_layout.addWidget(self.input_container)
 
         self.dev_sidebar = QFrame()
@@ -3838,6 +3933,27 @@ class ChatbotGUI(QWidget):
         main_layout.addWidget(splitter)
 
         self.apply_theme(self.prompts.get("theme", "dark"))
+
+    def _update_dynamic_btn_state(self):
+        if getattr(self, "is_generating", False):
+            self.dynamic_action_btn.setText("■")
+            self.dynamic_action_btn.setToolTip("Stop Generation")
+        else:
+            if self.input_field.text().strip():
+                self.dynamic_action_btn.setText("↑")
+                self.dynamic_action_btn.setToolTip("Send Message")
+            else:
+                self.dynamic_action_btn.setText("🎤")
+                self.dynamic_action_btn.setToolTip("Hold or Click to Speak")
+
+    def _on_dynamic_action_clicked(self):
+        if getattr(self, "is_generating", False):
+            self.stop_generation()
+        else:
+            if self.input_field.text().strip():
+                self.soru_sor()
+            else:
+                self.toggle_mic()
 
     def _rebuild_chat_list(self):
         try:
@@ -3950,6 +4066,49 @@ class ChatbotGUI(QWidget):
                 w.style().unpolish(w)
                 w.style().polish(w)
                 w.update()
+
+    def _handle_url_change(self, url):
+        url_str = url.toString()
+        if url_str.startswith("speak://"):
+            import base64
+            try:
+                b64_data = url_str.split("speak://")[1]
+                # Fix padding if needed
+                missing_padding = len(b64_data) % 4
+                if missing_padding:
+                    b64_data += '=' * (4 - missing_padding)
+                text = base64.b64decode(b64_data).decode('utf-8')
+                self.speak_text(text)
+            except Exception as e:
+                print(f"TTS Bridge error: {e}")
+            
+            # Reset URL to prevent repeated calls on refresh or back
+            self.chat_display.page().runJavaScript("window.location.href = 'about:blank';")
+
+    def toggle_tts(self):
+        self.use_tts = not self.use_tts
+        self.tts_toggle_btn.setText("🔊" if self.use_tts else "🔇")
+        self.save_prompts()  # Persist setting
+
+    def speak_text(self, text: str):
+        if not self.use_tts or not text.strip():
+            return
+            
+        # Stop current speech if any
+        if self.tts_worker and self.tts_worker.isRunning():
+            self.tts_worker.terminate()
+            self.tts_worker.wait()
+            
+        # Clean text from markdown/think tags for cleaner speech
+        clean_text = re.sub(r"```[\s\S]*?```", "", text) # remove code blocks
+        clean_text = re.sub(r"<[^>]+>", "", clean_text)  # remove tags
+        clean_text = clean_text.strip()
+        
+        if not clean_text:
+            return
+            
+        self.tts_worker = TTSWorker(clean_text, self.tts_voice)
+        self.tts_worker.start()
 
     def _on_chat_list_selection_changed(self):
         it = self.chat_list.currentItem()
@@ -4392,14 +4551,47 @@ class ChatbotGUI(QWidget):
                 background-color: {colors['panel']};
             }}
             QFrame#InputContainer {{
-                background-color: {colors['panel']};
-                border-top: 1px solid {colors['border']};
+                background-color: transparent;
+                border: none;
                 padding: 10px;
             }}
-            QFrame#InputBox {{
-                background-color: {colors['bg']};
+            QFrame#InputBarFrame {{
+                background-color: {colors['panel']};
                 border: 1px solid {colors['border']};
-                border-radius: 16px;
+                border-radius: 20px;
+            }}
+            QLineEdit#ChatInputField {{
+                background-color: transparent;
+                border: none;
+                padding: 12px 8px;
+                color: {colors['text']};
+                font-size: 15px;
+            }}
+            QLineEdit#ChatInputField:focus {{
+                border: none;
+                background-color: transparent;
+            }}
+            QPushButton#DynamicActionBtn {{
+                background-color: {colors['panel2']};
+                color: {colors['text']};
+                border-radius: 18px;
+                font-size: 16px;
+                border: none;
+            }}
+            QPushButton#DynamicActionBtn:hover {{
+                background-color: {colors['hover']};
+            }}
+            QPushButton#ToolBtn {{
+                background-color: {colors['panel2']};
+                color: {colors['text']};
+                border-radius: 10px;
+                padding: 4px 16px;
+                border: none;
+                font-size: 14px;
+                font-weight: 500;
+            }}
+            QPushButton#ToolBtn:hover {{
+                background-color: {colors['hover']};
             }}
             QPushButton {{
                 background-color: {colors['panel2']};
@@ -5448,6 +5640,39 @@ class ChatbotGUI(QWidget):
                 0%, 100% {{ transform: scale(0.6); opacity: 0.4; }}
                 50% {{ transform: scale(1.1); opacity: 1; }}
             }}
+            
+            /* Message Actions */
+            .message-actions {{
+                display: flex;
+                gap: 8px;
+                margin-top: 8px;
+                opacity: 0.4;
+                transition: opacity 0.2s;
+            }}
+            .message:hover .message-actions {{
+                opacity: 1;
+            }}
+            .action-btn {{
+                background: {colors['panel']};
+                border: 1px solid {colors['border']};
+                color: {colors['text']};
+                border-radius: 6px;
+                padding: 4px 10px;
+                cursor: pointer;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                transition: all 0.2s;
+            }}
+            .action-btn:hover {{
+                background: {colors['panel2']};
+                border-color: {colors['accent']};
+                transform: translateY(-1px);
+            }}
+            .action-btn:active {{
+                transform: translateY(0);
+            }}
         </style>
         <script>
             function updateChat(htmlContent, isAtBottom) {{
@@ -5459,6 +5684,10 @@ class ChatbotGUI(QWidget):
             }}
             function scrollToBottom() {{
                 window.scrollTo(0, document.body.scrollHeight);
+            }}
+            function playVoice(text) {{
+                // Use a custom scheme to communicate with Python
+                window.location.href = "speak://" + btoa(unescape(encodeURIComponent(text)));
             }}
         </script>
         </head>
@@ -5502,10 +5731,17 @@ class ChatbotGUI(QWidget):
                     </div>
                     ''')
                 elif r == "assistant":
+                    # Escape text for JS function call
+                    raw_text_b64 = base64.b64encode(txt.encode('utf-8')).decode('utf-8')
                     html_parts.append(f'''
                     <div class="message assistant">
                         <div class="role-label">AI</div>
                         <div class="bubble">{md_html}</div>
+                        <div class="message-actions">
+                            <button class="action-btn" onclick="playVoice(decodeURIComponent(escape(window.atob('{raw_text_b64}'))))">
+                                🔊 Dinle
+                            </button>
+                        </div>
                     </div>
                     ''')
             
@@ -5522,7 +5758,11 @@ class ChatbotGUI(QWidget):
             full_content = "\n".join(html_parts)
             # Escape to base64 to pass to JS
             b64_content = base64.b64encode(full_content.encode('utf-8')).decode('utf-8')
-            js = f"updateChat(decodeURIComponent(escape(window.atob('{b64_content}'))), {str(not keep_scroll).lower()});"
+            js = f"""
+            if (typeof updateChat === 'function') {{
+                updateChat(decodeURIComponent(escape(window.atob('{b64_content}'))), {str(not keep_scroll).lower()});
+            }}
+            """
             self.chat_display.page().runJavaScript(js)
             return
 
@@ -5987,6 +6227,7 @@ class ChatbotGUI(QWidget):
         self.input_field.setDisabled(True)
         self.send_btn.setDisabled(True)
         self.stop_btn.setEnabled(True)
+        self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         
         # Prepare for assistant response (filter hidden <think>/<analysis> blocks; show only thought duration)
@@ -6396,8 +6637,10 @@ class ChatbotGUI(QWidget):
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
+        self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()
+        
         self.rag_badge.setText("RAG: OFF")
         self.rag_badge.setProperty("ragState", "off")
         self.rag_badge.style().unpolish(self.rag_badge)
@@ -6441,6 +6684,7 @@ class ChatbotGUI(QWidget):
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
+        self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()
 
@@ -6453,6 +6697,7 @@ class ChatbotGUI(QWidget):
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
+        self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         QMessageBox.critical(self, "Final Answer Error", err)
 
@@ -6474,6 +6719,7 @@ class ChatbotGUI(QWidget):
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
+        self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()
 

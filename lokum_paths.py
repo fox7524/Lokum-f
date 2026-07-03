@@ -87,6 +87,13 @@ def dev_password_file() -> Path:
     return lokumf_home() / "dev_password.txt"
 
 
+def config_path() -> Path:
+    """
+    Lokum-F Studio JSON configuration file.
+    """
+    return lokumf_home() / "config.json"
+
+
 def get_or_create_dev_password() -> tuple[str, bool, Path]:
     """
     Returns: (password, generated_now, location)

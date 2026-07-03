@@ -91,8 +91,8 @@ DEFAULT_META_NAME = "rag_meta.json"
 DEFAULT_CHUNKS_META_NAME = "chunks_meta.npy"
 DEFAULT_STATE_NAME = "rag_state.json"
 DEFAULT_STAGING_DIRNAME = "staging"
-DEFAULT_CHUNK_SIZE = 800
-DEFAULT_CHUNK_OVERLAP = 100
+DEFAULT_CHUNK_SIZE = 500
+DEFAULT_CHUNK_OVERLAP = 150
 
 # ============================================================================
 # RAG ENGINE CLASS
@@ -145,12 +145,12 @@ class RAGEngine:
 
         # Load the embedding model
         # This model is downloaded on first use (~90MB) and cached
-        # 'all-MiniLM-L6-v2' creates 384-dimensional vectors
-        # It maps any text to a point in 384D space where similar texts are close
+        # 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2' is highly optimized for Turkish and 50+ languages
+        # Creates 768-dimensional vectors with excellent semantic understanding.
         try:
-            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2', device=self.embed_device)
+            self.embedding_model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2', device=self.embed_device)
         except TypeError:
-            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+            self.embedding_model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2')
             try:
                 if hasattr(self.embedding_model, "to"):
                     self.embedding_model.to(self.embed_device)
@@ -319,6 +319,13 @@ class RAGEngine:
                 ok = False
                 problems.append("Index missing but documents/meta are not empty.")
         else:
+            try:
+                expected_dim = self.embedding_model.get_sentence_embedding_dimension()
+                if self.index.d != expected_dim:
+                    ok = False
+                    problems.append(f"Dimension mismatch. Expected {expected_dim}, got {self.index.d}.")
+            except Exception:
+                pass
             try:
                 ntotal = int(getattr(self.index, "ntotal", 0))
             except Exception:
