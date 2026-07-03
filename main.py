@@ -296,9 +296,19 @@ class MicWorker(QThread):
             if mlx_whisper is None:
                 self.error_occurred.emit("mlx_whisper library not found. Run: pip install mlx-whisper")
                 return
+            
+            # Use model from parent settings if available
+            model_size = "mlx-community/whisper-large-v3-turbo"
+            if hasattr(self.parent(), "stt_model_size"):
+                size = self.parent().stt_model_size
+                if size == "base":
+                    model_size = "mlx-community/whisper-base-mlx"
+                elif size == "small":
+                    model_size = "mlx-community/whisper-small-mlx"
+            
             result = mlx_whisper.transcribe(
                 audio_np, 
-                path_or_hf_repo="mlx-community/whisper-large-v3-turbo",
+                path_or_hf_repo=model_size,
                 language="tr"
             )
             text = result.get("text", "").strip()
@@ -2734,6 +2744,60 @@ class DevPanelDialog(QWidget):
         
         bench_box.setLayout(b_layout)
         layout.addWidget(bench_box)
+
+        # STT Settings
+        stt_box = QGroupBox("STT (Speech-to-Text) Engine")
+        stt_layout = QVBoxLayout()
+        
+        stt_desc = QLabel("Select Whisper model size for voice input. Larger is smarter but slower.")
+        stt_desc.setStyleSheet("color: #888; font-size: 12px;")
+        stt_layout.addWidget(stt_desc)
+        
+        self.stt_size_combo = QComboBox()
+        self.stt_size_combo.addItem("Large-v3-Turbo (Balanced/Recommended)", "large-v3-turbo")
+        self.stt_size_combo.addItem("Small (Fastest/Lightweight)", "small")
+        self.stt_size_combo.addItem("Base (Extremely Fast/Low Accuracy)", "base")
+        
+        # Set current selection
+        current_size = getattr(self.main_app, "stt_model_size", "large-v3-turbo")
+        idx = self.stt_size_combo.findData(current_size)
+        if idx >= 0:
+            self.stt_size_combo.setCurrentIndex(idx)
+            
+        self.stt_size_combo.currentIndexChanged.connect(self._on_stt_size_changed)
+        stt_layout.addWidget(self.stt_size_combo)
+        
+        stt_box.setLayout(stt_layout)
+        layout.addWidget(stt_box)
+
+        # TTS Settings
+        tts_box = QGroupBox("TTS (Text-to-Speech) Voice")
+        tts_layout = QVBoxLayout()
+        
+        tts_desc = QLabel("Select the voice character for the AI response.")
+        tts_desc.setStyleSheet("color: #888; font-size: 12px;")
+        tts_layout.addWidget(tts_desc)
+        
+        self.tts_voice_combo = QComboBox()
+        # Turkish Voices
+        self.tts_voice_combo.addItem("Ahmet (TR - Erkek/Tok)", "tr-TR-AhmetNeural")
+        self.tts_voice_combo.addItem("Emel (TR - Kadın/Yumuşak)", "tr-TR-EmelNeural")
+        # English Voices (Optional but good for variety)
+        self.tts_voice_combo.addItem("Guy (EN - Erkek/Ciddi)", "en-US-GuyNeural")
+        self.tts_voice_combo.addItem("Aria (EN - Kadın/Haberci)", "en-US-AriaNeural")
+        self.tts_voice_combo.addItem("Sonia (EN-GB - Kadın/Aksanlı)", "en-GB-SoniaNeural")
+        
+        # Set current selection
+        current_voice = getattr(self.main_app, "tts_voice", "tr-TR-AhmetNeural")
+        v_idx = self.tts_voice_combo.findData(current_voice)
+        if v_idx >= 0:
+            self.tts_voice_combo.setCurrentIndex(v_idx)
+            
+        self.tts_voice_combo.currentIndexChanged.connect(self._on_tts_voice_changed)
+        tts_layout.addWidget(self.tts_voice_combo)
+        
+        tts_box.setLayout(tts_layout)
+        layout.addWidget(tts_box)
         
         # Stress Test
         stress_box = QGroupBox("Stress Test (50 Generations)")
@@ -2805,6 +2869,18 @@ class DevPanelDialog(QWidget):
         layout.addStretch()
         return widget
     
+    def _on_stt_size_changed(self, index):
+        if self.main_app:
+            size = self.stt_size_combo.itemData(index)
+            self.main_app.stt_model_size = size
+            self.main_app.save_prompts() # Persist to config.json
+
+    def _on_tts_voice_changed(self, index):
+        if self.main_app:
+            voice = self.tts_voice_combo.itemData(index)
+            self.main_app.tts_voice = voice
+            self.main_app.save_prompts() # Persist to config.json
+
     def run_ast_benchmark(self):
         self.bench_result.setText("Running benchmark...")
         self.bench_result.setStyleSheet("color: #ffd04d; padding: 8px;")
@@ -3135,6 +3211,7 @@ class ChatbotGUI(QWidget):
         self.use_rag = bool(self.prompts.get("use_rag", True))
         self.use_tts = bool(self.prompts.get("use_tts", False))
         self.tts_voice = self.prompts.get("tts_voice", "tr-TR-AhmetNeural")
+        self.stt_model_size = self.prompts.get("stt_model_size", "large-v3-turbo")
         self.training_active = False
         self.project_root = self.prompts.get("project_root", "")
         self._project_file_cache = None
