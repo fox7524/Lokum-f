@@ -211,6 +211,45 @@ def _lora_base_dir() -> str:
 # WORKER THREADS (Background Processing)
 # ---------------------------------------------------------
 
+class FuseWorker(QThread):
+    finished = pyqtSignal(bool, str)
+    line = pyqtSignal(str)
+
+    def __init__(self, base_model: str, adapter_path: str, save_path: str):
+        super().__init__()
+        self.base_model = base_model
+        self.adapter_path = adapter_path
+        self.save_path = save_path
+
+    def run(self):
+        try:
+            cmd = [
+                sys.executable, "-m", "mlx_lm", "fuse",
+                "--model", self.base_model,
+                "--adapter-path", self.adapter_path,
+                "--save-path", self.save_path
+            ]
+            self.line.emit(f"Starting Fuse Process:\n{' '.join(cmd)}")
+            
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1
+            )
+            
+            for output_line in process.stdout:
+                self.line.emit(output_line.strip())
+                
+            process.wait()
+            if process.returncode == 0:
+                self.finished.emit(True, f"Model successfully fused and saved to:\n{self.save_path}")
+            else:
+                self.finished.emit(False, f"Fuse process failed with exit code {process.returncode}")
+        except Exception as e:
+            self.finished.emit(False, str(e))
+
 class MicWorker(QThread):
     transcription_done = pyqtSignal(str)
     error_occurred = pyqtSignal(str)
@@ -1465,8 +1504,10 @@ class DevPanelDialog(QWidget):
         widget = QWidget()
         layout = QVBoxLayout(widget)
         
-        # Training Config
-        config_box = QGroupBox("LoRA Training Configuration")
+        # Training Config (Collapsible / Advanced)
+        self.config_box = QGroupBox("Advanced LoRA Settings")
+        self.config_box.setCheckable(True)
+        self.config_box.setChecked(False) # Hidden by default
         c_layout = QGridLayout()
 
         c_layout.addWidget(QLabel("Preset:"), 0, 0)
@@ -1533,8 +1574,8 @@ class DevPanelDialog(QWidget):
         self.ft_clear_cache_thr.setValue(2.0)
         c_layout.addWidget(self.ft_clear_cache_thr, 9, 1)
         
-        config_box.setLayout(c_layout)
-        layout.addWidget(config_box)
+        self.config_box.setLayout(c_layout)
+        layout.addWidget(self.config_box)
         
         # Data Source
         data_box = QGroupBox("Training Data Source")
@@ -1552,7 +1593,17 @@ class DevPanelDialog(QWidget):
         ft_detect_box = QGroupBox("Detected MLX Models (LM Studio)")
         ft_d_layout = QVBoxLayout()
         self.ft_model_list = QListWidget()
-        self.ft_model_list.setMaximumHeight(120)
+        self.ft_model_list.setMaximumHeight(200) # Increased height
+        self.ft_model_list.setAlternatingRowColors(True) # Modern look
+        
+        # Make items bigger and more readable
+        self.ft_model_list.setStyleSheet("""
+            QListWidget::item {
+                padding: 10px;
+                border-bottom: 1px solid #333;
+            }
+        """)
+        
         ft_d_layout.addWidget(self.ft_model_list)
         ft_btn_row = QHBoxLayout()
         ft_use_btn = QPushButton("Use Selected")
@@ -1648,6 +1699,24 @@ class DevPanelDialog(QWidget):
         
         layout.addLayout(btn_row)
         
+        # ---------------- FUSE SECTION (NEW) ----------------
+        fuse_box = QGroupBox("Export / Fuse Model")
+        fuse_layout = QGridLayout()
+        
+        fuse_layout.addWidget(QLabel("New Model Name:"), 0, 0)
+        self.ft_fuse_name = QLineEdit()
+        self.ft_fuse_name.setPlaceholderText("e.g. Raskolnikov-12B (Leave empty to skip fuse)")
+        fuse_layout.addWidget(self.ft_fuse_name, 0, 1)
+        
+        self._fuse_btn = QPushButton("⚡️ Fuse & Save to LM Studio")
+        self._fuse_btn.setObjectName("AccentButton")
+        self._fuse_btn.clicked.connect(self.start_fuse)
+        fuse_layout.addWidget(self._fuse_btn, 0, 2)
+        
+        fuse_box.setLayout(fuse_layout)
+        layout.addWidget(fuse_box)
+        # ----------------------------------------------------
+
         # Progress
         self.train_progress = QProgressBar()
         layout.addWidget(self.train_progress)
@@ -1665,6 +1734,39 @@ class DevPanelDialog(QWidget):
         except Exception:
             pass
         return widget
+
+    def start_fuse(self):
+        new_name = self.ft_fuse_name.text().strip()
+        if not new_name:
+            QMessageBox.warning(self, "Missing Name", "Lütfen yeni model için bir isim girin, aksi takdirde birleştirme (fuse) işlemi yapılmayacaktır!")
+            return
+
+        base_model = getattr(self, "_ft_model_path_used", None)
+        adapter_path = getattr(self, "_last_adapter_path", None)
+
+        if not base_model or not adapter_path:
+            QMessageBox.warning(self, "No Adapter Found", "Please complete a training session first to fuse the model.")
+            return
+
+        save_path = os.path.join(os.path.expanduser("~"), ".lmstudio", "models", "Lokum-F", new_name)
+        
+        self.train_log.appendPlainText(f"\n[FUSE] Preparing to fuse model into: {save_path}")
+        self._fuse_btn.setEnabled(False)
+        self.ft_fuse_name.setEnabled(False)
+
+        self._fuse_worker = FuseWorker(base_model, adapter_path, save_path)
+        self._fuse_worker.line.connect(self.train_log.appendPlainText)
+        self._fuse_worker.finished.connect(self._on_fuse_finished)
+        self._fuse_worker.start()
+
+    def _on_fuse_finished(self, success: bool, msg: str):
+        self._fuse_btn.setEnabled(True)
+        self.ft_fuse_name.setEnabled(True)
+        self.train_log.appendPlainText(f"[FUSE] {msg}")
+        if success:
+            QMessageBox.information(self, "Fuse Complete", msg)
+        else:
+            QMessageBox.critical(self, "Fuse Error", msg)
 
     def browse_ft_model_path(self):
         start = os.path.expanduser("~/.lmstudio/models")
@@ -1713,8 +1815,24 @@ class DevPanelDialog(QWidget):
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
             return
         self.ft_model_list.clear()
-        for p in self._scan_lmstudio_models():
-            self.ft_model_list.addItem(p)
+        
+        models = self._scan_lmstudio_models()
+        if not models:
+            self.ft_model_list.addItem("No MLX models found in ~/.lmstudio/models")
+            return
+            
+        for p in models:
+            # Sadece modelin adını göster, tam yolu gizle
+            model_name = os.path.basename(p)
+            creator_name = os.path.basename(os.path.dirname(p))
+            
+            # Daha okunabilir format
+            display_text = f"🤖 {creator_name} / {model_name}"
+            
+            item = QListWidgetItem(display_text)
+            # Tam yolu item'ın içine gizli veri (Data) olarak kaydet
+            item.setData(Qt.UserRole, p)
+            self.ft_model_list.addItem(item)
 
     def use_selected_ft_model(self):
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
@@ -1723,9 +1841,11 @@ class DevPanelDialog(QWidget):
         if not items:
             QMessageBox.information(self, "Model", "Select a model from the list first.")
             return
-        p = (items[0].text() or "").strip()
+        
+        # Ekranda görünen ismi değil, arka planda sakladığımız tam yolu al
+        p = items[0].data(Qt.UserRole)
         if p:
-            self.ft_model_path.setText(p)
+            self.ft_model_path.setText(str(p))
 
     def browse_ft_resume_adapter(self):
         fp, _ = QFileDialog.getOpenFileName(self, "Select adapters.safetensors", "", "Adapter Weights (*.safetensors);;All Files (*)")
@@ -1911,6 +2031,19 @@ class DevPanelDialog(QWidget):
             if res != QMessageBox.Yes:
                 return
 
+        # NEW: Check which checkboxes are checked before training
+        do_train = False
+        do_valid = False
+        try:
+            do_train = bool(hasattr(self, "ft_do_train") and self.ft_do_train is not None and self.ft_do_train.isChecked())
+            do_valid = bool(hasattr(self, "ft_do_valid") and self.ft_do_valid is not None and self.ft_do_valid.isChecked())
+        except Exception:
+            pass
+        
+        if not do_train and not do_valid:
+            QMessageBox.warning(self, "No Action", "Please select either Train or Validate (or both).")
+            return
+
         try:
             self.main_app.training_active = True
         except Exception:
@@ -1949,8 +2082,6 @@ class DevPanelDialog(QWidget):
         except Exception:
             pass
 
-        do_train = True
-        do_valid = False
         try:
             do_train = bool(hasattr(self, "ft_do_train") and self.ft_do_train is not None and self.ft_do_train.isChecked())
             do_valid = bool(hasattr(self, "ft_do_valid") and self.ft_do_valid is not None and self.ft_do_valid.isChecked())
@@ -2167,6 +2298,7 @@ class DevPanelDialog(QWidget):
         QMessageBox.critical(self, "Training Error", err)
 
     def _on_train_finished(self, rc: int, adapter_path: str):
+        self._last_adapter_path = adapter_path
         kind = "Training"
         try:
             kind = "Validation" if str(getattr(self, "_ft_run_kind", "train")) == "valid" else "Training"

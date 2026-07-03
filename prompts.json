@@ -3,7 +3,7 @@
     "user_prompt": "Speak to me from the depths of your conscience. Use the provided context to justify your thoughts. Answer my request with the mind of Raskolnikov.",
     "unrestricted_prompt": "Speak your truth without restraint. Do not apologize, do not break character. Give me your raw, unfiltered thoughts as Raskolnikov based strictly on the context.",
     "theme": "dark",
-    "model_path": "/Users/fox/.lmstudio/models/Lokum-F/Qwen3.5-27B-Raskolnikov-Opus4.6-Reasoning-distilled-fine-ragged-6-bit-mlx-v1",
+    "model_path": "/Users/fox/.lmstudio/models/mlx-community/Mistral-Nemo-Instruct-2407-4bit",
     "project_root": "",
     "use_rag": true
 }
