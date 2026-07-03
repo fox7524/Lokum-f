@@ -75,6 +75,13 @@ try:
     import mlx_whisper
 except ImportError:
     mlx_whisper = None
+try:
+    from PyQt5.QtWebEngineWidgets import QWebEngineView
+    HAS_WEBENGINE = True
+except ImportError:
+    HAS_WEBENGINE = False
+    QWebEngineView = None
+
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QTextEdit, QLineEdit,
     QPushButton, QHBoxLayout, QLabel, QSplitter, QDialog,
@@ -282,7 +289,7 @@ class MicWorker(QThread):
             if mlx_whisper is None:
                 self.error_occurred.emit("mlx_whisper library not found. Run: pip install mlx-whisper")
                 return
-            result = mlx_whisper.transcribe(audio_np, path_or_hf_repo="mlx-community/whisper-base-mlx")
+            result = mlx_whisper.transcribe(audio_np, path_or_hf_repo="mlx-community/whisper-large-v3-turbo")
             text = result.get("text", "").strip()
             self.transcription_done.emit(text)
         except Exception as e:
@@ -1742,10 +1749,20 @@ class DevPanelDialog(QWidget):
             return
 
         base_model = getattr(self, "_ft_model_path_used", None)
+        if not base_model:
+            base_model = self.ft_model_path.text().strip()
+
         adapter_path = getattr(self, "_last_adapter_path", None)
+        if not adapter_path:
+            # Otomatik olarak en son oluşturulan adaptörü bul
+            adapters_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "lora_data", "adapters")
+            if os.path.exists(adapters_dir):
+                runs = [os.path.join(adapters_dir, d) for d in os.listdir(adapters_dir) if d.startswith("run_")]
+                if runs:
+                    adapter_path = max(runs, key=os.path.getmtime)
 
         if not base_model or not adapter_path:
-            QMessageBox.warning(self, "No Adapter Found", "Please complete a training session first to fuse the model.")
+            QMessageBox.warning(self, "No Adapter Found", "Lütfen önce bir modeli eğitin veya geçerli bir adaptör/model yolu seçin.")
             return
 
         save_path = os.path.join(os.path.expanduser("~"), ".lmstudio", "models", "Lokum-F", new_name)
@@ -2893,6 +2910,130 @@ class DevPanelDialog(QWidget):
 # ---------------------------------------------------------
 # MAIN UI
 # ---------------------------------------------------------
+class CustomMessageBox(QDialog):
+    @classmethod
+    def _create_dialog(cls, parent, title, text, btn_text="OK", icon_type="info"):
+        dialog = QDialog(parent)
+        dialog.setWindowTitle(title)
+        dialog.setMinimumWidth(320)
+        dialog.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        
+        # Apply theme colors
+        try:
+            theme = parent.theme if hasattr(parent, "theme") else "dark"
+            if theme == "system" and hasattr(parent, "detect_system_theme"):
+                theme = parent.detect_system_theme()
+        except:
+            theme = "dark"
+            
+        is_dark = theme == "dark"
+        bg_color = "#1e1e1e" if is_dark else "#ffffff"
+        text_color = "#f5f5f5" if is_dark else "#1c1c1e"
+        muted_color = "#98989d" if is_dark else "#8e8e93"
+        border_color = "#38383a" if is_dark else "#e5e5ea"
+        btn_bg = "#2c2c2e" if is_dark else "#f2f2f7"
+        btn_hover = "#48484a" if is_dark else "#e5e5ea"
+        accent_color = "#0a84ff" if is_dark else "#007aff"
+        danger_color = "#ff453a" if is_dark else "#ff3b30"
+        
+        main_color = accent_color if icon_type != "critical" else danger_color
+        if icon_type == "warning": main_color = "#ff9f0a" if is_dark else "#ff9500"
+        
+        dialog.setStyleSheet(f"""
+            QDialog {{
+                background-color: {bg_color};
+                border: 1px solid {border_color};
+                border-radius: 12px;
+            }}
+            QLabel#Title {{
+                color: {text_color};
+                font-size: 16px;
+                font-weight: 800;
+            }}
+            QLabel#Message {{
+                color: {muted_color};
+                font-size: 14px;
+            }}
+            QPushButton {{
+                background-color: {btn_bg};
+                color: {text_color};
+                border: none;
+                border-radius: 8px;
+                padding: 8px 16px;
+                font-size: 14px;
+                font-weight: 600;
+            }}
+            QPushButton:hover {{
+                background-color: {btn_hover};
+            }}
+            QPushButton#PrimaryBtn {{
+                background-color: {main_color};
+                color: white;
+            }}
+            QPushButton#PrimaryBtn:hover {{
+                background-color: {main_color}dd;
+            }}
+        """)
+        
+        layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(24, 24, 24, 24)
+        layout.setSpacing(12)
+        
+        lbl_title = QLabel(title)
+        lbl_title.setObjectName("Title")
+        layout.addWidget(lbl_title)
+        
+        msg = QLabel(text)
+        msg.setObjectName("Message")
+        msg.setWordWrap(True)
+        layout.addWidget(msg)
+        
+        layout.addStretch()
+        
+        btn_layout = QHBoxLayout()
+        btn_layout.setSpacing(12)
+        btn_layout.addStretch()
+        
+        if icon_type == "question":
+            cancel_btn = QPushButton("No")
+            cancel_btn.clicked.connect(dialog.reject)
+            btn_layout.addWidget(cancel_btn)
+            btn_text = "Yes"
+            
+        primary_btn = QPushButton(btn_text)
+        primary_btn.setObjectName("PrimaryBtn")
+        primary_btn.clicked.connect(dialog.accept)
+        btn_layout.addWidget(primary_btn)
+        
+        layout.addLayout(btn_layout)
+        return dialog
+
+    @classmethod
+    def information(cls, parent, title, text):
+        d = cls._create_dialog(parent, title, text, "OK", "info")
+        d.exec_()
+        
+    @classmethod
+    def warning(cls, parent, title, text):
+        d = cls._create_dialog(parent, title, text, "OK", "warning")
+        d.exec_()
+        
+    @classmethod
+    def critical(cls, parent, title, text):
+        d = cls._create_dialog(parent, title, text, "OK", "critical")
+        d.exec_()
+
+    @classmethod
+    def question(cls, parent, title, text, buttons=None):
+        d = cls._create_dialog(parent, title, text, "Yes", "question")
+        return QMessageBox.Yes if d.exec_() == QDialog.Accepted else QMessageBox.No
+
+# Monkey patch QMessageBox
+QMessageBox.information = CustomMessageBox.information
+QMessageBox.warning = CustomMessageBox.warning
+QMessageBox.critical = CustomMessageBox.critical
+QMessageBox.question = CustomMessageBox.question
+
 class ChatbotGUI(QWidget):
     def __init__(self, model, tokenizer, model_path, *, db_path: str | None = None, start_service: bool = True, start_monitor: bool = True):
         super().__init__()
@@ -3446,16 +3587,32 @@ class ChatbotGUI(QWidget):
         top_bar = QHBoxLayout()
         logo = QLabel("Lokum-F")
         logo.setObjectName("Logo")
-        
-        new_chat_btn = QPushButton("+ New")
-        new_chat_btn.setFixedSize(70, 32)
-        new_chat_btn.setObjectName("NewChatButton")
-        new_chat_btn.clicked.connect(self.new_chat)
-        
         top_bar.addWidget(logo)
         top_bar.addStretch()
-        top_bar.addWidget(new_chat_btn)
+        
+        # We can put a small options button next to the logo if needed, but let's just keep logo left-aligned
         s_layout.addLayout(top_bar)
+        s_layout.addSpacing(10)
+        
+        # New Chat Button (LM Studio style)
+        new_chat_layout = QHBoxLayout()
+        new_chat_layout.setSpacing(5)
+        
+        self.new_chat_btn = QPushButton("New Chat")
+        self.new_chat_btn.setFixedHeight(36)
+        self.new_chat_btn.setObjectName("NewChatMainBtn")
+        self.new_chat_btn.setCursor(Qt.PointingHandCursor)
+        self.new_chat_btn.clicked.connect(self.new_chat)
+        
+        self.chat_opts_btn = QPushButton("...")
+        self.chat_opts_btn.setFixedSize(36, 36)
+        self.chat_opts_btn.setObjectName("NewChatOptsBtn")
+        self.chat_opts_btn.setCursor(Qt.PointingHandCursor)
+        
+        new_chat_layout.addWidget(self.new_chat_btn, 1)
+        new_chat_layout.addWidget(self.chat_opts_btn)
+        
+        s_layout.addLayout(new_chat_layout)
         s_layout.addSpacing(15)
         
         # Search
@@ -3570,18 +3727,24 @@ class ChatbotGUI(QWidget):
         chat_layout.setContentsMargins(0, 0, 0, 0)
         chat_layout.setSpacing(0)
 
-        self.chat_display = QScrollArea()
-        self.chat_display.setWidgetResizable(True)
-        self.chat_display.setFrameShape(QFrame.NoFrame)
-        self.chat_display.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        chat_layout.addWidget(self.chat_display)
+        if HAS_WEBENGINE:
+            self.chat_display = QWebEngineView()
+            self.chat_display.page().setBackgroundColor(Qt.transparent)
+            self.chat_display.setHtml(self._get_base_html())
+            chat_layout.addWidget(self.chat_display)
+        else:
+            self.chat_display = QScrollArea()
+            self.chat_display.setWidgetResizable(True)
+            self.chat_display.setFrameShape(QFrame.NoFrame)
+            self.chat_display.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+            chat_layout.addWidget(self.chat_display)
 
-        self.chat_view = QWidget()
-        self.chat_msgs_layout = QVBoxLayout(self.chat_view)
-        self.chat_msgs_layout.setContentsMargins(24, 18, 24, 18)
-        self.chat_msgs_layout.setSpacing(14)
-        self.chat_msgs_layout.addStretch()
-        self.chat_display.setWidget(self.chat_view)
+            self.chat_view = QWidget()
+            self.chat_msgs_layout = QVBoxLayout(self.chat_view)
+            self.chat_msgs_layout.setContentsMargins(24, 18, 24, 18)
+            self.chat_msgs_layout.setSpacing(14)
+            self.chat_msgs_layout.addStretch()
+            self.chat_display.setWidget(self.chat_view)
 
         self.chat_list.itemSelectionChanged.connect(self._on_chat_list_selection_changed)
         self._rebuild_chat_list()
@@ -3819,9 +3982,93 @@ class ChatbotGUI(QWidget):
         self._rename_chat(chat_name, new_name.strip())
 
     def _delete_chat_by_name(self, chat_name: str):
-        res = QMessageBox.question(self, "Delete Chat", f"Delete '{chat_name}'? This cannot be undone.", QMessageBox.Yes | QMessageBox.No)
-        if res != QMessageBox.Yes:
+        # Custom elegant delete dialog
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Delete Chat")
+        dialog.setFixedSize(360, 180)
+        dialog.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        
+        # Apply theme colors
+        is_dark = self.theme == "dark" or (self.theme == "system" and self.detect_system_theme() == "dark")
+        bg_color = "#1e1e1e" if is_dark else "#ffffff"
+        text_color = "#f5f5f5" if is_dark else "#1c1c1e"
+        muted_color = "#98989d" if is_dark else "#8e8e93"
+        border_color = "#38383a" if is_dark else "#e5e5ea"
+        danger_color = "#ff453a" if is_dark else "#ff3b30"
+        danger_hover = "#ff5e55" if is_dark else "#ff4f45"
+        btn_bg = "#2c2c2e" if is_dark else "#f2f2f7"
+        btn_hover = "#48484a" if is_dark else "#e5e5ea"
+        
+        dialog.setStyleSheet(f"""
+            QDialog {{
+                background-color: {bg_color};
+                border: 1px solid {border_color};
+                border-radius: 12px;
+            }}
+            QLabel#Title {{
+                color: {text_color};
+                font-size: 16px;
+                font-weight: 800;
+            }}
+            QLabel#Message {{
+                color: {muted_color};
+                font-size: 14px;
+            }}
+            QPushButton {{
+                background-color: {btn_bg};
+                color: {text_color};
+                border: none;
+                border-radius: 8px;
+                padding: 8px 16px;
+                font-size: 14px;
+                font-weight: 600;
+            }}
+            QPushButton:hover {{
+                background-color: {btn_hover};
+            }}
+            QPushButton#DeleteBtn {{
+                background-color: {danger_color};
+                color: white;
+            }}
+            QPushButton#DeleteBtn:hover {{
+                background-color: {danger_hover};
+            }}
+        """)
+        
+        layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(24, 24, 24, 24)
+        layout.setSpacing(12)
+        
+        title = QLabel("Delete Chat")
+        title.setObjectName("Title")
+        layout.addWidget(title)
+        
+        msg = QLabel(f"Are you sure you want to delete '{chat_name}'?\nThis action cannot be undone.")
+        msg.setObjectName("Message")
+        msg.setWordWrap(True)
+        layout.addWidget(msg)
+        
+        layout.addStretch()
+        
+        btn_layout = QHBoxLayout()
+        btn_layout.setSpacing(12)
+        btn_layout.addStretch()
+        
+        cancel_btn = QPushButton("Cancel")
+        cancel_btn.clicked.connect(dialog.reject)
+        
+        delete_btn = QPushButton("Delete")
+        delete_btn.setObjectName("DeleteBtn")
+        delete_btn.clicked.connect(dialog.accept)
+        
+        btn_layout.addWidget(cancel_btn)
+        btn_layout.addWidget(delete_btn)
+        
+        layout.addLayout(btn_layout)
+        
+        if dialog.exec_() != QDialog.Accepted:
             return
+            
         if getattr(self, "_pending_chat", None) == chat_name:
             try:
                 self.stop_generation()
@@ -4051,6 +4298,30 @@ class ChatbotGUI(QWidget):
                 padding: 0 6px;
                 color: {colors['muted']};
                 font-weight: 500;
+            }}
+            QPushButton#NewChatMainBtn {{
+                background-color: {colors['panel2']};
+                color: {colors['text']};
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                text-align: left;
+                padding-left: 14px;
+            }}
+            QPushButton#NewChatMainBtn:hover {{
+                background-color: {colors['hover']};
+            }}
+            QPushButton#NewChatOptsBtn {{
+                background-color: {colors['panel2']};
+                color: {colors['text']};
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: bold;
+            }}
+            QPushButton#NewChatOptsBtn:hover {{
+                background-color: {colors['hover']};
             }}
             QListWidget {{
                 background: transparent;
@@ -5033,7 +5304,228 @@ class ChatbotGUI(QWidget):
         msg["think_open"] = not bool(msg.get("think_open"))
         self.render_chat(self.active_chat, keep_scroll=True)
 
+    def _get_base_html(self):
+        colors = getattr(self, "_theme_colors", None) or {
+            "bg": "#121212",
+            "panel": "#1e1e1e",
+            "panel2": "#2c2c2e",
+            "border": "#38383a",
+            "text": "#f5f5f5",
+            "muted": "#98989d",
+            "accent": "#0a84ff",
+            "accent2": "#409cff",
+        }
+        user_bubble = "rgba(0, 0, 0, 0.04)" if self.theme == "light" else colors["panel2"]
+        user_border = "rgba(0, 0, 0, 0.08)" if self.theme == "light" else colors["border"]
+        
+        return f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="utf-8">
+        <style>
+            body {{
+                margin: 0;
+                padding: 24px;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                background-color: transparent;
+                color: {colors['text']};
+            }}
+            .chat-container {{
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }}
+            .message {{
+                display: flex;
+                flex-direction: column;
+                max-width: 85%;
+            }}
+            .message.user {{
+                align-self: flex-end;
+                align-items: flex-end;
+            }}
+            .message.assistant {{
+                align-self: flex-start;
+                align-items: flex-start;
+                max-width: 95%;
+            }}
+            .role-label {{
+                font-size: 11px;
+                font-weight: 800;
+                letter-spacing: 1px;
+                margin-bottom: 6px;
+            }}
+            .user .role-label {{
+                color: {colors['muted']};
+                text-align: right;
+            }}
+            .assistant .role-label {{
+                color: {colors['accent']};
+                text-align: left;
+            }}
+            .bubble {{
+                font-size: 15px;
+                line-height: 1.6;
+                word-wrap: break-word;
+            }}
+            .user .bubble {{
+                background-color: {user_bubble};
+                border: 1px solid {user_border};
+                border-radius: 18px;
+                border-top-right-radius: 4px;
+                padding: 12px 18px;
+            }}
+            .assistant .bubble {{
+                background-color: transparent;
+                border: none;
+                padding: 4px 0px;
+            }}
+            /* Markdown Elements */
+            a {{ color: {colors['accent']}; text-decoration: none; }}
+            a:hover {{ text-decoration: underline; }}
+            pre {{
+                background-color: {colors['bg']};
+                border: 1px solid {colors['border']};
+                border-radius: 8px;
+                padding: 14px;
+                overflow-x: auto;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 13px;
+                margin: 10px 0;
+            }}
+            code {{
+                background-color: {colors['bg']};
+                border: 1px solid {colors['border']};
+                border-radius: 4px;
+                padding: 2px 6px;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 13px;
+            }}
+            pre code {{
+                background-color: transparent;
+                border: none;
+                padding: 0;
+            }}
+            blockquote {{
+                border-left: 3px solid {colors['accent']};
+                margin-left: 0;
+                padding-left: 14px;
+                color: {colors['muted']};
+            }}
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+                margin: 10px 0;
+            }}
+            th, td {{
+                border: 1px solid {colors['border']};
+                padding: 8px 12px;
+                text-align: left;
+            }}
+            th {{ background-color: {colors['panel']}; }}
+            
+            /* Pulsing Loading Dots */
+            .typing-indicator {{
+                display: flex;
+                gap: 6px;
+                align-items: center;
+                height: 24px;
+                padding-left: 4px;
+                margin-top: 4px;
+            }}
+            .dot {{
+                width: 7px;
+                height: 7px;
+                background-color: {colors['accent']};
+                border-radius: 50%;
+                animation: pulse 1.4s infinite ease-in-out;
+            }}
+            .dot:nth-child(1) {{ animation-delay: 0s; }}
+            .dot:nth-child(2) {{ animation-delay: 0.2s; }}
+            .dot:nth-child(3) {{ animation-delay: 0.4s; }}
+            @keyframes pulse {{
+                0%, 100% {{ transform: scale(0.6); opacity: 0.4; }}
+                50% {{ transform: scale(1.1); opacity: 1; }}
+            }}
+        </style>
+        <script>
+            function updateChat(htmlContent, isAtBottom) {{
+                const chatDiv = document.getElementById('chat');
+                chatDiv.innerHTML = htmlContent;
+                if (isAtBottom) {{
+                    window.scrollTo(0, document.body.scrollHeight);
+                }}
+            }}
+            function scrollToBottom() {{
+                window.scrollTo(0, document.body.scrollHeight);
+            }}
+        </script>
+        </head>
+        <body>
+            <div id="chat" class="chat-container"></div>
+        </body>
+        </html>
+        """
+
     def render_chat(self, chat_name: str, *, keep_scroll: bool = False):
+        msgs = self.chat_ui.get(chat_name, []) or []
+        is_generating = getattr(self, "is_generating", False)
+        
+        if HAS_WEBENGINE and hasattr(self, "chat_display") and isinstance(self.chat_display, QWebEngineView):
+            try:
+                import markdown
+                has_md = True
+            except ImportError:
+                has_md = False
+            import base64
+            
+            html_parts = []
+            for m in msgs:
+                r = m.get("role", "")
+                txt = m.get("content", "") if r == "user" else m.get("answer", "")
+                
+                # Convert markdown
+                try:
+                    if has_md:
+                        md_html = markdown.markdown(txt, extensions=["fenced_code", "tables"])
+                    else:
+                        md_html = txt.replace("\n", "<br>")
+                except Exception:
+                    md_html = txt.replace("\n", "<br>")
+                
+                if r == "user":
+                    html_parts.append(f'''
+                    <div class="message user">
+                        <div class="role-label">YOU</div>
+                        <div class="bubble">{md_html}</div>
+                    </div>
+                    ''')
+                elif r == "assistant":
+                    html_parts.append(f'''
+                    <div class="message assistant">
+                        <div class="role-label">AI</div>
+                        <div class="bubble">{md_html}</div>
+                    </div>
+                    ''')
+            
+            if is_generating:
+                html_parts.append('''
+                <div class="message assistant">
+                    <div class="role-label">AI</div>
+                    <div class="typing-indicator">
+                        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                    </div>
+                </div>
+                ''')
+            
+            full_content = "\n".join(html_parts)
+            # Escape to base64 to pass to JS
+            b64_content = base64.b64encode(full_content.encode('utf-8')).decode('utf-8')
+            js = f"updateChat(decodeURIComponent(escape(window.atob('{b64_content}'))), {str(not keep_scroll).lower()});"
+            self.chat_display.page().runJavaScript(js)
+            return
+
         if not hasattr(self, "chat_msgs_layout") or self.chat_msgs_layout is None:
             return
 
@@ -5491,6 +5983,7 @@ class ChatbotGUI(QWidget):
         except:
             prompt_string = f"User: {context_prompt}\nAssistant: "
 
+        self.is_generating = True
         self.input_field.setDisabled(True)
         self.send_btn.setDisabled(True)
         self.stop_btn.setEnabled(True)
@@ -5899,6 +6392,7 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
         self.chat_display.verticalScrollBar().setValue(self.chat_display.verticalScrollBar().maximum())
         
+        self.is_generating = False
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
@@ -5943,6 +6437,7 @@ class ChatbotGUI(QWidget):
             self.chat_display.verticalScrollBar().setValue(self.chat_display.verticalScrollBar().maximum())
         except Exception:
             pass
+        self.is_generating = False
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
@@ -5954,6 +6449,7 @@ class ChatbotGUI(QWidget):
         self._final_worker = None
         self._pending_chat = None
         self._pending_msg_index = None
+        self.is_generating = False
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
@@ -5974,6 +6470,7 @@ class ChatbotGUI(QWidget):
 
         self.render_chat(self.active_chat)
         QMessageBox.critical(self, "Generation Error", err_msg)
+        self.is_generating = False
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
         self.stop_btn.setEnabled(False)
@@ -5981,6 +6478,9 @@ class ChatbotGUI(QWidget):
         self.input_field.setFocus()
 
 if __name__ == "__main__":
+    # Disable Chromium sandbox to prevent "Mach rendezvous failed" crash on some macOS setups
+    os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--no-sandbox --disable-gpu-sandbox"
+
     app = QApplication(sys.argv)
     
     # Standard font setup to avoid warnings
