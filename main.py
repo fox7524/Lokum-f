@@ -3950,31 +3950,31 @@ class ChatbotGUI(QWidget):
 
         if theme == "light":
             colors = {
-                "bg": "#f5f5f7",
-                "panel": "#ffffff",
-                "panel2": "#f0f0f2",
-                "border": "#d0d0d7",
-                "text": "#111111",
-                "muted": "#666666",
-                "accent": "#6a3dff",
-                "accent2": "#4d74ff",
-                "danger": "#c62828",
-                "chip": "#e9e9ef",
-                "hover": "#e0e0e0"
+                "bg": "#f5f5f7",         # macOS Light (Daha pürüzsüz)
+                "panel": "#ffffff",      # Kart arka planı
+                "panel2": "#f2f2f7",     # İç alanlar
+                "border": "#e5e5ea",     # Çok ince sınır
+                "text": "#1c1c1e",       # Saf siyah yerine koyu gri
+                "muted": "#8e8e93",      # Pasif yazılar
+                "accent": "#007aff",     # Apple Blue
+                "accent2": "#0051a8",    # Hover Blue
+                "danger": "#ff3b30",     # Apple Red
+                "chip": "#e5e5ea",       # Seçili öğe arka planı
+                "hover": "#d1d1d6"
             }
         else:
             colors = {
-                "bg": "#0f0f0f",
-                "panel": "#161616",
-                "panel2": "#222222",
-                "border": "#222222",
-                "text": "#e0e0e0",
-                "muted": "#888888",
-                "accent": "#7c4dff",
-                "accent2": "#9575cd",
-                "danger": "#ff4d6a",
-                "chip": "#1a1a1a",
-                "hover": "#2a2a2a"
+                "bg": "#121212",         # Ultra Koyu Arka Plan (OLED hissi)
+                "panel": "#1e1e1e",      # Yükseltilmiş Kartlar
+                "panel2": "#2c2c2e",     # Butonlar ve inputlar
+                "border": "#38383a",     # Hafif sınır
+                "text": "#f5f5f5",       # Beyaza yakın
+                "muted": "#98989d",      # Pasif yazılar
+                "accent": "#0a84ff",     # Koyu Mod Apple Blue
+                "accent2": "#409cff",    # Hover Blue
+                "danger": "#ff453a",     # Apple Red
+                "chip": "#3a3a3c",
+                "hover": "#48484a"
             }
 
         self._theme_colors = dict(colors)
@@ -3983,7 +3983,7 @@ class ChatbotGUI(QWidget):
             QWidget {{
                 background-color: {colors['bg']};
                 color: {colors['text']};
-                font-family: "Helvetica Neue", Arial, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             }}
             QLabel {{
                 background: transparent;
@@ -4034,21 +4034,23 @@ class ChatbotGUI(QWidget):
                 margin-right: 4px;
             }}
             QTabBar::tab:selected {{
-                background: {colors['chip']};
+                background: {colors['panel']};
                 color: {colors['text']};
+                border-bottom: 2px solid {colors['accent']};
             }}
             QGroupBox {{
                 border: 1px solid {colors['border']};
                 border-radius: 8px;
-                margin-top: 12px;
-                padding-top: 12px;
-                font-weight: 700;
-                color: {colors['accent']};
+                margin-top: 16px;
+                padding-top: 14px;
+                background-color: {colors['panel']};
             }}
             QGroupBox::title {{
                 subcontrol-origin: margin;
                 left: 10px;
-                padding: 0 5px;
+                padding: 0 6px;
+                color: {colors['muted']};
+                font-weight: 500;
             }}
             QListWidget {{
                 background: transparent;
@@ -4099,27 +4101,34 @@ class ChatbotGUI(QWidget):
                 font-weight: 700;
             }}
             QTextEdit {{
-                background-color: {colors['bg']};
-                border: none;
+                background-color: {colors['panel']};
+                border: 1px solid {colors['border']};
+                border-radius: 12px;
                 font-size: 15px;
-                padding: 30px;
+                padding: 20px;
+                line-height: 1.6;
             }}
             QLineEdit {{
-                background-color: {colors['chip']};
+                background-color: {colors['panel2']};
                 border: 1px solid {colors['border']};
-                border-radius: 8px;
-                padding: 8px 12px;
+                border-radius: 10px;
+                padding: 10px 14px;
                 color: {colors['text']};
-                font-size: 13px;
+                font-size: 14px;
+            }}
+            QLineEdit:focus {{
+                border: 1px solid {colors['accent']};
+                background-color: {colors['panel']};
             }}
             QFrame#InputContainer {{
                 background-color: {colors['panel']};
                 border-top: 1px solid {colors['border']};
+                padding: 10px;
             }}
             QFrame#InputBox {{
-                background-color: {colors['panel2']};
+                background-color: {colors['bg']};
                 border: 1px solid {colors['border']};
-                border-radius: 12px;
+                border-radius: 16px;
             }}
             QPushButton {{
                 background-color: {colors['panel2']};
@@ -4268,6 +4277,29 @@ class ChatbotGUI(QWidget):
             }}
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
                 height: 0px;
+            }}
+            QPushButton#AccentButton {{
+                background-color: {colors['accent']};
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 14px;
+            }}
+            QPushButton#AccentButton:hover {{
+                background-color: {colors['accent2']};
+            }}
+            QPushButton#DangerButton {{
+                background-color: {colors['danger']};
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 14px;
+            }}
+            QComboBox, QSpinBox, QDoubleSpinBox {{
+                background-color: {colors['panel2']};
+                border: 1px solid {colors['border']};
+                border-radius: 6px;
+                padding: 6px;
             }}
         """
 
@@ -5017,18 +5049,21 @@ class ChatbotGUI(QWidget):
 
         msgs = self.chat_ui.get(chat_name, []) or []
         colors = getattr(self, "_theme_colors", None) or {
-            "bg": "#0f0f0f",
-            "panel": "#161616",
-            "panel2": "#222222",
-            "border": "#222222",
-            "text": "#e0e0e0",
-            "muted": "#888888",
-            "accent": "#7c4dff",
-            "accent2": "#9575cd",
-            "danger": "#ff4d6a",
-            "chip": "#1a1a1a",
+            "bg": "#121212",
+            "panel": "#1e1e1e",
+            "panel2": "#2c2c2e",
+            "border": "#38383a",
+            "text": "#f5f5f5",
+            "muted": "#98989d",
+            "accent": "#0a84ff",
+            "accent2": "#409cff",
+            "danger": "#ff453a",
+            "chip": "#3a3a3c",
         }
-        user_bubble = "rgba(0, 0, 0, 0.06)" if self.theme == "light" else colors["panel2"]
+        
+        # LM Studio stili renk ayarları
+        user_bubble = colors["panel2"]
+        user_border = colors["border"]
 
         def clear_layout(lay: QVBoxLayout) -> None:
             while lay.count():
@@ -5190,6 +5225,10 @@ class ChatbotGUI(QWidget):
                 col_l.setSpacing(6)
                 col_l.setAlignment(Qt.AlignRight)
 
+                header = QLabel("YOU")
+                header.setStyleSheet(f"color:{colors['muted']};font-size:11px;font-weight:800;letter-spacing:1px;margin-right:8px;")
+                col_l.addWidget(header, 0, Qt.AlignRight)
+
                 bubble = QFrame()
                 bubble.setObjectName("UserBubble")
                 bubble.setStyleSheet(
@@ -5227,8 +5266,8 @@ class ChatbotGUI(QWidget):
                 w_l.setContentsMargins(0, 0, 0, 0)
                 w_l.setSpacing(10)
 
-                header = QLabel("Lokum AI")
-                header.setStyleSheet(f"color:{colors['muted']};font-size:13px;font-weight:600;")
+                header = QLabel("AI")
+                header.setStyleSheet(f"color:{colors['accent']};font-size:11px;font-weight:800;letter-spacing:1px;")
                 w_l.addWidget(header)
 
                 thought_s = m.get("thought_s")
@@ -5277,10 +5316,23 @@ class ChatbotGUI(QWidget):
 
                 ans = (m.get("answer", "") or "")
                 if ans.strip():
+                    # LM Studio Stili "Asistan" Arka Planı (Şeffaf ama belirgin)
+                    ans_frame = QFrame()
+                    ans_frame.setStyleSheet(f"""
+                        QFrame {{
+                            background-color: transparent;
+                            padding: 0px;
+                            border: none;
+                        }}
+                    """)
+                    ans_lay = QVBoxLayout(ans_frame)
+                    ans_lay.setContentsMargins(0, 0, 0, 0)
+                    ans_lay.setSpacing(6)
+
                     parts = split_fenced_blocks(ans)
                     for kind, payload, lang in parts:
                         if kind == "code":
-                            w_l.addWidget(make_code_block(payload, lang))
+                            ans_lay.addWidget(make_code_block(payload, lang))
                             continue
                         text = (payload or "").strip("\n")
                         if not text.strip():
@@ -5288,9 +5340,12 @@ class ChatbotGUI(QWidget):
                         a_lbl = QLabel()
                         a_lbl.setWordWrap(True)
                         a_lbl.setTextFormat(Qt.RichText)
-                        a_lbl.setText(f"<div style='color:{colors['text']};font-size:18px;line-height:1.7;'>{fmt_html(text)}</div>")
+                        # Yazı boyutu ve satır aralığı artırıldı, renk düzenlendi
+                        a_lbl.setText(f"<div style='color:{colors['text']};font-size:16px;line-height:1.7;letter-spacing:0.3px;'>{fmt_html(text)}</div>")
                         a_lbl.setTextInteractionFlags(Qt.TextSelectableByMouse)
-                        w_l.addWidget(a_lbl)
+                        ans_lay.addWidget(a_lbl)
+                    
+                    w_l.addWidget(ans_frame)
 
                 meta = m.get("meta")
                 if isinstance(meta, dict):
