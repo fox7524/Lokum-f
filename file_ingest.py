@@ -58,6 +58,9 @@ DEFAULT_EXT_GLOBS = [
 
 
 def iter_files(folder: str, recursive: bool = True, patterns: List[str] | None = None) -> List[str]:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     root = os.path.abspath(folder or "")
     if not root or not os.path.isdir(root):
         return []
@@ -72,6 +75,9 @@ def iter_files(folder: str, recursive: bool = True, patterns: List[str] | None =
 
 
 def chunk_text(text: str, chunk_size: int = 800, overlap: int = 100) -> List[str]:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     chunk_size = max(100, int(chunk_size))
     overlap = max(0, int(overlap))
     if overlap >= chunk_size:
@@ -80,6 +86,9 @@ def chunk_text(text: str, chunk_size: int = 800, overlap: int = 100) -> List[str
 
 
 def extract_text(file_path: str) -> str:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     p = os.path.abspath(file_path or "")
     if not p or not os.path.isfile(p):
         return ""
@@ -193,6 +202,9 @@ def extract_text(file_path: str) -> str:
 
 
 def build_text_chunks_from_paths(paths: Iterable[str], chunk_size: int = 800, overlap: int = 100) -> List[str]:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     chunks: List[str] = []
     for fp in paths:
         txt = extract_text(fp)

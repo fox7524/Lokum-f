@@ -16,7 +16,13 @@ from PyQt5 import QtGui
 VERSION = "Thunderbird AI Volume Alpha"
 
 class DevGUI(QWidget):
+    """
+    Arayüzün elitliğini ve LM Studio kalitesini sağlayan ana şasi burası.
+    """
     def __init__(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.setWindowTitle("Developer Panel")
         self.setGeometry(200, 200, 700, 500)
@@ -25,6 +31,9 @@ class DevGUI(QWidget):
         self.init_ui()
 
     def style_button(self, button, color="#007ACC", text_color="white"):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         button.setStyleSheet(f"""
             QPushButton {{
                 background-color: {color};
@@ -40,6 +49,9 @@ class DevGUI(QWidget):
         """)
 
     def init_ui(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         layout = QHBoxLayout(self)
         self.sidebar = QVBoxLayout()
         
@@ -84,7 +96,13 @@ class DevGUI(QWidget):
         self.setLayout(layout)
 
 class ChatbotGUI(QWidget):
+    """
+    Arayüzün elitliğini ve LM Studio kalitesini sağlayan ana şasi burası.
+    """
     def __init__(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.layout_yuklendi = False
         self.setWindowTitle(VERSION)
@@ -98,6 +116,9 @@ class ChatbotGUI(QWidget):
         self.dev_mode_enabled = False
 
         def dummy_shimmer(label):
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             label.setStyleSheet("color: red; font-weight: bold;")
         self.shimmer_label = dummy_shimmer
 
@@ -105,6 +126,9 @@ class ChatbotGUI(QWidget):
 
 
     def style_button(self, button, color="#007ACC", text_color=None):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         cls_name = button.__class__.__name__
         if cls_name == 'QRadioButton':
             if text_color is None:
@@ -129,6 +153,9 @@ class ChatbotGUI(QWidget):
         """)
 
     def init_ui(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         if self.layout_yuklendi: return
         layout = QHBoxLayout(self)
 
@@ -198,6 +225,9 @@ class ChatbotGUI(QWidget):
         self.new_conversation()
 
     def soru_sor(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         soru = self.input_field.text().strip()
         if not soru: return
         
@@ -209,6 +239,9 @@ class ChatbotGUI(QWidget):
         self.suggestion_label.setText("<i>Öneri: UI testlerine devam edebilirsiniz.</i>")
 
     def new_conversation(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if len(self.conversations) >= self.max_conversations:
             QMessageBox.warning(self, "Limit", "Maksimum 5 sohbet oluşturabilirsiniz.")
             return
@@ -220,11 +253,17 @@ class ChatbotGUI(QWidget):
         self.style_button(btn)
 
         def load_conv():
+            """
+            Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+            """
             self.chat_display.clear()
             self.chat_display.append(f"<i>--- {title} yüklendi ---</i>")
         btn.clicked.connect(load_conv)
         
         def context_menu(point):
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             menu = QMenu()
             act_rename = menu.addAction("Yeniden Adlandır")
             act_delete = menu.addAction("Sil")
@@ -242,6 +281,9 @@ class ChatbotGUI(QWidget):
         load_conv()
 
     def open_settings_panel(self):
+        """
+        Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
+        """
         splash = QDialog(self, Qt.FramelessWindowHint | Qt.Dialog)
         splash.setAttribute(Qt.WA_TranslucentBackground)
         splash.setModal(True)
@@ -289,6 +331,9 @@ class ChatbotGUI(QWidget):
         t_layout.addStretch()
 
         def apply_mock_theme():
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             if rb_light.isChecked(): self.apply_theme("light")
             elif rb_dark.isChecked(): self.apply_theme("dark")
             else: self.apply_theme("system")
@@ -324,6 +369,9 @@ class ChatbotGUI(QWidget):
         splash.exec_()
 
     def open_profile_settings(self):
+        """
+        Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
+        """
         dialog = QDialog(self)
         dialog.setWindowTitle("Profil Ayarları (Mock)")
         layout = QFormLayout(dialog)
@@ -343,6 +391,9 @@ class ChatbotGUI(QWidget):
         dialog.exec_()
 
     def apply_theme(self, theme):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.current_theme = theme
         if theme == "dark":
             self.setStyleSheet("background-color: #2C3E50; color: #ECF0F1;")

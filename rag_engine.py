@@ -113,6 +113,9 @@ class RAGEngine:
     """
 
     def __init__(self, storage_dir: str | None = None):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         # Check if we have all required dependencies
         global SentenceTransformer, HAS_SENTENCE_TRANSFORMERS
         if not HAS_SENTENCE_TRANSFORMERS:
@@ -176,6 +179,9 @@ class RAGEngine:
         self._validate_or_quarantine_existing_store()
 
     def _select_embed_device(self) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         val = (os.environ.get("LOKUMF_EMBED_DEVICE") or "").strip().lower()
         if val in ("cpu", "mps"):
             return val
@@ -188,6 +194,9 @@ class RAGEngine:
         return "cpu"
 
     def _select_embed_batch_size(self, device: str) -> int:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         raw = (os.environ.get("LOKUMF_EMBED_BATCH") or "").strip()
         if raw:
             try:
@@ -201,6 +210,9 @@ class RAGEngine:
         return 32
 
     def _checkpoint_policy(self) -> tuple[int, float]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         raw_chunks = (os.environ.get("LOKUMF_RAG_CHECKPOINT_CHUNKS") or "").strip()
         raw_secs = (os.environ.get("LOKUMF_RAG_CHECKPOINT_SECS") or "").strip()
         chunks_default = 20000 if getattr(self, "embed_device", "cpu") == "mps" else 5000
@@ -224,26 +236,41 @@ class RAGEngine:
         return int(chunks), float(secs)
 
     def request_abort(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             self._abort = True
         except Exception:
             pass
 
     def clear_abort(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             self._abort = False
         except Exception:
             pass
 
     def _check_abort(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if bool(getattr(self, "_abort", False)):
             raise RuntimeError("RAG operation aborted")
 
     def _file_id_for(self, path: str) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         p = os.path.abspath(path or "")
         return hashlib.sha256(p.encode("utf-8", errors="ignore")).hexdigest()
 
     def mark_deleted(self, source_path: str, deleted: bool = True) -> bool:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._load_state()
         if not isinstance(self.state, dict) or not isinstance(self.state.get("files"), dict):
             self.state = {"version": 1, "files": {}}
@@ -264,6 +291,9 @@ class RAGEngine:
         return True
 
     def _is_file_deleted(self, file_id: str) -> bool:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             files = (self.state or {}).get("files") if isinstance(self.state, dict) else None
             rec = files.get(file_id) if isinstance(files, dict) else None
@@ -272,12 +302,18 @@ class RAGEngine:
             return False
 
     def _set_last_error(self, msg: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             self.last_error = (msg or "").strip()
         except Exception:
             pass
 
     def _load_state(self) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         try:
             if os.path.exists(self.state_path):
                 with open(self.state_path, "r", encoding="utf-8") as f:
@@ -292,12 +328,18 @@ class RAGEngine:
         self.state = {"version": 1, "files": {}}
 
     def _atomic_write_json(self, path: str, obj: Any) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         tmp_path = f"{path}.tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(obj, f, ensure_ascii=False, indent=2)
         os.replace(tmp_path, path)
 
     def _atomic_write_npy(self, path: str, arr: Any) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         tmp_base = f"{path}.tmp"
         np.save(tmp_base, arr)
         tmp_path = tmp_base if tmp_base.endswith(".npy") else f"{tmp_base}.npy"
@@ -306,11 +348,17 @@ class RAGEngine:
         os.replace(tmp_path, path)
 
     def _atomic_write_faiss(self, path: str, index_obj: Any) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         tmp_path = f"{path}.tmp"
         faiss.write_index(index_obj, tmp_path)
         os.replace(tmp_path, path)
 
     def validate_store(self) -> Dict[str, Any]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         ok = True
         problems: List[str] = []
 
@@ -361,6 +409,9 @@ class RAGEngine:
         return {"ok": ok, "problems": problems}
 
     def _quarantine_store_files(self, reason: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         ts = time.strftime("%Y%m%d-%H%M%S")
         suffix = f".corrupt.{ts}"
         for p in (self.index_path, self.docs_path, self.chunks_meta_path, self.meta_path, self.state_path):
@@ -377,6 +428,9 @@ class RAGEngine:
         self._set_last_error(f"RAG store was quarantined: {reason}")
 
     def _validate_or_quarantine_existing_store(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             res = self.validate_store()
             if not res.get("ok", True):
@@ -493,6 +547,9 @@ class RAGEngine:
         return [chunk.text for chunk in shared_chunk_text(text, chunk_size=chunk_size, overlap=overlap)]
 
     def _extract_content(self, file_path: str) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             ext = os.path.splitext(file_path)[1].lower()
             if ext == '.pdf':
@@ -654,6 +711,9 @@ class RAGEngine:
                     read_fail = 0
 
                     def is_article_entry(entry) -> bool:
+                        """
+                        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                        """
                         ns = getattr(entry, "namespace", None)
                         if isinstance(ns, str) and ns:
                             return ns.upper() in ("A", "C")
@@ -681,6 +741,9 @@ class RAGEngine:
                         it = None
 
                     def iter_entries():
+                        """
+                        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                        """
                         nonlocal scanned, read_fail
                         if it is not None:
                             try:
@@ -878,6 +941,9 @@ class RAGEngine:
                         read_fail = 0
 
                         def is_article_entry(entry) -> bool:
+                            """
+                            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                            """
                             ns = getattr(entry, "namespace", None)
                             if isinstance(ns, str) and ns:
                                 return ns.upper() in ("A", "C")
@@ -1077,6 +1143,9 @@ class RAGEngine:
             return False
 
     def _ingest_paths(self, file_paths: List[str], save_on_checkpoint: bool = True) -> int:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         started_at = time.perf_counter()
         self._check_abort()
         added = 0
@@ -1087,6 +1156,9 @@ class RAGEngine:
         checkpoint_chunks, checkpoint_secs = self._checkpoint_policy()
 
         def encode_batch(texts: List[str]):
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             try:
                 bs = getattr(self, "embed_batch_size", 32)
                 return self.embedding_model.encode(texts, batch_size=int(bs), show_progress_bar=False)
@@ -1094,6 +1166,9 @@ class RAGEngine:
                 return self.embedding_model.encode(texts)
 
         def should_index(rec: dict, path: str, size: int, mtime: float) -> tuple[bool, str | None, bool]:
+            """
+            Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+            """
             if rec.get("deleted"):
                 return False, None, False
             if rec.get("status") != "ok":
@@ -1348,6 +1423,9 @@ class RAGEngine:
         batch_size = 2000
 
         def flush():
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             nonlocal batch, added_total
             if not batch:
                 return

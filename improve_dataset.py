@@ -4,6 +4,9 @@ import random
 from pathlib import Path
 
 def generate_qa_pairs(text_chunk):
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     # Simulated high-quality persona pairs based on text chunks.
     # In a real scenario, an LLM would do this, but we'll use templated Raskolnikov answers.
     pass

@@ -226,16 +226,25 @@ def _lora_base_dir() -> str:
 # ---------------------------------------------------------
 
 class FuseWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(bool, str)
     line = pyqtSignal(str)
 
     def __init__(self, base_model: str, adapter_path: str, save_path: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.base_model = base_model
         self.adapter_path = adapter_path
         self.save_path = save_path
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             cmd = [
                 sys.executable, "-m", "mlx_lm", "fuse",
@@ -265,16 +274,25 @@ class FuseWorker(QThread):
             self.finished.emit(False, str(e))
 
 class MicWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     transcription_done = pyqtSignal(str)
     error_occurred = pyqtSignal(str)
 
     def __init__(self, parent=None):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__(parent)
         self.is_recording = False
         self.audio_data = []
         self.sample_rate = 16000
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.is_recording = True
         self.audio_data = []
         try:
@@ -318,14 +336,23 @@ class MicWorker(QThread):
 
 
 class TTSWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(bool, str)
 
     def __init__(self, text: str, voice: str = "tr-TR-AhmetNeural"):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.text = text
         self.voice = voice
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.text.strip():
             self.finished.emit(False, "Empty text")
             return
@@ -360,17 +387,29 @@ class TTSWorker(QThread):
             self.finished.emit(False, str(e))
 
     def stop_recording(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.is_recording = False
 
 class ModelLoaderWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     loaded = pyqtSignal(object, object, str)
     error = pyqtSignal(str)
 
     def __init__(self, model_path: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.model_path = model_path
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if load is None:
                 raise RuntimeError(MLX_IMPORT_ERROR or "mlx_lm is not available.")
@@ -399,6 +438,9 @@ class ModelLoaderWorker(QThread):
             self.error.emit(str(e))
 
     def _ensure_special_tokens(self, tokenizer):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         eos_id = getattr(tokenizer, "eos_token_id", None)
         if eos_id is None:
             eos_token = getattr(tokenizer, "eos_token", None) or "</s>"
@@ -534,10 +576,16 @@ class AIWorker(QThread):
 
 
 class BenchmarkWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(float, int, float, str)
     error = pyqtSignal(str)
 
     def __init__(self, model, tokenizer, prompt: str, max_tokens: int = 128):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.model = model
         self.tokenizer = tokenizer
@@ -545,6 +593,9 @@ class BenchmarkWorker(QThread):
         self.max_tokens = max_tokens
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if generate is None:
                 raise RuntimeError(MLX_IMPORT_ERROR or "mlx_lm is not available.")
@@ -568,14 +619,23 @@ class BenchmarkWorker(QThread):
 
 
 class DeleteChatWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(str, bool, str, float)
 
     def __init__(self, db_path: str, chat_name: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self._db_path = os.path.abspath(db_path or "app.db")
         self._chat_name = (chat_name or "").strip()
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         start = time.perf_counter()
         try:
             conn = sqlite3.connect(self._db_path)
@@ -599,14 +659,23 @@ class DeleteChatWorker(QThread):
 
 
 class DatasetExportWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(bool, str, int, int, str)
 
     def __init__(self, folder: str, out_dir: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self._folder = os.path.abspath(folder or "")
         self._out_dir = os.path.abspath(out_dir or "")
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if ingest_iter_files is None or ingest_build_chunks is None:
                 self.finished.emit(False, "", 0, 0, "file_ingest is not available.")
@@ -631,10 +700,16 @@ class DatasetExportWorker(QThread):
 
 
 class FinalAnswerWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(str)
     error = pyqtSignal(str)
 
     def __init__(self, model, tokenizer, prompt: str, max_tokens: int = 256):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.model = model
         self.tokenizer = tokenizer
@@ -642,6 +717,9 @@ class FinalAnswerWorker(QThread):
         self.max_tokens = int(max_tokens)
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if generate is None:
                 raise RuntimeError(MLX_IMPORT_ERROR or "mlx_lm is not available.")
@@ -654,9 +732,15 @@ class FinalAnswerWorker(QThread):
 
 
 class RagIndexWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(bool, int, str, str)
 
     def __init__(self, main_app, folder: str, recursive: bool = True):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.main_app = main_app
         self.folder = folder
@@ -664,6 +748,9 @@ class RagIndexWorker(QThread):
         self._eng = None
 
     def stop(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if self._eng is not None and hasattr(self._eng, "request_abort"):
                 self._eng.request_abort()
@@ -671,6 +758,9 @@ class RagIndexWorker(QThread):
             pass
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if not self.main_app:
                 self.finished.emit(False, 0, self.folder, "No main app")
@@ -703,14 +793,23 @@ class RagIndexWorker(QThread):
 
 
 class PythonDocsIndexWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     finished = pyqtSignal(bool, int, str)
 
     def __init__(self, main_app, url: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.main_app = main_app
         self.url = (url or "").strip()
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         import shutil
         tmp_root = None
         try:
@@ -745,17 +844,26 @@ class PythonDocsIndexWorker(QThread):
 
 
 class FineTuneWorker(QThread):
+    """
+    Olm bu class UI donmasın diye arkada çatır çatır asenkron çalışıyor, snappy hissiyatın sırrı bu.
+    """
     line = pyqtSignal(str)
     finished = pyqtSignal(int, str)
     error = pyqtSignal(str)
 
     def __init__(self, process: subprocess.Popen, adapter_path: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self._proc = process
         self._adapter_path = adapter_path or ""
         self._stopping = False
 
     def stop(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._stopping = True
         try:
             if self._proc and self._proc.poll() is None:
@@ -771,6 +879,9 @@ class FineTuneWorker(QThread):
             pass
 
     def run(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             import selectors
             import time
@@ -881,6 +992,9 @@ class MemoryMonitor(QThread):
             self.msleep(2000)
 
     def _get_gpu_util_percent(self) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if sys.platform == "darwin":
             return "N/A"
 
@@ -906,7 +1020,13 @@ class MemoryMonitor(QThread):
 # SETTINGS & ROADMAP VIEWER
 # ---------------------------------------------------------
 class SettingsDialog(QDialog):
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     def __init__(self, parent=None, user_prompt="", current_theme="dark"):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__(parent)
         self.setWindowTitle("Settings")
         self.setFixedSize(550, 500)
@@ -988,6 +1108,9 @@ class SettingsDialog(QDialog):
         layout.addLayout(btn_layout)
 
     def accept_settings(self):
+        """
+        Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
+        """
         # Save user_prompt to prompts.json via main app
         self.final_user_prompt = self.prompt_edit.toPlainText()
         if self.rb_system.isChecked():
@@ -1008,6 +1131,9 @@ class SettingsDialog(QDialog):
         self.accept()
 
     def _preview_theme(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.main_app:
             return
         if self.rb_system.isChecked():
@@ -1018,6 +1144,9 @@ class SettingsDialog(QDialog):
             self.main_app.apply_theme("dark")
 
     def show_roadmap(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         QMessageBox.information(self, "Roadmap", "📅 Phase 1 (Apr 13-20): Foundation - Model loads, RAG indexer, LoRA fine-tune\n"
                                                  "⚡ Phase 2 (Apr 21-27): Features - System prompt, Run button, Settings\n"
                                                  "🧪 Phase 3 (Apr 28-30): Break It - Testing and bug fixes\n"
@@ -1027,16 +1156,28 @@ class SettingsDialog(QDialog):
 # DEV MODE GATE
 # ---------------------------------------------------------
 class DevModeGate:
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     def __init__(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         self.unlocked = False
         
     def attempt_unlock(self, password: str) -> bool:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if password == DEV_MODE_PASSWORD:
             self.unlocked = True
             return True
         return False
     
     def lock(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.unlocked = False
 
 dev_mode_gate = DevModeGate()
@@ -1045,13 +1186,22 @@ dev_mode_gate = DevModeGate()
 # DEV PANEL
 # ---------------------------------------------------------
 class DevPanel(QWidget):
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     def __init__(self, parent=None, main_app=None):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__(parent)
         self.main_app = main_app
         
         self.init_ui()
         
     def init_ui(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         layout = QVBoxLayout(self)
         
         # Header
@@ -1083,10 +1233,16 @@ class DevPanel(QWidget):
         layout.addLayout(bottom)
 
     def _hide_dev_sidebar(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if self.main_app:
             self.main_app.toggle_dev_dialog(force_state=False)
 
     def build_rag_tab(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         p = self.parent()
         if p is not None and hasattr(p, "build_rag_tab"):
             return p.build_rag_tab()
@@ -1097,6 +1253,9 @@ class DevPanel(QWidget):
         return w
 
     def build_finetune_tab(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         p = self.parent()
         if p is not None and hasattr(p, "build_finetune_tab"):
             return p.build_finetune_tab()
@@ -1107,6 +1266,9 @@ class DevPanel(QWidget):
         return w
 
     def build_model_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         p = self.parent()
         if p is not None and hasattr(p, "build_model_tab"):
             return p.build_model_tab()
@@ -1117,6 +1279,9 @@ class DevPanel(QWidget):
         return w
 
     def refresh_personas(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.persona_list.clear()
         persona_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "personas")
         os.makedirs(persona_dir, exist_ok=True)
@@ -1125,6 +1290,9 @@ class DevPanel(QWidget):
                 self.persona_list.addItem(f)
                 
     def use_selected_persona(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         selected = self.persona_list.currentItem()
         if not selected:
             QMessageBox.warning(self, "Seçim Yok", "Lütfen bir persona (system prompt) seçin.")
@@ -1152,6 +1320,9 @@ class DevPanel(QWidget):
             QMessageBox.critical(self, "Hata", f"Persona yüklenemedi: {e}")
 
     def build_testing_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         p = self.parent()
         if p is not None and hasattr(p, "build_testing_tab"):
             return p.build_testing_tab()
@@ -1162,6 +1333,9 @@ class DevPanel(QWidget):
         return w
 
     def build_unrestricted_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         p = self.parent()
         if p is not None and hasattr(p, "build_unrestricted_tab"):
             return p.build_unrestricted_tab()
@@ -1173,7 +1347,13 @@ class DevPanel(QWidget):
 
 
 class DevPanelDialog(QWidget):
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     def __init__(self, parent=None, main_app=None, embedded: bool = False):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__(parent)
         self.main_app = main_app
         self._collapsed = False
@@ -1228,6 +1408,9 @@ class DevPanelDialog(QWidget):
         panel_layout.addWidget(tabs)
 
     def _wrap_tab(self, inner: QWidget) -> QScrollArea:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         sc = QScrollArea()
         sc.setWidgetResizable(True)
         sc.setFrameShape(QFrame.NoFrame)
@@ -1236,11 +1419,17 @@ class DevPanelDialog(QWidget):
         return sc
 
     def toggle_collapsed(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.set_collapsed(not self._collapsed)
         if self.main_app:
             self.main_app._save_dev_dialog_state()
 
     def set_collapsed(self, collapsed: bool):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._collapsed = bool(collapsed)
         if self._collapsed:
             self.collapse_btn.setText("▸")
@@ -1252,12 +1441,18 @@ class DevPanelDialog(QWidget):
             self.setFixedSize(self._expanded_size)
 
     def show_roadmap(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         QMessageBox.information(self, "Roadmap", "Phase 1 (Apr 13-20): Foundation - Model loads, RAG indexer, LoRA fine-tune\n"
                                                  "Phase 2 (Apr 21-27): Features - System prompt, Run button, Settings\n"
                                                  "Phase 3 (Apr 28-30): Break It - Testing and bug fixes\n"
                                                  "May 11: Presentation Day")
     
     def build_rag_tab(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         widget = QWidget()
         layout = QVBoxLayout(widget)
         
@@ -1364,11 +1559,17 @@ class DevPanelDialog(QWidget):
         return widget
     
     def browse_rag_folder(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         folder = QFileDialog.getExistingDirectory(self, "Select Project Folder")
         if folder:
             self.rag_folder_path.setText(folder)
 
     def browse_project_workspace(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.main_app:
             return
         folder = QFileDialog.getExistingDirectory(self, "Select Project Workspace")
@@ -1384,6 +1585,9 @@ class DevPanelDialog(QWidget):
                 pass
 
     def clear_project_workspace(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.main_app:
             return
         try:
@@ -1399,6 +1603,9 @@ class DevPanelDialog(QWidget):
             pass
     
     def load_rag_data(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if not self.main_app:
             return
         try:
@@ -1416,6 +1623,9 @@ class DevPanelDialog(QWidget):
         self.refresh_rag_status()
 
     def unload_rag_data(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if not self.main_app:
             return
         try:
@@ -1432,6 +1642,9 @@ class DevPanelDialog(QWidget):
         self.refresh_rag_status()
     
     def index_project_files(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         folder = self.rag_folder_path.text().strip()
         if not folder or not os.path.isdir(folder):
             QMessageBox.warning(self, "Invalid Folder", "Please select a valid folder path.")
@@ -1459,6 +1672,9 @@ class DevPanelDialog(QWidget):
         self._rag_worker.start()
     
     def index_python_docs(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         self.rag_status_lbl.setText("Indexing Python docs…")
         if hasattr(self, "_rag_docs_btn") and self._rag_docs_btn is not None:
             self._rag_docs_btn.setEnabled(False)
@@ -1477,6 +1693,9 @@ class DevPanelDialog(QWidget):
         self._docs_worker.start()
 
     def _on_rag_index_finished(self, ok: bool, chunk_count: int, folder: str, err: str):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if hasattr(self, "_rag_index_btn") and self._rag_index_btn is not None:
             self._rag_index_btn.setEnabled(True)
         if err == "Aborted":
@@ -1503,6 +1722,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Indexing Complete", f"Folder indexed: {folder}\nTotal chunks in store: {int(chunk_count)}\n\nIndexed data is cumulative and will persist after restart until you reset it.")
 
     def abort_rag_operations(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         try:
             eng = self.main_app.get_rag_engine() if self.main_app else None
             if eng is not None and hasattr(eng, "request_abort"):
@@ -1518,6 +1740,9 @@ class DevPanelDialog(QWidget):
         self.rag_status_lbl.setText("Aborting…")
 
     def refresh_rag_status(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         rag_dir = str(_lokum_rag_dir()) if callable(_lokum_rag_dir) else os.path.join(os.path.expanduser("~"), ".lokumf", "rag")
         try:
             use_rag = bool(getattr(self.main_app, "use_rag", True)) if self.main_app else True
@@ -1564,6 +1789,9 @@ class DevPanelDialog(QWidget):
         self.rag_index_lbl.setText(f"Store: {rag_dir}")
 
     def _on_docs_index_finished(self, ok: bool, chunk_count: int, err: str):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if hasattr(self, "_rag_docs_btn") and self._rag_docs_btn is not None:
             self._rag_docs_btn.setEnabled(True)
         if err:
@@ -1577,6 +1805,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Docs Indexing Complete", f"Chunks: {int(chunk_count)}")
     
     def reset_rag(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if not self.main_app:
             return
         eng = self.main_app.get_rag_engine()
@@ -1607,6 +1838,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Reset Complete", "RAG index has been reset.")
     
     def build_finetune_tab(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         widget = QWidget()
         layout = QVBoxLayout(widget)
         
@@ -1849,6 +2083,9 @@ class DevPanelDialog(QWidget):
         return widget
 
     def start_fuse(self):
+        """
+        Eğitilen o mükemmel adaptörü ana modelle birleştiren (fuse eden) büyü burası. %80 altıysa affetmez siler.
+        """
         new_name = self.ft_fuse_name.text().strip()
         if not new_name:
             QMessageBox.warning(self, "Missing Name", "Lütfen yeni model için bir isim girin, aksi takdirde birleştirme (fuse) işlemi yapılmayacaktır!")
@@ -1883,6 +2120,9 @@ class DevPanelDialog(QWidget):
         self._fuse_worker.start()
 
     def _on_fuse_finished(self, success: bool, msg: str):
+        """
+        Eğitilen o mükemmel adaptörü ana modelle birleştiren (fuse eden) büyü burası. %80 altıysa affetmez siler.
+        """
         self._fuse_btn.setEnabled(True)
         self.ft_fuse_name.setEnabled(True)
         self.train_log.appendPlainText(f"[FUSE] {msg}")
@@ -1892,6 +2132,9 @@ class DevPanelDialog(QWidget):
             QMessageBox.critical(self, "Fuse Error", msg)
 
     def browse_ft_model_path(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         start = os.path.expanduser("~/.lmstudio/models")
         folder = QFileDialog.getExistingDirectory(self, "Select MLX Model Folder For Training", start if os.path.isdir(start) else "")
         if folder:
@@ -1901,6 +2144,9 @@ class DevPanelDialog(QWidget):
                 self.ft_model_path.setText(folder)
 
     def _scan_lmstudio_models(self) -> list[str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         root = os.path.expanduser("~/.lmstudio/models")
         if not os.path.isdir(root):
             return []
@@ -1935,6 +2181,9 @@ class DevPanelDialog(QWidget):
         return found
 
     def refresh_ft_models(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
             return
         self.ft_model_list.clear()
@@ -1958,6 +2207,9 @@ class DevPanelDialog(QWidget):
             self.ft_model_list.addItem(item)
 
     def use_selected_ft_model(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
             return
         items = self.ft_model_list.selectedItems()
@@ -1971,6 +2223,9 @@ class DevPanelDialog(QWidget):
             self.ft_model_path.setText(str(p))
 
     def browse_ft_resume_adapter(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         fp, _ = QFileDialog.getOpenFileName(self, "Select adapters.safetensors", "", "Adapter Weights (*.safetensors);;All Files (*)")
         if fp:
             try:
@@ -1979,6 +2234,9 @@ class DevPanelDialog(QWidget):
                 self.ft_resume_path.setText(fp)
 
     def _apply_ft_preset(self, _idx: int):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             name = (self.ft_preset.currentText() if hasattr(self, "ft_preset") else "").strip()
         except Exception:
@@ -2084,11 +2342,17 @@ class DevPanelDialog(QWidget):
         self.ft_clear_cache_thr.setValue(2.0)
 
     def browse_finetune_ingest_folder(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         folder = QFileDialog.getExistingDirectory(self, "Select Folder For Training Data")
         if folder:
             self.ft_ingest_folder.setText(folder)
 
     def export_finetune_dataset_from_folder(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         folder = (self.ft_ingest_folder.text() if hasattr(self, "ft_ingest_folder") else "").strip()
         if not folder or not os.path.isdir(folder):
             QMessageBox.warning(self, "Invalid Folder", "Please select a valid folder.")
@@ -2107,6 +2371,9 @@ class DevPanelDialog(QWidget):
         self._ds_export_worker.start()
 
     def _on_dataset_export_finished(self, ok: bool, out_dir: str, chunk_count: int, file_count: int, err: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if hasattr(self, "_export_dataset_btn") and self._export_dataset_btn is not None:
             self._export_dataset_btn.setEnabled(True)
         if not ok:
@@ -2132,11 +2399,17 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Export Complete", f"Exported dataset:\n{out_dir}\n\nFiles: {int(file_count)}\nChunks: {int(chunk_count)}")
     
     def browse_jsonl(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         folder = QFileDialog.getExistingDirectory(self, "Select JSONL Dataset Folder")
         if folder:
             self.jsonl_path.setText(folder)
     
     def start_training(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         if hasattr(self, "_ft_worker") and self._ft_worker is not None:
             QMessageBox.warning(self, "Training", "Training is already running.")
             return
@@ -2418,6 +2691,9 @@ class DevPanelDialog(QWidget):
         self._ft_worker.start()
     
     def stop_training(self):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         if hasattr(self, "_ft_worker") and self._ft_worker is not None:
             try:
                 self._ft_worker.stop()
@@ -2427,6 +2703,9 @@ class DevPanelDialog(QWidget):
             self._stop_train_btn.setEnabled(False)
 
     def _on_train_error(self, err: str):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         self.train_log.appendPlainText(f"ERROR: {err}")
         try:
             if self.main_app:
@@ -2437,6 +2716,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.critical(self, "Training Error", err)
 
     def _on_train_finished(self, rc: int, adapter_path: str):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         self._last_adapter_path = adapter_path
         try:
             kind = "Validation" if str(getattr(self, "_ft_run_kind", "train")) == "valid" else "Training"
@@ -2540,6 +2822,9 @@ class DevPanelDialog(QWidget):
         self._cleanup_train_ui(success=(int(rc) == 0))
 
     def _finalize_ft_worker(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         w = getattr(self, "_ft_worker", None)
         if w is None:
             return
@@ -2559,6 +2844,9 @@ class DevPanelDialog(QWidget):
             pass
 
     def _cleanup_train_ui(self, success: bool = False):
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         try:
             w = getattr(self, "_ft_worker", None)
             if w is not None:
@@ -2577,6 +2865,9 @@ class DevPanelDialog(QWidget):
         self._finalize_ft_worker()
 
     def _prepare_finetune_data_dir(self) -> str:
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         use_sqlite = bool(getattr(self, "use_sqlite", None) and self.use_sqlite.isChecked())
         use_jsonl = bool(getattr(self, "use_jsonl", None) and self.use_jsonl.isChecked())
         base = _lora_base_dir()
@@ -2660,7 +2951,13 @@ class DevPanelDialog(QWidget):
         raise RuntimeError("Select a dataset source (SQLite or JSONL).")
 
     def _write_train_valid_jsonl(self, out_dir: str, lines: list[str]) -> None:
+        """
+        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        """
         def normalize_jsonl_line(ln: str) -> str:
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             s = (ln or "").strip()
             if not s:
                 return ""
@@ -2688,6 +2985,9 @@ class DevPanelDialog(QWidget):
                     fv.write(out + "\n")
     
     def build_model_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         widget = QWidget()
         layout = QVBoxLayout(widget)
         
@@ -2748,6 +3048,9 @@ class DevPanelDialog(QWidget):
         return widget
     
     def refresh_models(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.model_list.clear()
         lmstudio_path = os.path.expanduser("~/.lmstudio/models/")
         if os.path.exists(lmstudio_path):
@@ -2758,11 +3061,17 @@ class DevPanelDialog(QWidget):
                         self.model_list.addItem(full_path)
     
     def browse_model_path(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         path = QFileDialog.getExistingDirectory(self, "Select Model Folder")
         if path:
             self.manual_model_path.setText(path)
     
     def load_selected_model(self):
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         selected = self.model_list.currentItem()
         path = self.manual_model_path.text().strip() or (selected.text() if selected else None)
         
@@ -2784,6 +3093,9 @@ class DevPanelDialog(QWidget):
         self._model_loader.start()
 
     def _on_model_loaded(self, model, tokenizer, model_path: str) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         if self.main_app:
             self.main_app._on_model_loaded(model, tokenizer, model_path)
         self.model_status.setText(f"Loaded: {os.path.basename(model_path)}")
@@ -2791,6 +3103,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Model Loaded", f"Successfully loaded model from:\n{model_path}")
 
     def _on_model_load_error(self, err: str) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         if self.main_app:
             self.main_app._on_model_load_error(err)
         self.model_status.setText(f"Error: {err}")
@@ -2798,6 +3113,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.critical(self, "Load Error", f"Failed to load model:\n{err}")
 
     def unload_current_model(self) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         if not self.main_app:
             return
         self.main_app.unload_model()
@@ -2806,6 +3124,9 @@ class DevPanelDialog(QWidget):
         QMessageBox.information(self, "Model", "Model unloaded.")
     
     def build_testing_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         widget = QWidget()
         layout = QVBoxLayout(widget)
 
@@ -2983,18 +3304,27 @@ class DevPanelDialog(QWidget):
         return widget
     
     def _on_stt_size_changed(self, index):
+        """
+        Ahmet'in sesi veya Whisper large-v3-turbo hızı burada devreye giriyor. Fuar şovmenliği!
+        """
         if self.main_app:
             size = self.stt_size_combo.itemData(index)
             self.main_app.stt_model_size = size
             self.main_app.save_prompts() # Persist to config.json
 
     def _on_tts_voice_changed(self, index):
+        """
+        Ahmet'in sesi veya Whisper large-v3-turbo hızı burada devreye giriyor. Fuar şovmenliği!
+        """
         if self.main_app:
             voice = self.tts_voice_combo.itemData(index)
             self.main_app.tts_voice = voice
             self.main_app.save_prompts() # Persist to config.json
 
     def run_ast_benchmark(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.bench_result.setText("Running benchmark...")
         self.bench_result.setStyleSheet("color: #ffd04d; padding: 8px;")
         QApplication.processEvents()
@@ -3022,6 +3352,9 @@ class DevPanelDialog(QWidget):
         self.bench_result.setStyleSheet(f"color: {'#4dff9f' if score >= 80 else '#ff4d6a'}; padding: 8px;")
     
     def run_stress_test(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.stress_result.setText("Running stress test...")
         self.stress_result.setStyleSheet("color: #ffd04d; padding: 8px;")
         QApplication.processEvents()
@@ -3032,6 +3365,9 @@ class DevPanelDialog(QWidget):
         self.stress_result.setStyleSheet("color: #4dff9f; padding: 8px;")
 
     def run_smoke_tests(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         ok = True
         problems = []
 
@@ -3066,6 +3402,9 @@ class DevPanelDialog(QWidget):
             self.smoke_result.setStyleSheet("color: #ff4d6a; padding: 8px;")
 
     def run_throughput_benchmark(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.main_app or self.main_app.model is None or self.main_app.tokenizer is None:
             self.perf_result.setText("Benchmark requires a loaded model.")
             self.perf_result.setStyleSheet("color: #ff4d6a; padding: 8px;")
@@ -3082,14 +3421,23 @@ class DevPanelDialog(QWidget):
         self._bench_worker.start()
 
     def _on_benchmark_done(self, tps: float, tokens: int, elapsed: float, sample: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.perf_result.setText(f"{tps:.2f} tok/s | {tokens} tokens | {elapsed:.2f}s")
         self.perf_result.setStyleSheet("color: #4dff9f; padding: 8px;")
 
     def _on_benchmark_error(self, err: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.perf_result.setText(f"Benchmark failed: {err}")
         self.perf_result.setStyleSheet("color: #ff4d6a; padding: 8px;")
 
     def start_ram_monitor(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.ram_log.appendPlainText("RAM Monitor started...")
         if psutil is None:
             self.ram_log.appendPlainText("psutil is not available.")
@@ -3097,6 +3445,9 @@ class DevPanelDialog(QWidget):
         process = psutil.Process(os.getpid())
 
         def update_ram():
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             mem = process.memory_info().rss / (1024**3)
             self.ram_log.appendPlainText(f"RAM: {mem:.2f} GB")
 
@@ -3105,11 +3456,17 @@ class DevPanelDialog(QWidget):
         self.ram_timer.start(2000)
 
     def stop_ram_monitor(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if hasattr(self, 'ram_timer'):
             self.ram_timer.stop()
         self.ram_log.appendPlainText("RAM Monitor stopped.")
 
     def build_unrestricted_tab(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         widget = QWidget()
         layout = QVBoxLayout(widget)
 
@@ -3143,6 +3500,9 @@ class DevPanelDialog(QWidget):
         return widget
 
     def toggle_unrestricted(self, state):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if state == Qt.Checked:
             self.unrestricted_enabled.setText("Unrestricted Mode ACTIVE")
             self.unrestricted_status.setText("Status: ACTIVE")
@@ -3170,8 +3530,14 @@ class DevPanelDialog(QWidget):
 # MAIN UI
 # ---------------------------------------------------------
 class CustomMessageBox(QDialog):
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     @classmethod
     def _create_dialog(cls, parent, title, text, btn_text="OK", icon_type="info"):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         dialog = QDialog(parent)
         dialog.setWindowTitle(title)
         dialog.setMinimumWidth(320)
@@ -3269,21 +3635,33 @@ class CustomMessageBox(QDialog):
 
     @classmethod
     def information(cls, parent, title, text):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         d = cls._create_dialog(parent, title, text, "OK", "info")
         d.exec_()
         
     @classmethod
     def warning(cls, parent, title, text):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         d = cls._create_dialog(parent, title, text, "OK", "warning")
         d.exec_()
         
     @classmethod
     def critical(cls, parent, title, text):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         d = cls._create_dialog(parent, title, text, "OK", "critical")
         d.exec_()
 
     @classmethod
     def question(cls, parent, title, text, buttons=None):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         d = cls._create_dialog(parent, title, text, "Yes", "question")
         return QMessageBox.Yes if d.exec_() == QDialog.Accepted else QMessageBox.No
 
@@ -3294,7 +3672,13 @@ QMessageBox.critical = CustomMessageBox.critical
 QMessageBox.question = CustomMessageBox.question
 
 class ChatbotGUI(QWidget):
+    """
+    Arayüzün elitliğini ve LM Studio kalitesini sağlayan ana şasi burası.
+    """
     def __init__(self, model, tokenizer, model_path, *, db_path: str | None = None, start_service: bool = True, start_monitor: bool = True):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.model = model
         self.tokenizer = tokenizer
@@ -3400,6 +3784,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _db_path(self) -> str:
+        """
+        Sohbetlerin DB ye güvenli şekilde yazıldığı kısım. .lokumf izolasyonu önemli.
+        """
         if self._db_path_override:
             return self._db_path_override
         # Default DB lives in ~/.lokumf to avoid committing private chats into git.
@@ -3500,6 +3887,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _init_chat_db(self) -> None:
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         self._migrate_local_repo_db_if_needed()
         self._migrate_local_repo_lora_if_needed()
         conn = sqlite3.connect(self._db_path())
@@ -3541,6 +3931,9 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _ensure_chat_row(self, conn: sqlite3.Connection, name: str) -> int:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         nm = (name or "").strip()
         if not nm:
             nm = "Default Chat"
@@ -3554,6 +3947,9 @@ class ChatbotGUI(QWidget):
         return int(cur.lastrowid)
 
     def _load_chats_from_db(self) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             cur = conn.cursor()
@@ -3611,6 +4007,9 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
 
     def _persist_message(self, chat_name: str, role: str, content: str, think: str = "", thought_s=None, meta=None) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             chat_id = self._ensure_chat_row(conn, chat_name)
@@ -3629,6 +4028,9 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _rename_chat_db(self, old_name: str, new_name: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             cur = conn.cursor()
@@ -3638,6 +4040,9 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _delete_chat_db(self, name: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             conn.execute("PRAGMA foreign_keys = ON")
@@ -3654,6 +4059,9 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _remove_chat_list_item(self, chat_name: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         target = (chat_name or "").strip()
         if not target:
             return
@@ -3667,6 +4075,9 @@ class ChatbotGUI(QWidget):
                 break
 
     def _replace_user_message_db(self, chat_name: str, msg_index: int, new_content: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             chat_id = self._ensure_chat_row(conn, chat_name)
@@ -3691,6 +4102,9 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _delete_user_message_db(self, chat_name: str, msg_index: int) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         conn = sqlite3.connect(self._db_path())
         try:
             chat_id = self._ensure_chat_row(conn, chat_name)
@@ -3714,11 +4128,17 @@ class ChatbotGUI(QWidget):
             conn.close()
 
     def _restore_dev_dialog_state(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         visible = self._settings.value("dev_dialog/visible", False, type=bool)
         if self.dev_mode_active and visible:
             self.toggle_dev_dialog(force_state=True)
 
     def _save_dev_dialog_state(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if hasattr(self, "dev_sidebar") and self.dev_sidebar is not None:
             self._settings.setValue("dev_dialog/visible", bool(self.dev_sidebar.isVisible()))
         else:
@@ -3726,9 +4146,15 @@ class ChatbotGUI(QWidget):
         self._settings.setValue("dev_dialog/collapsed", False)
 
     def _ensure_dev_dialog(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         return
 
     def get_rag_engine(self):
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         if bool(getattr(self, "training_active", False)):
             return None
         if self.rag_engine is not None:
@@ -3752,6 +4178,9 @@ class ChatbotGUI(QWidget):
         return self.rag_engine
 
     def unload_rag_engine(self) -> None:
+        """
+        Dosyaları okuyup 768 boyutlu vektörlere çeviren RAG beyni. Hafıza buradan geliyor.
+        """
         try:
             self.rag_engine = None
         except Exception:
@@ -3844,6 +4273,9 @@ class ChatbotGUI(QWidget):
             return False
 
     def init_ui(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         self.setWindowTitle(VERSION)
         self.setGeometry(100, 100, 1100, 750)
 
@@ -4130,6 +4562,9 @@ class ChatbotGUI(QWidget):
         self.apply_theme(self.prompts.get("theme", "dark"))
 
     def _update_dynamic_btn_state(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if getattr(self, "is_generating", False):
             self.dynamic_action_btn.setText("■")
             self.dynamic_action_btn.setToolTip("Stop Generation")
@@ -4142,6 +4577,9 @@ class ChatbotGUI(QWidget):
                 self.dynamic_action_btn.setToolTip("Hold or Click to Speak")
 
     def _on_dynamic_action_clicked(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if getattr(self, "is_generating", False):
             self.stop_generation()
         else:
@@ -4151,6 +4589,9 @@ class ChatbotGUI(QWidget):
                 self.toggle_mic()
 
     def _rebuild_chat_list(self):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         try:
             for i in range(self.chat_list.count()):
                 it = self.chat_list.item(i)
@@ -4169,6 +4610,9 @@ class ChatbotGUI(QWidget):
         self._refresh_chat_list_row_visuals()
 
     def _chat_name_from_item(self, item: QListWidgetItem) -> str:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         if item is None:
             return ""
         try:
@@ -4183,6 +4627,9 @@ class ChatbotGUI(QWidget):
             return ""
 
     def _find_chat_list_item(self, chat_name: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         target = (chat_name or "").strip()
         if not target:
             return None
@@ -4193,12 +4640,18 @@ class ChatbotGUI(QWidget):
         return None
 
     def _add_chat_list_item(self, chat_name: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         item = QListWidgetItem("")
         item.setData(Qt.UserRole, chat_name)
         self.chat_list.addItem(item)
         self._set_chat_list_item_widget(item, chat_name)
 
     def _set_chat_list_item_widget(self, item: QListWidgetItem, chat_name: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         w = QWidget()
         w.setObjectName("ChatItemRow")
         w.setProperty("selected", False)
@@ -4231,6 +4684,9 @@ class ChatbotGUI(QWidget):
             item.setSizeHint(QSize(220, 52))
 
     def _rename_chat_list_item(self, old_name: str, new_name: str) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         it = self._find_chat_list_item(old_name)
         if it is None:
             return
@@ -4249,6 +4705,9 @@ class ChatbotGUI(QWidget):
             self._set_chat_list_item_widget(it, new_name)
 
     def _refresh_chat_list_row_visuals(self) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         current = self.chat_list.currentItem()
         for i in range(self.chat_list.count()):
             it = self.chat_list.item(i)
@@ -4263,6 +4722,9 @@ class ChatbotGUI(QWidget):
                 w.update()
 
     def _handle_url_change(self, url):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         url_str = url.toString()
         if url_str.startswith("speak://"):
             import base64
@@ -4281,11 +4743,17 @@ class ChatbotGUI(QWidget):
             self.chat_display.page().runJavaScript("window.location.href = 'about:blank';")
 
     def toggle_tts(self):
+        """
+        Ahmet'in sesi veya Whisper large-v3-turbo hızı burada devreye giriyor. Fuar şovmenliği!
+        """
         self.use_tts = not self.use_tts
         self.tts_toggle_btn.setText("🔊" if self.use_tts else "🔇")
         self.save_prompts()  # Persist setting
 
     def speak_text(self, text: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.use_tts or not text.strip():
             return
             
@@ -4306,6 +4774,9 @@ class ChatbotGUI(QWidget):
         self.tts_worker.start()
 
     def _on_chat_list_selection_changed(self):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         it = self.chat_list.currentItem()
         if not it:
             return
@@ -4313,6 +4784,9 @@ class ChatbotGUI(QWidget):
         self.switch_chat(it)
 
     def open_chat_list_menu(self, chat_name: str, anchor_btn: QToolButton):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         menu = QMenu(self)
         change_name = QAction("Change name", self)
         delete_chat = QAction("Delete chat", self)
@@ -4330,12 +4804,18 @@ class ChatbotGUI(QWidget):
         menu.exec_(pos)
 
     def _rename_chat_via_prompt(self, chat_name: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         new_name, ok = QInputDialog.getText(self, "Change Chat Name", "New name:", text=chat_name)
         if not ok or not new_name.strip():
             return
         self._rename_chat(chat_name, new_name.strip())
 
     def _delete_chat_by_name(self, chat_name: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         # Custom elegant delete dialog
         dialog = QDialog(self)
         dialog.setWindowTitle("Delete Chat")
@@ -4440,6 +4920,9 @@ class ChatbotGUI(QWidget):
         self._delete_worker.start()
 
     def _on_chat_deleted(self, chat_name: str, ok: bool, err: str, db_ms: float) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         ui_start = time.perf_counter()
         try:
             self.chat_list.setEnabled(True)
@@ -4495,6 +4978,9 @@ class ChatbotGUI(QWidget):
         QTimer.singleShot(1600, lambda: self.gen_status_lbl.setText(""))
 
     def _menu_show_history_for(self, chat_name: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         data = {
             "name": chat_name,
             "messages": self.chats.get(chat_name, []),
@@ -4519,6 +5005,9 @@ class ChatbotGUI(QWidget):
         dlg.exec_()
 
     def _stop_generation(self, show_status: bool = True) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if hasattr(self, "worker") and self.worker is not None:
             try:
                 self.worker.stop()
@@ -4529,9 +5018,15 @@ class ChatbotGUI(QWidget):
             self.gen_status_lbl.setText("Stopping…")
 
     def stop_generation(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._stop_generation(True)
 
     def closeEvent(self, event):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             self._shutdown_threads()
         except Exception:
@@ -4539,11 +5034,17 @@ class ChatbotGUI(QWidget):
         super().closeEvent(event)
 
     def detect_system_theme(self) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         pal = QApplication.instance().palette()
         window = pal.color(QPalette.Window)
         return "dark" if window.lightness() < 128 else "light"
 
     def apply_theme(self, theme: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if theme == "system":
             theme = self.detect_system_theme()
 
@@ -4968,6 +5469,9 @@ class ChatbotGUI(QWidget):
             self._refresh_chat_list_row_visuals()
 
     def update_hw_stats(self, app_ram_gb: str, sys_ram_percent: str, cpu_percent: str, gpu_percent: str):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         shown = app_ram_gb
         try:
             rss_gb = float(str(app_ram_gb).split()[0])
@@ -4984,12 +5488,18 @@ class ChatbotGUI(QWidget):
         self.lbl_gpu_pct.setText(gpu_percent)
 
     def _set_chat_enabled(self, enabled: bool) -> None:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         self.input_field.setEnabled(enabled)
         self.send_btn.setEnabled(enabled)
         if enabled:
             self.input_field.setFocus()
 
     def _set_project_root(self, folder: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         p = os.path.abspath(folder or "")
         if not p or not os.path.isdir(p):
             return
@@ -5002,12 +5512,18 @@ class ChatbotGUI(QWidget):
         self._project_file_cache = None
 
     def select_project_root(self) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         folder = QFileDialog.getExistingDirectory(self, "Select Project Folder")
         if folder:
             self._set_project_root(folder)
         return self.project_root or ""
 
     def open_project_file_picker(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
             root = self.select_project_root()
@@ -5030,6 +5546,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _read_project_file(self, path: str, max_chars: int = 20000) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             if not path or not os.path.isfile(path):
                 return ""
@@ -5042,6 +5561,9 @@ class ChatbotGUI(QWidget):
             return ""
 
     def _find_in_project_by_basename(self, basename: str, max_hits: int = 1) -> list[str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
             return []
@@ -5057,6 +5579,9 @@ class ChatbotGUI(QWidget):
         return hits
 
     def _resolve_project_paths_from_text(self, user_text: str) -> list[str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
             return []
@@ -5089,6 +5614,9 @@ class ChatbotGUI(QWidget):
         return uniq[:6]
 
     def _build_project_context(self, user_text: str) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
             return ""
@@ -5126,6 +5654,9 @@ class ChatbotGUI(QWidget):
         return "\n\n".join(blocks)
 
     def _start_model_load(self, model_dir: str) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         path = os.path.abspath(model_dir or "")
         if not path or not os.path.isdir(path):
             QMessageBox.warning(self, "Load Model", "Model folder not selected or invalid.")
@@ -5138,6 +5669,9 @@ class ChatbotGUI(QWidget):
         self.model_loader.start()
 
     def load_model_quick(self) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         try:
             if getattr(self, "model_loader", None) is not None and self.model_loader.isRunning():
                 QMessageBox.information(self, "Model", "Model is already loading.")
@@ -5157,6 +5691,9 @@ class ChatbotGUI(QWidget):
         self._start_model_load(path)
 
     def load_model_via_picker(self) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         try:
             if getattr(self, "model_loader", None) is not None and self.model_loader.isRunning():
                 QMessageBox.information(self, "Model", "Model is already loading.")
@@ -5176,6 +5713,9 @@ class ChatbotGUI(QWidget):
         self._start_model_load(path)
 
     def unload_model(self) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         try:
             self._stop_generation(False)
         except Exception:
@@ -5209,6 +5749,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _stop_thread_obj(self, t, wait_ms: int) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if t is None:
             return
         try:
@@ -5249,6 +5792,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _shutdown_threads(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         try:
             self._stop_generation(False)
         except Exception:
@@ -5313,6 +5859,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def _find_default_model_path(self) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if self.current_model_path and os.path.isdir(self.current_model_path):
             return self.current_model_path
 
@@ -5355,6 +5904,9 @@ class ChatbotGUI(QWidget):
         return candidates[0][1]
 
     def start_ai_service(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._set_chat_enabled(False)
         model_path = self._find_default_model_path()
         if not model_path:
@@ -5368,6 +5920,9 @@ class ChatbotGUI(QWidget):
         self.model_loader.start()
 
     def _on_model_loaded(self, model, tokenizer, model_path: str) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         self.model = model
         self.tokenizer = tokenizer
         self.current_model_path = model_path
@@ -5377,6 +5932,9 @@ class ChatbotGUI(QWidget):
         self._set_chat_enabled(True)
 
     def _on_model_load_error(self, err: str) -> None:
+        """
+        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        """
         self.model = None
         self.tokenizer = None
         self.service_status_lbl.setText("Service: error")
@@ -5384,14 +5942,23 @@ class ChatbotGUI(QWidget):
         QMessageBox.critical(self, "Model Load Error", err)
 
     def open_settings(self):
+        """
+        Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
+        """
         diag = SettingsDialog(self, self.user_prompt, current_theme=self.theme)
         if diag.exec_():
             self.apply_theme(getattr(diag, "final_theme", self.theme))
 
     def open_dev_panel(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.on_dev_button_clicked()
 
     def on_dev_button_clicked(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not dev_mode_gate.unlocked:
             password, ok = QInputDialog.getText(self, "Dev Mode", "Enter developer password:")
             if not ok or not password:
@@ -5413,6 +5980,9 @@ class ChatbotGUI(QWidget):
         self.toggle_dev_dialog(force_state=None)
 
     def toggle_dev_dialog(self, force_state=None) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not self.dev_mode_active:
             return
         if not hasattr(self, "dev_sidebar") or self.dev_sidebar is None:
@@ -5485,6 +6055,9 @@ class ChatbotGUI(QWidget):
         self._save_dev_dialog_state()
 
     def open_settings_dialog(self):
+        """
+        Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
+        """
         # Sadece basit bir dialog aç, ayarları config.json'dan okuyup/yazalım
         dlg = QDialog(self)
         dlg.setWindowTitle("Ayarlar")
@@ -5514,6 +6087,9 @@ class ChatbotGUI(QWidget):
             QMessageBox.information(self, "Ayarlar", "Ayarlar kaydedildi.")
             
     def new_chat(self):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         base = "New Chat"
         idx = 1
         title = base
@@ -5543,6 +6119,9 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
 
     def switch_chat(self, item):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         self.active_chat = self._chat_name_from_item(item)
         if self.active_chat not in self.chat_ui or not self.chat_ui[self.active_chat]:
             self.chat_ui.setdefault(self.active_chat, [])
@@ -5565,10 +6144,16 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
 
     def resizeEvent(self, event):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         super().resizeEvent(event)
         self._refresh_chat_list_row_visuals()
 
     def _rename_chat(self, old_name: str, new_name: str, *, render_after: bool = True):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         if new_name in self.chats and new_name != old_name:
             QMessageBox.warning(self, "Name Exists", "A chat with this name already exists.")
             return
@@ -5595,9 +6180,15 @@ class ChatbotGUI(QWidget):
             self.render_chat(self.active_chat)
 
     def _is_placeholder_chat_name(self, name: str) -> bool:
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         return name == "New Chat" or name.startswith("New Chat ")
 
     def _auto_name_active_chat(self, first_message: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         raw = (first_message or "").strip()
         raw = raw.replace("\n", " ").replace("\r", " ")
         raw = re.sub(r"\s+", " ", raw).strip()
@@ -5617,6 +6208,9 @@ class ChatbotGUI(QWidget):
         self._rename_chat(self.active_chat, new_name, render_after=False)
 
     def on_chat_anchor_clicked(self, url):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         s = url.toString()
         if s.startswith("msg_menu:"):
             try:
@@ -5641,6 +6235,9 @@ class ChatbotGUI(QWidget):
             return
 
     def open_message_menu(self, msg_index: int):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
             return
@@ -5665,6 +6262,9 @@ class ChatbotGUI(QWidget):
         menu.exec_(pos)
 
     def _edit_user_message(self, msg_index: int):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
             return
@@ -5685,6 +6285,9 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
 
     def _delete_user_message(self, msg_index: int):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
             return
@@ -5700,6 +6303,9 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat)
 
     def _sync_chat_history_from_ui(self, chat_name: str):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         system = [{"role": "system", "content": self.system_prompt}]
         ui_msgs = self.chat_ui.get(chat_name, [])
         out = list(system)
@@ -5711,6 +6317,9 @@ class ChatbotGUI(QWidget):
         self.chats[chat_name] = out
 
     def _toggle_thought(self, msg_index: int) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
             return
@@ -5721,6 +6330,9 @@ class ChatbotGUI(QWidget):
         self.render_chat(self.active_chat, keep_scroll=True)
 
     def _get_base_html(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         colors = getattr(self, "_theme_colors", None) or {
             "bg": "#121212",
             "panel": "#1e1e1e",
@@ -5922,6 +6534,9 @@ class ChatbotGUI(QWidget):
         """
 
     def render_chat(self, chat_name: str, *, keep_scroll: bool = False):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         msgs = self.chat_ui.get(chat_name, []) or []
         is_generating = getattr(self, "is_generating", False)
         
@@ -6022,6 +6637,9 @@ class ChatbotGUI(QWidget):
         user_border = colors["border"]
 
         def clear_layout(lay: QVBoxLayout) -> None:
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             while lay.count():
                 it = lay.takeAt(0)
                 if it is None:
@@ -6031,12 +6649,18 @@ class ChatbotGUI(QWidget):
                     w.deleteLater()
 
         def fmt_html(s: str) -> str:
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             t = self._html_escape(s or "")
             t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
             t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
             return t.replace("\n", "<br>")
 
         def split_fenced_blocks(s: str) -> list[tuple[str, str, str]]:
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             out: list[tuple[str, str, str]] = []
             if not s:
                 return out
@@ -6055,6 +6679,9 @@ class ChatbotGUI(QWidget):
             return out
 
         def make_code_block(code: str, lang: str) -> QWidget:
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             frame = QFrame()
             frame.setObjectName("CodeBlockFrame")
             frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -6126,6 +6753,9 @@ class ChatbotGUI(QWidget):
                 "}"
             )
             def _do_copy(_checked: bool = False, txt: str = code) -> None:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 try:
                     QApplication.clipboard().setText(txt or "")
                 except Exception:
@@ -6326,6 +6956,9 @@ class ChatbotGUI(QWidget):
             pass
 
     def toggle_mic(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if self.mic_worker is not None and self.mic_worker.is_recording:
             # Stop recording
             self.mic_worker.stop_recording()
@@ -6348,6 +6981,9 @@ class ChatbotGUI(QWidget):
             self.gen_status_lbl.setStyleSheet("color: #ff4444;")
 
     def on_transcription_done(self, text):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
         self.mic_btn.setProperty("recording", "false")
@@ -6364,6 +7000,9 @@ class ChatbotGUI(QWidget):
             self.input_field.setFocus()
 
     def on_mic_error(self, err_msg):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
         self.mic_btn.setProperty("recording", "false")
@@ -6372,6 +7011,9 @@ class ChatbotGUI(QWidget):
         QMessageBox.warning(self, "Microphone Error", err_msg)
 
     def soru_sor(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         user_text = self.input_field.text().strip()
         if not user_text:
             return
@@ -6474,6 +7116,9 @@ class ChatbotGUI(QWidget):
         self.worker.start()
 
     def add_chat_bubble(self, sender, text, is_user=True):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         if is_user:
             self.chat_ui.setdefault(self.active_chat, []).append({"role": "user", "content": text or ""})
             self.chats.setdefault(self.active_chat, [{"role": "system", "content": self.system_prompt}]).append({"role": "user", "content": text or ""})
@@ -6484,6 +7129,9 @@ class ChatbotGUI(QWidget):
         return None
 
     def run_last_code(self):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         # Find last code block in assistant responses
         import re
         import subprocess
@@ -6533,6 +7181,9 @@ class ChatbotGUI(QWidget):
             QMessageBox.critical(self, "Execution Error", str(e))
 
     def _html_escape(self, s: str) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         return (
             (s or "")
             .replace("&", "&amp;")
@@ -6541,6 +7192,9 @@ class ChatbotGUI(QWidget):
         )
 
     def _split_stream_delta(self, piece: str) -> tuple[str, str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         buf_full = (self._stream_buffer or "") + (piece or "")
         think_out = ""
         answer_out = ""
@@ -6557,6 +7211,9 @@ class ChatbotGUI(QWidget):
             self._stream_buffer = ""
 
         def parse_tag_at(s: str, lt: int):
+            """
+            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            """
             n = len(s)
             j = lt + 1
             while j < n and s[j].isspace():
@@ -6616,6 +7273,9 @@ class ChatbotGUI(QWidget):
         return think_out, answer_out
 
     def _finalize_stream_tail(self) -> tuple[str, str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if self._stream_in_think:
             self._stream_buffer = ""
             return "", ""
@@ -6624,6 +7284,9 @@ class ChatbotGUI(QWidget):
         return "", tail
 
     def _extract_think_answer_from_text(self, text: str) -> tuple[str, str]:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         import re
 
         raw = text or ""
@@ -6660,6 +7323,9 @@ class ChatbotGUI(QWidget):
             ]
 
             def looks_like_think(p: str) -> bool:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 low = (p or "").strip().lower()
                 if not low:
                     return False
@@ -6672,6 +7338,9 @@ class ChatbotGUI(QWidget):
                 return False
 
             def looks_like_answer(p: str) -> bool:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 low = (p or "").strip().lower()
                 if not low:
                     return False
@@ -6702,6 +7371,9 @@ class ChatbotGUI(QWidget):
         return "", (raw or "").strip()
 
     def _fallback_answer_from_user_text(self, user_text: str) -> str:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         import re
 
         ut = (user_text or "").strip()
@@ -6724,6 +7396,9 @@ class ChatbotGUI(QWidget):
         return ""
 
     def on_new_token(self, token):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         think_delta, answer_delta = self._split_stream_delta(token)
 
         if self._pending_chat is not None and self._pending_msg_index is not None:
@@ -6745,6 +7420,9 @@ class ChatbotGUI(QWidget):
             self._schedule_render(self._pending_chat)
 
     def _schedule_render(self, chat_name: str | None):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if not hasattr(self, "_render_timer") or self._render_timer is None:
             self._render_timer = QTimer(self)
             self._render_timer.setSingleShot(True)
@@ -6756,11 +7434,17 @@ class ChatbotGUI(QWidget):
             self._render_timer.start(40)
 
     def _run_scheduled_render(self) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         target = getattr(self, "_render_target_chat", None)
         if target and target == self.active_chat:
             self.render_chat(target)
 
     def on_ai_success(self, response, tps, tokens, ms, peak_memory_gb):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         pending_chat = self._pending_chat
         pending_idx = self._pending_msg_index
         if isinstance(peak_memory_gb, (int, float)) and peak_memory_gb > 0:
@@ -6871,6 +7555,9 @@ class ChatbotGUI(QWidget):
         self.rag_badge.style().polish(self.rag_badge)
 
     def _on_final_answer_ready(self, text: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         pending = getattr(self, "_final_pending", None)
         if not (isinstance(pending, tuple) and len(pending) == 2):
             return
@@ -6913,6 +7600,9 @@ class ChatbotGUI(QWidget):
         self.input_field.setFocus()
 
     def _on_final_answer_error(self, err: str) -> None:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         self._final_pending = None
         self._final_worker = None
         self._pending_chat = None
@@ -6926,6 +7616,9 @@ class ChatbotGUI(QWidget):
         QMessageBox.critical(self, "Final Answer Error", err)
 
     def on_ai_error(self, err_msg):
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         if self._pending_chat is not None and self._pending_msg_index is not None:
             try:
                 msgs = self.chat_ui.get(self._pending_chat, [])

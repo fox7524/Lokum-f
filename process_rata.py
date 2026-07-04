@@ -5,6 +5,9 @@ import json
 import random
 
 def extract_text_from_pdf(pdf_path):
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     text = ""
     try:
         with fitz.open(pdf_path) as doc:
@@ -15,11 +18,17 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 def clean_text(text):
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     # Basic cleaning
     text = " ".join(text.split())
     return text
 
 def chunk_text(text, chunk_size=800, overlap=100):
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     chunks = []
     words = text.split()
     current_chunk = []
@@ -42,6 +51,9 @@ def chunk_text(text, chunk_size=800, overlap=100):
     return chunks
 
 def main():
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     rata_dir = "RATA"
     output_dir = "RATA_dataset"
     os.makedirs(output_dir, exist_ok=True)

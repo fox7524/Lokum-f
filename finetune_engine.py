@@ -49,9 +49,15 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
                 rest = rest[1:]
 
             def wrap(role: str, content: str) -> str:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 return f"<|im_start|>{role}\n{content.rstrip()}\n<|im_end|>\n"
 
             def split_content(content: str, limit: int) -> list[str]:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 s = (content or "").strip()
                 if not s:
                     return [""]
@@ -94,6 +100,9 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
             cur_msgs: list[tuple[str, str]] = []
 
             def serialize(msgs2: list[tuple[str, str]]) -> str:
+                """
+                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                """
                 s = ""
                 if system_msg:
                     s += wrap("system", system_msg)
@@ -141,6 +150,9 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
     return [s for s in out2 if s.strip()]
 
 def _presplit_jsonl_file(fp: str, max_seq_length: int, batch_size: int) -> int:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     if not fp or not os.path.isfile(fp):
         return 0
     changed = 0
@@ -175,11 +187,17 @@ def _presplit_jsonl_file(fp: str, max_seq_length: int, batch_size: int) -> int:
 
 
 def _validate_jsonl_file(path: Path) -> ValidationResult:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     with path.open("r", encoding="utf-8") as handle:
         return validate_jsonl_rows(handle)
 
 
 def _ensure_valid_jsonl_file(path: Path) -> ValidationResult:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     result = _validate_jsonl_file(path)
     if result.invalid:
         raise ValueError(f"Invalid JSONL rows in {path}: {result.invalid}/{result.total}")
@@ -187,11 +205,20 @@ def _ensure_valid_jsonl_file(path: Path) -> ValidationResult:
 
 
 def _perf_log(stage: str, started_at: float) -> None:
+    """
+    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    """
     elapsed = time.perf_counter() - started_at
     print(f"[perf] stage={stage} seconds={elapsed:.3f}")
 
 class FinetuneEngine:
+    """
+    Burası motor dairesi, M5 Pro GPU'yu ağlatan MLX ve RAG optimizasyonları burada dönüyor.
+    """
     def __init__(self, model_path: str):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         self.model_path = model_path
         # Keep large/private training artifacts out of the git repo by default.
         # Default: ~/.lokumf/lora_data (override via LOKUMF_LORA_DIR)
@@ -257,6 +284,9 @@ class FinetuneEngine:
         return str(train_path)
 
     def presplit_dataset(self, dataset_path: str, max_seq_length: int, batch_size: int) -> dict:
+        """
+        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        """
         data_dir = os.path.abspath(dataset_path or self.dataset_dir)
         train_fp = os.path.join(data_dir, "train.jsonl")
         valid_fp = os.path.join(data_dir, "valid.jsonl")

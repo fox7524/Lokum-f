@@ -6,11 +6,20 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 
 class ElegantChatApp(QWidget):
+    """
+    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    """
     def __init__(self):
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         super().__init__()
         self.initUI()
         
     def initUI(self):  
+        """
+        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        """
         # Main window configuration
         self.setWindowTitle("Thunderbird AI - Elegant UI")
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -155,6 +164,9 @@ class ElegantChatApp(QWidget):
         return f"#{r:02x}{g:02x}{b:02x}"
     
     def send_message(self):
+        """
+        Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
+        """
         message = self.input_field.text().strip()
         if not message:
             return
