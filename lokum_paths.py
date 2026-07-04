@@ -71,7 +71,9 @@ def chat_db_path() -> Path:
     raw = (os.environ.get("LOKUMF_CHAT_DB") or "").strip()
     if raw:
         return Path(raw).expanduser().resolve()
-    return lokumf_home() / "app.db"
+    db_dir = lokumf_home() / "database"
+    ensure_dir(db_dir)
+    return db_dir / "app.db"
 
 
 def dev_password_file() -> Path:

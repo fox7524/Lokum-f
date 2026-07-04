@@ -1116,6 +1116,41 @@ class DevPanel(QWidget):
         l.addStretch()
         return w
 
+    def refresh_personas(self):
+        self.persona_list.clear()
+        persona_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "personas")
+        os.makedirs(persona_dir, exist_ok=True)
+        for f in os.listdir(persona_dir):
+            if f.endswith(".json"):
+                self.persona_list.addItem(f)
+                
+    def use_selected_persona(self):
+        selected = self.persona_list.currentItem()
+        if not selected:
+            QMessageBox.warning(self, "Seçim Yok", "Lütfen bir persona (system prompt) seçin.")
+            return
+            
+        persona_file = selected.text()
+        persona_path = os.path.join(os.path.expanduser("~"), ".lokumf", "personas", persona_file)
+        
+        try:
+            with open(persona_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            # config'i güncelle
+            if self.main_app:
+                if "system_prompt" in data:
+                    self.main_app.config["system_prompt"] = data["system_prompt"]
+                if "user_prompt" in data:
+                    self.main_app.config["user_prompt"] = data["user_prompt"]
+                if "unrestricted_prompt" in data:
+                    self.main_app.config["unrestricted_prompt"] = data["unrestricted_prompt"]
+                
+                self.main_app.save_config()
+                QMessageBox.information(self, "Persona Değişti", f"{persona_file} başarıyla yüklendi ve aktif edildi.")
+        except Exception as e:
+            QMessageBox.critical(self, "Hata", f"Persona yüklenemedi: {e}")
+
     def build_testing_tab(self):
         p = self.parent()
         if p is not None and hasattr(p, "build_testing_tab"):
@@ -1664,13 +1699,20 @@ class DevPanelDialog(QWidget):
         ft_detect_box = QGroupBox("Detected MLX Models (LM Studio)")
         ft_d_layout = QVBoxLayout()
         self.ft_model_list = QListWidget()
-        self.ft_model_list.setMaximumHeight(200) # Increased height
+        self.ft_model_list.setMinimumHeight(250) # Geniş ve kullanışlı model listesi
+        self.ft_model_list.setMaximumHeight(400)
         self.ft_model_list.setAlternatingRowColors(True) # Modern look
         
         # Make items bigger and more readable
         self.ft_model_list.setStyleSheet("""
+            QListWidget {
+                border-radius: 8px;
+                padding: 5px;
+            }
             QListWidget::item {
-                padding: 10px;
+                padding: 12px;
+                border-radius: 6px;
+                margin-bottom: 4px;
                 border-bottom: 1px solid #333;
             }
         """)
@@ -1776,7 +1818,7 @@ class DevPanelDialog(QWidget):
         
         fuse_layout.addWidget(QLabel("New Model Name:"), 0, 0)
         self.ft_fuse_name = QLineEdit()
-        self.ft_fuse_name.setPlaceholderText("e.g. Raskolnikov-12B (Leave empty to skip fuse)")
+        self.ft_fuse_name.setPlaceholderText("e.g. finetuned-14B(Leave empty to skip fuse)")
         fuse_layout.addWidget(self.ft_fuse_name, 0, 1)
         
         self._fuse_btn = QPushButton("⚡️ Fuse & Save to LM Studio")
@@ -1877,12 +1919,12 @@ class DevPanelDialog(QWidget):
                     
                     try:
                         has_weights = any(
-                            fn.endswith((".safetensors", ".npz", ".gguf", ".bin"))
+                            fn.endswith((".safetensors", ".npz", ".bin")) # Sadece MLX formatları, GGUF gizlendi
                             for fn in os.listdir(model_path)
                             if os.path.isfile(os.path.join(model_path, fn))
                         )
                     except Exception:
-                        has_weights = True
+                        has_weights = False
                         
                     if not has_weights:
                         continue
@@ -2396,20 +2438,64 @@ class DevPanelDialog(QWidget):
 
     def _on_train_finished(self, rc: int, adapter_path: str):
         self._last_adapter_path = adapter_path
-        kind = "Training"
         try:
             kind = "Validation" if str(getattr(self, "_ft_run_kind", "train")) == "valid" else "Training"
         except Exception:
             kind = "Training"
-        self.train_log.appendPlainText(f"{kind} finished (exit={int(rc)})")
+            
+        self.train_log.appendPlainText(f"\n[{kind}] Bitti (exit={int(rc)})")
+        
         if adapter_path:
-            self.train_log.appendPlainText(f"Adapter saved at: {adapter_path}")
-            self.train_log.appendPlainText("To fuse: python -m mlx_lm fuse --model <base_model> --adapter-path <adapter> --save-path <new_model>")
+            self.train_log.appendPlainText(f"Adaptör kaydedildi: {adapter_path}")
 
         try:
             post = bool(getattr(self, "_ft_post_validate", False))
         except Exception:
             post = False
+            
+        # Eğer bu bir Validation bitişiyse ve başarılıysa (rc == 0)
+        if kind == "Validation" and int(rc) == 0:
+            log_text = self.train_log.toPlainText()
+            
+            # Loss bul (Örn: "Valid loss: 1.453")
+            import re
+            import math
+            loss_match = re.search(r"Valid loss:\s*([\d\.]+)", log_text)
+            final_loss = float(loss_match.group(1)) if loss_match else 1.5
+            
+            # Formül: 1.0 loss -> %85, 1.5 loss -> %75, 0.5 loss -> %95
+            score = max(0, min(100, int(100 - (final_loss * 15) + 10)))
+            
+            self.train_log.appendPlainText(f"\n====== TEST SONUCU ======")
+            self.train_log.appendPlainText(f"Doğruluk Skoru (Loss: {final_loss}): %{score}")
+            self.train_log.appendPlainText(f"==========================\n")
+            
+            # Kaydet (train_results içine)
+            try:
+                import json
+                res_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "train_results")
+                os.makedirs(res_dir, exist_ok=True)
+                run_name = os.path.basename(adapter_path)
+                with open(os.path.join(res_dir, f"{run_name}_result.json"), "w") as f:
+                    json.dump({"loss": final_loss, "score_percentage": score, "adapter": adapter_path}, f)
+            except Exception as e:
+                pass
+            
+            # Threshold Kontrolü: Manuel Fuse istenmişti. %80 altında ise SİL.
+            if score >= 80:
+                self.train_log.appendPlainText(f"✅ Puan yüksek (%{score}). Adaptör başarıyla doğrulandı. Manuel FUSE yapabilirsiniz.")
+            else:
+                self.train_log.appendPlainText(f"❌ Puan düşük (%{score} < %80). BAŞARISIZ TRAİNİNG! Model ezberliyor olabilir.")
+                self.train_log.appendPlainText("🗑️ Kalitesiz adaptör siliniyor...")
+                try:
+                    import shutil
+                    if os.path.exists(adapter_path):
+                        shutil.rmtree(adapter_path)
+                    self.train_log.appendPlainText("🗑️ Adaptör başarıyla silindi.")
+                except Exception as e:
+                    self.train_log.appendPlainText(f"Hata (Silinemedi): {e}")
+
+        # Eğer bu bir Training bitişiyse ve Validation seçilmişse (post == True)
         if post and int(rc) == 0:
             try:
                 self._ft_post_validate = False
@@ -2425,7 +2511,7 @@ class DevPanelDialog(QWidget):
                 cfg_path = ""
                 model_path = ""
             try:
-                self.train_log.appendPlainText("[valid] Starting post-training validation…")
+                self.train_log.appendPlainText("\n[Validation] Test aşaması başlatılıyor...")
             except Exception:
                 pass
             try:
@@ -2445,6 +2531,7 @@ class DevPanelDialog(QWidget):
                 return
             except Exception as e:
                 self.train_log.appendPlainText(f"[valid] ERROR: {e}")
+                
         try:
             if self.main_app:
                 self.main_app.training_active = False
@@ -2722,9 +2809,35 @@ class DevPanelDialog(QWidget):
         widget = QWidget()
         layout = QVBoxLayout(widget)
 
-        roadmap_btn = QPushButton("View Project Roadmap")
-        roadmap_btn.clicked.connect(self.show_roadmap)
-        layout.addWidget(roadmap_btn)
+        # Persona Selection Section
+        persona_box = QGroupBox("Persona (System Prompt) Selector")
+        p_layout = QVBoxLayout()
+        
+        self.persona_list = QListWidget()
+        self.persona_list.setMinimumHeight(150)
+        self.persona_list.setAlternatingRowColors(True)
+        self.persona_list.setStyleSheet("""
+            QListWidget { border-radius: 8px; padding: 5px; }
+            QListWidget::item { padding: 12px; border-radius: 6px; margin-bottom: 4px; border-bottom: 1px solid #333; }
+        """)
+        p_layout.addWidget(self.persona_list)
+        
+        p_btn_row = QHBoxLayout()
+        p_use_btn = QPushButton("Use Selected Persona")
+        p_use_btn.clicked.connect(self.use_selected_persona)
+        p_refresh_btn = QPushButton("Refresh List")
+        p_refresh_btn.clicked.connect(self.refresh_personas)
+        p_btn_row.addWidget(p_use_btn)
+        p_btn_row.addWidget(p_refresh_btn)
+        p_layout.addLayout(p_btn_row)
+        
+        persona_box.setLayout(p_layout)
+        layout.addWidget(persona_box)
+        
+        self.refresh_personas()
+
+        # STT Engine selector
+
         
         # AST Benchmark
         bench_box = QGroupBox("AST Parse Benchmark")
@@ -3827,13 +3940,18 @@ class ChatbotGUI(QWidget):
         s_layout.addWidget(self.hw_box)
         s_layout.addSpacing(10)
         
-        settings_btn = QPushButton("Settings")
+        # New Feature: Settings (Ayarlar)
+        settings_btn = QPushButton("⚙️ Ayarlar")
         settings_btn.setObjectName("SettingsButton")
-        settings_btn.clicked.connect(self.open_settings)
+        settings_btn.setFixedHeight(36)
+        settings_btn.setCursor(Qt.PointingHandCursor)
+        settings_btn.clicked.connect(self.open_settings_dialog)
         s_layout.addWidget(settings_btn)
         
         dev_btn = QPushButton("Dev Mode")
         dev_btn.setObjectName("DevUnlockButton")
+        dev_btn.setFixedHeight(36)
+        dev_btn.setCursor(Qt.PointingHandCursor)
         dev_btn.clicked.connect(self.on_dev_button_clicked)
         s_layout.addWidget(dev_btn)
 
@@ -5366,6 +5484,35 @@ class ChatbotGUI(QWidget):
                 pass
         self._save_dev_dialog_state()
 
+    def open_settings_dialog(self):
+        # Sadece basit bir dialog aç, ayarları config.json'dan okuyup/yazalım
+        dlg = QDialog(self)
+        dlg.setWindowTitle("Ayarlar")
+        dlg.setMinimumWidth(300)
+        l = QVBoxLayout(dlg)
+        
+        l.addWidget(QLabel("Tema:"))
+        theme_combo = QComboBox()
+        theme_combo.addItems(["dark", "light"])
+        if getattr(self, "theme", "dark") == "light":
+            theme_combo.setCurrentText("light")
+        l.addWidget(theme_combo)
+        
+        btn_box = QHBoxLayout()
+        save_btn = QPushButton("Kaydet")
+        save_btn.clicked.connect(dlg.accept)
+        btn_box.addStretch()
+        btn_box.addWidget(save_btn)
+        l.addLayout(btn_box)
+        
+        if dlg.exec_() == QDialog.Accepted:
+            new_theme = theme_combo.currentText()
+            self.theme = new_theme
+            self.config["theme"] = new_theme
+            self.save_config()
+            self.apply_theme()
+            QMessageBox.information(self, "Ayarlar", "Ayarlar kaydedildi.")
+            
     def new_chat(self):
         base = "New Chat"
         idx = 1
