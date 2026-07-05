@@ -158,7 +158,7 @@ try:
 except Exception:
     try:
         # Fallback to local implementation (dev / source checkout)
-        from rag_engine import RAGEngine as _RAGEngine
+        from core.rag_engine import RAGEngine as _RAGEngine
         RAGEngine = _RAGEngine
     except Exception as e:
         RAG_IMPORT_ERROR = str(e)
@@ -172,20 +172,20 @@ try:
 except Exception:
     try:
         # Fallback to local implementation (dev / source checkout)
-        from finetune_engine import FinetuneEngine as _FinetuneEngine
+        from core.finetune_engine import FinetuneEngine as _FinetuneEngine
         FinetuneEngine = _FinetuneEngine
     except Exception as e:
         FINETUNE_IMPORT_ERROR = str(e)
 
 # Centralized path handling (allows overrides via env vars)
 try:
-    from lokum_paths import rag_dir as _lokum_rag_dir  # type: ignore
+    from core.lokum_paths import rag_dir as _lokum_rag_dir  # type: ignore
 except Exception:
     _lokum_rag_dir = None
 
 try:
-    from file_ingest import iter_files as ingest_iter_files
-    from file_ingest import build_text_chunks_from_paths as ingest_build_chunks
+    from core.file_ingest import iter_files as ingest_iter_files
+    from core.file_ingest import build_text_chunks_from_paths as ingest_build_chunks
     INGEST_IMPORT_ERROR = ""
 except Exception as e:
     ingest_iter_files = None
@@ -195,7 +195,7 @@ except Exception as e:
 # Application version and dev mode password
 VERSION = "Lokum-F"
 try:
-    from lokum_paths import get_or_create_dev_password as _get_or_create_dev_password  # type: ignore
+    from core.lokum_paths import get_or_create_dev_password as _get_or_create_dev_password  # type: ignore
 except Exception:
     _get_or_create_dev_password = None
 
@@ -215,7 +215,7 @@ def _lora_base_dir() -> str:
     working directory (and can change depending on how the app is launched).
     """
     try:
-        from lokum_paths import lora_dir as _lokum_lora_dir, ensure_dir as _ensure_dir  # type: ignore
+        from core.lokum_paths import lora_dir as _lokum_lora_dir, ensure_dir as _ensure_dir  # type: ignore
 
         return str(_ensure_dir(_lokum_lora_dir()))
     except Exception:
@@ -3791,7 +3791,7 @@ class ChatbotGUI(QWidget):
             return self._db_path_override
         # Default DB lives in ~/.lokumf to avoid committing private chats into git.
         try:
-            from lokum_paths import chat_db_path as _chat_db_path, ensure_dir as _ensure_dir  # type: ignore
+            from core.lokum_paths import chat_db_path as _chat_db_path, ensure_dir as _ensure_dir  # type: ignore
 
             p = _chat_db_path()
             _ensure_dir(p.parent)
@@ -4206,7 +4206,7 @@ class ChatbotGUI(QWidget):
         Load prompts from config.json in .lokumf directory.
         """
         try:
-            from lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
+            from core.lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
             prompts_path = str(_config_path())
             _ensure_dir(os.path.dirname(prompts_path))
         except Exception:
@@ -4245,7 +4245,7 @@ class ChatbotGUI(QWidget):
         Save current state to config.json in .lokumf directory.
         """
         try:
-            from lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
+            from core.lokum_paths import config_path as _config_path, ensure_dir as _ensure_dir
             prompts_path = str(_config_path())
             _ensure_dir(os.path.dirname(prompts_path))
         except Exception:
@@ -5966,7 +5966,7 @@ class ChatbotGUI(QWidget):
             if not dev_mode_gate.attempt_unlock(password):
                 hint = ""
                 try:
-                    from lokum_paths import dev_password_file as _dev_password_file  # type: ignore
+                    from core.lokum_paths import dev_password_file as _dev_password_file  # type: ignore
 
                     hint = f"\n\nHint: Check {str(_dev_password_file())} or set LOKUMF_DEV_PASSWORD."
                 except Exception:
