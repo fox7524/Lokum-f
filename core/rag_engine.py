@@ -114,7 +114,7 @@ class RAGEngine:
 
     def __init__(self, storage_dir: str | None = None):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         # Check if we have all required dependencies
         global SentenceTransformer, HAS_SENTENCE_TRANSFORMERS
@@ -180,7 +180,7 @@ class RAGEngine:
 
     def _select_embed_device(self) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         val = (os.environ.get("LOKUMF_EMBED_DEVICE") or "").strip().lower()
         if val in ("cpu", "mps"):
@@ -195,7 +195,7 @@ class RAGEngine:
 
     def _select_embed_batch_size(self, device: str) -> int:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         raw = (os.environ.get("LOKUMF_EMBED_BATCH") or "").strip()
         if raw:
@@ -211,7 +211,7 @@ class RAGEngine:
 
     def _checkpoint_policy(self) -> tuple[int, float]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         raw_chunks = (os.environ.get("LOKUMF_RAG_CHECKPOINT_CHUNKS") or "").strip()
         raw_secs = (os.environ.get("LOKUMF_RAG_CHECKPOINT_SECS") or "").strip()
@@ -237,7 +237,7 @@ class RAGEngine:
 
     def request_abort(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             self._abort = True
@@ -246,7 +246,7 @@ class RAGEngine:
 
     def clear_abort(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             self._abort = False
@@ -255,21 +255,21 @@ class RAGEngine:
 
     def _check_abort(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if bool(getattr(self, "_abort", False)):
             raise RuntimeError("RAG operation aborted")
 
     def _file_id_for(self, path: str) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         p = os.path.abspath(path or "")
         return hashlib.sha256(p.encode("utf-8", errors="ignore")).hexdigest()
 
     def mark_deleted(self, source_path: str, deleted: bool = True) -> bool:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._load_state()
         if not isinstance(self.state, dict) or not isinstance(self.state.get("files"), dict):
@@ -292,7 +292,7 @@ class RAGEngine:
 
     def _is_file_deleted(self, file_id: str) -> bool:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             files = (self.state or {}).get("files") if isinstance(self.state, dict) else None
@@ -303,7 +303,7 @@ class RAGEngine:
 
     def _set_last_error(self, msg: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             self.last_error = (msg or "").strip()
@@ -329,7 +329,7 @@ class RAGEngine:
 
     def _atomic_write_json(self, path: str, obj: Any) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         tmp_path = f"{path}.tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
@@ -338,7 +338,7 @@ class RAGEngine:
 
     def _atomic_write_npy(self, path: str, arr: Any) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         tmp_base = f"{path}.tmp"
         np.save(tmp_base, arr)
@@ -349,7 +349,7 @@ class RAGEngine:
 
     def _atomic_write_faiss(self, path: str, index_obj: Any) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         tmp_path = f"{path}.tmp"
         faiss.write_index(index_obj, tmp_path)
@@ -357,7 +357,7 @@ class RAGEngine:
 
     def validate_store(self) -> Dict[str, Any]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         ok = True
         problems: List[str] = []
@@ -410,7 +410,7 @@ class RAGEngine:
 
     def _quarantine_store_files(self, reason: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         ts = time.strftime("%Y%m%d-%H%M%S")
         suffix = f".corrupt.{ts}"
@@ -429,7 +429,7 @@ class RAGEngine:
 
     def _validate_or_quarantine_existing_store(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             res = self.validate_store()
@@ -548,7 +548,7 @@ class RAGEngine:
 
     def _extract_content(self, file_path: str) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             ext = os.path.splitext(file_path)[1].lower()
@@ -712,7 +712,7 @@ class RAGEngine:
 
                     def is_article_entry(entry) -> bool:
                         """
-                        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                         """
                         ns = getattr(entry, "namespace", None)
                         if isinstance(ns, str) and ns:
@@ -742,7 +742,7 @@ class RAGEngine:
 
                     def iter_entries():
                         """
-                        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                         """
                         nonlocal scanned, read_fail
                         if it is not None:
@@ -942,7 +942,7 @@ class RAGEngine:
 
                         def is_article_entry(entry) -> bool:
                             """
-                            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                             """
                             ns = getattr(entry, "namespace", None)
                             if isinstance(ns, str) and ns:
@@ -1144,7 +1144,7 @@ class RAGEngine:
 
     def _ingest_paths(self, file_paths: List[str], save_on_checkpoint: bool = True) -> int:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         started_at = time.perf_counter()
         self._check_abort()
@@ -1157,7 +1157,7 @@ class RAGEngine:
 
         def encode_batch(texts: List[str]):
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             try:
                 bs = getattr(self, "embed_batch_size", 32)
@@ -1424,7 +1424,7 @@ class RAGEngine:
 
         def flush():
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             nonlocal batch, added_total
             if not batch:

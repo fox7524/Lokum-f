@@ -234,7 +234,7 @@ class FuseWorker(QThread):
 
     def __init__(self, base_model: str, adapter_path: str, save_path: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.base_model = base_model
@@ -243,7 +243,7 @@ class FuseWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             cmd = [
@@ -282,7 +282,7 @@ class MicWorker(QThread):
 
     def __init__(self, parent=None):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__(parent)
         self.is_recording = False
@@ -291,7 +291,7 @@ class MicWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.is_recording = True
         self.audio_data = []
@@ -343,7 +343,7 @@ class TTSWorker(QThread):
 
     def __init__(self, text: str, voice: str = "tr-TR-AhmetNeural"):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.text = text
@@ -351,7 +351,7 @@ class TTSWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.text.strip():
             self.finished.emit(False, "Empty text")
@@ -388,7 +388,7 @@ class TTSWorker(QThread):
 
     def stop_recording(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.is_recording = False
 
@@ -401,14 +401,14 @@ class ModelLoaderWorker(QThread):
 
     def __init__(self, model_path: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.model_path = model_path
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if load is None:
@@ -439,7 +439,7 @@ class ModelLoaderWorker(QThread):
 
     def _ensure_special_tokens(self, tokenizer):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         eos_id = getattr(tokenizer, "eos_token_id", None)
         if eos_id is None:
@@ -584,7 +584,7 @@ class BenchmarkWorker(QThread):
 
     def __init__(self, model, tokenizer, prompt: str, max_tokens: int = 128):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.model = model
@@ -594,7 +594,7 @@ class BenchmarkWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if generate is None:
@@ -626,7 +626,7 @@ class DeleteChatWorker(QThread):
 
     def __init__(self, db_path: str, chat_name: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self._db_path = os.path.abspath(db_path or "app.db")
@@ -634,7 +634,7 @@ class DeleteChatWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         start = time.perf_counter()
         try:
@@ -666,7 +666,7 @@ class DatasetExportWorker(QThread):
 
     def __init__(self, folder: str, out_dir: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self._folder = os.path.abspath(folder or "")
@@ -674,7 +674,7 @@ class DatasetExportWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if ingest_iter_files is None or ingest_build_chunks is None:
@@ -708,7 +708,7 @@ class FinalAnswerWorker(QThread):
 
     def __init__(self, model, tokenizer, prompt: str, max_tokens: int = 256):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.model = model
@@ -718,7 +718,7 @@ class FinalAnswerWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if generate is None:
@@ -739,7 +739,7 @@ class RagIndexWorker(QThread):
 
     def __init__(self, main_app, folder: str, recursive: bool = True):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.main_app = main_app
@@ -749,7 +749,7 @@ class RagIndexWorker(QThread):
 
     def stop(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if self._eng is not None and hasattr(self._eng, "request_abort"):
@@ -759,7 +759,7 @@ class RagIndexWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if not self.main_app:
@@ -800,7 +800,7 @@ class PythonDocsIndexWorker(QThread):
 
     def __init__(self, main_app, url: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.main_app = main_app
@@ -808,7 +808,7 @@ class PythonDocsIndexWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         import shutil
         tmp_root = None
@@ -853,7 +853,7 @@ class FineTuneWorker(QThread):
 
     def __init__(self, process: subprocess.Popen, adapter_path: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self._proc = process
@@ -862,7 +862,7 @@ class FineTuneWorker(QThread):
 
     def stop(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._stopping = True
         try:
@@ -880,7 +880,7 @@ class FineTuneWorker(QThread):
 
     def run(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             import selectors
@@ -993,7 +993,7 @@ class MemoryMonitor(QThread):
 
     def _get_gpu_util_percent(self) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if sys.platform == "darwin":
             return "N/A"
@@ -1021,11 +1021,11 @@ class MemoryMonitor(QThread):
 # ---------------------------------------------------------
 class SettingsDialog(QDialog):
     """
-    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    Core component of the framework. Modifying this class requires a deep understanding of its dependencies.
     """
     def __init__(self, parent=None, user_prompt="", current_theme="dark"):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__(parent)
         self.setWindowTitle("Settings")
@@ -1132,7 +1132,7 @@ class SettingsDialog(QDialog):
 
     def _preview_theme(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.main_app:
             return
@@ -1145,7 +1145,7 @@ class SettingsDialog(QDialog):
 
     def show_roadmap(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         QMessageBox.information(self, "Roadmap", "📅 Phase 1 (Apr 13-20): Foundation - Model loads, RAG indexer, LoRA fine-tune\n"
                                                  "⚡ Phase 2 (Apr 21-27): Features - System prompt, Run button, Settings\n"
@@ -1157,17 +1157,17 @@ class SettingsDialog(QDialog):
 # ---------------------------------------------------------
 class DevModeGate:
     """
-    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    Core component of the framework. Modifying this class requires a deep understanding of its dependencies.
     """
     def __init__(self):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         self.unlocked = False
         
     def attempt_unlock(self, password: str) -> bool:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if password == DEV_MODE_PASSWORD:
             self.unlocked = True
@@ -1176,7 +1176,7 @@ class DevModeGate:
     
     def lock(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.unlocked = False
 
@@ -1187,11 +1187,11 @@ dev_mode_gate = DevModeGate()
 # ---------------------------------------------------------
 class DevPanel(QWidget):
     """
-    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    Core component of the framework. Modifying this class requires a deep understanding of its dependencies.
     """
     def __init__(self, parent=None, main_app=None):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__(parent)
         self.main_app = main_app
@@ -1200,7 +1200,7 @@ class DevPanel(QWidget):
         
     def init_ui(self):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         layout = QVBoxLayout(self)
         
@@ -1234,7 +1234,7 @@ class DevPanel(QWidget):
 
     def _hide_dev_sidebar(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if self.main_app:
             self.main_app.toggle_dev_dialog(force_state=False)
@@ -1254,7 +1254,7 @@ class DevPanel(QWidget):
 
     def build_finetune_tab(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         p = self.parent()
         if p is not None and hasattr(p, "build_finetune_tab"):
@@ -1267,7 +1267,7 @@ class DevPanel(QWidget):
 
     def build_model_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         p = self.parent()
         if p is not None and hasattr(p, "build_model_tab"):
@@ -1278,50 +1278,10 @@ class DevPanel(QWidget):
         l.addStretch()
         return w
 
-    def refresh_personas(self):
-        """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
-        """
-        self.persona_list.clear()
-        persona_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "personas")
-        os.makedirs(persona_dir, exist_ok=True)
-        for f in os.listdir(persona_dir):
-            if f.endswith(".json"):
-                self.persona_list.addItem(f)
-                
-    def use_selected_persona(self):
-        """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
-        """
-        selected = self.persona_list.currentItem()
-        if not selected:
-            QMessageBox.warning(self, "Seçim Yok", "Lütfen bir persona (system prompt) seçin.")
-            return
-            
-        persona_file = selected.text()
-        persona_path = os.path.join(os.path.expanduser("~"), ".lokumf", "personas", persona_file)
-        
-        try:
-            with open(persona_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            
-            # config'i güncelle
-            if self.main_app:
-                if "system_prompt" in data:
-                    self.main_app.config["system_prompt"] = data["system_prompt"]
-                if "user_prompt" in data:
-                    self.main_app.config["user_prompt"] = data["user_prompt"]
-                if "unrestricted_prompt" in data:
-                    self.main_app.config["unrestricted_prompt"] = data["unrestricted_prompt"]
-                
-                self.main_app.save_config()
-                QMessageBox.information(self, "Persona Değişti", f"{persona_file} başarıyla yüklendi ve aktif edildi.")
-        except Exception as e:
-            QMessageBox.critical(self, "Hata", f"Persona yüklenemedi: {e}")
 
     def build_testing_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         p = self.parent()
         if p is not None and hasattr(p, "build_testing_tab"):
@@ -1334,7 +1294,7 @@ class DevPanel(QWidget):
 
     def build_unrestricted_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         p = self.parent()
         if p is not None and hasattr(p, "build_unrestricted_tab"):
@@ -1348,11 +1308,11 @@ class DevPanel(QWidget):
 
 class DevPanelDialog(QWidget):
     """
-    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    Core component of the framework. Modifying this class requires a deep understanding of its dependencies.
     """
     def __init__(self, parent=None, main_app=None, embedded: bool = False):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__(parent)
         self.main_app = main_app
@@ -1409,7 +1369,7 @@ class DevPanelDialog(QWidget):
 
     def _wrap_tab(self, inner: QWidget) -> QScrollArea:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         sc = QScrollArea()
         sc.setWidgetResizable(True)
@@ -1420,7 +1380,7 @@ class DevPanelDialog(QWidget):
 
     def toggle_collapsed(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.set_collapsed(not self._collapsed)
         if self.main_app:
@@ -1428,7 +1388,7 @@ class DevPanelDialog(QWidget):
 
     def set_collapsed(self, collapsed: bool):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._collapsed = bool(collapsed)
         if self._collapsed:
@@ -1442,7 +1402,7 @@ class DevPanelDialog(QWidget):
 
     def show_roadmap(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         QMessageBox.information(self, "Roadmap", "Phase 1 (Apr 13-20): Foundation - Model loads, RAG indexer, LoRA fine-tune\n"
                                                  "Phase 2 (Apr 21-27): Features - System prompt, Run button, Settings\n"
@@ -1568,7 +1528,7 @@ class DevPanelDialog(QWidget):
 
     def browse_project_workspace(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.main_app:
             return
@@ -1586,7 +1546,7 @@ class DevPanelDialog(QWidget):
 
     def clear_project_workspace(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.main_app:
             return
@@ -1839,7 +1799,7 @@ class DevPanelDialog(QWidget):
     
     def build_finetune_tab(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         widget = QWidget()
         layout = QVBoxLayout(widget)
@@ -2133,7 +2093,7 @@ class DevPanelDialog(QWidget):
 
     def browse_ft_model_path(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         start = os.path.expanduser("~/.lmstudio/models")
         folder = QFileDialog.getExistingDirectory(self, "Select MLX Model Folder For Training", start if os.path.isdir(start) else "")
@@ -2145,7 +2105,7 @@ class DevPanelDialog(QWidget):
 
     def _scan_lmstudio_models(self) -> list[str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         root = os.path.expanduser("~/.lmstudio/models")
         if not os.path.isdir(root):
@@ -2182,7 +2142,7 @@ class DevPanelDialog(QWidget):
 
     def refresh_ft_models(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
             return
@@ -2208,7 +2168,7 @@ class DevPanelDialog(QWidget):
 
     def use_selected_ft_model(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not hasattr(self, "ft_model_list") or self.ft_model_list is None:
             return
@@ -2224,7 +2184,7 @@ class DevPanelDialog(QWidget):
 
     def browse_ft_resume_adapter(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         fp, _ = QFileDialog.getOpenFileName(self, "Select adapters.safetensors", "", "Adapter Weights (*.safetensors);;All Files (*)")
         if fp:
@@ -2235,7 +2195,7 @@ class DevPanelDialog(QWidget):
 
     def _apply_ft_preset(self, _idx: int):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             name = (self.ft_preset.currentText() if hasattr(self, "ft_preset") else "").strip()
@@ -2343,7 +2303,7 @@ class DevPanelDialog(QWidget):
 
     def browse_finetune_ingest_folder(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         folder = QFileDialog.getExistingDirectory(self, "Select Folder For Training Data")
         if folder:
@@ -2351,7 +2311,7 @@ class DevPanelDialog(QWidget):
 
     def export_finetune_dataset_from_folder(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         folder = (self.ft_ingest_folder.text() if hasattr(self, "ft_ingest_folder") else "").strip()
         if not folder or not os.path.isdir(folder):
@@ -2372,7 +2332,7 @@ class DevPanelDialog(QWidget):
 
     def _on_dataset_export_finished(self, ok: bool, out_dir: str, chunk_count: int, file_count: int, err: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if hasattr(self, "_export_dataset_btn") and self._export_dataset_btn is not None:
             self._export_dataset_btn.setEnabled(True)
@@ -2400,7 +2360,7 @@ class DevPanelDialog(QWidget):
     
     def browse_jsonl(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         folder = QFileDialog.getExistingDirectory(self, "Select JSONL Dataset Folder")
         if folder:
@@ -2408,7 +2368,7 @@ class DevPanelDialog(QWidget):
     
     def start_training(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         if hasattr(self, "_ft_worker") and self._ft_worker is not None:
             QMessageBox.warning(self, "Training", "Training is already running.")
@@ -2692,7 +2652,7 @@ class DevPanelDialog(QWidget):
     
     def stop_training(self):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         if hasattr(self, "_ft_worker") and self._ft_worker is not None:
             try:
@@ -2704,7 +2664,7 @@ class DevPanelDialog(QWidget):
 
     def _on_train_error(self, err: str):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         self.train_log.appendPlainText(f"ERROR: {err}")
         try:
@@ -2717,7 +2677,7 @@ class DevPanelDialog(QWidget):
 
     def _on_train_finished(self, rc: int, adapter_path: str):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         self._last_adapter_path = adapter_path
         try:
@@ -2823,7 +2783,7 @@ class DevPanelDialog(QWidget):
 
     def _finalize_ft_worker(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         w = getattr(self, "_ft_worker", None)
         if w is None:
@@ -2845,7 +2805,7 @@ class DevPanelDialog(QWidget):
 
     def _cleanup_train_ui(self, success: bool = False):
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         try:
             w = getattr(self, "_ft_worker", None)
@@ -2866,7 +2826,7 @@ class DevPanelDialog(QWidget):
 
     def _prepare_finetune_data_dir(self) -> str:
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         use_sqlite = bool(getattr(self, "use_sqlite", None) and self.use_sqlite.isChecked())
         use_jsonl = bool(getattr(self, "use_jsonl", None) and self.use_jsonl.isChecked())
@@ -2952,11 +2912,11 @@ class DevPanelDialog(QWidget):
 
     def _write_train_valid_jsonl(self, out_dir: str, lines: list[str]) -> None:
         """
-        Modeli Raskolnikov yapmak için MLX üzerinden LoRA eğitimini ateşlediğimiz yer. Ultra kalite!
+        Initializes the fine-tuning/RAG operation using the configured MLX or Vector configurations.
         """
         def normalize_jsonl_line(ln: str) -> str:
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             s = (ln or "").strip()
             if not s:
@@ -2986,7 +2946,7 @@ class DevPanelDialog(QWidget):
     
     def build_model_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         widget = QWidget()
         layout = QVBoxLayout(widget)
@@ -3049,7 +3009,7 @@ class DevPanelDialog(QWidget):
     
     def refresh_models(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.model_list.clear()
         lmstudio_path = os.path.expanduser("~/.lmstudio/models/")
@@ -3062,7 +3022,7 @@ class DevPanelDialog(QWidget):
     
     def browse_model_path(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         path = QFileDialog.getExistingDirectory(self, "Select Model Folder")
         if path:
@@ -3122,10 +3082,55 @@ class DevPanelDialog(QWidget):
         self.model_status.setText("No model loaded")
         self.model_status.setStyleSheet("color: #888; padding: 8px;")
         QMessageBox.information(self, "Model", "Model unloaded.")
-    
+
+    def _use_selected_persona(self):
+        """
+        Kullanıcının seçtiği personayı (System Prompt) devreye alır ve ana config'i günceller.
+        """
+        selected = self.persona_list.currentItem()
+        if not selected:
+            QMessageBox.warning(self, "Seçim Yok", "Lütfen bir persona (system prompt) seçin.")
+            return
+            
+        persona_file = selected.text()
+        persona_name = persona_file.replace(".json", "")
+        persona_path = os.path.join(os.path.expanduser("~"), ".lokumf", "personas", persona_file)
+        
+        try:
+            with open(persona_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            # config'i güncelle
+            if self.main_app:
+                if "system_prompt" in data:
+                    self.main_app.config["system_prompt"] = data["system_prompt"]
+                if "user_prompt" in data:
+                    self.main_app.config["user_prompt"] = data["user_prompt"]
+                if "unrestricted_prompt" in data:
+                    self.main_app.config["unrestricted_prompt"] = data["unrestricted_prompt"]
+                
+                self.main_app.config["active_persona"] = persona_name
+                self.main_app.save_config()
+                
+                self.main_app.log_message(f"Persona '{persona_name}' activated successfully.", "success")
+                QMessageBox.information(self, "Persona Değişti", f"{persona_name} başarıyla yüklendi ve aktif edildi.\nDeğişiklikler bir sonraki sohbette geçerli olacaktır.")
+        except Exception as e:
+            QMessageBox.critical(self, "Hata", f"Persona yüklenemedi: {e}")
+
+    def refresh_personas(self):
+        """
+        Personaları listeler.
+        """
+        self.persona_list.clear()
+        persona_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "personas")
+        os.makedirs(persona_dir, exist_ok=True)
+        for f in os.listdir(persona_dir):
+            if f.endswith(".json"):
+                self.persona_list.addItem(f)
+
     def build_testing_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         widget = QWidget()
         layout = QVBoxLayout(widget)
@@ -3145,7 +3150,7 @@ class DevPanelDialog(QWidget):
         
         p_btn_row = QHBoxLayout()
         p_use_btn = QPushButton("Use Selected Persona")
-        p_use_btn.clicked.connect(self.use_selected_persona)
+        p_use_btn.clicked.connect(self._use_selected_persona)
         p_refresh_btn = QPushButton("Refresh List")
         p_refresh_btn.clicked.connect(self.refresh_personas)
         p_btn_row.addWidget(p_use_btn)
@@ -3323,7 +3328,7 @@ class DevPanelDialog(QWidget):
 
     def run_ast_benchmark(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.bench_result.setText("Running benchmark...")
         self.bench_result.setStyleSheet("color: #ffd04d; padding: 8px;")
@@ -3353,7 +3358,7 @@ class DevPanelDialog(QWidget):
     
     def run_stress_test(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.stress_result.setText("Running stress test...")
         self.stress_result.setStyleSheet("color: #ffd04d; padding: 8px;")
@@ -3366,7 +3371,7 @@ class DevPanelDialog(QWidget):
 
     def run_smoke_tests(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         ok = True
         problems = []
@@ -3403,7 +3408,7 @@ class DevPanelDialog(QWidget):
 
     def run_throughput_benchmark(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.main_app or self.main_app.model is None or self.main_app.tokenizer is None:
             self.perf_result.setText("Benchmark requires a loaded model.")
@@ -3422,21 +3427,21 @@ class DevPanelDialog(QWidget):
 
     def _on_benchmark_done(self, tps: float, tokens: int, elapsed: float, sample: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.perf_result.setText(f"{tps:.2f} tok/s | {tokens} tokens | {elapsed:.2f}s")
         self.perf_result.setStyleSheet("color: #4dff9f; padding: 8px;")
 
     def _on_benchmark_error(self, err: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.perf_result.setText(f"Benchmark failed: {err}")
         self.perf_result.setStyleSheet("color: #ff4d6a; padding: 8px;")
 
     def start_ram_monitor(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.ram_log.appendPlainText("RAM Monitor started...")
         if psutil is None:
@@ -3446,7 +3451,7 @@ class DevPanelDialog(QWidget):
 
         def update_ram():
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             mem = process.memory_info().rss / (1024**3)
             self.ram_log.appendPlainText(f"RAM: {mem:.2f} GB")
@@ -3457,7 +3462,7 @@ class DevPanelDialog(QWidget):
 
     def stop_ram_monitor(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if hasattr(self, 'ram_timer'):
             self.ram_timer.stop()
@@ -3465,7 +3470,7 @@ class DevPanelDialog(QWidget):
 
     def build_unrestricted_tab(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         widget = QWidget()
         layout = QVBoxLayout(widget)
@@ -3501,7 +3506,7 @@ class DevPanelDialog(QWidget):
 
     def toggle_unrestricted(self, state):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if state == Qt.Checked:
             self.unrestricted_enabled.setText("Unrestricted Mode ACTIVE")
@@ -3531,12 +3536,12 @@ class DevPanelDialog(QWidget):
 # ---------------------------------------------------------
 class CustomMessageBox(QDialog):
     """
-    Bu class sistemin kemiklerinden biri, fazla kurcalama çöker aq.
+    Core component of the framework. Modifying this class requires a deep understanding of its dependencies.
     """
     @classmethod
     def _create_dialog(cls, parent, title, text, btn_text="OK", icon_type="info"):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         dialog = QDialog(parent)
         dialog.setWindowTitle(title)
@@ -3636,7 +3641,7 @@ class CustomMessageBox(QDialog):
     @classmethod
     def information(cls, parent, title, text):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         d = cls._create_dialog(parent, title, text, "OK", "info")
         d.exec_()
@@ -3644,7 +3649,7 @@ class CustomMessageBox(QDialog):
     @classmethod
     def warning(cls, parent, title, text):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         d = cls._create_dialog(parent, title, text, "OK", "warning")
         d.exec_()
@@ -3652,7 +3657,7 @@ class CustomMessageBox(QDialog):
     @classmethod
     def critical(cls, parent, title, text):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         d = cls._create_dialog(parent, title, text, "OK", "critical")
         d.exec_()
@@ -3660,7 +3665,7 @@ class CustomMessageBox(QDialog):
     @classmethod
     def question(cls, parent, title, text, buttons=None):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         d = cls._create_dialog(parent, title, text, "Yes", "question")
         return QMessageBox.Yes if d.exec_() == QDialog.Accepted else QMessageBox.No
@@ -3677,7 +3682,7 @@ class ChatbotGUI(QWidget):
     """
     def __init__(self, model, tokenizer, model_path, *, db_path: str | None = None, start_service: bool = True, start_monitor: bool = True):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         super().__init__()
         self.model = model
@@ -3888,7 +3893,7 @@ class ChatbotGUI(QWidget):
 
     def _init_chat_db(self) -> None:
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         self._migrate_local_repo_db_if_needed()
         self._migrate_local_repo_lora_if_needed()
@@ -4129,7 +4134,7 @@ class ChatbotGUI(QWidget):
 
     def _restore_dev_dialog_state(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         visible = self._settings.value("dev_dialog/visible", False, type=bool)
         if self.dev_mode_active and visible:
@@ -4137,7 +4142,7 @@ class ChatbotGUI(QWidget):
 
     def _save_dev_dialog_state(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if hasattr(self, "dev_sidebar") and self.dev_sidebar is not None:
             self._settings.setValue("dev_dialog/visible", bool(self.dev_sidebar.isVisible()))
@@ -4147,7 +4152,7 @@ class ChatbotGUI(QWidget):
 
     def _ensure_dev_dialog(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         return
 
@@ -4274,7 +4279,7 @@ class ChatbotGUI(QWidget):
 
     def init_ui(self):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         self.setWindowTitle(VERSION)
         self.setGeometry(100, 100, 1100, 750)
@@ -4563,7 +4568,7 @@ class ChatbotGUI(QWidget):
 
     def _update_dynamic_btn_state(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if getattr(self, "is_generating", False):
             self.dynamic_action_btn.setText("■")
@@ -4578,7 +4583,7 @@ class ChatbotGUI(QWidget):
 
     def _on_dynamic_action_clicked(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if getattr(self, "is_generating", False):
             self.stop_generation()
@@ -4723,7 +4728,7 @@ class ChatbotGUI(QWidget):
 
     def _handle_url_change(self, url):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         url_str = url.toString()
         if url_str.startswith("speak://"):
@@ -4752,7 +4757,7 @@ class ChatbotGUI(QWidget):
 
     def speak_text(self, text: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.use_tts or not text.strip():
             return
@@ -4979,7 +4984,7 @@ class ChatbotGUI(QWidget):
 
     def _menu_show_history_for(self, chat_name: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         data = {
             "name": chat_name,
@@ -5006,7 +5011,7 @@ class ChatbotGUI(QWidget):
 
     def _stop_generation(self, show_status: bool = True) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if hasattr(self, "worker") and self.worker is not None:
             try:
@@ -5019,13 +5024,13 @@ class ChatbotGUI(QWidget):
 
     def stop_generation(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._stop_generation(True)
 
     def closeEvent(self, event):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             self._shutdown_threads()
@@ -5035,7 +5040,7 @@ class ChatbotGUI(QWidget):
 
     def detect_system_theme(self) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         pal = QApplication.instance().palette()
         window = pal.color(QPalette.Window)
@@ -5043,7 +5048,7 @@ class ChatbotGUI(QWidget):
 
     def apply_theme(self, theme: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if theme == "system":
             theme = self.detect_system_theme()
@@ -5470,7 +5475,7 @@ class ChatbotGUI(QWidget):
 
     def update_hw_stats(self, app_ram_gb: str, sys_ram_percent: str, cpu_percent: str, gpu_percent: str):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         shown = app_ram_gb
         try:
@@ -5498,7 +5503,7 @@ class ChatbotGUI(QWidget):
 
     def _set_project_root(self, folder: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         p = os.path.abspath(folder or "")
         if not p or not os.path.isdir(p):
@@ -5513,7 +5518,7 @@ class ChatbotGUI(QWidget):
 
     def select_project_root(self) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         folder = QFileDialog.getExistingDirectory(self, "Select Project Folder")
         if folder:
@@ -5522,7 +5527,7 @@ class ChatbotGUI(QWidget):
 
     def open_project_file_picker(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
@@ -5547,7 +5552,7 @@ class ChatbotGUI(QWidget):
 
     def _read_project_file(self, path: str, max_chars: int = 20000) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             if not path or not os.path.isfile(path):
@@ -5562,7 +5567,7 @@ class ChatbotGUI(QWidget):
 
     def _find_in_project_by_basename(self, basename: str, max_hits: int = 1) -> list[str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
@@ -5580,7 +5585,7 @@ class ChatbotGUI(QWidget):
 
     def _resolve_project_paths_from_text(self, user_text: str) -> list[str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
@@ -5615,7 +5620,7 @@ class ChatbotGUI(QWidget):
 
     def _build_project_context(self, user_text: str) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         root = self.project_root or ""
         if not root or not os.path.isdir(root):
@@ -5750,7 +5755,7 @@ class ChatbotGUI(QWidget):
 
     def _stop_thread_obj(self, t, wait_ms: int) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if t is None:
             return
@@ -5793,7 +5798,7 @@ class ChatbotGUI(QWidget):
 
     def _shutdown_threads(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         try:
             self._stop_generation(False)
@@ -5860,7 +5865,7 @@ class ChatbotGUI(QWidget):
 
     def _find_default_model_path(self) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if self.current_model_path and os.path.isdir(self.current_model_path):
             return self.current_model_path
@@ -5905,7 +5910,7 @@ class ChatbotGUI(QWidget):
 
     def start_ai_service(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._set_chat_enabled(False)
         model_path = self._find_default_model_path()
@@ -5951,13 +5956,13 @@ class ChatbotGUI(QWidget):
 
     def open_dev_panel(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.on_dev_button_clicked()
 
     def on_dev_button_clicked(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not dev_mode_gate.unlocked:
             password, ok = QInputDialog.getText(self, "Dev Mode", "Enter developer password:")
@@ -5981,7 +5986,7 @@ class ChatbotGUI(QWidget):
 
     def toggle_dev_dialog(self, force_state=None) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not self.dev_mode_active:
             return
@@ -6145,7 +6150,7 @@ class ChatbotGUI(QWidget):
 
     def resizeEvent(self, event):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         super().resizeEvent(event)
         self._refresh_chat_list_row_visuals()
@@ -6318,7 +6323,7 @@ class ChatbotGUI(QWidget):
 
     def _toggle_thought(self, msg_index: int) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
@@ -6331,7 +6336,7 @@ class ChatbotGUI(QWidget):
 
     def _get_base_html(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         colors = getattr(self, "_theme_colors", None) or {
             "bg": "#121212",
@@ -6638,7 +6643,7 @@ class ChatbotGUI(QWidget):
 
         def clear_layout(lay: QVBoxLayout) -> None:
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             while lay.count():
                 it = lay.takeAt(0)
@@ -6650,7 +6655,7 @@ class ChatbotGUI(QWidget):
 
         def fmt_html(s: str) -> str:
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             t = self._html_escape(s or "")
             t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
@@ -6659,7 +6664,7 @@ class ChatbotGUI(QWidget):
 
         def split_fenced_blocks(s: str) -> list[tuple[str, str, str]]:
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             out: list[tuple[str, str, str]] = []
             if not s:
@@ -6680,7 +6685,7 @@ class ChatbotGUI(QWidget):
 
         def make_code_block(code: str, lang: str) -> QWidget:
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             frame = QFrame()
             frame.setObjectName("CodeBlockFrame")
@@ -6754,7 +6759,7 @@ class ChatbotGUI(QWidget):
             )
             def _do_copy(_checked: bool = False, txt: str = code) -> None:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 try:
                     QApplication.clipboard().setText(txt or "")
@@ -6957,7 +6962,7 @@ class ChatbotGUI(QWidget):
 
     def toggle_mic(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if self.mic_worker is not None and self.mic_worker.is_recording:
             # Stop recording
@@ -6982,7 +6987,7 @@ class ChatbotGUI(QWidget):
 
     def on_transcription_done(self, text):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
@@ -7001,7 +7006,7 @@ class ChatbotGUI(QWidget):
 
     def on_mic_error(self, err_msg):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
@@ -7012,7 +7017,7 @@ class ChatbotGUI(QWidget):
 
     def soru_sor(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         user_text = self.input_field.text().strip()
         if not user_text:
@@ -7130,7 +7135,7 @@ class ChatbotGUI(QWidget):
 
     def run_last_code(self):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         # Find last code block in assistant responses
         import re
@@ -7182,7 +7187,7 @@ class ChatbotGUI(QWidget):
 
     def _html_escape(self, s: str) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         return (
             (s or "")
@@ -7193,7 +7198,7 @@ class ChatbotGUI(QWidget):
 
     def _split_stream_delta(self, piece: str) -> tuple[str, str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         buf_full = (self._stream_buffer or "") + (piece or "")
         think_out = ""
@@ -7212,7 +7217,7 @@ class ChatbotGUI(QWidget):
 
         def parse_tag_at(s: str, lt: int):
             """
-            Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
             """
             n = len(s)
             j = lt + 1
@@ -7274,7 +7279,7 @@ class ChatbotGUI(QWidget):
 
     def _finalize_stream_tail(self) -> tuple[str, str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if self._stream_in_think:
             self._stream_buffer = ""
@@ -7285,7 +7290,7 @@ class ChatbotGUI(QWidget):
 
     def _extract_think_answer_from_text(self, text: str) -> tuple[str, str]:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         import re
 
@@ -7324,7 +7329,7 @@ class ChatbotGUI(QWidget):
 
             def looks_like_think(p: str) -> bool:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 low = (p or "").strip().lower()
                 if not low:
@@ -7339,7 +7344,7 @@ class ChatbotGUI(QWidget):
 
             def looks_like_answer(p: str) -> bool:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 low = (p or "").strip().lower()
                 if not low:
@@ -7372,7 +7377,7 @@ class ChatbotGUI(QWidget):
 
     def _fallback_answer_from_user_text(self, user_text: str) -> str:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         import re
 
@@ -7397,7 +7402,7 @@ class ChatbotGUI(QWidget):
 
     def on_new_token(self, token):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         think_delta, answer_delta = self._split_stream_delta(token)
 
@@ -7421,7 +7426,7 @@ class ChatbotGUI(QWidget):
 
     def _schedule_render(self, chat_name: str | None):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if not hasattr(self, "_render_timer") or self._render_timer is None:
             self._render_timer = QTimer(self)
@@ -7435,7 +7440,7 @@ class ChatbotGUI(QWidget):
 
     def _run_scheduled_render(self) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         target = getattr(self, "_render_target_chat", None)
         if target and target == self.active_chat:
@@ -7443,7 +7448,7 @@ class ChatbotGUI(QWidget):
 
     def on_ai_success(self, response, tps, tokens, ms, peak_memory_gb):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         pending_chat = self._pending_chat
         pending_idx = self._pending_msg_index
@@ -7556,7 +7561,7 @@ class ChatbotGUI(QWidget):
 
     def _on_final_answer_ready(self, text: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         pending = getattr(self, "_final_pending", None)
         if not (isinstance(pending, tuple) and len(pending) == 2):
@@ -7601,7 +7606,7 @@ class ChatbotGUI(QWidget):
 
     def _on_final_answer_error(self, err: str) -> None:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         self._final_pending = None
         self._final_worker = None
@@ -7617,7 +7622,7 @@ class ChatbotGUI(QWidget):
 
     def on_ai_error(self, err_msg):
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         if self._pending_chat is not None and self._pending_msg_index is not None:
             try:

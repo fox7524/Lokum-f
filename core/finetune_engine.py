@@ -50,13 +50,13 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
 
             def wrap(role: str, content: str) -> str:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 return f"<|im_start|>{role}\n{content.rstrip()}\n<|im_end|>\n"
 
             def split_content(content: str, limit: int) -> list[str]:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 s = (content or "").strip()
                 if not s:
@@ -101,7 +101,7 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
 
             def serialize(msgs2: list[tuple[str, str]]) -> str:
                 """
-                Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+                Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
                 """
                 s = ""
                 if system_msg:
@@ -151,7 +151,7 @@ def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]
 
 def _presplit_jsonl_file(fp: str, max_seq_length: int, batch_size: int) -> int:
     """
-    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
     """
     if not fp or not os.path.isfile(fp):
         return 0
@@ -188,7 +188,7 @@ def _presplit_jsonl_file(fp: str, max_seq_length: int, batch_size: int) -> int:
 
 def _validate_jsonl_file(path: Path) -> ValidationResult:
     """
-    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
     """
     with path.open("r", encoding="utf-8") as handle:
         return validate_jsonl_rows(handle)
@@ -196,7 +196,7 @@ def _validate_jsonl_file(path: Path) -> ValidationResult:
 
 def _ensure_valid_jsonl_file(path: Path) -> ValidationResult:
     """
-    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
     """
     result = _validate_jsonl_file(path)
     if result.invalid:
@@ -206,7 +206,7 @@ def _ensure_valid_jsonl_file(path: Path) -> ValidationResult:
 
 def _perf_log(stage: str, started_at: float) -> None:
     """
-    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
     """
     elapsed = time.perf_counter() - started_at
     print(f"[perf] stage={stage} seconds={elapsed:.3f}")
@@ -217,7 +217,7 @@ class FinetuneEngine:
     """
     def __init__(self, model_path: str):
         """
-        Ayağa kalkarken ilk buralar çalışıyor, ayarları falan çekiyoruz. Marş marş!
+        Initializes the class and prepares the configuration states for the current execution context.
         """
         self.model_path = model_path
         # Keep large/private training artifacts out of the git repo by default.
@@ -285,7 +285,7 @@ class FinetuneEngine:
 
     def presplit_dataset(self, dataset_path: str, max_seq_length: int, batch_size: int) -> dict:
         """
-        Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
         """
         data_dir = os.path.abspath(dataset_path or self.dataset_dir)
         train_fp = os.path.join(data_dir, "train.jsonl")

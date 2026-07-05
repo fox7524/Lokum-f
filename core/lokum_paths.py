@@ -42,7 +42,7 @@ def rag_dir() -> Path:
 
 def ensure_dir(p: Path) -> Path:
     """
-    Olm bu fonksiyon da kendi çapında bir iş yapıyor, elit sisteme ufak bir katkı. Dokunma çalışsın.
+    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
     """
     p.mkdir(parents=True, exist_ok=True)
     return p
