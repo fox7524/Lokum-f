@@ -59,7 +59,7 @@ DEFAULT_EXT_GLOBS = [
 
 def iter_files(folder: str, recursive: bool = True, patterns: List[str] | None = None) -> List[str]:
     """
-    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+    Iters files for the current component.
     """
     root = os.path.abspath(folder or "")
     if not root or not os.path.isdir(root):
@@ -76,7 +76,7 @@ def iter_files(folder: str, recursive: bool = True, patterns: List[str] | None =
 
 def chunk_text(text: str, chunk_size: int = 800, overlap: int = 100) -> List[str]:
     """
-    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+    Chunks text for the current component.
     """
     chunk_size = max(100, int(chunk_size))
     overlap = max(0, int(overlap))
@@ -87,7 +87,7 @@ def chunk_text(text: str, chunk_size: int = 800, overlap: int = 100) -> List[str
 
 def extract_text(file_path: str) -> str:
     """
-    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+    Extracts text for the current component.
     """
     p = os.path.abspath(file_path or "")
     if not p or not os.path.isfile(p):
@@ -203,7 +203,7 @@ def extract_text(file_path: str) -> str:
 
 def build_text_chunks_from_paths(paths: Iterable[str], chunk_size: int = 800, overlap: int = 100) -> List[str]:
     """
-    Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+    Builds text chunks from paths for the current component.
     """
     chunks: List[str] = []
     for fp in paths:

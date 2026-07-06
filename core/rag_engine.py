@@ -114,7 +114,7 @@ class RAGEngine:
 
     def __init__(self, storage_dir: str | None = None):
         """
-        Initializes the class and prepares the configuration states for the current execution context.
+        Initializes the instance with the required configuration and state.
         """
         # Check if we have all required dependencies
         global SentenceTransformer, HAS_SENTENCE_TRANSFORMERS
@@ -180,7 +180,7 @@ class RAGEngine:
 
     def _select_embed_device(self) -> str:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Selects embed device for the current component.
         """
         val = (os.environ.get("LOKUMF_EMBED_DEVICE") or "").strip().lower()
         if val in ("cpu", "mps"):
@@ -195,7 +195,7 @@ class RAGEngine:
 
     def _select_embed_batch_size(self, device: str) -> int:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Selects embed batch size for the current component.
         """
         raw = (os.environ.get("LOKUMF_EMBED_BATCH") or "").strip()
         if raw:
@@ -211,7 +211,7 @@ class RAGEngine:
 
     def _checkpoint_policy(self) -> tuple[int, float]:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Checkpoints policy for the current component.
         """
         raw_chunks = (os.environ.get("LOKUMF_RAG_CHECKPOINT_CHUNKS") or "").strip()
         raw_secs = (os.environ.get("LOKUMF_RAG_CHECKPOINT_SECS") or "").strip()
@@ -237,7 +237,7 @@ class RAGEngine:
 
     def request_abort(self) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Requests abort for the current component.
         """
         try:
             self._abort = True
@@ -246,7 +246,7 @@ class RAGEngine:
 
     def clear_abort(self) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Clears abort for the current component.
         """
         try:
             self._abort = False
@@ -255,21 +255,21 @@ class RAGEngine:
 
     def _check_abort(self) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Checks abort for the current component.
         """
         if bool(getattr(self, "_abort", False)):
             raise RuntimeError("RAG operation aborted")
 
     def _file_id_for(self, path: str) -> str:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Files id for for the current component.
         """
         p = os.path.abspath(path or "")
         return hashlib.sha256(p.encode("utf-8", errors="ignore")).hexdigest()
 
     def mark_deleted(self, source_path: str, deleted: bool = True) -> bool:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Marks deleted for the current component.
         """
         self._load_state()
         if not isinstance(self.state, dict) or not isinstance(self.state.get("files"), dict):
@@ -292,7 +292,7 @@ class RAGEngine:
 
     def _is_file_deleted(self, file_id: str) -> bool:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        is file deleted for the current component.
         """
         try:
             files = (self.state or {}).get("files") if isinstance(self.state, dict) else None
@@ -303,7 +303,7 @@ class RAGEngine:
 
     def _set_last_error(self, msg: str) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Sets last error for the current component.
         """
         try:
             self.last_error = (msg or "").strip()
@@ -312,7 +312,7 @@ class RAGEngine:
 
     def _load_state(self) -> None:
         """
-        Modeli RAM'e/VRAM'e aldığımız kısım. Hafızayı patlatmamak için dikkatli yazıldı.
+        Loads state for the current component.
         """
         try:
             if os.path.exists(self.state_path):
@@ -329,7 +329,7 @@ class RAGEngine:
 
     def _atomic_write_json(self, path: str, obj: Any) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Atomics write json for the current component.
         """
         tmp_path = f"{path}.tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
@@ -338,7 +338,7 @@ class RAGEngine:
 
     def _atomic_write_npy(self, path: str, arr: Any) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Atomics write npy for the current component.
         """
         tmp_base = f"{path}.tmp"
         np.save(tmp_base, arr)
@@ -349,7 +349,7 @@ class RAGEngine:
 
     def _atomic_write_faiss(self, path: str, index_obj: Any) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Atomics write faiss for the current component.
         """
         tmp_path = f"{path}.tmp"
         faiss.write_index(index_obj, tmp_path)
@@ -357,7 +357,7 @@ class RAGEngine:
 
     def validate_store(self) -> Dict[str, Any]:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Validates store for the current component.
         """
         ok = True
         problems: List[str] = []
@@ -410,7 +410,7 @@ class RAGEngine:
 
     def _quarantine_store_files(self, reason: str) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Quarantines store files for the current component.
         """
         ts = time.strftime("%Y%m%d-%H%M%S")
         suffix = f".corrupt.{ts}"
@@ -429,7 +429,7 @@ class RAGEngine:
 
     def _validate_or_quarantine_existing_store(self) -> None:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Validates or quarantine existing store for the current component.
         """
         try:
             res = self.validate_store()
@@ -548,7 +548,7 @@ class RAGEngine:
 
     def _extract_content(self, file_path: str) -> str:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Extracts content for the current component.
         """
         try:
             ext = os.path.splitext(file_path)[1].lower()
@@ -712,7 +712,7 @@ class RAGEngine:
 
                     def is_article_entry(entry) -> bool:
                         """
-                        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+                        is article entry for the current component.
                         """
                         ns = getattr(entry, "namespace", None)
                         if isinstance(ns, str) and ns:
@@ -742,7 +742,7 @@ class RAGEngine:
 
                     def iter_entries():
                         """
-                        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+                        Iters entries for the current component.
                         """
                         nonlocal scanned, read_fail
                         if it is not None:
@@ -942,7 +942,7 @@ class RAGEngine:
 
                         def is_article_entry(entry) -> bool:
                             """
-                            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+                            is article entry for the current component.
                             """
                             ns = getattr(entry, "namespace", None)
                             if isinstance(ns, str) and ns:
@@ -1144,7 +1144,7 @@ class RAGEngine:
 
     def _ingest_paths(self, file_paths: List[str], save_on_checkpoint: bool = True) -> int:
         """
-        Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+        Ingests paths for the current component.
         """
         started_at = time.perf_counter()
         self._check_abort()
@@ -1157,7 +1157,7 @@ class RAGEngine:
 
         def encode_batch(texts: List[str]):
             """
-            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+            Encodes batch for the current component.
             """
             try:
                 bs = getattr(self, "embed_batch_size", 32)
@@ -1296,10 +1296,15 @@ class RAGEngine:
                         emb = np.array(emb).astype("float32")
                         if emb.ndim != 2 or emb.shape[0] != len(batch):
                             raise RuntimeError("Embedding model returned invalid shape.")
+                        
+                        # Kosinüs benzerliği için L2 normalizasyonu (Cosine Similarity)
+                        faiss.normalize_L2(emb)
+                        
                         if dim is None:
                             dim = int(emb.shape[1])
                         if self.index is None:
-                            self.index = faiss.IndexFlatL2(int(dim))
+                            # IndexFlatL2 yerine IndexFlatIP (Inner Product) kullanıyoruz
+                            self.index = faiss.IndexFlatIP(int(dim))
                         self.index.add(emb)
                         self.documents.extend(batch)
                         for _ in batch:
@@ -1424,7 +1429,7 @@ class RAGEngine:
 
         def flush():
             """
-            Executes a core component of the Lokum-F framework. Optimized for maximum efficiency.
+            Flushs for the current component.
             """
             nonlocal batch, added_total
             if not batch:
@@ -1496,11 +1501,15 @@ class RAGEngine:
             # Embed the query using the same model
             query_vector = self.embedding_model.encode([query_text])
             query_vector = np.array(query_vector).astype('float32')
+            
+            # Sorgu vektörünü Kosinüs benzerliği için L2 normalize et
+            faiss.normalize_L2(query_vector)
+            
             self._check_abort()
 
             # Search FAISS for k nearest neighbors
             # Returns both distances and indices
-            # distances: L2 distance to each result (lower = better match)
+            # distances: Inner Product (Cosine Similarity) score (higher = better match)
             # indices: Position of result in our documents list
             fetch_k = int(max(k * 10, 50))
             if fetch_k > 500:
@@ -1555,7 +1564,7 @@ class RAGEngine:
         Returns a dict with:
         - 'context': The combined context string
         - 'chunks': List of individual chunks
-        - 'distances': L2 distances for each chunk
+        - 'distances': Cosine Similarity scores for each chunk
         - 'count': Number of chunks found
         """
         if not self.enabled or self.index is None:
@@ -1566,6 +1575,10 @@ class RAGEngine:
             self._check_abort()
             query_vector = self.embedding_model.encode([query_text])
             query_vector = np.array(query_vector).astype('float32')
+            
+            # Sorgu vektörünü Kosinüs benzerliği için L2 normalize et
+            faiss.normalize_L2(query_vector)
+            
             self._check_abort()
 
             fetch_k = int(max(k * 10, 50))
