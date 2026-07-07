@@ -3602,7 +3602,7 @@ class CustomMessageBox(QDialog):
         dialog = QDialog(parent)
         dialog.setWindowTitle(title)
         dialog.setMinimumWidth(320)
-        dialog.setWindowFlags(Qt.Dialog | Qt.WindowType.FramelessWindowHint)
+        dialog.setWindowFlags(Qt.WindowType.Dialog | Qt.WindowType.FramelessWindowHint)
         
         # Apply theme colors
         try:
@@ -4881,7 +4881,7 @@ class ChatbotGUI(QWidget):
         dialog = QDialog(self)
         dialog.setWindowTitle("Delete Chat")
         dialog.setFixedSize(360, 180)
-        dialog.setWindowFlags(Qt.Dialog | Qt.WindowType.FramelessWindowHint)
+        dialog.setWindowFlags(Qt.WindowType.Dialog | Qt.WindowType.FramelessWindowHint)
         
         # Apply theme colors
         is_dark = self.theme == "dark" or (self.theme == "system" and self.detect_system_theme() == "dark")
