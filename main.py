@@ -58,6 +58,11 @@ Model path is hardcoded at bottom of file.
 
 import sys
 import os
+import warnings
+
+# Suppress harmless warnings from multiprocessing/resource_tracker and huggingface_hub
+warnings.filterwarnings("ignore", category=UserWarning, module="multiprocessing.resource_tracker")
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 import time
 import json
 import ast
