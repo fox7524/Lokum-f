@@ -29,9 +29,9 @@ class TestMainOptionalImports(unittest.TestCase):
 
     def test_import_main_without_mlx_lm_psutil_libzim_file_ingest(self):
         try:
-            import PyQt5  # noqa: F401
+            import PyQt6  # noqa: F401
         except Exception:
-            self.skipTest("PyQt5 not available")
+            self.skipTest("PyQt6 not available")
 
         mod = self._load_isolated_main({"mlx_lm", "psutil", "libzim", "file_ingest"})
         self.assertFalse(getattr(mod, "HAS_MLX_LM", True))

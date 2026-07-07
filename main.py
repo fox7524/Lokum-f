@@ -83,13 +83,16 @@ except ImportError:
     edge_tts = None
     HAS_EDGE_TTS = False
 try:
-    from PyQt5.QtWebEngineWidgets import QWebEngineView
+    from PyQt6.QtWebEngineWidgets import QWebEngineView
+    from PyQt6.QtWebEngineCore import QWebEnginePage, QWebEngineProfile
     HAS_WEBENGINE = True
 except ImportError:
     HAS_WEBENGINE = False
     QWebEngineView = None
+    QWebEnginePage = None
+    QWebEngineProfile = None
 
-from PyQt5.QtWidgets import (
+from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QTextEdit, QLineEdit,
     QPushButton, QHBoxLayout, QLabel, QSplitter, QDialog,
     QFormLayout, QMessageBox, QRadioButton, QButtonGroup,
@@ -97,11 +100,11 @@ from PyQt5.QtWidgets import (
     QInputDialog, QTabWidget, QCheckBox, QSpinBox, QSlider,
     QComboBox, QTextBrowser, QProgressBar, QTableWidget,
     QTableWidgetItem, QHeaderView, QAbstractItemView, QGroupBox,
-    QGridLayout, QPlainTextEdit, QDoubleSpinBox, QToolButton, QMenu, QAction,
+    QGridLayout, QPlainTextEdit, QDoubleSpinBox, QToolButton, QMenu,
     QListWidgetItem, QSizePolicy, QGraphicsDropShadowEffect
 )
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, QTimer, QSize, QSettings
-from PyQt5.QtGui import QFont, QTextCursor, QPalette, QColor, QTextCharFormat, QCursor, QFontDatabase
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer, QSize, QSettings, QUrl
+from PyQt6.QtGui import QFont, QTextCursor, QPalette, QColor, QTextCharFormat, QCursor, QFontDatabase, QIcon, QAction
 
 psutil = None
 HAS_PSUTIL = False
@@ -243,7 +246,7 @@ class FuseWorker(QThread):
 
     def run(self):
         """
-        Runs for the current component.
+        Runs the fuse process in a separate thread.
         """
         try:
             cmd = [
@@ -288,6 +291,12 @@ class MicWorker(QThread):
         self.is_recording = False
         self.audio_data = []
         self.sample_rate = 16000
+
+    def stop_recording(self):
+        """
+        Stops the microphone recording.
+        """
+        self.is_recording = False
 
     def run(self):
         """
@@ -491,21 +500,32 @@ class AIWorker(QThread):
     finished = pyqtSignal(str, float, int, float, float)
     # Signal emitted on error: error message
     error = pyqtSignal(str)
+    # Signal emitted for RAG status updates
+    rag_status_update = pyqtSignal(str)
 
-    def __init__(self, model, tokenizer, prompt):
+    def __init__(self, model, tokenizer, temp_history, user_text, use_rag, rag_engine, build_context_callback):
         """
         Initialize the worker thread.
 
         ARGS:
             model: The loaded MLX model instance
             tokenizer: The tokenizer for the model
-            prompt: The formatted prompt string to generate from
+            temp_history: Chat history list
+            user_text: The latest user message
+            use_rag: Whether RAG is enabled
+            rag_engine: The RAG engine instance
+            build_context_callback: Callback to build project context
         """
         super().__init__()
         self.model = model
         self.tokenizer = tokenizer
-        self.prompt = prompt
+        self.temp_history = temp_history
+        self.user_text = user_text
+        self.use_rag = use_rag
+        self.rag_engine = rag_engine
+        self.build_context_callback = build_context_callback
         self.is_running = True  # Can be set False to stop generation
+        self.prompt = ""
 
     def run(self):
         """
@@ -515,6 +535,39 @@ class AIWorker(QThread):
         DO NOT call this directly - use start() instead.
         """
         try:
+            # 1. Build Context & RAG Query (Done in Worker Thread)
+            context_prompt = self.user_text
+            ctx_parts = []
+            
+            try:
+                proj_ctx = self.build_context_callback(self.user_text) if self.build_context_callback else ""
+            except Exception:
+                proj_ctx = ""
+                
+            if proj_ctx:
+                ctx_parts.append(f"Project context:\n{proj_ctx}")
+                
+            if self.use_rag and self.rag_engine and getattr(self.rag_engine, "enabled", False):
+                rag_docs = self.rag_engine.query(self.user_text)
+                if rag_docs:
+                    ctx_parts.append(f"Background info:\n{rag_docs}")
+                    self.rag_status_update.emit("active")
+                else:
+                    self.rag_status_update.emit("empty")
+                    
+            if ctx_parts:
+                context_prompt = "\n\n".join(ctx_parts) + f"\n\nUser: {self.user_text}"
+                
+            self.temp_history[-1] = {"role": "user", "content": context_prompt}
+            
+            try:
+                if hasattr(self.tokenizer, 'apply_chat_template'):
+                    self.prompt = self.tokenizer.apply_chat_template(self.temp_history, tokenize=False, add_generation_prompt=True)
+                else:
+                    self.prompt = f"User: {context_prompt}\nAssistant: "
+            except Exception:
+                self.prompt = f"User: {context_prompt}\nAssistant: "
+
             if stream_generate is None:
                 raise RuntimeError(MLX_IMPORT_ERROR or "mlx_lm is not available.")
             if self.model is None or self.tokenizer is None:
@@ -1330,7 +1383,7 @@ class DevPanelDialog(QWidget):
             panel_layout = root
         else:
             self.setWindowTitle("Developer")
-            self.setWindowFlags(self.windowFlags() | Qt.Tool)
+            self.setWindowFlags(self.windowFlags() | Qt.WindowType.Tool)
             self.setFixedSize(400, 300)
             root.setContentsMargins(10, 10, 10, 10)
             root.setSpacing(8)
@@ -1376,8 +1429,8 @@ class DevPanelDialog(QWidget):
         """
         sc = QScrollArea()
         sc.setWidgetResizable(True)
-        sc.setFrameShape(QFrame.NoFrame)
-        sc.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        sc.setFrameShape(QFrame.Shape.NoFrame)
+        sc.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         sc.setWidget(inner)
         return sc
 
@@ -2166,7 +2219,7 @@ class DevPanelDialog(QWidget):
             
             item = QListWidgetItem(display_text)
             # Tam yolu item'ın içine gizli veri (Data) olarak kaydet
-            item.setData(Qt.UserRole, p)
+            item.setData(Qt.ItemDataRole.UserRole, p)
             self.ft_model_list.addItem(item)
 
     def use_selected_ft_model(self):
@@ -2181,7 +2234,7 @@ class DevPanelDialog(QWidget):
             return
         
         # Ekranda görünen ismi değil, arka planda sakladığımız tam yolu al
-        p = items[0].data(Qt.UserRole)
+        p = items[0].data(Qt.ItemDataRole.UserRole)
         if p:
             self.ft_model_path.setText(str(p))
 
@@ -2401,9 +2454,9 @@ class DevPanelDialog(QWidget):
                 "Training starts a separate process that loads the full model again.\n\n"
                 "To avoid running out of RAM, the app will unload the currently loaded model before training.\n\n"
                 "Continue?",
-                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             )
-            if res != QMessageBox.Yes:
+            if res != QMessageBox.StandardButton.Yes:
                 return
 
         # NEW: Check which checkboxes are checked before training
@@ -3501,7 +3554,7 @@ class DevPanelDialog(QWidget):
 
         self.unrestricted_status = QLabel("Status: DISABLED")
         self.unrestricted_status.setStyleSheet("color: #888; font-size: 16px; padding: 20px;")
-        self.unrestricted_status.setAlignment(Qt.AlignCenter)
+        self.unrestricted_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(self.unrestricted_status)
 
         layout.addStretch()
@@ -3511,7 +3564,7 @@ class DevPanelDialog(QWidget):
         """
         Toggles unrestricted for the current component.
         """
-        if state == Qt.Checked:
+        if state == Qt.CheckState.Checked:
             self.unrestricted_enabled.setText("Unrestricted Mode ACTIVE")
             self.unrestricted_status.setText("Status: ACTIVE")
             self.unrestricted_status.setStyleSheet("color: #ff4d6a; font-size: 18px; font-weight: bold; padding: 20px;")
@@ -3549,7 +3602,7 @@ class CustomMessageBox(QDialog):
         dialog = QDialog(parent)
         dialog.setWindowTitle(title)
         dialog.setMinimumWidth(320)
-        dialog.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        dialog.setWindowFlags(Qt.Dialog | Qt.WindowType.FramelessWindowHint)
         
         # Apply theme colors
         try:
@@ -3647,7 +3700,7 @@ class CustomMessageBox(QDialog):
         Informations for the current component.
         """
         d = cls._create_dialog(parent, title, text, "OK", "info")
-        d.exec_()
+        d.exec()
         
     @classmethod
     def warning(cls, parent, title, text):
@@ -3655,7 +3708,7 @@ class CustomMessageBox(QDialog):
         Warnings for the current component.
         """
         d = cls._create_dialog(parent, title, text, "OK", "warning")
-        d.exec_()
+        d.exec()
         
     @classmethod
     def critical(cls, parent, title, text):
@@ -3663,7 +3716,7 @@ class CustomMessageBox(QDialog):
         Criticals for the current component.
         """
         d = cls._create_dialog(parent, title, text, "OK", "critical")
-        d.exec_()
+        d.exec()
 
     @classmethod
     def question(cls, parent, title, text, buttons=None):
@@ -3671,7 +3724,7 @@ class CustomMessageBox(QDialog):
         Questions for the current component.
         """
         d = cls._create_dialog(parent, title, text, "Yes", "question")
-        return QMessageBox.Yes if d.exec_() == QDialog.Accepted else QMessageBox.No
+        return QMessageBox.StandardButton.Yes if d.exec() == QDialog.Accepted else QMessageBox.StandardButton.No
 
 # Monkey patch QMessageBox
 QMessageBox.information = CustomMessageBox.information
@@ -4317,13 +4370,13 @@ class ChatbotGUI(QWidget):
         self.new_chat_btn = QPushButton("New Chat")
         self.new_chat_btn.setFixedHeight(36)
         self.new_chat_btn.setObjectName("NewChatMainBtn")
-        self.new_chat_btn.setCursor(Qt.PointingHandCursor)
+        self.new_chat_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         self.new_chat_btn.clicked.connect(self.new_chat)
         
         self.chat_opts_btn = QPushButton("...")
         self.chat_opts_btn.setFixedSize(36, 36)
         self.chat_opts_btn.setObjectName("NewChatOptsBtn")
-        self.chat_opts_btn.setCursor(Qt.PointingHandCursor)
+        self.chat_opts_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         
         new_chat_layout.addWidget(self.new_chat_btn, 1)
         new_chat_layout.addWidget(self.chat_opts_btn)
@@ -4384,14 +4437,14 @@ class ChatbotGUI(QWidget):
         settings_btn = QPushButton("⚙️ Ayarlar")
         settings_btn.setObjectName("SettingsButton")
         settings_btn.setFixedHeight(36)
-        settings_btn.setCursor(Qt.PointingHandCursor)
+        settings_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         settings_btn.clicked.connect(self.open_settings_dialog)
         s_layout.addWidget(settings_btn)
         
         dev_btn = QPushButton("Dev Mode")
         dev_btn.setObjectName("DevUnlockButton")
         dev_btn.setFixedHeight(36)
-        dev_btn.setCursor(Qt.PointingHandCursor)
+        dev_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         dev_btn.clicked.connect(self.on_dev_button_clicked)
         s_layout.addWidget(dev_btn)
 
@@ -4440,7 +4493,7 @@ class ChatbotGUI(QWidget):
         
         m_layout.addWidget(self.header_area)
 
-        self.content_splitter = QSplitter(Qt.Horizontal)
+        self.content_splitter = QSplitter(Qt.Orientation.Horizontal)
         self.content_splitter.setObjectName("ContentSplitter")
 
         self.chat_container = QFrame()
@@ -4451,15 +4504,15 @@ class ChatbotGUI(QWidget):
 
         if HAS_WEBENGINE:
             self.chat_display = QWebEngineView()
-            self.chat_display.page().setBackgroundColor(Qt.transparent)
+            self.chat_display.page().setBackgroundColor(Qt.GlobalColor.transparent)
             self.chat_display.setHtml(self._get_base_html())
             self.chat_display.urlChanged.connect(self._handle_url_change)
             chat_layout.addWidget(self.chat_display)
         else:
             self.chat_display = QScrollArea()
             self.chat_display.setWidgetResizable(True)
-            self.chat_display.setFrameShape(QFrame.NoFrame)
-            self.chat_display.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+            self.chat_display.setFrameShape(QFrame.Shape.NoFrame)
+            self.chat_display.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
             chat_layout.addWidget(self.chat_display)
 
             self.chat_view = QWidget()
@@ -4496,7 +4549,7 @@ class ChatbotGUI(QWidget):
         self.dynamic_action_btn = QPushButton("🎤")
         self.dynamic_action_btn.setObjectName("DynamicActionBtn")
         self.dynamic_action_btn.setFixedSize(36, 36)
-        self.dynamic_action_btn.setCursor(Qt.PointingHandCursor)
+        self.dynamic_action_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         self.dynamic_action_btn.clicked.connect(self._on_dynamic_action_clicked)
         
         # Tools layout inside the unified bar (left side)
@@ -4506,14 +4559,14 @@ class ChatbotGUI(QWidget):
         btn_rag = QPushButton("Files")
         btn_rag.setObjectName("ToolBtn")
         btn_rag.setFixedSize(60, 36)
-        btn_rag.setCursor(Qt.PointingHandCursor)
+        btn_rag.setCursor(Qt.CursorShape.PointingHandCursor)
         btn_rag.clicked.connect(self.open_project_file_picker)
         tool_layout.addWidget(btn_rag)
         
         self.tts_toggle_btn = QPushButton("🔊" if self.use_tts else "🔇")
         self.tts_toggle_btn.setObjectName("ToolBtn")
         self.tts_toggle_btn.setFixedSize(36, 36)
-        self.tts_toggle_btn.setCursor(Qt.PointingHandCursor)
+        self.tts_toggle_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         self.tts_toggle_btn.setToolTip("Toggle Text-to-Speech")
         self.tts_toggle_btn.clicked.connect(self.toggle_tts)
         tool_layout.addWidget(self.tts_toggle_btn)
@@ -4560,7 +4613,7 @@ class ChatbotGUI(QWidget):
         m_layout.addWidget(self.content_splitter)
 
         # Assemble
-        splitter = QSplitter(Qt.Horizontal)
+        splitter = QSplitter(Qt.Orientation.Horizontal)
         self.splitter = splitter
         splitter.addWidget(self.sidebar)
         splitter.addWidget(self.main_area)
@@ -4624,7 +4677,7 @@ class ChatbotGUI(QWidget):
         if item is None:
             return ""
         try:
-            v = item.data(Qt.UserRole)
+            v = item.data(Qt.ItemDataRole.UserRole)
             if isinstance(v, str) and v:
                 return v
         except Exception:
@@ -4652,7 +4705,7 @@ class ChatbotGUI(QWidget):
         Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
         """
         item = QListWidgetItem("")
-        item.setData(Qt.UserRole, chat_name)
+        item.setData(Qt.ItemDataRole.UserRole, chat_name)
         self.chat_list.addItem(item)
         self._set_chat_list_item_widget(item, chat_name)
 
@@ -4663,7 +4716,7 @@ class ChatbotGUI(QWidget):
         w = QWidget()
         w.setObjectName("ChatItemRow")
         w.setProperty("selected", False)
-        w.setAttribute(Qt.WA_StyledBackground, True)
+        w.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         layout = QHBoxLayout(w)
         layout.setContentsMargins(10, 8, 10, 8)
         layout.setSpacing(8)
@@ -4677,8 +4730,8 @@ class ChatbotGUI(QWidget):
         btn.setText("...")
         btn.setObjectName("ChatItemMenu")
         btn.setAutoRaise(True)
-        btn.setCursor(Qt.PointingHandCursor)
-        btn.setFocusPolicy(Qt.NoFocus)
+        btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         btn.setFixedSize(30, 26)
         btn.clicked.connect(lambda _=False, it=item, anchor=btn: self.open_chat_list_menu(self._chat_name_from_item(it), anchor))
         layout.addWidget(btn)
@@ -4698,7 +4751,7 @@ class ChatbotGUI(QWidget):
         it = self._find_chat_list_item(old_name)
         if it is None:
             return
-        it.setData(Qt.UserRole, new_name)
+        it.setData(Qt.ItemDataRole.UserRole, new_name)
         w = self.chat_list.itemWidget(it)
         if w is not None:
             lbl = w.findChild(QLabel, "ChatItemLabel")
@@ -4809,7 +4862,7 @@ class ChatbotGUI(QWidget):
         menu.addAction(history)
 
         pos = anchor_btn.mapToGlobal(anchor_btn.rect().bottomRight())
-        menu.exec_(pos)
+        menu.exec(pos)
 
     def _rename_chat_via_prompt(self, chat_name: str):
         """
@@ -4828,7 +4881,7 @@ class ChatbotGUI(QWidget):
         dialog = QDialog(self)
         dialog.setWindowTitle("Delete Chat")
         dialog.setFixedSize(360, 180)
-        dialog.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        dialog.setWindowFlags(Qt.Dialog | Qt.WindowType.FramelessWindowHint)
         
         # Apply theme colors
         is_dark = self.theme == "dark" or (self.theme == "system" and self.detect_system_theme() == "dark")
@@ -4908,7 +4961,7 @@ class ChatbotGUI(QWidget):
         
         layout.addLayout(btn_layout)
         
-        if dialog.exec_() != QDialog.Accepted:
+        if dialog.exec() != QDialog.Accepted:
             return
             
         if getattr(self, "_pending_chat", None) == chat_name:
@@ -5010,7 +5063,7 @@ class ChatbotGUI(QWidget):
         layout.addLayout(btn_row)
         copy_btn.clicked.connect(lambda: QApplication.clipboard().setText(editor.toPlainText()))
         close_btn.clicked.connect(dlg.accept)
-        dlg.exec_()
+        dlg.exec()
 
     def _stop_generation(self, show_status: bool = True) -> None:
         """
@@ -5046,7 +5099,7 @@ class ChatbotGUI(QWidget):
         Detects system theme for the current component.
         """
         pal = QApplication.instance().palette()
-        window = pal.color(QPalette.Window)
+        window = pal.color(QPalette.ColorRole.Window)
         return "dark" if window.lightness() < 128 else "light"
 
     def apply_theme(self, theme: str) -> None:
@@ -5692,8 +5745,8 @@ class ChatbotGUI(QWidget):
             pass
 
         if getattr(self, "model", None) is not None or getattr(self, "tokenizer", None) is not None:
-            res = QMessageBox.question(self, "Load Model", "A model is already loaded. Unload and load again?", QMessageBox.Yes | QMessageBox.No)
-            if res != QMessageBox.Yes:
+            res = QMessageBox.question(self, "Load Model", "A model is already loaded. Unload and load again?", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+            if res != QMessageBox.StandardButton.Yes:
                 return
             self.unload_model()
 
@@ -5714,8 +5767,8 @@ class ChatbotGUI(QWidget):
             pass
 
         if getattr(self, "model", None) is not None or getattr(self, "tokenizer", None) is not None:
-            res = QMessageBox.question(self, "Load Model", "A model is already loaded. Unload and load a new one?", QMessageBox.Yes | QMessageBox.No)
-            if res != QMessageBox.Yes:
+            res = QMessageBox.question(self, "Load Model", "A model is already loaded. Unload and load a new one?", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+            if res != QMessageBox.StandardButton.Yes:
                 return
             self.unload_model()
 
@@ -5958,7 +6011,7 @@ class ChatbotGUI(QWidget):
         Kullanıcı ve Dev ayarlarını .lokumf içine güvenle kaydettiğimiz/okuduğumuz yer.
         """
         diag = SettingsDialog(self, self.user_prompt, current_theme=self.theme)
-        if diag.exec_():
+        if diag.exec():
             self.apply_theme(getattr(diag, "final_theme", self.theme))
 
     def open_dev_panel(self):
@@ -6090,7 +6143,7 @@ class ChatbotGUI(QWidget):
         btn_box.addWidget(save_btn)
         l.addLayout(btn_box)
         
-        if dlg.exec_() == QDialog.Accepted:
+        if dlg.exec() == QDialog.Accepted:
             new_theme = theme_combo.currentText()
             self.theme = new_theme
             self.config["theme"] = new_theme
@@ -6271,7 +6324,7 @@ class ChatbotGUI(QWidget):
         menu.addAction(copy_act)
 
         pos = QCursor.pos()
-        menu.exec_(pos)
+        menu.exec(pos)
 
     def _edit_user_message(self, msg_index: int):
         """
@@ -6303,8 +6356,8 @@ class ChatbotGUI(QWidget):
         msgs = self.chat_ui.get(self.active_chat, [])
         if not (0 <= msg_index < len(msgs)):
             return
-        res = QMessageBox.question(self, "Delete Message", "Delete this message? This cannot be undone.", QMessageBox.Yes | QMessageBox.No)
-        if res != QMessageBox.Yes:
+        res = QMessageBox.question(self, "Delete Message", "Delete this message? This cannot be undone.", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if res != QMessageBox.StandardButton.Yes:
             return
         try:
             self._delete_user_message_db(self.active_chat, msg_index)
@@ -6696,7 +6749,7 @@ class ChatbotGUI(QWidget):
             """
             frame = QFrame()
             frame.setObjectName("CodeBlockFrame")
-            frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+            frame.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
             frame.setMaximumWidth(max_bubble)
 
             bg = "#0b1220" if self.theme == "dark" else "#f3f5f9"
@@ -6744,9 +6797,9 @@ class ChatbotGUI(QWidget):
 
             copy_btn = QToolButton()
             copy_btn.setText("⧉")
-            copy_btn.setCursor(Qt.PointingHandCursor)
+            copy_btn.setCursor(Qt.CursorShape.PointingHandCursor)
             copy_btn.setAutoRaise(True)
-            copy_btn.setFocusPolicy(Qt.StrongFocus)
+            copy_btn.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
             copy_btn.setAccessibleName("Copy code")
             copy_btn.setToolTip("Copy")
             copy_btn.setStyleSheet(
@@ -6780,10 +6833,10 @@ class ChatbotGUI(QWidget):
             ed.setReadOnly(True)
             ed.setLineWrapMode(QPlainTextEdit.NoWrap)
             ed.setPlainText(code or "")
-            ed.setFrameShape(QFrame.NoFrame)
-            ed.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-            ed.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-            ed.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+            ed.setFrameShape(QFrame.Shape.NoFrame)
+            ed.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+            ed.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+            ed.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
             fnt = QFontDatabase.systemFont(QFontDatabase.FixedFont)
             fnt.setPointSize(13)
             fnt.setWeight(QFont.Normal)
@@ -6821,18 +6874,18 @@ class ChatbotGUI(QWidget):
                 col_l = QVBoxLayout(col)
                 col_l.setContentsMargins(0, 0, 0, 0)
                 col_l.setSpacing(6)
-                col_l.setAlignment(Qt.AlignRight)
+                col_l.setAlignment(Qt.AlignmentFlag.AlignRight)
 
                 header = QLabel("YOU")
                 header.setStyleSheet(f"color:{colors['muted']};font-size:11px;font-weight:800;letter-spacing:1px;margin-right:8px;")
-                col_l.addWidget(header, 0, Qt.AlignRight)
+                col_l.addWidget(header, 0, Qt.AlignmentFlag.AlignRight)
 
                 bubble = QFrame()
                 bubble.setObjectName("UserBubble")
                 bubble.setStyleSheet(
                     f"QFrame#UserBubble{{background:{user_bubble};border:1px solid {colors['border']};border-radius:18px;}}"
                 )
-                bubble.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Minimum)
+                bubble.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Minimum)
                 bubble.setMaximumWidth(max_bubble)
                 b_l = QVBoxLayout(bubble)
                 b_l.setContentsMargins(14, 10, 14, 10)
@@ -6847,13 +6900,13 @@ class ChatbotGUI(QWidget):
 
                 dots = QToolButton()
                 dots.setText("...")
-                dots.setCursor(Qt.PointingHandCursor)
+                dots.setCursor(Qt.CursorShape.PointingHandCursor)
                 dots.setAutoRaise(True)
                 dots.setStyleSheet(f"QToolButton{{background:transparent;border:0;color:{colors['muted']};font-weight:800;font-size:12px;}}")
                 dots.clicked.connect(lambda _=False, idx=i: self.open_message_menu(idx))
 
-                col_l.addWidget(bubble, 0, Qt.AlignRight)
-                col_l.addWidget(dots, 0, Qt.AlignRight)
+                col_l.addWidget(bubble, 0, Qt.AlignmentFlag.AlignRight)
+                col_l.addWidget(dots, 0, Qt.AlignmentFlag.AlignRight)
                 row_l.addWidget(col)
                 self.chat_msgs_layout.addWidget(row)
                 continue
@@ -6889,7 +6942,7 @@ class ChatbotGUI(QWidget):
                     arrow = "▾" if is_open else "▸"
                     toggle = QToolButton()
                     toggle.setText(arrow)
-                    toggle.setCursor(Qt.PointingHandCursor)
+                    toggle.setCursor(Qt.CursorShape.PointingHandCursor)
                     toggle.setAutoRaise(True)
                     toggle.setStyleSheet(f"QToolButton{{background:transparent;border:0;color:{colors['muted']};font-weight:900;font-size:14px;}}")
                     toggle.clicked.connect(lambda _=False, idx=i: self._toggle_thought(idx))
@@ -7063,46 +7116,10 @@ class ChatbotGUI(QWidget):
         except Exception:
             pass
         
-        # Context formulation
-        context_prompt = user_text
-        ctx_parts = []
-        proj_ctx = ""
-        try:
-            proj_ctx = self._build_project_context(user_text)
-        except Exception:
-            proj_ctx = ""
-        if proj_ctx:
-            ctx_parts.append(f"Project context:\n{proj_ctx}")
-        if bool(getattr(self, "use_rag", True)) and not bool(getattr(self, "training_active", False)):
-            rag_engine = self.get_rag_engine()
-            if rag_engine and getattr(rag_engine, "enabled", False):
-                rag_docs = rag_engine.query(user_text)
-                if rag_docs:
-                    ctx_parts.append(f"Background info:\n{rag_docs}")
-                    self.rag_badge.setText("RAG: ACTIVE")
-                    self.rag_badge.setProperty("ragState", "active")
-                    self.rag_badge.style().unpolish(self.rag_badge)
-                    self.rag_badge.style().polish(self.rag_badge)
-                else:
-                    self.rag_badge.setText("RAG: EMPTY")
-                    self.rag_badge.setProperty("ragState", "empty")
-                    self.rag_badge.style().unpolish(self.rag_badge)
-                    self.rag_badge.style().polish(self.rag_badge)
-        if ctx_parts:
-            context_prompt = "\n\n".join(ctx_parts) + f"\n\nUser: {user_text}"
-        
-        
-        self._last_context_prompt = context_prompt
+        # We prepare temp_history for the worker
         temp_history = list(self.chats[self.active_chat])
-        temp_history[-1] = {"role": "user", "content": context_prompt}
+        temp_history[-1] = {"role": "user", "content": user_text} # Placeholder, worker will update this with RAG
         
-        try:
-            if hasattr(self.tokenizer, 'apply_chat_template'):
-                prompt_string = self.tokenizer.apply_chat_template(temp_history, tokenize=False, add_generation_prompt=True)
-            else: prompt_string = f"User: {context_prompt}\nAssistant: "
-        except:
-            prompt_string = f"User: {context_prompt}\nAssistant: "
-
         self.is_generating = True
         self.input_field.setDisabled(True)
         self.send_btn.setDisabled(True)
@@ -7123,7 +7140,19 @@ class ChatbotGUI(QWidget):
         self._pending_msg_index = len(self.chat_ui[self.active_chat]) - 1
         self.render_chat(self.active_chat)
         
-        self.worker = AIWorker(self.model, self.tokenizer, prompt_string)
+        use_rag_val = bool(getattr(self, "use_rag", True)) and not bool(getattr(self, "training_active", False))
+        rag_engine = self.get_rag_engine()
+        
+        self.worker = AIWorker(
+            self.model, 
+            self.tokenizer, 
+            temp_history, 
+            user_text, 
+            use_rag_val, 
+            rag_engine, 
+            self._build_project_context
+        )
+        self.worker.rag_status_update.connect(self._on_rag_status_update)
         self.worker.new_token.connect(self.on_new_token)
         self.worker.finished.connect(self.on_ai_success)
         self.worker.error.connect(self.on_ai_error)
@@ -7190,7 +7219,7 @@ class ChatbotGUI(QWidget):
             btn_row.addWidget(close_btn)
             layout.addLayout(btn_row)
             close_btn.clicked.connect(dlg.accept)
-            dlg.exec_()
+            dlg.exec()
         except Exception as e:
             QMessageBox.critical(self, "Execution Error", str(e))
 
@@ -7408,6 +7437,19 @@ class ChatbotGUI(QWidget):
                 return str(a)
 
         return ""
+
+    def _on_rag_status_update(self, status: str):
+        """
+        Updates the RAG UI badge based on worker thread progress.
+        """
+        if status == "active":
+            self.rag_badge.setText("RAG: ACTIVE")
+            self.rag_badge.setProperty("ragState", "active")
+        else:
+            self.rag_badge.setText("RAG: EMPTY")
+            self.rag_badge.setProperty("ragState", "empty")
+        self.rag_badge.style().unpolish(self.rag_badge)
+        self.rag_badge.style().polish(self.rag_badge)
 
     def on_new_token(self, token):
         """
@@ -7666,4 +7708,4 @@ if __name__ == "__main__":
 
     window = ChatbotGUI(None, None, "")
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

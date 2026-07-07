@@ -13,4 +13,5 @@ psutil
 libzim
 pillow
 pytesseract
-PyQt5
+PyQt6
+PyQt6-WebEngine

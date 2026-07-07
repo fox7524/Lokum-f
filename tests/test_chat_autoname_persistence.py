@@ -5,19 +5,19 @@ import unittest
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 try:
-    from PyQt5.QtWidgets import QApplication  # type: ignore
-    _HAS_PYQT5 = True
+    from PyQt6.QtWidgets import QApplication  # type: ignore
+    _HAS_PYQT6 = True
 except Exception:
     QApplication = None  # type: ignore
-    _HAS_PYQT5 = False
+    _HAS_PYQT6 = False
 
-if _HAS_PYQT5:
+if _HAS_PYQT6:
     import main
 else:
     main = None  # type: ignore
 
 
-@unittest.skipUnless(_HAS_PYQT5, "PyQt5 not available")
+@unittest.skipUnless(_HAS_PYQT6, "PyQt6 not available")
 class TestChatAutoNameAndPersistence(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
