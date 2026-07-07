@@ -6673,16 +6673,6 @@ class ChatbotGUI(QWidget):
         if not hasattr(self, "chat_msgs_layout") or self.chat_msgs_layout is None:
             return
 
-        old_scroll_val = None
-        old_scroll_max = None
-        try:
-            sb = self.chat_display.verticalScrollBar()
-            old_scroll_val = int(sb.value())
-            old_scroll_max = int(sb.maximum())
-        except Exception:
-            old_scroll_val = None
-            old_scroll_max = None
-
         msgs = self.chat_ui.get(chat_name, []) or []
         colors = getattr(self, "_theme_colors", None) or {
             "bg": "#121212",
@@ -6892,9 +6882,9 @@ class ChatbotGUI(QWidget):
 
                 lbl = QLabel()
                 lbl.setWordWrap(True)
-                lbl.setTextFormat(Qt.RichText)
+                lbl.setTextFormat(Qt.TextFormat.RichText)
                 lbl.setText(f"<div style='text-align:left;color:{colors['text']};font-size:16px;line-height:1.5;'>{fmt_html(m.get('content',''))}</div>")
-                lbl.setTextInteractionFlags(Qt.TextSelectableByMouse)
+                lbl.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
                 lbl.setMaximumWidth(max_bubble - 28)
                 b_l.addWidget(lbl)
 
@@ -6958,9 +6948,9 @@ class ChatbotGUI(QWidget):
                     if is_open and think_txt:
                         t_lbl = QLabel()
                         t_lbl.setWordWrap(True)
-                        t_lbl.setTextFormat(Qt.RichText)
+                        t_lbl.setTextFormat(Qt.TextFormat.RichText)
                         t_lbl.setText(f"<div style='color:{colors['text']};font-size:15px;line-height:1.6;'>{fmt_html(think_txt)}</div>")
-                        t_lbl.setTextInteractionFlags(Qt.TextSelectableByMouse)
+                        t_lbl.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
                         t_l.addWidget(t_lbl)
 
                     w_l.addWidget(thought_frame)
@@ -6990,10 +6980,10 @@ class ChatbotGUI(QWidget):
                             continue
                         a_lbl = QLabel()
                         a_lbl.setWordWrap(True)
-                        a_lbl.setTextFormat(Qt.RichText)
+                        a_lbl.setTextFormat(Qt.TextFormat.RichText)
                         # Yazı boyutu ve satır aralığı artırıldı, renk düzenlendi
                         a_lbl.setText(f"<div style='color:{colors['text']};font-size:16px;line-height:1.7;letter-spacing:0.3px;'>{fmt_html(text)}</div>")
-                        a_lbl.setTextInteractionFlags(Qt.TextSelectableByMouse)
+                        a_lbl.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
                         ans_lay.addWidget(a_lbl)
                     
                     w_l.addWidget(ans_frame)
@@ -7007,18 +6997,6 @@ class ChatbotGUI(QWidget):
                 self.chat_msgs_layout.addWidget(wrap)
 
         self.chat_msgs_layout.addStretch()
-        try:
-            sb = self.chat_display.verticalScrollBar()
-            if keep_scroll and old_scroll_val is not None:
-                if old_scroll_max is not None and old_scroll_max > 0:
-                    ratio = float(old_scroll_val) / float(old_scroll_max)
-                    sb.setValue(int(ratio * float(sb.maximum())))
-                else:
-                    sb.setValue(int(old_scroll_val))
-            else:
-                sb.setValue(int(sb.maximum()))
-        except Exception:
-            pass
 
     def toggle_mic(self):
         """
@@ -7595,7 +7573,6 @@ class ChatbotGUI(QWidget):
         self._pending_msg_index = None
 
         self.render_chat(self.active_chat)
-        self.chat_display.verticalScrollBar().setValue(self.chat_display.verticalScrollBar().maximum())
         
         self.is_generating = False
         self.input_field.setDisabled(False)
@@ -7643,10 +7620,6 @@ class ChatbotGUI(QWidget):
         self._pending_chat = None
         self._pending_msg_index = None
         self._schedule_render(chat_name)
-        try:
-            self.chat_display.verticalScrollBar().setValue(self.chat_display.verticalScrollBar().maximum())
-        except Exception:
-            pass
         self.is_generating = False
         self.input_field.setDisabled(False)
         self.send_btn.setDisabled(False)
