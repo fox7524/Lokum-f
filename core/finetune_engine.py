@@ -164,7 +164,9 @@ def _presplit_jsonl_file(fp: str, max_seq_length: int, batch_size: int) -> int:
                 continue
             try:
                 obj = json.loads(s)
-            except Exception:
+            except Exception as e:
+                import logging
+                logging.error(f"Error parsing JSON in {fp}: {e} | Line: {s}")
                 obj = {"text": s}
             if not isinstance(obj, dict) or "text" not in obj:
                 out_lines.append(json.dumps(obj, ensure_ascii=False))
@@ -226,7 +228,9 @@ class FinetuneEngine:
             from lokum_paths import lora_dir as _lora_dir, ensure_dir as _ensure_dir  # type: ignore
 
             self.dataset_dir = str(_ensure_dir(_lora_dir()))
-        except Exception:
+        except Exception as e:
+            import logging
+            logging.warning(f"Could not load lokum_paths: {e}. Falling back to local 'lora_data' dir.")
             self.dataset_dir = "lora_data"
             os.makedirs(self.dataset_dir, exist_ok=True)
             

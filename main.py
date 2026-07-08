@@ -2068,12 +2068,12 @@ class DevPanelDialog(QWidget):
         layout.addLayout(btn_row)
         
         # ---------------- FUSE SECTION (NEW) ----------------
-        fuse_box = QGroupBox("Export / Fuse Model")
+        self.fuse_box = QGroupBox("Export / Fuse Model")
         fuse_layout = QGridLayout()
         
         fuse_layout.addWidget(QLabel("New Model Name:"), 0, 0)
         self.ft_fuse_name = QLineEdit()
-        self.ft_fuse_name.setPlaceholderText("e.g. finetuned-14B(Leave empty to skip fuse)")
+        self.ft_fuse_name.setPlaceholderText("e.g. finetuned-14B")
         fuse_layout.addWidget(self.ft_fuse_name, 0, 1)
         
         self._fuse_btn = QPushButton("⚡️ Fuse & Save to LM Studio")
@@ -2081,8 +2081,9 @@ class DevPanelDialog(QWidget):
         self._fuse_btn.clicked.connect(self.start_fuse)
         fuse_layout.addWidget(self._fuse_btn, 0, 2)
         
-        fuse_box.setLayout(fuse_layout)
-        layout.addWidget(fuse_box)
+        self.fuse_box.setLayout(fuse_layout)
+        self.fuse_box.setVisible(False)
+        layout.addWidget(self.fuse_box)
         # ----------------------------------------------------
 
         # Progress
@@ -2787,8 +2788,12 @@ class DevPanelDialog(QWidget):
             # Threshold Kontrolü: Manuel Fuse istenmişti. %80 altında ise SİL.
             if score >= 80:
                 self.train_log.appendPlainText(f"✅ Puan yüksek (%{score}). Adaptör başarıyla doğrulandı. Manuel FUSE yapabilirsiniz.")
+                if hasattr(self, "fuse_box"):
+                    self.fuse_box.setVisible(True)
             else:
                 self.train_log.appendPlainText(f"❌ Puan düşük (%{score} < %80). BAŞARISIZ TRAİNİNG! Model ezberliyor olabilir.")
+                if hasattr(self, "fuse_box"):
+                    self.fuse_box.setVisible(False)
                 self.train_log.appendPlainText("🗑️ Kalitesiz adaptör siliniyor...")
                 try:
                     import shutil
@@ -4354,6 +4359,14 @@ class ChatbotGUI(QWidget):
         self.sidebar.setObjectName("Sidebar")
         self.sidebar.setMinimumWidth(200)
         self.sidebar.setMaximumWidth(300)
+        
+        # Add slight shadow to Sidebar
+        sidebar_fx = QGraphicsDropShadowEffect()
+        sidebar_fx.setBlurRadius(15)
+        sidebar_fx.setOffset(2, 0)
+        sidebar_fx.setColor(QColor(0, 0, 0, 40))
+        self.sidebar.setGraphicsEffect(sidebar_fx)
+        
         s_layout = QVBoxLayout(self.sidebar)
         s_layout.setContentsMargins(15, 20, 15, 15)
         
@@ -4465,6 +4478,14 @@ class ChatbotGUI(QWidget):
         self.header_area = QFrame()
         self.header_area.setObjectName("HeaderArea")
         self.header_area.setFixedHeight(60)
+        
+        # Add slight shadow to HeaderArea
+        header_fx = QGraphicsDropShadowEffect()
+        header_fx.setBlurRadius(15)
+        header_fx.setOffset(0, 2)
+        header_fx.setColor(QColor(0, 0, 0, 40))
+        self.header_area.setGraphicsEffect(header_fx)
+        
         h_layout = QHBoxLayout(self.header_area)
 
         h_layout.addSpacing(20)
@@ -4568,15 +4589,6 @@ class ChatbotGUI(QWidget):
         btn_rag.clicked.connect(self.open_project_file_picker)
         tool_layout.addWidget(btn_rag)
         
-        self.tts_toggle_btn = QPushButton("🔊" if self.use_tts else "🔇")
-        self.tts_toggle_btn.setObjectName("ToolBtn")
-        self.tts_toggle_btn.setFixedSize(36, 36)
-        self.tts_toggle_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        self.tts_toggle_btn.setToolTip("Toggle Text-to-Speech")
-        self.tts_toggle_btn.clicked.connect(self.toggle_tts)
-        self.tts_toggle_btn.hide()  # Hide it from layout, or we can just not add it
-        # tool_layout.addWidget(self.tts_toggle_btn)
-        
         ib_layout.addLayout(tool_layout)
         ib_layout.addWidget(self.input_field)
         ib_layout.addWidget(self.dynamic_action_btn)
@@ -4600,6 +4612,14 @@ class ChatbotGUI(QWidget):
         self.dev_sidebar.setObjectName("DevSidebar")
         self.dev_sidebar.setVisible(False)
         self.dev_sidebar.setMinimumWidth(260)
+        
+        # Add slight shadow to DevSidebar
+        dev_sidebar_fx = QGraphicsDropShadowEffect()
+        dev_sidebar_fx.setBlurRadius(15)
+        dev_sidebar_fx.setOffset(-2, 0)
+        dev_sidebar_fx.setColor(QColor(0, 0, 0, 40))
+        self.dev_sidebar.setGraphicsEffect(dev_sidebar_fx)
+        
         dev_layout = QVBoxLayout(self.dev_sidebar)
         dev_layout.setContentsMargins(10, 10, 10, 10)
         dev_layout.setSpacing(10)
@@ -4810,7 +4830,6 @@ class ChatbotGUI(QWidget):
         Ahmet'in sesi veya Whisper large-v3-turbo hızı burada devreye giriyor. Fuar şovmenliği!
         """
         self.use_tts = not self.use_tts
-        self.tts_toggle_btn.setText("🔊" if self.use_tts else "🔇")
         self.save_prompts()  # Persist setting
 
     def speak_text(self, text: str):
@@ -6530,45 +6549,47 @@ class ChatbotGUI(QWidget):
                 background-color: {user_bubble};
                 border: 1px solid {user_border};
                 border-radius: 20px;
-                border-bottom-right-radius: 4px;
                 padding: 14px 20px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             }}
             .assistant .bubble {{
                 background-color: {assistant_bubble};
                 border: none;
-                border-radius: 12px;
-                padding: 4px 12px;
+                border-radius: 20px;
+                padding: 14px 20px;
                 color: {colors['text']};
+                box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             }}
             /* Markdown Elements */
             a {{ color: {colors['accent']}; text-decoration: none; }}
             a:hover {{ text-decoration: underline; }}
             /* Code Blocks */
             pre {{
-                background-color: {colors['panel']};
-                border: 1px solid {colors['border']};
+                background-color: #0d1117;
+                color: #c9d1d9;
+                border: 1px solid #30363d;
                 border-radius: 12px;
                 padding: 16px;
                 overflow-x: auto;
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
                 font-size: 13px;
                 margin: 16px 0;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }}
             code {{
-                background-color: {colors['panel2']};
-                border: 1px solid {colors['border']};
+                background-color: #0d1117;
+                border: 1px solid #30363d;
                 border-radius: 6px;
                 padding: 3px 6px;
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
                 font-size: 13px;
-                color: {colors['accent']};
+                color: #c9d1d9;
             }}
             pre code {{
                 background-color: transparent;
                 border: none;
                 padding: 0;
+                color: inherit;
             }}
             blockquote {{
                 border-left: 3px solid {colors['accent']};
@@ -6716,7 +6737,7 @@ class ChatbotGUI(QWidget):
                     raw_text_b64 = base64.b64encode(txt.encode('utf-8')).decode('utf-8')
                     html_parts.append(f'''
                     <div class="message assistant">
-                        <div class="role-label">AI</div>
+                        <div class="role-label"></div>
                         <div class="bubble">{md_html}</div>
                         <div class="message-actions">
                             <button class="action-btn" onclick="playVoice(decodeURIComponent(escape(window.atob('{raw_text_b64}'))))">
@@ -6729,7 +6750,7 @@ class ChatbotGUI(QWidget):
             if is_generating:
                 html_parts.append('''
                 <div class="message assistant">
-                    <div class="role-label">AI</div>
+                    <div class="role-label"></div>
                     <div class="typing-indicator">
                         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
                     </div>
