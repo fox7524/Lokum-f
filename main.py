@@ -4574,7 +4574,8 @@ class ChatbotGUI(QWidget):
         self.tts_toggle_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         self.tts_toggle_btn.setToolTip("Toggle Text-to-Speech")
         self.tts_toggle_btn.clicked.connect(self.toggle_tts)
-        tool_layout.addWidget(self.tts_toggle_btn)
+        self.tts_toggle_btn.hide()  # Hide it from layout, or we can just not add it
+        # tool_layout.addWidget(self.tts_toggle_btn)
         
         ib_layout.addLayout(tool_layout)
         ib_layout.addWidget(self.input_field)
@@ -4632,7 +4633,7 @@ class ChatbotGUI(QWidget):
             self.dynamic_action_btn.setToolTip("Stop Generation")
         else:
             if self.input_field.text().strip():
-                self.dynamic_action_btn.setText("↑")
+                self.dynamic_action_btn.setText("⬆")
                 self.dynamic_action_btn.setToolTip("Send Message")
             else:
                 self.dynamic_action_btn.setText("🎤")
@@ -4816,7 +4817,7 @@ class ChatbotGUI(QWidget):
         """
         Speaks text for the current component.
         """
-        if not self.use_tts or not text.strip():
+        if not text.strip():
             return
             
         # Stop current speech if any
@@ -5170,14 +5171,17 @@ class ChatbotGUI(QWidget):
             QFrame#Sidebar {{
                 background-color: {colors['panel']};
                 border-right: 1px solid {colors['border']};
+                box-shadow: 2px 0 8px rgba(0,0,0,0.05);
             }}
             QFrame#DevSidebar {{
                 background-color: {colors['panel']};
                 border-left: 1px solid {colors['border']};
+                box-shadow: -2px 0 8px rgba(0,0,0,0.05);
             }}
             QFrame#HeaderArea {{
                 background-color: {colors['panel']};
                 border-bottom: 1px solid {colors['border']};
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }}
             QFrame#HwBox {{
                 background-color: {colors['panel2']};
@@ -5191,53 +5195,64 @@ class ChatbotGUI(QWidget):
             QTabBar::tab {{
                 background: {colors['panel2']};
                 color: {colors['muted']};
-                padding: 8px 12px;
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
+                padding: 10px 16px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
                 margin-right: 4px;
+                font-weight: 600;
+                font-size: 13px;
             }}
             QTabBar::tab:selected {{
                 background: {colors['panel']};
                 color: {colors['text']};
                 border-bottom: 2px solid {colors['accent']};
             }}
+            QTabBar::tab:hover:!selected {{
+                background: {colors['hover']};
+            }}
             QGroupBox {{
                 border: 1px solid {colors['border']};
-                border-radius: 8px;
-                margin-top: 16px;
-                padding-top: 14px;
+                border-radius: 12px;
+                margin-top: 18px;
+                padding-top: 16px;
                 background-color: {colors['panel']};
             }}
             QGroupBox::title {{
                 subcontrol-origin: margin;
-                left: 10px;
-                padding: 0 6px;
+                left: 12px;
+                padding: 0 8px;
                 color: {colors['muted']};
-                font-weight: 500;
+                font-weight: 600;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
             }}
             QPushButton#NewChatMainBtn {{
                 background-color: {colors['panel2']};
                 color: {colors['text']};
-                border: none;
-                border-radius: 8px;
+                border: 1px solid {colors['border']};
+                border-radius: 10px;
                 font-size: 14px;
                 font-weight: 600;
                 text-align: left;
-                padding-left: 14px;
+                padding-left: 16px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             }}
             QPushButton#NewChatMainBtn:hover {{
                 background-color: {colors['hover']};
+                border-color: {colors['muted']};
             }}
             QPushButton#NewChatOptsBtn {{
                 background-color: {colors['panel2']};
                 color: {colors['text']};
-                border: none;
-                border-radius: 8px;
+                border: 1px solid {colors['border']};
+                border-radius: 10px;
                 font-size: 14px;
                 font-weight: bold;
             }}
             QPushButton#NewChatOptsBtn:hover {{
                 background-color: {colors['hover']};
+                border-color: {colors['muted']};
             }}
             QListWidget {{
                 background: transparent;
@@ -5256,10 +5271,11 @@ class ChatbotGUI(QWidget):
                 background: transparent;
             }}
             QListWidget::item {{
-                padding: 12px;
-                border-radius: 8px;
-                margin-bottom: 2px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                margin-bottom: 4px;
                 color: {colors['muted']};
+                font-weight: 500;
             }}
             QListWidget::item:hover {{
                 background-color: {colors['panel2']};
@@ -5271,17 +5287,23 @@ class ChatbotGUI(QWidget):
             }}
             QWidget#ChatItemRow {{
                 background: transparent;
-                border-radius: 10px;
+                border-radius: 12px;
+                padding: 4px;
             }}
             QWidget#ChatItemRow:hover {{
                 background-color: {colors['panel2']};
             }}
             QWidget#ChatItemRow[selected="true"] {{
                 background-color: {colors['chip']};
+                border-left: 3px solid {colors['accent']};
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
             }}
             QLabel#ChatItemLabel {{
                 color: {colors['muted']};
-                font-weight: 600;
+                font-weight: 500;
+                font-size: 13px;
+                padding-left: 4px;
             }}
             QWidget#ChatItemRow[selected="true"] QLabel#ChatItemLabel {{
                 color: {colors['text']};
@@ -5291,9 +5313,13 @@ class ChatbotGUI(QWidget):
                 background-color: {colors['panel']};
                 border: 1px solid {colors['border']};
                 border-radius: 12px;
-                font-size: 15px;
-                padding: 20px;
+                font-size: 14px;
+                padding: 16px;
                 line-height: 1.6;
+                selection-background-color: {colors['accent']};
+            }}
+            QTextEdit:focus {{
+                border: 1px solid {colors['accent']};
             }}
             QLineEdit {{
                 background-color: {colors['panel2']};
@@ -5315,7 +5341,7 @@ class ChatbotGUI(QWidget):
             QFrame#InputBarFrame {{
                 background-color: {colors['panel']};
                 border: 1px solid {colors['border']};
-                border-radius: 20px;
+                border-radius: 24px;
             }}
             QLineEdit#ChatInputField {{
                 background-color: transparent;
@@ -5333,7 +5359,10 @@ class ChatbotGUI(QWidget):
                 color: {colors['text']};
                 border-radius: 18px;
                 font-size: 16px;
+                font-weight: bold;
                 border: none;
+                text-align: center;
+                padding-bottom: 2px;
             }}
             QPushButton#DynamicActionBtn:hover {{
                 background-color: {colors['hover']};
@@ -5345,11 +5374,11 @@ class ChatbotGUI(QWidget):
             QPushButton#ToolBtn {{
                 background-color: {colors['panel2']};
                 color: {colors['text']};
-                border-radius: 10px;
+                border-radius: 14px;
                 padding: 4px 16px;
                 border: none;
                 font-size: 14px;
-                font-weight: 500;
+                font-weight: 600;
             }}
             QPushButton#ToolBtn:hover {{
                 background-color: {colors['hover']};
@@ -5357,9 +5386,10 @@ class ChatbotGUI(QWidget):
             QPushButton {{
                 background-color: {colors['panel2']};
                 border: 1px solid {colors['border']};
-                border-radius: 6px;
-                padding: 6px 10px;
+                border-radius: 8px;
+                padding: 6px 12px;
                 color: {colors['text']};
+                font-weight: 500;
             }}
             QPushButton:hover {{
                 background-color: {colors['chip']};
@@ -5388,6 +5418,7 @@ class ChatbotGUI(QWidget):
                 font-weight: bold;
                 font-size: 18px;
                 padding: 0px;
+                box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
             }}
             QPushButton#SendButton:hover {{
                 background-color: {colors['accent2']};
@@ -5491,16 +5522,23 @@ class ChatbotGUI(QWidget):
             QScrollBar:vertical {{
                 border: none;
                 background: transparent;
-                width: 8px;
+                width: 6px;
                 margin: 0px;
             }}
             QScrollBar::handle:vertical {{
-                background: {colors['border']};
-                min-height: 20px;
-                border-radius: 4px;
+                background: {colors['muted']};
+                min-height: 30px;
+                border-radius: 3px;
+                opacity: 0.5;
+            }}
+            QScrollBar::handle:vertical:hover {{
+                background: {colors['text']};
             }}
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
                 height: 0px;
+            }}
+            QAbstractScrollArea::corner {{
+                background: transparent;
             }}
             QPushButton#AccentButton {{
                 background-color: {colors['accent']};
@@ -5522,8 +5560,19 @@ class ChatbotGUI(QWidget):
             QComboBox, QSpinBox, QDoubleSpinBox {{
                 background-color: {colors['panel2']};
                 border: 1px solid {colors['border']};
-                border-radius: 6px;
-                padding: 6px;
+                border-radius: 8px;
+                padding: 6px 10px;
+                min-height: 24px;
+            }}
+            QComboBox:hover, QSpinBox:hover, QDoubleSpinBox:hover {{
+                border: 1px solid {colors['muted']};
+            }}
+            QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus {{
+                border: 1px solid {colors['accent']};
+            }}
+            QComboBox::drop-down {{
+                border: none;
+                width: 24px;
             }}
         """
 
@@ -6406,8 +6455,9 @@ class ChatbotGUI(QWidget):
             "accent": "#0a84ff",
             "accent2": "#409cff",
         }
-        user_bubble = "rgba(0, 0, 0, 0.04)" if self.theme == "light" else colors["panel2"]
-        user_border = "rgba(0, 0, 0, 0.08)" if self.theme == "light" else colors["border"]
+        user_bubble = "rgba(0, 0, 0, 0.05)" if self.theme == "light" else "rgba(255, 255, 255, 0.05)"
+        user_border = "rgba(0, 0, 0, 0.1)" if self.theme == "light" else "rgba(255, 255, 255, 0.1)"
+        assistant_bubble = "transparent" if self.theme == "light" else "rgba(255, 255, 255, 0.02)"
         
         return f"""
         <!DOCTYPE html>
@@ -6417,15 +6467,16 @@ class ChatbotGUI(QWidget):
         <style>
             body {{
                 margin: 0;
-                padding: 24px;
+                padding: 32px 40px;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
                 background-color: transparent;
                 color: {colors['text']};
+                -webkit-font-smoothing: antialiased;
             }}
             .chat-container {{
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: 28px;
             }}
             .message {{
                 display: flex;
@@ -6443,55 +6494,76 @@ class ChatbotGUI(QWidget):
             }}
             .role-label {{
                 font-size: 11px;
-                font-weight: 800;
-                letter-spacing: 1px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
                 margin-bottom: 6px;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                gap: 6px;
             }}
             .user .role-label {{
                 color: {colors['muted']};
-                text-align: right;
+                justify-content: flex-end;
             }}
             .assistant .role-label {{
-                color: {colors['accent']};
-                text-align: left;
+                color: {colors['text']};
+                justify-content: flex-start;
+            }}
+            .assistant .role-label::before {{
+                content: '';
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-color: {colors['accent']};
+                border-radius: 4px;
+                mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c-.11.66.45 1.5 1.16 1.77A6.05 6.05 0 0 1 18.5 8c.32.7.97 1.11 1.6 1.2A2 2 0 0 1 22 11.5v1a2 2 0 0 1-1.9 1.95c-.63.09-1.28.5-1.6 1.2a6.05 6.05 0 0 1-3.34 2.23c-.7.27-1.27 1.11-1.16 1.77A2 2 0 0 1 12 22a2 2 0 0 1-2-2c.11-.66-.45-1.5-1.16-1.77a6.05 6.05 0 0 1-3.34-2.23c-.32-.7-.97-1.11-1.6-1.2A2 2 0 0 1 2 12.5v-1a2 2 0 0 1 1.9-1.95c.63-.09 1.28-.5 1.6-1.2a6.05 6.05 0 0 1 3.34-2.23c.7-.27 1.27-1.11 1.16-1.77A2 2 0 0 1 12 2z"></path></svg>') no-repeat center / contain;
+                -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c-.11.66.45 1.5 1.16 1.77A6.05 6.05 0 0 1 18.5 8c.32.7.97 1.11 1.6 1.2A2 2 0 0 1 22 11.5v1a2 2 0 0 1-1.9 1.95c-.63.09-1.28.5-1.6 1.2a6.05 6.05 0 0 1-3.34 2.23c-.7.27-1.27 1.11-1.16 1.77A2 2 0 0 1 12 22a2 2 0 0 1-2-2c.11-.66-.45-1.5-1.16-1.77a6.05 6.05 0 0 1-3.34-2.23c-.32-.7-.97-1.11-1.6-1.2A2 2 0 0 1 2 12.5v-1a2 2 0 0 1 1.9-1.95c.63-.09 1.28-.5 1.6-1.2a6.05 6.05 0 0 1 3.34-2.23c.7-.27 1.27-1.11 1.16-1.77A2 2 0 0 1 12 2z"></path></svg>') no-repeat center / contain;
             }}
             .bubble {{
                 font-size: 15px;
                 line-height: 1.6;
                 word-wrap: break-word;
+                letter-spacing: -0.2px;
             }}
             .user .bubble {{
                 background-color: {user_bubble};
                 border: 1px solid {user_border};
-                border-radius: 18px;
-                border-top-right-radius: 4px;
-                padding: 12px 18px;
+                border-radius: 20px;
+                border-bottom-right-radius: 4px;
+                padding: 14px 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             }}
             .assistant .bubble {{
-                background-color: transparent;
+                background-color: {assistant_bubble};
                 border: none;
-                padding: 4px 0px;
+                border-radius: 12px;
+                padding: 4px 12px;
+                color: {colors['text']};
             }}
             /* Markdown Elements */
             a {{ color: {colors['accent']}; text-decoration: none; }}
             a:hover {{ text-decoration: underline; }}
+            /* Code Blocks */
             pre {{
-                background-color: {colors['bg']};
+                background-color: {colors['panel']};
                 border: 1px solid {colors['border']};
-                border-radius: 8px;
-                padding: 14px;
+                border-radius: 12px;
+                padding: 16px;
                 overflow-x: auto;
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
                 font-size: 13px;
-                margin: 10px 0;
+                margin: 16px 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             }}
             code {{
-                background-color: {colors['bg']};
+                background-color: {colors['panel2']};
                 border: 1px solid {colors['border']};
-                border-radius: 4px;
-                padding: 2px 6px;
+                border-radius: 6px;
+                padding: 3px 6px;
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
                 font-size: 13px;
+                color: {colors['accent']};
             }}
             pre code {{
                 background-color: transparent;
@@ -6507,22 +6579,25 @@ class ChatbotGUI(QWidget):
             table {{
                 border-collapse: collapse;
                 width: 100%;
-                margin: 10px 0;
+                margin: 16px 0;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 0 0 1px {colors['border']};
             }}
             th, td {{
                 border: 1px solid {colors['border']};
-                padding: 8px 12px;
+                padding: 10px 14px;
                 text-align: left;
             }}
             th {{ background-color: {colors['panel']}; }}
             
-            /* Pulsing Loading Dots */
+            /* Pulse / typing */
             .typing-indicator {{
                 display: flex;
                 gap: 6px;
                 align-items: center;
                 height: 24px;
-                padding-left: 4px;
+                padding: 4px 12px;
                 margin-top: 4px;
             }}
             .dot {{
@@ -6545,20 +6620,23 @@ class ChatbotGUI(QWidget):
                 display: flex;
                 gap: 8px;
                 margin-top: 8px;
-                opacity: 0.4;
-                transition: opacity 0.2s;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.2s, visibility 0.2s;
             }}
             .message:hover .message-actions {{
                 opacity: 1;
+                visibility: visible;
             }}
             .action-btn {{
-                background: {colors['panel']};
+                background: transparent;
                 border: 1px solid {colors['border']};
-                color: {colors['text']};
-                border-radius: 6px;
-                padding: 4px 10px;
+                color: {colors['muted']};
+                border-radius: 8px;
+                padding: 4px 12px;
                 cursor: pointer;
                 font-size: 12px;
+                font-weight: 600;
                 display: flex;
                 align-items: center;
                 gap: 4px;
@@ -6566,7 +6644,8 @@ class ChatbotGUI(QWidget):
             }}
             .action-btn:hover {{
                 background: {colors['panel2']};
-                border-color: {colors['accent']};
+                color: {colors['text']};
+                border-color: {colors['muted']};
                 transform: translateY(-1px);
             }}
             .action-btn:active {{
