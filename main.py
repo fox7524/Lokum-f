@@ -2760,11 +2760,11 @@ class DevPanelDialog(QWidget):
         if kind == "Validation" and int(rc) == 0:
             log_text = self.train_log.toPlainText()
             
-            # Loss bul (Örn: "Valid loss: 1.453")
+            # Loss bul (Örn: "Valid loss: 1.453" veya "Val loss 1.453")
             import re
             import math
-            loss_match = re.search(r"Valid loss:\s*([\d\.]+)", log_text)
-            final_loss = float(loss_match.group(1)) if loss_match else 1.5
+            loss_matches = re.findall(r"Val(?:id)?\s*loss[:\s]*([\d\.]+)", log_text, re.IGNORECASE)
+            final_loss = float(loss_matches[-1]) if loss_matches else 1.5
             
             # Formül: 1.0 loss -> %85, 1.5 loss -> %75, 0.5 loss -> %95
             score = max(0, min(100, int(100 - (final_loss * 15) + 10)))
@@ -2782,7 +2782,7 @@ class DevPanelDialog(QWidget):
                 with open(os.path.join(res_dir, f"{run_name}_result.json"), "w") as f:
                     json.dump({"loss": final_loss, "score_percentage": score, "adapter": adapter_path}, f)
             except Exception as e:
-                pass
+                self.train_log.appendPlainText(f"Sonuç kaydedilemedi: {e}")
             
             # Threshold Kontrolü: Manuel Fuse istenmişti. %80 altında ise SİL.
             if score >= 80:
@@ -4591,10 +4591,6 @@ class ChatbotGUI(QWidget):
         
         ic_layout.addLayout(btm_row)
         
-        # Dummy buttons to satisfy existing references
-        self.send_btn = QPushButton()
-        self.stop_btn = QPushButton()
-        self.mic_btn = QPushButton()
         
         self.input_field.textChanged.connect(self._update_dynamic_btn_state)
         chat_layout.addWidget(self.input_container)
@@ -5079,7 +5075,6 @@ class ChatbotGUI(QWidget):
                 self.worker.stop()
             except Exception:
                 pass
-        self.stop_btn.setEnabled(False)
         if show_status:
             self.gen_status_lbl.setText("Stopping…")
 
@@ -5533,7 +5528,6 @@ class ChatbotGUI(QWidget):
         """
 
         QApplication.instance().setStyleSheet(qss)
-        self.send_btn.setObjectName("SendButton")
         self.rag_badge.setObjectName("RagBadge")
         if hasattr(self, "chat_list") and self.chat_list is not None:
             self._refresh_chat_list_row_visuals()
@@ -5562,7 +5556,6 @@ class ChatbotGUI(QWidget):
         Mesajlaşma arayüzü, HTML/CSS ile LM Studio estetiğinde baloncukları basıyor ekrana.
         """
         self.input_field.setEnabled(enabled)
-        self.send_btn.setEnabled(enabled)
         if enabled:
             self.input_field.setFocus()
 
@@ -7036,9 +7029,6 @@ class ChatbotGUI(QWidget):
         """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
-        self.mic_btn.setProperty("recording", "false")
-        self.mic_btn.style().unpolish(self.mic_btn)
-        self.mic_btn.style().polish(self.mic_btn)
         
         if text:
             # Append to existing text or replace
@@ -7055,9 +7045,6 @@ class ChatbotGUI(QWidget):
         """
         self.mic_worker = None
         self.gen_status_lbl.setText("")
-        self.mic_btn.setProperty("recording", "false")
-        self.mic_btn.style().unpolish(self.mic_btn)
-        self.mic_btn.style().polish(self.mic_btn)
         QMessageBox.warning(self, "Microphone Error", err_msg)
 
     def soru_sor(self):
@@ -7105,8 +7092,6 @@ class ChatbotGUI(QWidget):
         
         self.is_generating = True
         self.input_field.setDisabled(True)
-        self.send_btn.setDisabled(True)
-        self.stop_btn.setEnabled(True)
         self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         
@@ -7400,25 +7385,6 @@ class ChatbotGUI(QWidget):
         """
         Fallbacks answer from user text for the current component.
         """
-        import re
-
-        ut = (user_text or "").strip()
-        if not ut:
-            return ""
-        low = ut.lower()
-
-        m = re.search(r"(\d+)\s*(?:st|nd|rd|th)?\s*fibonacci", low)
-        if m:
-            try:
-                n = int(m.group(1))
-            except Exception:
-                n = None
-            if n is not None and n >= 0:
-                a, b = 0, 1
-                for _ in range(n):
-                    a, b = b, a + b
-                return str(a)
-
         return ""
 
     def _on_rag_status_update(self, status: str):
@@ -7581,8 +7547,6 @@ class ChatbotGUI(QWidget):
         
         self.is_generating = False
         self.input_field.setDisabled(False)
-        self.send_btn.setDisabled(False)
-        self.stop_btn.setEnabled(False)
         self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()
@@ -7627,8 +7591,6 @@ class ChatbotGUI(QWidget):
         self._schedule_render(chat_name)
         self.is_generating = False
         self.input_field.setDisabled(False)
-        self.send_btn.setDisabled(False)
-        self.stop_btn.setEnabled(False)
         self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()
@@ -7643,8 +7605,6 @@ class ChatbotGUI(QWidget):
         self._pending_msg_index = None
         self.is_generating = False
         self.input_field.setDisabled(False)
-        self.send_btn.setDisabled(False)
-        self.stop_btn.setEnabled(False)
         self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         QMessageBox.critical(self, "Final Answer Error", err)
@@ -7668,8 +7628,6 @@ class ChatbotGUI(QWidget):
         QMessageBox.critical(self, "Generation Error", err_msg)
         self.is_generating = False
         self.input_field.setDisabled(False)
-        self.send_btn.setDisabled(False)
-        self.stop_btn.setEnabled(False)
         self._update_dynamic_btn_state()
         self.gen_status_lbl.setText("")
         self.input_field.setFocus()

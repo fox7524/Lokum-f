@@ -368,8 +368,8 @@ class FinetuneEngine:
             if os.environ.get("LOKUMF_FT_PRESPLIT", "1") != "0":
                 max_seq = int(os.environ.get("LOKUMF_FT_MAX_SEQ_LENGTH", "512").strip() or "512")
                 _presplit_jsonl_file(os.path.join(eval_dir, "test.jsonl"), max_seq, 1)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Warning: _presplit_jsonl_file failed for test.jsonl: {e}")
 
         cmd = [sys.executable, "-m", "mlx_lm", "lora", "--model", self.model_path, "--data", eval_dir, "--test"]
         test_batches = os.environ.get("LOKUMF_FT_TEST_BATCHES", "1").strip()
