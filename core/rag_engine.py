@@ -290,14 +290,22 @@ class RAGEngine:
             pass
         return True
 
-    def _is_file_deleted(self, file_id: str) -> bool:
+    def _is_chunk_active(self, file_id: str, idx: int) -> bool:
         """
-        is file deleted for the current component.
+        Checks if a chunk is part of the active generation for a file.
         """
         try:
             files = (self.state or {}).get("files") if isinstance(self.state, dict) else None
             rec = files.get(file_id) if isinstance(files, dict) else None
-            return bool(isinstance(rec, dict) and rec.get("deleted"))
+            if not isinstance(rec, dict):
+                return False
+            if bool(rec.get("deleted")):
+                return False
+            c_start = rec.get("chunk_start")
+            c_end = rec.get("chunk_end")
+            if c_start is not None and c_end is not None:
+                return int(c_start) <= int(idx) < int(c_end)
+            return True
         except Exception:
             return False
 
@@ -1371,6 +1379,15 @@ class RAGEngine:
 
             if save_on_checkpoint and pending_save > 0:
                 self.save_index()
+                
+            # Automatically compact the index to remove superseded chunks
+            try:
+                removed = self.compact_index()
+                if removed > 0:
+                    print(f"[RAG] Compacted index: removed {removed} inactive vectors.")
+            except Exception:
+                pass
+
             elapsed = time.perf_counter() - started_at
             print(f"[perf] stage=rag_ingest_paths seconds={elapsed:.3f} files={len(file_paths)} chunks={added}")
             return int(added)
@@ -1525,7 +1542,7 @@ class RAGEngine:
                         meta = self.chunk_meta[idx]
                         if isinstance(meta, dict):
                             fid = meta.get("file_id")
-                            if isinstance(fid, str) and fid and self._is_file_deleted(fid):
+                            if isinstance(fid, str) and fid and not self._is_chunk_active(fid, idx):
                                 continue
                     results.append(self.documents[idx])
                     if len(results) >= int(k):
@@ -1600,7 +1617,7 @@ class RAGEngine:
                         if isinstance(meta, dict):
                             src = dict(meta)
                     fid = src.get("file_id") if isinstance(src, dict) else None
-                    if isinstance(fid, str) and fid and self._is_file_deleted(fid):
+                    if isinstance(fid, str) and fid and not self._is_chunk_active(fid, idx):
                         results.pop()
                         dists.pop()
                         continue
@@ -1659,6 +1676,95 @@ class RAGEngine:
             "indexed": True,
             "folder": self.indexed_folder,
         }
+
+    def compact_index(self) -> int:
+        """
+        Rebuilds the FAISS index by removing superseded chunks.
+        This keeps the index fresh, reduces memory usage, and improves long-term stability.
+        Returns the number of removed inactive chunks.
+        """
+        if self.index is None or not self.documents or not self.chunk_meta:
+            return 0
+            
+        try:
+            started_at = time.perf_counter()
+            self._check_abort()
+            
+            total_chunks = len(self.documents)
+            dim = int(getattr(self.index, "d"))
+            
+            new_documents = []
+            new_chunk_meta = []
+            active_indices = []
+            
+            # Identify active chunks
+            for idx, meta in enumerate(self.chunk_meta):
+                if isinstance(meta, dict):
+                    fid = meta.get("file_id")
+                    if isinstance(fid, str) and fid and self._is_chunk_active(fid, idx):
+                        active_indices.append(idx)
+                        new_documents.append(self.documents[idx])
+                        new_chunk_meta.append(meta)
+            
+            if len(active_indices) == total_chunks:
+                # No compaction needed
+                return 0
+                
+            # Reconstruct the vectors for active chunks
+            new_index = faiss.IndexFlatIP(dim)
+            if active_indices:
+                # Iterate in batches to save memory
+                batch_size = 10000
+                for i in range(0, len(active_indices), batch_size):
+                    batch_idx = active_indices[i:i+batch_size]
+                    vectors = []
+                    for idx in batch_idx:
+                        vec = self.index.reconstruct(int(idx))
+                        vectors.append(vec)
+                    vectors_np = np.array(vectors).astype('float32')
+                    new_index.add(vectors_np)
+            
+            # Replace internal state
+            self.index = new_index
+            self.documents = new_documents
+            self.chunk_meta = new_chunk_meta
+            
+            # Update chunk_start and chunk_end in state
+            # Since we removed chunks, we need to recalculate boundaries for each file
+            files = (self.state or {}).get("files", {})
+            
+            # Group new indices by file_id
+            fid_to_ranges = {}
+            for new_idx, meta in enumerate(self.chunk_meta):
+                fid = meta.get("file_id")
+                if fid not in fid_to_ranges:
+                    fid_to_ranges[fid] = []
+                fid_to_ranges[fid].append(new_idx)
+                
+            for fid, rec in files.items():
+                if not isinstance(rec, dict):
+                    continue
+                if bool(rec.get("deleted")):
+                    continue
+                if fid in fid_to_ranges:
+                    rec["chunk_start"] = min(fid_to_ranges[fid])
+                    rec["chunk_end"] = max(fid_to_ranges[fid]) + 1
+                    rec["chunks"] = rec["chunk_end"] - rec["chunk_start"]
+                else:
+                    rec["chunk_start"] = 0
+                    rec["chunk_end"] = 0
+                    rec["chunks"] = 0
+                    
+            # Save the compacted state
+            self.save_index()
+            removed = total_chunks - len(active_indices)
+            elapsed = time.perf_counter() - started_at
+            print(f"[perf] stage=rag_compact seconds={elapsed:.3f} removed={removed} remaining={len(active_indices)}")
+            return removed
+            
+        except Exception as e:
+            print(f"[RAG] Compaction error: {e}")
+            return 0
 
     def reset_database(self) -> None:
         """
