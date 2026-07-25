@@ -262,16 +262,25 @@ class FuseWorker(QThread):
             ]
             self.line.emit(f"Starting Fuse Process:\n{' '.join(cmd)}")
             
+            env = os.environ.copy()
+            env["MTL_LOG_LEVEL"] = "error"
+            env["MTL_DEBUG_LAYER"] = "0"
+            env["MLX_LOG_LEVEL"] = "error"
+            
             process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
-                bufsize=1
+                bufsize=1,
+                env=env
             )
             
             for output_line in process.stdout:
-                self.line.emit(output_line.strip())
+                clean_ln = output_line.strip()
+                if "M5 God-Mode" in clean_ln or "IOSurface created" in clean_ln or "DART TTBR0" in clean_ln:
+                    continue
+                self.line.emit(clean_ln)
                 
             process.wait()
             if process.returncode == 0:
@@ -967,7 +976,11 @@ class FineTuneWorker(QThread):
                             if ln == "":
                                 break
                             if ln:
-                                self.line.emit(ln.rstrip("\n"))
+                                clean_ln = ln.rstrip("\n")
+                                # Suppress Metal/MLX M5 God-Mode spam
+                                if "M5 God-Mode" in clean_ln or "IOSurface created" in clean_ln or "DART TTBR0" in clean_ln:
+                                    continue
+                                self.line.emit(clean_ln)
                                 last_line = time.time()
                                 continue
                         now = time.time()

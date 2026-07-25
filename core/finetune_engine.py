@@ -342,6 +342,12 @@ class FinetuneEngine:
             cmd += ["--adapter-path", str(adapter_path)]
         if config_path:
             cmd += ["--config", str(config_path)]
+        env = os.environ.copy()
+        # Suppress MLX / Metal "God-Mode" and IOSurface spam on M-series chips
+        env["MTL_LOG_LEVEL"] = "error"
+        env["MTL_DEBUG_LAYER"] = "0"
+        env["MLX_LOG_LEVEL"] = "error"
+        
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
@@ -349,6 +355,7 @@ class FinetuneEngine:
             text=True,
             bufsize=1,
             start_new_session=(sys.platform != "win32"),
+            env=env,
         )
         return process
 
@@ -390,6 +397,11 @@ class FinetuneEngine:
         if config_path:
             cmd += ["--config", str(config_path)]
 
+        env = os.environ.copy()
+        env["MTL_LOG_LEVEL"] = "error"
+        env["MTL_DEBUG_LAYER"] = "0"
+        env["MLX_LOG_LEVEL"] = "error"
+
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
@@ -397,5 +409,6 @@ class FinetuneEngine:
             text=True,
             bufsize=1,
             start_new_session=(sys.platform != "win32"),
+            env=env,
         )
         return process
