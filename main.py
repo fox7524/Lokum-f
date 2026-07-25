@@ -5179,7 +5179,7 @@ class ChatbotGUI(QWidget):
             QWidget {{
                 background-color: {colors['bg']};
                 color: {colors['text']};
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-family: ".AppleSystemUIFont", Helvetica, Arial;
             }}
             QLabel {{
                 background: transparent;
@@ -5203,17 +5203,14 @@ class ChatbotGUI(QWidget):
             QFrame#Sidebar {{
                 background-color: {colors['panel']};
                 border-right: 1px solid {colors['border']};
-                box-shadow: 2px 0 8px rgba(0,0,0,0.05);
             }}
             QFrame#DevSidebar {{
                 background-color: {colors['panel']};
                 border-left: 1px solid {colors['border']};
-                box-shadow: -2px 0 8px rgba(0,0,0,0.05);
             }}
             QFrame#HeaderArea {{
                 background-color: {colors['panel']};
                 border-bottom: 1px solid {colors['border']};
-                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }}
             QFrame#HwBox {{
                 background-color: {colors['panel2']};
@@ -5268,7 +5265,6 @@ class ChatbotGUI(QWidget):
                 font-weight: 600;
                 text-align: left;
                 padding-left: 16px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             }}
             QPushButton#NewChatMainBtn:hover {{
                 background-color: {colors['hover']};
@@ -5450,7 +5446,6 @@ class ChatbotGUI(QWidget):
                 font-weight: bold;
                 font-size: 18px;
                 padding: 0px;
-                box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
             }}
             QPushButton#SendButton:hover {{
                 background-color: {colors['accent2']};
@@ -6500,7 +6495,7 @@ class ChatbotGUI(QWidget):
             body {{
                 margin: 0;
                 padding: 32px 40px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-family: ".AppleSystemUIFont", Helvetica, Arial;
                 background-color: transparent;
                 color: {colors['text']};
                 -webkit-font-smoothing: antialiased;
