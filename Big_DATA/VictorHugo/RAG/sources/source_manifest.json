@@ -1,0 +1,222 @@
+[
+  {
+    "id": "wikipedia_bio",
+    "category": "reference",
+    "title": "Victor Hugo biography page",
+    "url": "https://en.wikipedia.org/wiki/Victor_Hugo",
+    "save_as": "wikipedia_victor_hugo.txt",
+    "path": "sources/raw_texts/wikipedia_victor_hugo.txt",
+    "status": "downloaded",
+    "bytes": 882252
+  },
+  {
+    "id": "bnf_author",
+    "category": "catalog",
+    "title": "BnF author record",
+    "url": "https://data.bnf.fr/fr/ark:/12148/cb11907966z",
+    "save_as": "bnf_victor_hugo.txt",
+    "path": "sources/raw_texts/bnf_victor_hugo.txt",
+    "status": "downloaded",
+    "bytes": 11718
+  },
+  {
+    "id": "wikisource_author",
+    "category": "catalog",
+    "title": "Wikisource author page",
+    "url": "https://en.wikisource.org/wiki/Author:Victor_Hugo",
+    "save_as": "wikisource_author_victor_hugo.txt",
+    "path": "sources/raw_texts/wikisource_author_victor_hugo.txt",
+    "status": "downloaded",
+    "bytes": 146232
+  },
+  {
+    "id": "gutenberg_author",
+    "category": "catalog",
+    "title": "Project Gutenberg author page",
+    "url": "https://www.gutenberg.org/ebooks/author/85",
+    "save_as": "gutenberg_author_victor_hugo.txt",
+    "path": "sources/raw_texts/gutenberg_author_victor_hugo.txt",
+    "status": "downloaded",
+    "bytes": 19081
+  },
+  {
+    "id": "gutenberg_index",
+    "category": "primary_index",
+    "title": "Index of Project Gutenberg Works of Victor Hugo",
+    "url": "https://www.gutenberg.org/ebooks/57702.txt.utf-8",
+    "save_as": "index_of_project_gutenberg_works_of_victor_hugo.txt",
+    "path": "sources/raw_texts/index_of_project_gutenberg_works_of_victor_hugo.txt",
+    "status": "downloaded",
+    "bytes": 59791
+  },
+  {
+    "id": "les_miserables_en",
+    "category": "primary_text",
+    "title": "Les Misérables",
+    "url": "https://www.gutenberg.org/ebooks/135.txt.utf-8",
+    "save_as": "les_miserables_en.txt",
+    "path": "sources/raw_texts/les_miserables_en.txt",
+    "status": "downloaded",
+    "bytes": 3289715
+  },
+  {
+    "id": "notre_dame_en",
+    "category": "primary_text",
+    "title": "Notre-Dame de Paris / The Hunchback of Notre-Dame",
+    "url": "https://www.gutenberg.org/ebooks/2610.txt.utf-8",
+    "save_as": "notre_dame_de_paris_en.txt",
+    "path": "sources/raw_texts/notre_dame_de_paris_en.txt",
+    "status": "downloaded",
+    "bytes": 1206755
+  },
+  {
+    "id": "poems_en",
+    "category": "primary_text",
+    "title": "Poems",
+    "url": "https://www.gutenberg.org/ebooks/8775.txt.utf-8",
+    "save_as": "poems_en.txt",
+    "path": "sources/raw_texts/poems_en.txt",
+    "status": "downloaded",
+    "bytes": 480128
+  },
+  {
+    "id": "man_who_laughs_en",
+    "category": "primary_text",
+    "title": "The Man Who Laughs",
+    "url": "https://www.gutenberg.org/ebooks/12587.txt.utf-8",
+    "save_as": "the_man_who_laughs_en.txt",
+    "path": "sources/raw_texts/the_man_who_laughs_en.txt",
+    "status": "downloaded",
+    "bytes": 1200145
+  },
+  {
+    "id": "toilers_en",
+    "category": "primary_text",
+    "title": "Toilers of the Sea",
+    "url": "https://www.gutenberg.org/ebooks/32338.txt.utf-8",
+    "save_as": "toilers_of_the_sea_en.txt",
+    "path": "sources/raw_texts/toilers_of_the_sea_en.txt",
+    "status": "downloaded",
+    "bytes": 859099
+  },
+  {
+    "id": "history_of_a_crime_en",
+    "category": "primary_text",
+    "title": "The History of a Crime",
+    "url": "https://www.gutenberg.org/ebooks/10381.txt.utf-8",
+    "save_as": "history_of_a_crime_en.txt",
+    "path": "sources/raw_texts/history_of_a_crime_en.txt",
+    "status": "downloaded",
+    "bytes": 884634
+  },
+  {
+    "id": "napoleon_the_little_en",
+    "category": "primary_text",
+    "title": "Napoleon the Little",
+    "url": "https://www.gutenberg.org/ebooks/20580.txt.utf-8",
+    "save_as": "napoleon_the_little_en.txt",
+    "path": "sources/raw_texts/napoleon_the_little_en.txt",
+    "status": "downloaded",
+    "bytes": 459197
+  },
+  {
+    "id": "ninety_three_en",
+    "category": "primary_text",
+    "title": "Ninety-Three",
+    "url": "https://www.gutenberg.org/ebooks/49372.txt.utf-8",
+    "save_as": "ninety_three_en.txt",
+    "path": "sources/raw_texts/ninety_three_en.txt",
+    "status": "downloaded",
+    "bytes": 739185
+  },
+  {
+    "id": "hernani_fr",
+    "category": "primary_text",
+    "title": "Hernani",
+    "url": "https://www.gutenberg.org/ebooks/9976.txt.utf-8",
+    "save_as": "hernani_fr.txt",
+    "path": "sources/raw_texts/hernani_fr.txt",
+    "status": "downloaded",
+    "bytes": 309173
+  },
+  {
+    "id": "memoirs_en",
+    "category": "reference",
+    "title": "The Memoirs of Victor Hugo",
+    "url": "https://www.gutenberg.org/ebooks/2523.txt.utf-8",
+    "save_as": "memoirs_of_victor_hugo_en.txt",
+    "path": "sources/raw_texts/memoirs_of_victor_hugo_en.txt",
+    "status": "downloaded",
+    "bytes": 464953
+  },
+  {
+    "id": "william_shakespeare_en",
+    "category": "primary_text",
+    "title": "William Shakespeare",
+    "url": "https://www.gutenberg.org/ebooks/53490.txt.utf-8",
+    "save_as": "william_shakespeare_en.txt",
+    "path": "sources/raw_texts/william_shakespeare_en.txt",
+    "status": "downloaded",
+    "bytes": 608881
+  },
+  {
+    "id": "letters_exile_en",
+    "category": "primary_text",
+    "title": "The Letters of Victor Hugo: From Exile, and After the Fall of the Empire",
+    "url": "https://archive.org/stream/lettersofvictorh00hugorich/lettersofvictorh00hugorich_djvu.txt",
+    "save_as": "letters_from_exile_en.txt",
+    "path": "sources/raw_texts/letters_from_exile_en.txt",
+    "status": "downloaded",
+    "bytes": 558958
+  },
+  {
+    "id": "love_letters_en",
+    "category": "primary_text",
+    "title": "The Love Letters of Victor Hugo, 1820-1822",
+    "url": "https://archive.org/stream/lovelettersofvic00hugouoft/lovelettersofvic00hugouoft_djvu.txt",
+    "save_as": "love_letters_1820_1822_en.txt",
+    "path": "sources/raw_texts/love_letters_1820_1822_en.txt",
+    "status": "downloaded",
+    "bytes": 640758
+  },
+  {
+    "id": "things_seen_en",
+    "category": "primary_text",
+    "title": "Things Seen / Choses vues",
+    "url": "https://archive.org/stream/thingsseenchoses00hugouoft/thingsseenchoses00hugouoft_djvu.txt",
+    "save_as": "things_seen_choses_vues_en.txt",
+    "path": "sources/raw_texts/things_seen_choses_vues_en.txt",
+    "status": "downloaded",
+    "bytes": 891012
+  },
+  {
+    "id": "choses_vues_fr",
+    "category": "primary_text",
+    "title": "Choses vues",
+    "url": "https://archive.org/stream/chosesvues01hugo/chosesvues01hugo_djvu.txt",
+    "save_as": "choses_vues_fr.txt",
+    "path": "sources/raw_texts/choses_vues_fr.txt",
+    "status": "downloaded",
+    "bytes": 1293873
+  },
+  {
+    "id": "life_and_work_bio",
+    "category": "reference",
+    "title": "Victor Hugo, his life and work",
+    "url": "https://archive.org/stream/victorhugohislif00davi/victorhugohislif00davi_djvu.txt",
+    "save_as": "victor_hugo_his_life_and_work.txt",
+    "path": "sources/raw_texts/victor_hugo_his_life_and_work.txt",
+    "status": "downloaded",
+    "bytes": 958030
+  },
+  {
+    "id": "oeuvres_completes_v43",
+    "category": "primary_text",
+    "title": "Œuvres complètes, tome 43",
+    "url": "https://archive.org/stream/oeuvrescomplte43hugouoft/oeuvrescomplte43hugouoft_djvu.txt",
+    "save_as": "oeuvres_completes_t43_correspondance_1867_1873_fr.txt",
+    "path": "sources/raw_texts/oeuvres_completes_t43_correspondance_1867_1873_fr.txt",
+    "status": "downloaded",
+    "bytes": 1098357
+  }
+]

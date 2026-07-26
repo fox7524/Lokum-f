@@ -1,0 +1,313 @@
+{
+  "novels": [
+    {
+      "title": "Han d'Islande",
+      "year": 1823,
+      "alt": "Hans of Iceland"
+    },
+    {
+      "title": "Bug-Jargal",
+      "year": 1826
+    },
+    {
+      "title": "Le Dernier jour d'un condamné",
+      "year": 1829,
+      "alt": "The Last Day of a Condemned Man"
+    },
+    {
+      "title": "Notre-Dame de Paris",
+      "year": 1831,
+      "alt": "The Hunchback of Notre-Dame"
+    },
+    {
+      "title": "Les Misérables",
+      "year": 1862
+    },
+    {
+      "title": "Les Travailleurs de la mer",
+      "year": 1866,
+      "alt": "Toilers of the Sea"
+    },
+    {
+      "title": "L'Homme qui rit",
+      "year": 1869,
+      "alt": "The Man Who Laughs"
+    },
+    {
+      "title": "Quatrevingt-treize",
+      "year": 1874,
+      "alt": "Ninety-Three"
+    }
+  ],
+  "short_fiction": [
+    {
+      "title": "Claude Gueux",
+      "year": 1834
+    },
+    {
+      "title": "Jenny",
+      "year": 1891,
+      "note": "translation/publication context on Wikisource"
+    }
+  ],
+  "plays": [
+    {
+      "title": "Cromwell",
+      "year": 1827
+    },
+    {
+      "title": "Amy Robsart",
+      "year": 1828
+    },
+    {
+      "title": "Hernani",
+      "year": 1830
+    },
+    {
+      "title": "Marion de Lorme",
+      "year": 1831
+    },
+    {
+      "title": "Le Roi s'amuse",
+      "year": 1832
+    },
+    {
+      "title": "Lucrèce Borgia",
+      "year": 1833,
+      "alt": "Lucretia Borgia"
+    },
+    {
+      "title": "Mary Tudor",
+      "year": 1833
+    },
+    {
+      "title": "Angelo, tyran de Padoue",
+      "year": 1835,
+      "alt": "Angelo, Tyrant of Padua"
+    },
+    {
+      "title": "La Esmeralda",
+      "year": 1836,
+      "note": "opera libretto with Louise Bertin"
+    },
+    {
+      "title": "Ruy Blas",
+      "year": 1838
+    },
+    {
+      "title": "Les Burgraves",
+      "year": 1843,
+      "alt": "The Burgraves"
+    },
+    {
+      "title": "Torquemada",
+      "year": 1882
+    },
+    {
+      "title": "Les Jumeaux",
+      "year": 1889,
+      "note": "published posthumously"
+    }
+  ],
+  "poetry_collections": [
+    {
+      "title": "Nouvelles Odes",
+      "year": 1824
+    },
+    {
+      "title": "Odes et Ballades",
+      "year": 1826
+    },
+    {
+      "title": "Les Orientales",
+      "year": 1829
+    },
+    {
+      "title": "Les Feuilles d'automne",
+      "year": 1831
+    },
+    {
+      "title": "Les Chants du crépuscule",
+      "year": 1835
+    },
+    {
+      "title": "Les Voix intérieures",
+      "year": 1837
+    },
+    {
+      "title": "Les Rayons et les ombres",
+      "year": 1840
+    },
+    {
+      "title": "Les Châtiments",
+      "year": 1853
+    },
+    {
+      "title": "Les Contemplations",
+      "year": 1856
+    },
+    {
+      "title": "La Légende des siècles",
+      "year": 1859
+    },
+    {
+      "title": "Les Chansons des rues et des bois",
+      "year": 1865
+    },
+    {
+      "title": "L'Année terrible",
+      "year": 1872
+    },
+    {
+      "title": "L'Art d'être grand-père",
+      "year": 1877
+    },
+    {
+      "title": "Le Pape",
+      "year": 1878
+    },
+    {
+      "title": "L'Âne",
+      "year": 1880
+    },
+    {
+      "title": "Les Quatre vents de l'esprit",
+      "year": 1881
+    }
+  ],
+  "prose_and_political": [
+    {
+      "title": "Étude sur Mirabeau",
+      "year": 1834
+    },
+    {
+      "title": "Littérature et philosophie mêlées",
+      "year": 1834
+    },
+    {
+      "title": "Le Rhin",
+      "year": 1842
+    },
+    {
+      "title": "Napoléon le Petit",
+      "year": 1852
+    },
+    {
+      "title": "Lettres à Louis Bonaparte",
+      "year": 1855
+    },
+    {
+      "title": "William Shakespeare",
+      "year": 1864
+    },
+    {
+      "title": "Paris-Guide",
+      "year": 1867
+    },
+    {
+      "title": "Mes Fils",
+      "year": 1874
+    },
+    {
+      "title": "Actes et paroles: Avant l'exil",
+      "year": 1875
+    },
+    {
+      "title": "Actes et paroles: Pendant l'exil",
+      "year": 1875
+    },
+    {
+      "title": "Actes et paroles: Depuis l'exil",
+      "year": 1876
+    },
+    {
+      "title": "Histoire d'un crime",
+      "year": 1877,
+      "alt": "History of a Crime"
+    },
+    {
+      "title": "L'Archipel de la Manche",
+      "year": 1883
+    },
+    {
+      "title": "Religion et religions",
+      "year": 1880
+    }
+  ],
+  "letters_speeches": [
+    {
+      "title": "Letter to the London News regarding John Brown",
+      "year": 1859
+    },
+    {
+      "title": "Address to the Workman's Congress at Marseille",
+      "year": 1879
+    },
+    {
+      "title": "In Defense of His Son",
+      "year": 1851
+    }
+  ],
+  "posthumous": [
+    {
+      "title": "Théâtre en liberté",
+      "year": 1886
+    },
+    {
+      "title": "La fin de Satan",
+      "year": 1886
+    },
+    {
+      "title": "Choses vues",
+      "year": 1887
+    },
+    {
+      "title": "Toute la lyre",
+      "year": 1888
+    },
+    {
+      "title": "Alpes et Pyrénées",
+      "year": 1890
+    },
+    {
+      "title": "Dieu",
+      "year": 1891
+    },
+    {
+      "title": "France et Belgique",
+      "year": 1892
+    },
+    {
+      "title": "Toute la lyre - nouvelle série",
+      "year": 1893
+    },
+    {
+      "title": "Correspondances",
+      "year": 1896
+    },
+    {
+      "title": "Les années funestes",
+      "year": 1898
+    },
+    {
+      "title": "Post-scriptum de ma vie",
+      "year": 1901
+    },
+    {
+      "title": "Dernière Gerbe",
+      "year": 1902
+    },
+    {
+      "title": "Mille francs de récompense",
+      "year": 1934
+    },
+    {
+      "title": "Océan. Tas de pierres",
+      "year": 1942
+    },
+    {
+      "title": "Pierres",
+      "year": 1951
+    }
+  ]
+}

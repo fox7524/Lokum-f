@@ -587,6 +587,36 @@ class RAGEngine:
             print(f"[RAG] Error processing {file_path}: {e}")
             return ""
 
+    def _load_jsonl_chunks(self, file_path: str) -> List[Dict[str, Any]] | None:
+        """
+        Load pre-chunked JSONL rows when each row contains a `text` field.
+
+        This is especially useful for source-backed corpora that already include
+        metadata such as `chunk_id`, `doc_path`, `doc_title`, `category`, or
+        `language_guess`.
+        """
+        try:
+            ext = os.path.splitext(file_path)[1].lower()
+            if ext != ".jsonl":
+                return None
+            rows: List[Dict[str, Any]] = []
+            with open(file_path, "r", encoding="utf-8") as handle:
+                for line in handle:
+                    stripped = (line or "").strip()
+                    if not stripped:
+                        continue
+                    obj = json.loads(stripped)
+                    if not isinstance(obj, dict):
+                        return None
+                    text = obj.get("text")
+                    if not isinstance(text, str) or not text.strip():
+                        return None
+                    meta = {k: v for k, v in obj.items() if k != "text"}
+                    rows.append({"text": text.strip(), "meta": meta})
+            return rows or None
+        except Exception:
+            return None
+
     # =========================================================================
     # FILE FORMAT HANDLERS
     # Each format needs its own extraction method
@@ -1253,8 +1283,15 @@ class RAGEngine:
                     new_hash = content_hash_for_path(p, size=size)
 
                 self._set_last_error("")
-                raw_content = self._extract_content(p)
-                chunks = self.chunk_text(raw_content) if raw_content else []
+                jsonl_rows = self._load_jsonl_chunks(p)
+                if jsonl_rows is not None:
+                    chunks = [row["text"] for row in jsonl_rows if isinstance(row, dict)]
+                    per_chunk_meta = [dict(row.get("meta") or {}) for row in jsonl_rows if isinstance(row, dict)]
+                    raw_content = "\n\n".join(chunks)
+                else:
+                    raw_content = self._extract_content(p)
+                    chunks = self.chunk_text(raw_content) if raw_content else []
+                    per_chunk_meta = []
                 if not chunks:
                     ext = os.path.splitext(p)[1].lower()
                     if ext == ".zim":
@@ -1272,15 +1309,22 @@ class RAGEngine:
                 max_per_file = 2500 if ext == ".zim" else 1200
                 if len(chunks) > max_per_file:
                     chunks = chunks[:max_per_file]
-                file_state = build_file_state(
-                    source_path=p,
-                    raw_text=raw_content,
-                    chunk_size=DEFAULT_CHUNK_SIZE,
-                    overlap=DEFAULT_CHUNK_OVERLAP,
-                )
-                chunk_signatures = list(file_state.get("chunk_signatures") or [])
-                if len(chunk_signatures) > len(chunks):
-                    chunk_signatures = chunk_signatures[:len(chunks)]
+                if jsonl_rows is not None:
+                    file_state = {"file_signature": content_hash_for_path(p, size=size) or ""}
+                    chunk_signatures = [
+                        hashlib.sha256(chunk.encode("utf-8", errors="ignore")).hexdigest()
+                        for chunk in chunks
+                    ]
+                else:
+                    file_state = build_file_state(
+                        source_path=p,
+                        raw_text=raw_content,
+                        chunk_size=DEFAULT_CHUNK_SIZE,
+                        overlap=DEFAULT_CHUNK_OVERLAP,
+                    )
+                    chunk_signatures = list(file_state.get("chunk_signatures") or [])
+                    if len(chunk_signatures) > len(chunks):
+                        chunk_signatures = chunk_signatures[:len(chunks)]
 
                 try:
                     self._check_abort()
@@ -1315,8 +1359,12 @@ class RAGEngine:
                             self.index = faiss.IndexFlatIP(int(dim))
                         self.index.add(emb)
                         self.documents.extend(batch)
-                        for _ in batch:
-                            self.chunk_meta.append({"file_id": fid, "source_path": p})
+                        for local_idx, _ in enumerate(batch):
+                            meta = {"file_id": fid, "source_path": p}
+                            absolute_idx = off + local_idx
+                            if absolute_idx < len(per_chunk_meta):
+                                meta.update(per_chunk_meta[absolute_idx])
+                            self.chunk_meta.append(meta)
 
                     end_idx = len(self.documents)
                     if end_idx <= start_idx:
@@ -1437,7 +1485,7 @@ class RAGEngine:
             ".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff",
             ".py", ".cpp", ".c", ".h", ".hpp", ".js", ".ts",
             ".html", ".htm", ".css", ".txt", ".md",
-            ".json", ".xml", ".yaml", ".yml", ".sh", ".ino",
+            ".json", ".jsonl", ".xml", ".yaml", ".yml", ".sh", ".ino",
         }
         batch: List[str] = []
         seen = 0

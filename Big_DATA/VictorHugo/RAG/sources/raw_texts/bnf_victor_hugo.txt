@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="fr">
+
+        <head prefix="og: http://ogp.me/ns#">
+
+        <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://data.bnf.fr/fr/data/icons/favicon.ico">
+<title>Victor Hugo (1802-1885)</title>
+
+  <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+
+    <meta name="DC.title" content="Victor Hugo (1802-1885)" />
+
+    <meta name="DC.identifier" content="ark:/12148/cb11907966z" />
+
+
+  <meta property="og:url" content="https://data.bnf.fr/fr/ark:/12148/cb11907966z" />
+
+  <meta property="og:title" content="Victor Hugo (1802-1885) - Auteur - Ressources de la Bibliothèque nationale de France" />
+
+  <meta property="og:description" content="Toutes les informations de la Bibliothèque Nationale de France sur : Victor Hugo (1802-1885)" />
+
+  <meta property="og:site_name" content="data.bnf.fr" />
+
+  <meta property="og:type" content="author" />
+
+  <meta property="og:image" content="https://gallica.bnf.fr/ark:/12148/btv1b531073308.thumbnail" />
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Person",
+  "@id": "https://data.bnf.fr/ark:/12148/cb11907966z",
+  "name": "Victor Hugo (1802-1885)",
+  "alternateName": [
+    {
+      "@value": "Victor-Marie Hugo",
+      "@language": "fr"
+    },
+    {
+      "@value": "Vittor Hugo",
+      "@language": "fr"
+    },
+    {
+      "@value": "Vittorio Hugo",
+      "@language": "fr"
+    },
+    {
+      "@value": "Vi\u0301kto\u0304r Ougko\u0304\u0301",
+      "@language": "fr"
+    },
+    {
+      "@value": "Vi\u0301kto\u0304r Hougko\u0304\u0301",
+      "@language": "fr"
+    },
+    {
+      "@value": "\u0392\u03af\u03ba\u03c4\u03c9\u03c1 \u039f\u03c5\u03b3\u03ba\u03ce",
+      "@language": "fr"
+    },
+    {
+      "@value": "\u0392\u03af\u03ba\u03c4\u03c9\u03c1 \u039f\u1f51\u03b3\u03ba\u03ce",
+      "@language": "fr"
+    },
+    {
+      "@value": "Yu guo",
+      "@language": "zh"
+    },
+    {
+      "@value": "Yuguo",
+      "@language": "zh"
+    },
+    {
+      "@value": "\u96e8\u679c",
+      "@language": "zh"
+    },
+    {
+      "@value": "Viktor G\u00fbgo",
+      "@language": "ru"
+    },
+    {
+      "@value": "\u0412\u0438\u043a\u0442\u043e\u0440 \u0413\u044e\u0433\u043e",
+      "@language": "ru"
+    },
+    {
+      "@value": "V\u00ecktor G\u00fbgo",
+      "@language": "uk"
+    },
+    {
+      "@value": "\u0412\u0456\u043a\u0442\u043e\u0440 \u0413\u044e\u0433\u043e",
+      "@language": "uk"
+    },
+    {
+      "@value": "Viktor-Mari G\u00fbgo",
+      "@language": "ru"
+    },
+    {
+      "@value": "\u0412\u0438\u043a\u0442\u043e\u0440-\u041c\u0430\u0440\u0438 \u0413\u044e\u0433\u043e",
+      "@language": "ru"
+    }
+  ],
+  "birthDate": {
+    "@value": "26-02-1802",
+    "@type": "date"
+  },
+  "birthPlace": "Paris",
+  "deathDate": {
+    "@value": "22-05-1885",
+    "@type": "date"
+  },
+  "deathPlace": "Paris, 16e arrondissement (France)",
+  "gender": "male",
+  "description": "\u00c9crivain. - Artiste graphiste, auteur de lavis. - Homme politique, d\u00e9put\u00e9 de la Seine (1848-1871) et s\u00e9nateur de la Seine (1876-1885). - Membre de l'Institut, Acad\u00e9mie fran\u00e7aise (\u00e9lu en 1841). - Officier de la L\u00e9gion d'honneur (1837)",
+  "image": "https://gallica.bnf.fr/ark:/12148/btv1b531073308",
+  "nationality": "France",
+  "sameAs": [
+    "https://data.biblissima.fr/entity/Q105993",
+    "http://datos.bne.es/resource/XX874892",
+    "http://fr.dbpedia.org/resource/Victor_Hugo",
+    "http://d-nb.info/gnd/118554654",
+    "http://www.idref.fr/026927608",
+    "https://imslp.org/wiki/Category:Hugo,_Victor",
+    "http://isni.org/isni/0000000121200982",
+    "http://id.loc.gov/authorities/n79091479",
+    "https://musicbrainz.org/artist/c0c99c8f-4779-4c35-9497-67d60a73310a",
+    "https://www.persee.fr/authority/30997",
+    "10083",
+    "https://francearchives.gouv.fr/agent/130963047",
+    "http://viaf.org/viaf/9847974",
+    "http://wikidata.org/entity/Q535",
+    "http://fr.wikipedia.org/wiki/Victor_Hugo"
+  ]
+}
+   </script>
+<script>
+
+      var BASE_URL = "https://data.bnf.fr/fr/";
+
+      var DATADIR_URL = "https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/";
+
+</script>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/fontawesome/font-awesome.min.css" type="text/css" media="all" async/>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/main.css" type="text/css" media="all" async/>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/searchbar.css" type="text/css" media="all" async/>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/header.css" type="text/css" media="all" async/>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/footer.css" type="text/css" media="all" async/>
+
+    <link rel="stylesheet" href="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/databnf_print.css" type="text/css" media="print" async/>
+
+    <link rel="preconnect" href="https://gallica.bnf.fr" />
+
+    </head>
+    <body id="">
+        <header id="header">
+    <div class="content-header">
+        <div class="logos">
+            <a id="bnf-logo" href="http://www.bnf.fr" aria-label="Lien vers le site institutionnel www.bnf.fr" target="_blank">
+                <img src="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/databnf_logo.svg" alt="Bnf" />
+            </a>
+            <a id="databnf-logo" href="https://data.bnf.fr/fr/"
+               aria-label="Lien vers la page d&#39;accueil du site data.bnf.fr">
+                Data
+            </a>
+        </div>
+
+            <div id="searchform" data-search-url="https://data.bnf.fr/fr/search"></div>
+
+        <div class="liens-transverses">
+            <div class="dropdown widescreen-only">
+                <div class="dropdown-title">Données</div>
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="https://data.bnf.fr/fr/sparql_sparna_doc" rel="nofollow">
+                            Documentation sur SPARQL et Sparnatural
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/sparql/" rel="nofollow">
+                            Sparql
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/sparnatural/" rel="nofollow">
+                            Sparnatural
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://api.bnf.fr/fr/dumps-de-databnffr" rel="nofollow">
+                            Dumps des données
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/fr/semanticweb" rel="nofollow">
+                            Web sémantique et modèle de données
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/fr/vocabulary" rel="nofollow">
+                            Pages de vocabulaire
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/fr/dataviz" rel="nofollow">
+                            Visualisation de données
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <div id="consultation" class="dropdown-title"></div>
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="https://data.bnf.fr/fr/summary" rel="nofollow">
+                            Se repérer sur data
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://data.bnf.fr/fr/askdata" rel="nofollow">
+                            Que demander à data
+                        </a>
+                    </li>
+                    <li class="widescreen-only">
+                        <a href="https://data.bnf.fr/fr/about" rel="nofollow">
+                            Le projet data
+                        </a>
+                    </li>
+                    <li class="widescreen-only">
+                        <a href="https://data.bnf.fr/fr/videotutorial" rel="nofollow">
+                            Tutoriel vidéo
+                        </a>
+                    </li>
+                    <li class="widescreen-only">
+                        <a href="https://data.bnf.fr/fr/valorisation" rel="nofollow">
+                            Valorisation
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="separator"></div>
+            <div class="dropdown">
+
+
+                        <div class="dropdown-title"><u>FR</u></div>
+
+
+
+
+
+
+                <ul class="dropdown-content">
+
+
+
+
+                    <li>
+                        <a href="https://data.bnf.fr/en/ark:/12148/cb11907966z" rel="nofollow">EN</a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="https://data.bnf.fr/de/ark:/12148/cb11907966z" rel="nofollow">DE</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <main>
+
+<div id="reactapp-sections" data-eid="11907966"></div>
+
+    </main>
+
+
+<div id="returntop">
+    <a href="#"
+       class="fa fa-arrow-up"
+       role="button"
+       aria-label="Back to top"
+    >
+    </a>
+</div>
+<script>
+let returnTopBtn = document
+    .getElementById('returntop');
+
+window.addEventListener('scroll', function () {
+    if (document.body.scrollTop > 20
+        || document.documentElement.scrollTop > 20) {
+        returnTopBtn.style.display = 'block';
+    } else {
+        returnTopBtn.style.display = 'none';
+    }
+});
+</script>
+
+<footer>
+
+  <div class="footer-links">
+      <div>informations mises à jour le 28-04-2026</div>
+      <div><a href="https://data.bnf.fr/fr/licence">Mentions légales</a></div>
+      <div><a href="https://data.bnf.fr/fr/privacy">Politique de confidentialité</a></div>
+      <div><a href="https://data.bnf.fr/fr/contact">Contact</a></div>
+      <div>version 4.6.1</div>
+  </div>
+
+    <script src="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/i18n/translations.js"></script>
+
+
+        <script src="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/bundle-v2_searchbar.js" defer></script>
+
+
+
+        <script src="https://data.bnf.fr/data/1da1deddbabfd357292a84b1e93d82fd/v2/bundle-v2_du.js" defer></script>
+
+
+</footer>
+
+
+
+
+<!-- Appel à bnf_marquage.js -->
+<!-- marquage cf. #92133 -->
+
+<script async defer type="text/javascript" src="https://multimedia-ext.bnf.fr/bnf_marquage/bnf_marquage.js?version=1.0&domaine=data_p.bnf.fr">
+</script>
+
+<!-- balise div de class "marquage-page" avec les attributs data-*  -->
+    <div class="marquage-page"
+        data-siten1="18798"
+        data-level2="37"
+        data-chapitre1=""
+        data-titre="PageAuteur::victor_hugo::11907966"
+    >
+
+    </div>
+
+  <script>
+    // Obtenir la référence du div
+
+    const divMarquage = document.querySelector('.marquage-page');
+    //console.log(divMarquage)
+    if (divMarquage) {
+      // Modifier le contenu du div
+      divMarquage.setAttribute('data-titre', "PageAuteur::victor_hugo::11907966");
+     } else {
+      console.error("Aucun élément avec la classe 'marquage-page' trouvé.");
+    }
+ //   console.log(divMarquage)
+
+    </script>
+
+
+
+    </body>
+</html>

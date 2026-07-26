@@ -1,0 +1,7 @@
+{
+  "chunk_file": "corpus/victor_hugo_rag_chunks.jsonl",
+  "total_chunks": 9835,
+  "metadata_files": 7,
+  "works_files": 2,
+  "raw_source_files": 22
+}

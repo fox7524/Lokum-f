@@ -8,7 +8,12 @@ import time
 from pathlib import Path
 from typing import List
 
-from finetune import ValidationResult, validate_jsonl_rows, write_jsonl_stream
+from finetune import (
+    ValidationResult,
+    detect_jsonl_format,
+    validate_jsonl_rows,
+    write_text_jsonl_stream,
+)
 from finetune.job_preflight import preflight_training
 
 def _presplit_text(text: str, max_seq_length: int, batch_size: int) -> list[str]:
@@ -257,8 +262,8 @@ class FinetuneEngine:
             for chunk in valid_chunks
         ]
 
-        write_jsonl_stream(train_path, train_texts)
-        write_jsonl_stream(valid_path, valid_texts)
+        write_text_jsonl_stream(train_path, train_texts)
+        write_text_jsonl_stream(valid_path, valid_texts)
         _ensure_valid_jsonl_file(train_path)
         _ensure_valid_jsonl_file(valid_path)
         _perf_log("finetune_prepare_dataset", started_at)
@@ -281,7 +286,7 @@ class FinetuneEngine:
             for pair in qa_pairs
         ]
 
-        write_jsonl_stream(train_path, texts)
+        write_text_jsonl_stream(train_path, texts)
         _ensure_valid_jsonl_file(train_path)
         _perf_log("finetune_build_ask_before_acting_dataset", started_at)
 
@@ -294,8 +299,12 @@ class FinetuneEngine:
         data_dir = os.path.abspath(dataset_path or self.dataset_dir)
         train_fp = os.path.join(data_dir, "train.jsonl")
         valid_fp = os.path.join(data_dir, "valid.jsonl")
-        train_changed = _presplit_jsonl_file(train_fp, int(max_seq_length), int(batch_size))
-        valid_changed = _presplit_jsonl_file(valid_fp, int(max_seq_length), int(batch_size))
+        train_changed = 0
+        valid_changed = 0
+        if os.path.isfile(train_fp) and detect_jsonl_format(Path(train_fp)) == "text":
+            train_changed = _presplit_jsonl_file(train_fp, int(max_seq_length), int(batch_size))
+        if os.path.isfile(valid_fp) and detect_jsonl_format(Path(valid_fp)) == "text":
+            valid_changed = _presplit_jsonl_file(valid_fp, int(max_seq_length), int(batch_size))
         return {
             "train_changed": int(train_changed),
             "valid_changed": int(valid_changed),

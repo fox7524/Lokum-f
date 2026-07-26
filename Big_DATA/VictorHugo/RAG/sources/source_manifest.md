@@ -1,0 +1,24 @@
+# Source manifest
+
+- `wikipedia_bio` | reference | downloaded | https://en.wikipedia.org/wiki/Victor_Hugo | sources/raw_texts/wikipedia_victor_hugo.txt
+- `bnf_author` | catalog | downloaded | https://data.bnf.fr/fr/ark:/12148/cb11907966z | sources/raw_texts/bnf_victor_hugo.txt
+- `wikisource_author` | catalog | downloaded | https://en.wikisource.org/wiki/Author:Victor_Hugo | sources/raw_texts/wikisource_author_victor_hugo.txt
+- `gutenberg_author` | catalog | downloaded | https://www.gutenberg.org/ebooks/author/85 | sources/raw_texts/gutenberg_author_victor_hugo.txt
+- `gutenberg_index` | primary_index | downloaded | https://www.gutenberg.org/ebooks/57702.txt.utf-8 | sources/raw_texts/index_of_project_gutenberg_works_of_victor_hugo.txt
+- `les_miserables_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/135.txt.utf-8 | sources/raw_texts/les_miserables_en.txt
+- `notre_dame_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/2610.txt.utf-8 | sources/raw_texts/notre_dame_de_paris_en.txt
+- `poems_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/8775.txt.utf-8 | sources/raw_texts/poems_en.txt
+- `man_who_laughs_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/12587.txt.utf-8 | sources/raw_texts/the_man_who_laughs_en.txt
+- `toilers_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/32338.txt.utf-8 | sources/raw_texts/toilers_of_the_sea_en.txt
+- `history_of_a_crime_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/10381.txt.utf-8 | sources/raw_texts/history_of_a_crime_en.txt
+- `napoleon_the_little_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/20580.txt.utf-8 | sources/raw_texts/napoleon_the_little_en.txt
+- `ninety_three_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/49372.txt.utf-8 | sources/raw_texts/ninety_three_en.txt
+- `hernani_fr` | primary_text | downloaded | https://www.gutenberg.org/ebooks/9976.txt.utf-8 | sources/raw_texts/hernani_fr.txt
+- `memoirs_en` | reference | downloaded | https://www.gutenberg.org/ebooks/2523.txt.utf-8 | sources/raw_texts/memoirs_of_victor_hugo_en.txt
+- `william_shakespeare_en` | primary_text | downloaded | https://www.gutenberg.org/ebooks/53490.txt.utf-8 | sources/raw_texts/william_shakespeare_en.txt
+- `letters_exile_en` | primary_text | downloaded | https://archive.org/stream/lettersofvictorh00hugorich/lettersofvictorh00hugorich_djvu.txt | sources/raw_texts/letters_from_exile_en.txt
+- `love_letters_en` | primary_text | downloaded | https://archive.org/stream/lovelettersofvic00hugouoft/lovelettersofvic00hugouoft_djvu.txt | sources/raw_texts/love_letters_1820_1822_en.txt
+- `things_seen_en` | primary_text | downloaded | https://archive.org/stream/thingsseenchoses00hugouoft/thingsseenchoses00hugouoft_djvu.txt | sources/raw_texts/things_seen_choses_vues_en.txt
+- `choses_vues_fr` | primary_text | downloaded | https://archive.org/stream/chosesvues01hugo/chosesvues01hugo_djvu.txt | sources/raw_texts/choses_vues_fr.txt
+- `life_and_work_bio` | reference | downloaded | https://archive.org/stream/victorhugohislif00davi/victorhugohislif00davi_djvu.txt | sources/raw_texts/victor_hugo_his_life_and_work.txt
+- `oeuvres_completes_v43` | primary_text | downloaded | https://archive.org/stream/oeuvrescomplte43hugouoft/oeuvrescomplte43hugouoft_djvu.txt | sources/raw_texts/oeuvres_completes_t43_correspondance_1867_1873_fr.txt

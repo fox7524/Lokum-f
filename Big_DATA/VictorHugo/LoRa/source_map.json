@@ -1,0 +1,4024 @@
+[
+  {
+    "id": "vh_000357",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000271",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000149",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000229",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000412",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000286",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000448",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000197",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000124",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000028",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000330",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000485",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000519",
+    "topic": "john_brown",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000298",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000205",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000094",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000385",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000274",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000148",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000053",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000436",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000018",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000277",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000502",
+    "topic": "exile",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_biography.md",
+      "metadata/victor_hugo_timeline.json",
+      "sources/raw_texts/history_of_a_crime_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000355",
+    "topic": "title_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000380",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000403",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000316",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000459",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000041",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000373",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000160",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000057",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000033",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000280",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000520",
+    "topic": "john_brown",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000227",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000409",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000487",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000444",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000397",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000417",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000081",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000508",
+    "topic": "death_penalty",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/in_defense_of_his_son_notes.md",
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000349",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000363",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000140",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000306",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000425",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000206",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000517",
+    "topic": "john_brown",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000008",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000401",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000361",
+    "topic": "title_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000170",
+    "topic": "works_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000068",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000490",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000415",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000281",
+    "topic": "works_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000021",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000183",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000288",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000235",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000525",
+    "topic": "restraint",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000404",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000163",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000089",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000176",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000278",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000264",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000394",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000348",
+    "topic": "title_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000302",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000406",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000016",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000522",
+    "topic": "labor_and_republic",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/address_marseille_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000259",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000314",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000296",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000029",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000462",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000345",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000339",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000476",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000451",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000215",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000497",
+    "topic": "notre_dame",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/notre_dame_de_paris_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000095",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000114",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000472",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000017",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000216",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000262",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000467",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000249",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000282",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000300",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000419",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000509",
+    "topic": "style",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000166",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000019",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000060",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000439",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000416",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000231",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000043",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000009",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000251",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000388",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000129",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000127",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000109",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000155",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000294",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000096",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000161",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000083",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000154",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000479",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000486",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000137",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000265",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000433",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000481",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000193",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000418",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000151",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000386",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000014",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000279",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000048",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000072",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000037",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000399",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000207",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000192",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000315",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000304",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000492",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000460",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000172",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000353",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000074",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000178",
+    "topic": "works_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000396",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000248",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000454",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000336",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000256",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000526",
+    "topic": "restraint",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000268",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000208",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000188",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000303",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000238",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000364",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000190",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000370",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000015",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000457",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000199",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000360",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000395",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000270",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000012",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000244",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000245",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000328",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000138",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000510",
+    "topic": "style",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000241",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000204",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000474",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000431",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000118",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000327",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000285",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000377",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000110",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000263",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000090",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000350",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000292",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000500",
+    "topic": "notre_dame",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/notre_dame_de_paris_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000422",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000324",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000130",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000482",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000325",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000452",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000054",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000351",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000319",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000366",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000164",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000200",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000220",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000125",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000253",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000483",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000069",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000400",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000226",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000331",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000321",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000495",
+    "topic": "les_miserables",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/les_miserables_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000473",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000376",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000290",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000512",
+    "topic": "style",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000291",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000421",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000475",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000167",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000272",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000198",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000077",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000098",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000389",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000078",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000359",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000437",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000234",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000120",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000446",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000202",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000318",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000049",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000455",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000113",
+    "topic": "works_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000146",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000440",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000117",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000056",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000020",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000203",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000466",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000379",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000063",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000372",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000131",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000356",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000504",
+    "topic": "exile",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_biography.md",
+      "metadata/victor_hugo_timeline.json",
+      "sources/raw_texts/history_of_a_crime_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000347",
+    "topic": "title_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000153",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000337",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000375",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000383",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000030",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000145",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000055",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000209",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000221",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000007",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000461",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000132",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000398",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000024",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000430",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000310",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000362",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000218",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000449",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000252",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000135",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000005",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000499",
+    "topic": "notre_dame",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/notre_dame_de_paris_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000185",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000309",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000511",
+    "topic": "style",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_persona_guide.md",
+      "metadata/key_texts_and_retrieval_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000442",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000491",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000254",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000159",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000434",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000514",
+    "topic": "poetry_grief",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "metadata/victor_hugo_timeline.json"
+    ]
+  },
+  {
+    "id": "vh_000065",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000382",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000414",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000239",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000212",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000287",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000128",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000152",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000464",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000115",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000079",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000295",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000443",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000035",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000301",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000196",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000147",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000524",
+    "topic": "labor_and_republic",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/address_marseille_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000061",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000122",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000174",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000374",
+    "topic": "title_aliases",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000340",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000092",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000312",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000305",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000407",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000171",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000463",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000025",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000141",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000236",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000080",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000346",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000064",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000039",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000428",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000369",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000322",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000424",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000045",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000013",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000112",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000233",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000001",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000344",
+    "topic": "cross_titles",
+    "language": "tr",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000456",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000230",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000445",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000075",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000505",
+    "topic": "death_penalty",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/in_defense_of_his_son_notes.md",
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000501",
+    "topic": "exile",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_biography.md",
+      "metadata/victor_hugo_timeline.json",
+      "sources/raw_texts/history_of_a_crime_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000116",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000076",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000333",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000480",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000283",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000224",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000010",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000182",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000284",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000242",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000186",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000260",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000169",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000313",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000194",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000177",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000410",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000247",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000133",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000367",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000003",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000420",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000289",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000073",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000469",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000250",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000223",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000162",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000323",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000214",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000211",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000513",
+    "topic": "poetry_grief",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "metadata/victor_hugo_timeline.json"
+    ]
+  },
+  {
+    "id": "vh_000026",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000427",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000470",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000097",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000266",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000488",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000180",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000269",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000413",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000335",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000458",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000143",
+    "topic": "works_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000123",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000046",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000471",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000086",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000334",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000275",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000105",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000494",
+    "topic": "les_miserables",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/les_miserables_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000257",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000032",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000217",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000191",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000354",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000338",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000051",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000158",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000391",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000297",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000299",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000477",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000320",
+    "topic": "works",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000101",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000232",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000484",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000093",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000493",
+    "topic": "les_miserables",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/key_texts_and_retrieval_notes.md",
+      "sources/raw_texts/les_miserables_en.txt"
+    ]
+  },
+  {
+    "id": "vh_000136",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000342",
+    "topic": "title_aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_title_aliases.md",
+      "works/complete_bibliography.json"
+    ]
+  },
+  {
+    "id": "vh_000521",
+    "topic": "labor_and_republic",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/address_marseille_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000408",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000102",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000085",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000023",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000022",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/victor_hugo_timeline.json",
+      "metadata/victor_hugo_biography.md"
+    ]
+  },
+  {
+    "id": "vh_000175",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000506",
+    "topic": "death_penalty",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/in_defense_of_his_son_notes.md",
+      "metadata/letter_john_brown_notes.md"
+    ]
+  },
+  {
+    "id": "vh_000392",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000478",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/victor_hugo_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "vh_000307",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  },
+  {
+    "id": "vh_000179",
+    "topic": "works",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "works/complete_bibliography.json",
+      "works/complete_bibliography.md"
+    ]
+  }
+]

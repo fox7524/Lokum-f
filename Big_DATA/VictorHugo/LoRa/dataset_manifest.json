@@ -1,0 +1,57 @@
+{
+  "build_version": "victor-hugo-lora-v1",
+  "seed": 42,
+  "train_counts": {
+    "chat": 371,
+    "completion": 371
+  },
+  "valid_counts": {
+    "chat": 41,
+    "completion": 41
+  },
+  "language_mix": {
+    "tr": 288,
+    "en": 82,
+    "cross": 42
+  },
+  "topic_mix": {
+    "cross_titles": 10,
+    "death_penalty": 3,
+    "exile": 3,
+    "glossary": 95,
+    "john_brown": 3,
+    "labor_and_republic": 3,
+    "les_miserables": 3,
+    "notre_dame": 3,
+    "poetry_grief": 2,
+    "restraint": 2,
+    "style": 4,
+    "timeline": 74,
+    "title_aliases": 18,
+    "works": 175,
+    "works_aliases": 14
+  },
+  "source_coverage": {
+    "metadata/address_marseille_notes.md": 3,
+    "metadata/in_defense_of_his_son_notes.md": 3,
+    "metadata/key_texts_and_retrieval_notes.md": 14,
+    "metadata/letter_john_brown_notes.md": 6,
+    "metadata/victor_hugo_biography.md": 77,
+    "metadata/victor_hugo_persona_guide.md": 6,
+    "metadata/victor_hugo_timeline.json": 79,
+    "metadata/victor_hugo_tr_en_glossary.md": 95,
+    "metadata/victor_hugo_tr_en_title_aliases.md": 28,
+    "sources/raw_texts/history_of_a_crime_en.txt": 3,
+    "sources/raw_texts/les_miserables_en.txt": 3,
+    "sources/raw_texts/notre_dame_de_paris_en.txt": 3,
+    "works/complete_bibliography.json": 217,
+    "works/complete_bibliography.md": 189
+  },
+  "duplicate_prompt_ratio": 0.0,
+  "formats": {
+    "chat_train": "chat",
+    "chat_valid": "chat",
+    "completion_train": "completion",
+    "completion_valid": "completion"
+  }
+}

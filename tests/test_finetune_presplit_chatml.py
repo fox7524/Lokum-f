@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from finetune_engine import _presplit_jsonl_file
+from core.finetune_engine import _presplit_jsonl_file
 
 
 class TestFinetunePresplitChatML(unittest.TestCase):
@@ -38,3 +38,24 @@ class TestFinetunePresplitChatML(unittest.TestCase):
                 self.assertIn("<|im_start|>system", txt)
                 self.assertTrue(txt.strip().endswith("<|im_end|>"))
                 self.assertNotIn("<|im_start|>system\nS\n<|im_end|>\n<|im_start|>", txt.replace("<|im_start|>system\nS\n<|im_end|>\n", "", 1))
+
+    def test_presplit_leaves_native_chat_rows_untouched(self):
+        with tempfile.TemporaryDirectory() as td:
+            fp = os.path.join(td, "train.jsonl")
+            original = {
+                "messages": [
+                    {"role": "system", "content": "You are Victor Hugo."},
+                    {"role": "user", "content": "Sefiller ne anlatır?"},
+                    {"role": "assistant", "content": "Adalet ve merhameti anlatır."},
+                ]
+            }
+            with open(fp, "w", encoding="utf-8") as f:
+                f.write(json.dumps(original, ensure_ascii=False) + "\n")
+
+            changed = _presplit_jsonl_file(fp, max_seq_length=64, batch_size=1)
+
+            self.assertEqual(int(changed), 0)
+            with open(fp, "r", encoding="utf-8") as f:
+                lines = [ln for ln in f.read().splitlines() if ln.strip()]
+            self.assertEqual(len(lines), 1)
+            self.assertEqual(json.loads(lines[0]), original)

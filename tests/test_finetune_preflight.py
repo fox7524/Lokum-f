@@ -7,7 +7,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from finetune.job_preflight import preflight_training
-from finetune_engine import FinetuneEngine
+from core.finetune_engine import FinetuneEngine
 
 
 def test_preflight_rejects_missing_model(tmp_path: Path) -> None:

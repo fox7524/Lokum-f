@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cp_tr_pdf_main",
+    "path": "RATA/Fyodor Mihailoviç Dostoyevski - Suç ve Ceza.pdf",
+    "kind": "primary_or_translation_pdf",
+    "language": "tr",
+    "provenance": "local_workspace_pdf",
+    "reuse": "parse_into_rag"
+  },
+  {
+    "id": "cp_tr_pdf_alt",
+    "path": "RATA/Fyodor Mihailoviç Dostoyevski - Suç ve Ceza (1).pdf",
+    "kind": "primary_or_translation_pdf",
+    "language": "tr",
+    "provenance": "local_workspace_pdf",
+    "reuse": "parse_into_rag"
+  },
+  {
+    "id": "cp_tr_pdf_scan",
+    "path": "RATA/20114324_suc-ve-ceza-dostoyovski.pdf",
+    "kind": "primary_or_translation_pdf",
+    "language": "tr",
+    "provenance": "local_workspace_pdf",
+    "reuse": "parse_into_rag"
+  },
+  {
+    "id": "raskolnikov_criticism_nietzsche",
+    "path": "RATA/Raskolnikov’un Ahlaki İkilemi Nietzscheci Bir Bakış[#647919]-950756.pdf",
+    "kind": "character_criticism_pdf",
+    "language": "tr",
+    "provenance": "local_workspace_pdf",
+    "reuse": "parse_into_rag"
+  },
+  {
+    "id": "raskolnikov_legal_reading",
+    "path": "RATA/SuveCezaRomanndaRaskolnikovunlemiOlduuFiillerinTrkCezaKanunundaDzenlenenSuTipleriAsndanDeerlendirilmesi.pdf",
+    "kind": "character_criticism_pdf",
+    "language": "tr",
+    "provenance": "local_workspace_pdf",
+    "reuse": "parse_into_rag"
+  },
+  {
+    "id": "legacy_rata_train",
+    "path": "data/RATA_dataset/train.jsonl",
+    "kind": "legacy_lora_dataset",
+    "language": "mixed",
+    "provenance": "existing_repo_asset",
+    "reuse": "audit_selectively"
+  },
+  {
+    "id": "legacy_rata_valid",
+    "path": "data/RATA_dataset/valid.jsonl",
+    "kind": "legacy_lora_dataset",
+    "language": "mixed",
+    "provenance": "existing_repo_asset",
+    "reuse": "audit_selectively"
+  },
+  {
+    "id": "legacy_hq_train",
+    "path": "data/Raskolnikov_HQ_Dataset/train.jsonl",
+    "kind": "legacy_lora_dataset",
+    "language": "mixed",
+    "provenance": "existing_repo_asset",
+    "reuse": "audit_selectively"
+  },
+  {
+    "id": "legacy_hq_valid",
+    "path": "data/Raskolnikov_HQ_Dataset/valid.jsonl",
+    "kind": "legacy_lora_dataset",
+    "language": "mixed",
+    "provenance": "existing_repo_asset",
+    "reuse": "audit_selectively"
+  },
+  {
+    "id": "legacy_prompts",
+    "path": "prompts.json",
+    "kind": "legacy_prompt_framing",
+    "language": "en",
+    "provenance": "existing_repo_asset",
+    "reuse": "reference_only"
+  },
+  {
+    "id": "legacy_augment_script",
+    "path": "augment_dataset.py",
+    "kind": "legacy_prompt_framing",
+    "language": "en",
+    "provenance": "existing_repo_asset",
+    "reuse": "reference_only"
+  },
+  {
+    "id": "legacy_app_prompt",
+    "path": "main.py",
+    "kind": "legacy_prompt_framing",
+    "language": "en",
+    "provenance": "existing_repo_asset",
+    "reuse": "reference_only"
+  }
+]
