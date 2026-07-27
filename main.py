@@ -1886,19 +1886,24 @@ class DevPanelDialog(QWidget):
 
         c_layout.addWidget(QLabel("Preset:"), 0, 0)
         self.ft_preset = QComboBox()
-        self.ft_preset.addItems(["Safe (Recommended)", "Recommended", "Ultra Safe (Less RAM)", "Faster (More RAM)", "Quick Test", "Ultra (Highest Quality)"])
+        self.ft_preset.addItems(["Ultra", "Good", "Mid", "Low", "Custom"])
         c_layout.addWidget(self.ft_preset, 0, 1)
         
+        def _disable_wheel(widget):
+            widget.wheelEvent = lambda e: e.ignore()
+
         c_layout.addWidget(QLabel("Rank:"), 1, 0)
         self.lora_rank = QSpinBox()
         self.lora_rank.setRange(4, 32)
         self.lora_rank.setValue(8)
+        _disable_wheel(self.lora_rank)
         c_layout.addWidget(self.lora_rank, 1, 1)
         
         c_layout.addWidget(QLabel("Alpha:"), 2, 0)
         self.lora_alpha = QSpinBox()
         self.lora_alpha.setRange(8, 64)
         self.lora_alpha.setValue(32)
+        _disable_wheel(self.lora_alpha)
         c_layout.addWidget(self.lora_alpha, 2, 1)
         
         c_layout.addWidget(QLabel("Iterations:"), 3, 0)
@@ -1906,18 +1911,21 @@ class DevPanelDialog(QWidget):
         self.lora_iters.setRange(100, 2000)
         self.lora_iters.setValue(500)
         self.lora_iters.setSingleStep(100)
+        _disable_wheel(self.lora_iters)
         c_layout.addWidget(self.lora_iters, 3, 1)
         
         c_layout.addWidget(QLabel("Batch Size:"), 4, 0)
         self.lora_batch = QSpinBox()
         self.lora_batch.setRange(1, 8)
         self.lora_batch.setValue(1)
+        _disable_wheel(self.lora_batch)
         c_layout.addWidget(self.lora_batch, 4, 1)
 
         c_layout.addWidget(QLabel("Train Layers:"), 5, 0)
         self.lora_layers = QSpinBox()
         self.lora_layers.setRange(1, 32)
         self.lora_layers.setValue(8)
+        _disable_wheel(self.lora_layers)
         c_layout.addWidget(self.lora_layers, 5, 1)
 
         c_layout.addWidget(QLabel("Max Seq Len:"), 6, 0)
@@ -1925,6 +1933,7 @@ class DevPanelDialog(QWidget):
         self.ft_max_seq.setRange(256, 2048)
         self.ft_max_seq.setValue(512)
         self.ft_max_seq.setSingleStep(128)
+        _disable_wheel(self.ft_max_seq)
         c_layout.addWidget(self.ft_max_seq, 6, 1)
 
         c_layout.addWidget(QLabel("Steps / Eval:"), 7, 0)
@@ -1932,12 +1941,14 @@ class DevPanelDialog(QWidget):
         self.ft_steps_per_eval.setRange(0, 5000)
         self.ft_steps_per_eval.setValue(200)
         self.ft_steps_per_eval.setSingleStep(50)
+        _disable_wheel(self.ft_steps_per_eval)
         c_layout.addWidget(self.ft_steps_per_eval, 7, 1)
 
         c_layout.addWidget(QLabel("Val Batches:"), 8, 0)
         self.ft_val_batches = QSpinBox()
         self.ft_val_batches.setRange(0, 64)
         self.ft_val_batches.setValue(1)
+        _disable_wheel(self.ft_val_batches)
         c_layout.addWidget(self.ft_val_batches, 8, 1)
 
         c_layout.addWidget(QLabel("Clear Cache Thr:"), 9, 0)
@@ -1946,7 +1957,16 @@ class DevPanelDialog(QWidget):
         self.ft_clear_cache_thr.setDecimals(2)
         self.ft_clear_cache_thr.setSingleStep(0.25)
         self.ft_clear_cache_thr.setValue(2.0)
+        _disable_wheel(self.ft_clear_cache_thr)
         c_layout.addWidget(self.ft_clear_cache_thr, 9, 1)
+        
+        # Connect value changes
+        self._is_updating_preset = False
+        spinboxes = [self.lora_rank, self.lora_alpha, self.lora_iters, self.lora_batch,
+                     self.lora_layers, self.ft_max_seq, self.ft_steps_per_eval,
+                     self.ft_val_batches, self.ft_clear_cache_thr]
+        for sb in spinboxes:
+            sb.valueChanged.connect(self._on_custom_ft_value_changed)
         
         self.config_box.setLayout(c_layout)
         layout.addWidget(self.config_box)
@@ -2112,7 +2132,15 @@ class DevPanelDialog(QWidget):
         layout.addStretch()
         try:
             self.ft_preset.currentIndexChanged.connect(self._apply_ft_preset)
-            self._apply_ft_preset(0)
+            settings = QSettings("Lokum", "LokumFStudio")
+            last_preset = settings.value("ft_preset_last_selected", "Good")
+            idx = self.ft_preset.findText(last_preset)
+            if idx >= 0:
+                self.ft_preset.setCurrentIndex(idx)
+            else:
+                self.ft_preset.setCurrentIndex(1)  # Default to Good
+            # Initialize values
+            self._apply_ft_preset(self.ft_preset.currentIndex())
         except Exception:
             pass
         return widget
@@ -2268,6 +2296,35 @@ class DevPanelDialog(QWidget):
             except Exception:
                 self.ft_resume_path.setText(fp)
 
+    def _on_custom_ft_value_changed(self):
+        """
+        Triggered when any fine-tune spinbox is manually changed by the user.
+        Switches the preset to 'Custom' and saves the values to QSettings.
+        """
+        if getattr(self, "_is_updating_preset", False):
+            return
+
+        self._is_updating_preset = True
+        try:
+            idx = self.ft_preset.findText("Custom")
+            if idx >= 0:
+                self.ft_preset.setCurrentIndex(idx)
+        finally:
+            self._is_updating_preset = False
+
+        # Save to QSettings
+        settings = QSettings("Lokum", "LokumFStudio")
+        settings.setValue("ft_custom_rank", self.lora_rank.value())
+        settings.setValue("ft_custom_alpha", self.lora_alpha.value())
+        settings.setValue("ft_custom_iters", self.lora_iters.value())
+        settings.setValue("ft_custom_batch", self.lora_batch.value())
+        settings.setValue("ft_custom_layers", self.lora_layers.value())
+        settings.setValue("ft_custom_max_seq", self.ft_max_seq.value())
+        settings.setValue("ft_custom_steps_per_eval", self.ft_steps_per_eval.value())
+        settings.setValue("ft_custom_val_batches", self.ft_val_batches.value())
+        settings.setValue("ft_custom_clear_cache_thr", self.ft_clear_cache_thr.value())
+        settings.setValue("ft_preset_last_selected", "Custom")
+
     def _apply_ft_preset(self, _idx: int):
         """
         Applys ft preset for the current component.
@@ -2276,105 +2333,69 @@ class DevPanelDialog(QWidget):
             name = (self.ft_preset.currentText() if hasattr(self, "ft_preset") else "").strip()
         except Exception:
             name = ""
-        if name == "Safe (Recommended)":
-            # Stable default for big models: keep memory headroom by avoiding eval during training.
-            self.lora_rank.setValue(8)
-            self.lora_alpha.setValue(32)
-            self.lora_iters.setValue(500)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(8)
-            self.ft_max_seq.setValue(384)
-            self.ft_steps_per_eval.setValue(0)
-            self.ft_val_batches.setValue(0)
-            self.ft_clear_cache_thr.setValue(1.5)
-            try:
-                if hasattr(self, "ft_presplit") and self.ft_presplit is not None:
-                    self.ft_presplit.setChecked(True)
-            except Exception:
-                pass
-            return
-        if name == "Reccommended":
-            # Previously this was too aggressive and could push Metal to OOM.
-            # Make it quality-leaning (user can tolerate spikes).
-            self.lora_rank.setValue(16)
-            self.lora_alpha.setValue(64)
-            self.lora_iters.setValue(900)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(12)
-            self.ft_max_seq.setValue(512)
-            # Avoid eval during training (smoother memory curve). You can run validate after.
-            self.ft_steps_per_eval.setValue(0)
-            self.ft_val_batches.setValue(0)
-            self.ft_clear_cache_thr.setValue(2.0)
-            try:
-                if hasattr(self, "ft_presplit") and self.ft_presplit is not None:
-                    self.ft_presplit.setChecked(True)
-            except Exception:
-                pass
-            try:
-                if hasattr(self, "ft_do_valid") and self.ft_do_valid is not None:
-                    self.ft_do_valid.setChecked(False)
-            except Exception:
-                pass
-            return
-        if name == "Ultra Safe (Less RAM)":
-            self.lora_rank.setValue(8)
-            self.lora_alpha.setValue(32)
-            self.lora_iters.setValue(500)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(6)
-            self.ft_max_seq.setValue(384)
-            self.ft_steps_per_eval.setValue(0)
-            self.ft_val_batches.setValue(0)
-            self.ft_clear_cache_thr.setValue(1.0)
-            return
-        if name == "Faster (More RAM)":
-            self.lora_rank.setValue(8)
-            self.lora_alpha.setValue(32)
-            self.lora_iters.setValue(500)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(12)
-            self.ft_max_seq.setValue(768)
-            self.ft_steps_per_eval.setValue(200)
-            self.ft_val_batches.setValue(1)
-            self.ft_clear_cache_thr.setValue(2.0)
-            return
-        if name == "Quick Test":
-            self.lora_rank.setValue(8)
-            self.lora_alpha.setValue(32)
-            self.lora_iters.setValue(150)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(4)
-            self.ft_max_seq.setValue(384)
-            self.ft_steps_per_eval.setValue(0)
-            self.ft_val_batches.setValue(0)
-            self.ft_clear_cache_thr.setValue(2.0)
-            return
-        if name == "Ultra (Highest Quality)":
-            self.lora_rank.setValue(32)
-            self.lora_alpha.setValue(128)
-            self.lora_iters.setValue(1500)
-            self.lora_batch.setValue(1)
-            self.lora_layers.setValue(32)
-            self.ft_max_seq.setValue(1024)
-            self.ft_steps_per_eval.setValue(200)
-            self.ft_val_batches.setValue(2)
-            self.ft_clear_cache_thr.setValue(4.0)
-            try:
-                if hasattr(self, "ft_presplit") and self.ft_presplit is not None:
-                    self.ft_presplit.setChecked(True)
-            except Exception:
-                pass
-            return
-        self.lora_rank.setValue(8)
-        self.lora_alpha.setValue(32)
-        self.lora_iters.setValue(500)
-        self.lora_batch.setValue(1)
-        self.lora_layers.setValue(8)
-        self.ft_max_seq.setValue(512)
-        self.ft_steps_per_eval.setValue(200)
-        self.ft_val_batches.setValue(1)
-        self.ft_clear_cache_thr.setValue(2.0)
+
+        self._is_updating_preset = True
+        try:
+            if name == "Ultra":
+                self.lora_rank.setValue(32)
+                self.lora_alpha.setValue(128)
+                self.lora_iters.setValue(1500)
+                self.lora_batch.setValue(1)
+                self.lora_layers.setValue(32)
+                self.ft_max_seq.setValue(1024)
+                self.ft_steps_per_eval.setValue(200)
+                self.ft_val_batches.setValue(2)
+                self.ft_clear_cache_thr.setValue(4.0)
+            elif name == "Good":
+                self.lora_rank.setValue(16)
+                self.lora_alpha.setValue(64)
+                self.lora_iters.setValue(900)
+                self.lora_batch.setValue(1)
+                self.lora_layers.setValue(12)
+                self.ft_max_seq.setValue(512)
+                self.ft_steps_per_eval.setValue(0)
+                self.ft_val_batches.setValue(0)
+                self.ft_clear_cache_thr.setValue(2.0)
+            elif name == "Mid":
+                self.lora_rank.setValue(8)
+                self.lora_alpha.setValue(32)
+                self.lora_iters.setValue(500)
+                self.lora_batch.setValue(1)
+                self.lora_layers.setValue(8)
+                self.ft_max_seq.setValue(384)
+                self.ft_steps_per_eval.setValue(0)
+                self.ft_val_batches.setValue(0)
+                self.ft_clear_cache_thr.setValue(1.5)
+            elif name == "Low":
+                self.lora_rank.setValue(8)
+                self.lora_alpha.setValue(32)
+                self.lora_iters.setValue(150)
+                self.lora_batch.setValue(1)
+                self.lora_layers.setValue(4)
+                self.ft_max_seq.setValue(384)
+                self.ft_steps_per_eval.setValue(0)
+                self.ft_val_batches.setValue(0)
+                self.ft_clear_cache_thr.setValue(1.0)
+            elif name == "Custom":
+                settings = QSettings("Lokum", "LokumFStudio")
+                self.lora_rank.setValue(int(settings.value("ft_custom_rank", 16)))
+                self.lora_alpha.setValue(int(settings.value("ft_custom_alpha", 64)))
+                self.lora_iters.setValue(int(settings.value("ft_custom_iters", 900)))
+                self.lora_batch.setValue(int(settings.value("ft_custom_batch", 1)))
+                self.lora_layers.setValue(int(settings.value("ft_custom_layers", 12)))
+                self.ft_max_seq.setValue(int(settings.value("ft_custom_max_seq", 512)))
+                self.ft_steps_per_eval.setValue(int(settings.value("ft_custom_steps_per_eval", 0)))
+                self.ft_val_batches.setValue(int(settings.value("ft_custom_val_batches", 0)))
+                self.ft_clear_cache_thr.setValue(float(settings.value("ft_custom_clear_cache_thr", 2.0)))
+
+            if name:
+                settings = QSettings("Lokum", "LokumFStudio")
+                settings.setValue("ft_preset_last_selected", name)
+                
+            if hasattr(self, "ft_presplit") and self.ft_presplit is not None:
+                self.ft_presplit.setChecked(True)
+        finally:
+            self._is_updating_preset = False
 
     def browse_finetune_ingest_folder(self):
         """

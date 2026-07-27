@@ -1,0 +1,5 @@
+- [x] Fine-Tune Preset seçenekleri tam olarak 5 adet ("Ultra", "Good", "Mid", "Low", "Custom") olarak güncellenmiş.
+- [x] Uygulama yeniden başlatıldığında, eğer Custom harici bir preset seçiliyse orijinal değerlerine (hardcoded) dönüyor.
+- [x] Uygulama yeniden başlatıldığında, eğer Custom seçiliyse kullanıcının en son girdiği değerler geri yükleniyor.
+- [x] Kullanıcı bir ayarı manuel değiştirdiğinde, Preset combobox'u otomatik olarak "Custom" seçeneğine geçiyor ve ayarlar kaydediliyor.
+- [x] Fine-Tune panelindeki SpinBox'ların üzerinde fare tekerleği (mouse scroll) çevrildiğinde sayılar DEĞİŞMİYOR.
