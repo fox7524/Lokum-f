@@ -56,29 +56,35 @@ def test_build_victor_hugo_lora_dataset_generates_outputs(tmp_path: Path) -> Non
     assert result["train_examples"] > 0
     assert result["valid_examples"] > 0
 
-    chat_train = output_root / "chat_train.jsonl"
-    completion_train = output_root / "completion_train.jsonl"
+    train_path = output_root / "train.jsonl"
+    valid_path = output_root / "valid.jsonl"
     manifest_path = output_root / "dataset_manifest.json"
     source_map_path = output_root / "source_map.json"
 
-    assert chat_train.exists()
-    assert completion_train.exists()
+    assert train_path.exists()
+    assert valid_path.exists()
     assert manifest_path.exists()
     assert source_map_path.exists()
+    assert not (output_root / "chat_train.jsonl").exists()
+    assert not (output_root / "chat_valid.jsonl").exists()
+    assert not (output_root / "completion_train.jsonl").exists()
+    assert not (output_root / "completion_valid.jsonl").exists()
 
-    assert detect_jsonl_format(chat_train) == "chat"
-    assert detect_jsonl_format(completion_train) == "completion"
+    assert detect_jsonl_format(train_path) == "chat"
+    assert detect_jsonl_format(valid_path) == "chat"
 
-    with chat_train.open("r", encoding="utf-8") as handle:
-        chat_validation = validate_jsonl_rows(handle)
-    with completion_train.open("r", encoding="utf-8") as handle:
-        completion_validation = validate_jsonl_rows(handle)
+    with train_path.open("r", encoding="utf-8") as handle:
+        train_validation = validate_jsonl_rows(handle)
+    with valid_path.open("r", encoding="utf-8") as handle:
+        valid_validation = validate_jsonl_rows(handle)
 
-    assert chat_validation.invalid == 0
-    assert completion_validation.invalid == 0
+    assert train_validation.invalid == 0
+    assert valid_validation.invalid == 0
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    assert manifest["formats"]["chat_train"] == "chat"
-    assert manifest["formats"]["completion_train"] == "completion"
+    assert manifest["formats"]["train"] == "chat"
+    assert manifest["formats"]["valid"] == "chat"
+    assert manifest["train_examples"] == result["train_examples"]
+    assert manifest["valid_examples"] == result["valid_examples"]
     assert "tr" in manifest["language_mix"]
     assert "timeline" in manifest["topic_mix"]

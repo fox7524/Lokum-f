@@ -980,6 +980,19 @@ class FineTuneWorker(QThread):
                                 # Suppress Metal/MLX M5 God-Mode spam
                                 if "M5 God-Mode" in clean_ln or "IOSurface created" in clean_ln or "DART TTBR0" in clean_ln:
                                     continue
+                                
+                                # Analyze and simplify errors with hints
+                                if "ValueError: Requested to train" in clean_ln and "layers but the model only has" in clean_ln:
+                                    self.line.emit(f"❌ [LAYER ERROR] {clean_ln}")
+                                    self.line.emit("💡 HINT: Go to Fine-Tune preset, choose 'Custom', and reduce 'Train Layers' to match the model's actual layer count or lower. Or choose lower quality presets.")
+                                    last_line = time.time()
+                                    continue
+                                elif "Insufficient Memory" in clean_ln or "OutOfMemory" in clean_ln:
+                                    self.line.emit("❌ [OUT OF MEMORY] " + clean_ln)
+                                    self.line.emit("💡 HINT: Your Mac's Unified Memory is full. Try reducing 'Batch Size' (e.g., to 1 or 2) or 'Rank' in the 'Custom' preset. Or choose lower quality presets.")
+                                    last_line = time.time()
+                                    continue
+
                                 self.line.emit(clean_ln)
                                 last_line = time.time()
                                 continue
@@ -1892,19 +1905,36 @@ class DevPanelDialog(QWidget):
         def _disable_wheel(widget):
             widget.wheelEvent = lambda e: e.ignore()
 
-        c_layout.addWidget(QLabel("Rank:"), 1, 0)
+        lbl_rank = QLabel("Rank:")
+        lbl_rank.setStyleSheet("color: #8b5cf6; font-weight: bold;")
+        c_layout.addWidget(lbl_rank, 1, 0)
         self.lora_rank = QSpinBox()
-        self.lora_rank.setRange(4, 32)
+        self.lora_rank.setRange(2, 128)
         self.lora_rank.setValue(8)
         _disable_wheel(self.lora_rank)
         c_layout.addWidget(self.lora_rank, 1, 1)
         
-        c_layout.addWidget(QLabel("Alpha:"), 2, 0)
+        lbl_alpha = QLabel("Alpha:")
+        lbl_alpha.setStyleSheet("color: #8b5cf6; font-weight: bold;")
+        c_layout.addWidget(lbl_alpha, 2, 0)
         self.lora_alpha = QSpinBox()
-        self.lora_alpha.setRange(8, 64)
+        self.lora_alpha.setRange(2, 256)
         self.lora_alpha.setValue(32)
         _disable_wheel(self.lora_alpha)
         c_layout.addWidget(self.lora_alpha, 2, 1)
+
+        btn_help_lora = QToolButton()
+        btn_help_lora.setText("?")
+        btn_help_lora.setCursor(Qt.CursorShape.PointingHandCursor)
+        btn_help_lora.setStyleSheet("color: #8b5cf6; font-weight: bold; border: 1px solid #8b5cf6; border-radius: 10px; padding: 2px 6px; margin-left: 5px;")
+        btn_help_lora.setToolTip("Rank ve Alpha hakkında detaylı bilgi")
+        btn_help_lora.clicked.connect(lambda: QMessageBox.information(self, "Rank & Alpha Nedir?", 
+            "GPU donanımları bellek hizalaması ve tensör hesaplamalarını en hızlı şekilde 2'nin kuvvetleri (8, 16, 32, 64, 128) ile yapar. Bu yüzden her zaman çift sayı (özellikle 2'nin katlarını) kullanmak OOM hatalarını azaltır ve eğitim hızını artırır.\n\n"
+            "• RANK (r): Eğitilen adaptörün boyutudur (öğrenme kapasitesi). Yükseldikçe daha ince detaylar öğrenilir ancak VRAM (RAM) tüketimi DOĞRUDAN artar.\n\n"
+            "• ALPHA: Öğrenilen ağırlıkların ana modele ne kadar şiddetli ekleneceğini belirleyen bir çarpandır (Scaling factor). RAM kullanımını ETKİLEMEZ.\n\n"
+            "💡 ALTIN KURAL: Alpha değeri genellikle Rank değerinin 2 katı (veya en az 1 katı) olarak ayarlanır.\nÖrn: Rank=16 ise Alpha=32 stabil ve verimli bir eğitim sağlar."
+        ))
+        c_layout.addWidget(btn_help_lora, 1, 2, 2, 1)
         
         c_layout.addWidget(QLabel("Iterations:"), 3, 0)
         self.lora_iters = QSpinBox()
@@ -2057,7 +2087,7 @@ class DevPanelDialog(QWidget):
         self.ft_do_train.setChecked(True)
         d_layout.addWidget(self.ft_do_train)
 
-        self.ft_do_valid = QCheckBox("Validation (run after training)")
+        self.ft_do_valid = QCheckBox("Validation")
         self.ft_do_valid.setChecked(False)
         d_layout.addWidget(self.ft_do_valid)
 
@@ -2109,7 +2139,7 @@ class DevPanelDialog(QWidget):
         self.ft_fuse_name.setPlaceholderText("e.g. finetuned-14B")
         fuse_layout.addWidget(self.ft_fuse_name, 0, 1)
         
-        self._fuse_btn = QPushButton("⚡️ Fuse & Save to LM Studio")
+        self._fuse_btn = QPushButton("⚡️ Fuse to Models")
         self._fuse_btn.setObjectName("AccentButton")
         self._fuse_btn.clicked.connect(self.start_fuse)
         fuse_layout.addWidget(self._fuse_btn, 0, 2)
@@ -2126,7 +2156,17 @@ class DevPanelDialog(QWidget):
         self.train_log = QPlainTextEdit()
         self.train_log.setMaximumHeight(150)
         self.train_log.setReadOnly(True)
-        layout.addWidget(QLabel("Training Log:"))
+        
+        log_label_layout = QHBoxLayout()
+        log_label_layout.addWidget(QLabel("Training Log:"))
+        log_label_layout.addStretch()
+        
+        self.btn_clear_ft_log = QPushButton("Clear Logs")
+        self.btn_clear_ft_log.setObjectName("SecondaryButton")
+        self.btn_clear_ft_log.clicked.connect(self.train_log.clear)
+        log_label_layout.addWidget(self.btn_clear_ft_log)
+        
+        layout.addLayout(log_label_layout)
         layout.addWidget(self.train_log)
         
         layout.addStretch()
@@ -2795,10 +2835,14 @@ class DevPanelDialog(QWidget):
         if kind == "Validation" and int(rc) == 0:
             log_text = self.train_log.toPlainText()
             
-            # Loss bul (Örn: "Valid loss: 1.453" veya "Val loss 1.453")
+            # Loss bul (Örn: "Test loss: 1.453" veya "Val loss 1.453")
             import re
             import math
-            loss_matches = re.findall(r"Val(?:id)?\s*loss[:\s]*([\d\.]+)", log_text, re.IGNORECASE)
+            loss_matches = re.findall(r"(?:Val(?:id)?|Test)\s*loss[:\s]*([\d\.]+)", log_text, re.IGNORECASE)
+            
+            if not loss_matches:
+                self.train_log.appendPlainText("⚠️ Uyarı: Geçerli bir Test/Valid Loss skoru bulunamadı!")
+            
             final_loss = float(loss_matches[-1]) if loss_matches else 1.5
             
             # Formül: 1.0 loss -> %85, 1.5 loss -> %75, 0.5 loss -> %95
@@ -3768,7 +3812,7 @@ class CustomMessageBox(QDialog):
         Questions for the current component.
         """
         d = cls._create_dialog(parent, title, text, "Yes", "question")
-        return QMessageBox.StandardButton.Yes if d.exec() == QDialog.Accepted else QMessageBox.StandardButton.No
+        return QMessageBox.StandardButton.Yes if d.exec() == QDialog.DialogCode.Accepted else QMessageBox.StandardButton.No
 
 # Monkey patch QMessageBox
 QMessageBox.information = CustomMessageBox.information
@@ -5016,7 +5060,7 @@ class ChatbotGUI(QWidget):
         
         layout.addLayout(btn_layout)
         
-        if dialog.exec() != QDialog.Accepted:
+        if dialog.exec() != QDialog.DialogCode.Accepted:
             return
             
         if getattr(self, "_pending_chat", None) == chat_name:
@@ -6238,7 +6282,7 @@ class ChatbotGUI(QWidget):
         btn_box.addWidget(save_btn)
         l.addLayout(btn_box)
         
-        if dlg.exec() == QDialog.Accepted:
+        if dlg.exec() == QDialog.DialogCode.Accepted:
             new_theme = theme_combo.currentText()
             self.theme = new_theme
             self.config["theme"] = new_theme

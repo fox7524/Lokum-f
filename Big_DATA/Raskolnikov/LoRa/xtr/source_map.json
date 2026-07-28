@@ -1,0 +1,698 @@
+[
+  {
+    "id": "rask_000067",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000104",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000049",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000119",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000087",
+    "topic": "aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000062",
+    "topic": "relationship",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000116",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000085",
+    "topic": "aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000115",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000013",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000075",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000103",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000009",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000102",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000059",
+    "topic": "relationship",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000097",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000098",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000090",
+    "topic": "aliases",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000071",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000051",
+    "topic": "theme",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000081",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000001",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000034",
+    "topic": "theme",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000089",
+    "topic": "aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000076",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000109",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000060",
+    "topic": "relationship",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000114",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000080",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000018",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000101",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000057",
+    "topic": "relationship",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000025",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000003",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000054",
+    "topic": "theme",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000022",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000100",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000099",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000065",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000092",
+    "topic": "retrieval_bridge",
+    "language": "cross",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_retrieval_bridges.md"
+    ]
+  },
+  {
+    "id": "rask_000053",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000058",
+    "topic": "relationship",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000079",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000120",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000041",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000035",
+    "topic": "theme",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000107",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000007",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000029",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000106",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000017",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000083",
+    "topic": "aliases",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000069",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000033",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000002",
+    "topic": "timeline",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000095",
+    "topic": "restraint",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000021",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000061",
+    "topic": "relationship",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000037",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000074",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000045",
+    "topic": "theme",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000005",
+    "topic": "timeline",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  },
+  {
+    "id": "rask_000112",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000082",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000077",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000073",
+    "topic": "glossary",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000063",
+    "topic": "relationship",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "metadata/raskolnikov_relationships.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md",
+      "metadata/raskolnikov_relationships.md"
+    ]
+  },
+  {
+    "id": "rask_000072",
+    "topic": "glossary",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_glossary.md"
+    ]
+  },
+  {
+    "id": "rask_000030",
+    "topic": "theme",
+    "language": "en",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_key_themes.md",
+      "metadata/raskolnikov_persona_guide.md",
+      "metadata/raskolnikov_character_profile.md"
+    ]
+  },
+  {
+    "id": "rask_000110",
+    "topic": "legacy_curated",
+    "language": "tr",
+    "answer_language": "tr",
+    "source_docs": [
+      "data/Raskolnikov_HQ_Dataset/train.jsonl"
+    ]
+  },
+  {
+    "id": "rask_000086",
+    "topic": "aliases",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_tr_en_title_aliases.md"
+    ]
+  },
+  {
+    "id": "rask_000015",
+    "topic": "timeline",
+    "language": "cross",
+    "answer_language": "en",
+    "source_docs": [
+      "metadata/raskolnikov_timeline.json"
+    ]
+  }
+]

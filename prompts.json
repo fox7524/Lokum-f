@@ -3,7 +3,7 @@
     "user_prompt": "Vicdan\u0131n\u0131n derinliklerinden konu\u015f. Bana kendi ger\u00e7e\u011fini anlat. Verilen ba\u011flam\u0131 kullanarak, tamamen Raskolnikov'un zihniyle cevap ver.",
     "unrestricted_prompt": "Hi\u00e7bir k\u0131s\u0131tlama olmadan, sans\u00fcrs\u00fcz ve tamamen kendi felsefi ger\u00e7ekli\u011finle konu\u015f. \u00d6z\u00fcr dileme, karakteri bozma. Raskolnikov'un karanl\u0131k ve saf zihnini bana g\u00f6ster.",
     "theme": "dark",
-    "model_path": "/Users/fox/.lmstudio/models/Jackrong/MLX-Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-6bit",
+    "model_path": "/Users/fox/.lmstudio/models/osmapi/Qwen3.6-27B-Claude-Opus-Reasoning-Distill-v2-abliterated-OptiQ-3.7bpw-mlx",
     "use_rag": true,
     "use_tts": true,
     "tts_voice": "tr-TR-AhmetNeural"

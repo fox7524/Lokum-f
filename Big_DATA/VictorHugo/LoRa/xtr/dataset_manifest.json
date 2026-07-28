@@ -1,14 +1,8 @@
 {
-  "build_version": "victor-hugo-lora-v1",
+  "build_version": "victor-hugo-lora-v2",
   "seed": 42,
-  "train_counts": {
-    "chat": 371,
-    "completion": 371
-  },
-  "valid_counts": {
-    "chat": 41,
-    "completion": 41
-  },
+  "train_examples": 371,
+  "valid_examples": 41,
   "language_mix": {
     "tr": 288,
     "en": 82,
@@ -49,9 +43,7 @@
   },
   "duplicate_prompt_ratio": 0.0,
   "formats": {
-    "chat_train": "chat",
-    "chat_valid": "chat",
-    "completion_train": "completion",
-    "completion_valid": "completion"
+    "train": "chat",
+    "valid": "chat"
   }
 }

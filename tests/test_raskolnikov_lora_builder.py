@@ -76,15 +76,25 @@ def test_build_raskolnikov_lora_dataset_generates_outputs(tmp_path: Path) -> Non
         seed=11,
     )
 
-    assert result["train_examples"] > 0
+    assert result["train_examples"] >= 12
     assert result["valid_examples"] > 0
-    assert detect_jsonl_format(lora_root / "chat_train.jsonl") == "chat"
-    assert detect_jsonl_format(lora_root / "completion_train.jsonl") == "completion"
+    assert detect_jsonl_format(lora_root / "train.jsonl") == "chat"
+    assert detect_jsonl_format(lora_root / "valid.jsonl") == "chat"
+    assert not (lora_root / "chat_train.jsonl").exists()
+    assert not (lora_root / "chat_valid.jsonl").exists()
+    assert not (lora_root / "completion_train.jsonl").exists()
+    assert not (lora_root / "completion_valid.jsonl").exists()
 
-    with (lora_root / "chat_train.jsonl").open("r", encoding="utf-8") as f:
-        chat_result = validate_jsonl_rows(f)
-    with (lora_root / "completion_train.jsonl").open("r", encoding="utf-8") as f:
-        completion_result = validate_jsonl_rows(f)
+    with (lora_root / "train.jsonl").open("r", encoding="utf-8") as f:
+        train_result = validate_jsonl_rows(f)
+    with (lora_root / "valid.jsonl").open("r", encoding="utf-8") as f:
+        valid_result = validate_jsonl_rows(f)
 
-    assert chat_result.invalid == 0
-    assert completion_result.invalid == 0
+    assert train_result.invalid == 0
+    assert valid_result.invalid == 0
+
+    manifest = json.loads((lora_root / "dataset_manifest.json").read_text(encoding="utf-8"))
+    assert manifest["formats"]["train"] == "chat"
+    assert manifest["formats"]["valid"] == "chat"
+    assert manifest["train_examples"] == result["train_examples"]
+    assert manifest["valid_examples"] == result["valid_examples"]

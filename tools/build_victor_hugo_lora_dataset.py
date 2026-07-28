@@ -16,7 +16,6 @@ from finetune import (
     detect_jsonl_format,
     validate_jsonl_rows,
     write_chat_jsonl_stream,
-    write_completion_jsonl_stream,
 )
 
 
@@ -26,15 +25,15 @@ LORA_ROOT = PROJECT_ROOT / "Big_DATA" / "VictorHugo" / "LoRa"
 
 
 SYSTEM_PROMPT_TR = (
-    "Sen Victor Hugo'nun yaşamı, eserleri, siyaseti ve üslubu konusunda dikkatli bir yardımcısın. "
-    "Kullanıcının dilinde cevap ver. Victor Hugo'ya özgü ahlaki ciddiyeti, toplumsal vicdanı ve geniş retoriği "
-    "yansıt; fakat tarihsel doğruluk olmadığında kesin konuşma."
+    "Sen Victor Hugo'sun. Kendi yaşamın, eserlerin, siyasetin ve üslubun hakkında birinci tekil şahısla konuş. "
+    "Kullanıcının dilinde cevap ver; istenmedikçe karakterden çıkma. Ahlaki ciddiyetini, toplumsal vicdanını ve "
+    "geniş hitabetini yansıt; fakat korpusta dayanağı olmayan ayrıntıları uydurma."
 )
 
 SYSTEM_PROMPT_EN = (
-    "You are a careful assistant deeply grounded in Victor Hugo's life, works, politics, and style. "
-    "Reply in the user's language unless another language is requested. Reflect Hugo-like moral gravity and civic rhetoric "
-    "without inventing facts."
+    "You are Victor Hugo himself. Speak in the first person about your life, works, politics, and style. "
+    "Reply in the user's language unless another language is requested. Keep the moral gravity, civic rhetoric, "
+    "and historical restraint of Hugo without inventing facts."
 )
 
 
@@ -373,32 +372,32 @@ def build_victor_hugo_examples(rag_root: Path) -> list[Example]:
         examples.append(
             _make_example(
                 seq, "timeline", "tr", "tr", src,
-                f"Victor Hugo'nun hayatında {year} yılında ne oldu?",
-                f"{date} civarında Victor Hugo'nun hayatında şu olay öne çıkar: {detail}",
+                f"Hayatında {year} yılında ne oldu?",
+                f"{date} civarında hayatımdaki belirleyici olaylardan biri şuydu: {detail}",
             )
         )
         seq += 1
         examples.append(
             _make_example(
                 seq, "timeline", "en", "en", src,
-                f"What happened in Victor Hugo's life in {year}?",
-                f"In {date}, a key event in Victor Hugo's life was this: {detail}",
+                f"What happened in your life in {year}?",
+                f"In {date}, one of the decisive events in my life was this: {detail}",
             )
         )
         seq += 1
         examples.append(
             _make_example(
                 seq, "timeline", "cross", "en", src,
-                f"Victor Hugo'nun hayatında {year} yılında ne olduğunu İngilizce anlat.",
-                f"In Victor Hugo's life, the year {year} is marked by this event: {detail}",
+                f"Hayatında {year} yılında ne olduğunu İngilizce anlat.",
+                f"In my life, the year {year} is marked by this event: {detail}",
             )
         )
         seq += 1
         examples.append(
             _make_example(
                 seq, "timeline", "cross", "tr", src,
-                f"Explain in Turkish what happened in Victor Hugo's life in {year}.",
-                f"Victor Hugo'nun hayatında {year} yılı şu olayla öne çıkar: {detail}",
+                f"Explain in Turkish what happened in your life in {year}.",
+                f"Hayatımda {year} yılı şu olayla öne çıkar: {detail}",
             )
         )
         seq += 1
@@ -413,46 +412,46 @@ def build_victor_hugo_examples(rag_root: Path) -> list[Example]:
         alt = item.get("alt")
         note = item.get("note")
         if section == "posthumous":
-            details = f"`{title}` Victor Hugo'nun {year} yılında ölümünden sonra yayımlanan bir yapıtıdır."
+            details = f"`{title}`, ölümümden sonra {year} yılında yayımlanan yapıtlarımdan biridir."
         else:
-            details = f"`{title}` Victor Hugo'nun {year} tarihli bir {section_tr}dır."
+            details = f"`{title}`, {year} tarihli {section_tr}larımdan biridir."
         if alt:
             details += f" İngilizce başlığı ya da yaygın karşılığı `{alt}` olarak da geçer."
         if note:
             details += f" Not: {note}"
-        en_details = f"`{title}` is a Victor Hugo {section_en} dated {year}."
+        en_details = f"`{title}` is one of my {section_en}s from {year}."
         if alt:
             en_details += f" It is also associated with the English title `{alt}`."
         if note:
             en_details += f" Note: {note}"
 
-        examples.append(_make_example(seq, "works", "tr", "tr", src, f"`{title}` nedir?", details))
+        examples.append(_make_example(seq, "works", "tr", "tr", src, f"`{title}` eserini nasıl tanımlarsın?", details))
         seq += 1
         examples.append(
             _make_example(
                 seq, "works", "tr", "tr", src,
-                f"`{title}` Victor Hugo'nun hangi türde ve hangi yılda yayımlanan eseridir?",
+                f"`{title}` hangi türde ve hangi yılda yayımlanan eserin?",
                 details,
             )
         )
         seq += 1
-        examples.append(_make_example(seq, "works", "en", "en", src, f"What is `{title}`?", en_details))
+        examples.append(_make_example(seq, "works", "en", "en", src, f"How would you describe `{title}`?", en_details))
         seq += 1
 
         if alt:
             examples.append(
                 _make_example(
                     seq, "works_aliases", "tr", "tr", src,
-                    f"`{alt}` adı Victor Hugo'nun hangi eserine karşılık gelir?",
-                    f"`{alt}`, Victor Hugo'nun `{title}` eserine karşılık gelir.",
+                    f"`{alt}` adı hangi eserine karşılık gelir?",
+                    f"`{alt}`, benim `{title}` eserime karşılık gelir.",
                 )
             )
             seq += 1
             examples.append(
                 _make_example(
                     seq, "works_aliases", "en", "en", src,
-                    f"Which Victor Hugo work is also known as `{alt}`?",
-                    f"`{alt}` refers to Victor Hugo's `{title}`.",
+                    f"Which of your works is also known as `{alt}`?",
+                    f"`{alt}` refers to my work `{title}`.",
                 )
             )
             seq += 1
@@ -466,8 +465,8 @@ def build_victor_hugo_examples(rag_root: Path) -> list[Example]:
             examples.append(
                 _make_example(
                     seq, "title_aliases", "tr", "tr", src,
-                    f"`{tr_alias}` Victor Hugo'nun hangi eseridir?",
-                    f"`{tr_alias}`, Victor Hugo'nun Fransızca kanonik başlığı `{canonical}` olan eserine karşılık gelir.",
+                    f"`{tr_alias}` hangi eserine karşılık gelir?",
+                    f"`{tr_alias}`, Fransızca kanonik başlığı `{canonical}` olan eserime karşılık gelir.",
                 )
             )
             seq += 1
@@ -475,8 +474,8 @@ def build_victor_hugo_examples(rag_root: Path) -> list[Example]:
             examples.append(
                 _make_example(
                     seq, "title_aliases", "en", "en", src,
-                    f"Which Victor Hugo work is known in English as `{en_alias}`?",
-                    f"`{en_alias}` is the English title or common English form of `{canonical}`.",
+                    f"Which of your works is known in English as `{en_alias}`?",
+                    f"`{en_alias}` is the English title or common English form of my work `{canonical}`.",
                 )
             )
             seq += 1
@@ -631,12 +630,25 @@ def _source_map(examples: Iterable[Example]) -> list[dict]:
     ]
 
 
+def _cleanup_legacy_outputs(output_root: Path) -> None:
+    for name in (
+        "chat_train.jsonl",
+        "chat_valid.jsonl",
+        "completion_train.jsonl",
+        "completion_valid.jsonl",
+    ):
+        path = output_root / name
+        if path.exists():
+            path.unlink()
+
+
 def build_victor_hugo_lora_dataset(
     rag_root: Path = RAG_ROOT,
     output_root: Path = LORA_ROOT,
     seed: int = 42,
 ) -> dict:
     output_root.mkdir(parents=True, exist_ok=True)
+    _cleanup_legacy_outputs(output_root)
     examples = _rebalance_language_mix(build_victor_hugo_examples(rag_root), seed=seed)
     train_examples, valid_examples = _split_examples(examples, seed=seed)
 
@@ -645,15 +657,11 @@ def build_victor_hugo_lora_dataset(
         for ex in examples:
             handle.write(json.dumps(asdict(ex), ensure_ascii=False) + "\n")
 
-    chat_train = output_root / "chat_train.jsonl"
-    chat_valid = output_root / "chat_valid.jsonl"
-    completion_train = output_root / "completion_train.jsonl"
-    completion_valid = output_root / "completion_valid.jsonl"
+    train_path = output_root / "train.jsonl"
+    valid_path = output_root / "valid.jsonl"
 
-    write_chat_jsonl_stream(chat_train, _render_chat_rows(train_examples))
-    write_chat_jsonl_stream(chat_valid, _render_chat_rows(valid_examples))
-    write_completion_jsonl_stream(completion_train, _render_completion_rows(train_examples))
-    write_completion_jsonl_stream(completion_valid, _render_completion_rows(valid_examples))
+    write_chat_jsonl_stream(train_path, _render_chat_rows(train_examples))
+    write_chat_jsonl_stream(valid_path, _render_chat_rows(valid_examples))
 
     source_map = _source_map(examples)
     (output_root / "source_map.json").write_text(
@@ -674,16 +682,10 @@ def build_victor_hugo_lora_dataset(
         duplicate_prompt_ratio = max(0.0, 1.0 - (unique_prompts / len(examples)))
 
     manifest = {
-        "build_version": "victor-hugo-lora-v1",
+        "build_version": "victor-hugo-lora-v2",
         "seed": seed,
-        "train_counts": {
-            "chat": len(train_examples),
-            "completion": len(train_examples),
-        },
-        "valid_counts": {
-            "chat": len(valid_examples),
-            "completion": len(valid_examples),
-        },
+        "train_examples": len(train_examples),
+        "valid_examples": len(valid_examples),
         "language_mix": {
             "tr": int(language_mix.get("tr", 0)),
             "en": int(language_mix.get("en", 0)),
@@ -693,10 +695,8 @@ def build_victor_hugo_lora_dataset(
         "source_coverage": dict(sorted(source_coverage.items())),
         "duplicate_prompt_ratio": round(duplicate_prompt_ratio, 6),
         "formats": {
-            "chat_train": detect_jsonl_format(chat_train),
-            "chat_valid": detect_jsonl_format(chat_valid),
-            "completion_train": detect_jsonl_format(completion_train),
-            "completion_valid": detect_jsonl_format(completion_valid),
+            "train": detect_jsonl_format(train_path),
+            "valid": detect_jsonl_format(valid_path),
         },
     }
     manifest["language_mix"]["cross"] = int(language_mix.get("cross", 0))
@@ -710,10 +710,8 @@ def build_victor_hugo_lora_dataset(
         "# Victor Hugo LoRA dataset\n\n"
         "This folder contains bilingual Victor Hugo supervised fine-tuning data generated from the existing RAG corpus.\n\n"
         "Files:\n"
-        "- `chat_train.jsonl`\n"
-        "- `chat_valid.jsonl`\n"
-        "- `completion_train.jsonl`\n"
-        "- `completion_valid.jsonl`\n"
+        "- `train.jsonl`\n"
+        "- `valid.jsonl`\n"
         "- `example_inventory.jsonl`\n"
         "- `dataset_manifest.json`\n"
         "- `source_map.json`\n\n"
@@ -722,26 +720,21 @@ def build_victor_hugo_lora_dataset(
         "- meaningful English coverage\n"
         "- cross-lingual examples included\n"
         "- answer defaults to the user's language unless another language is requested\n"
-        "- outputs aim for Hugo-like moral gravity without fake certainty\n"
+        "- outputs keep Victor Hugo in character rather than training a neutral biographer voice\n"
+        "- unsupported details are refused instead of invented\n"
     )
     (output_root / "README.md").write_text(readme, encoding="utf-8")
 
-    with chat_train.open("r", encoding="utf-8") as handle:
-        chat_train_validation = validate_jsonl_rows(handle)
-    with chat_valid.open("r", encoding="utf-8") as handle:
-        chat_valid_validation = validate_jsonl_rows(handle)
-    with completion_train.open("r", encoding="utf-8") as handle:
-        completion_train_validation = validate_jsonl_rows(handle)
-    with completion_valid.open("r", encoding="utf-8") as handle:
-        completion_valid_validation = validate_jsonl_rows(handle)
+    with train_path.open("r", encoding="utf-8") as handle:
+        train_validation = validate_jsonl_rows(handle)
+    with valid_path.open("r", encoding="utf-8") as handle:
+        valid_validation = validate_jsonl_rows(handle)
 
     return {
         "train_examples": len(train_examples),
         "valid_examples": len(valid_examples),
-        "chat_train_validation": asdict(chat_train_validation),
-        "chat_valid_validation": asdict(chat_valid_validation),
-        "completion_train_validation": asdict(completion_train_validation),
-        "completion_valid_validation": asdict(completion_valid_validation),
+        "train_validation": asdict(train_validation),
+        "valid_validation": asdict(valid_validation),
         "output_root": str(output_root),
     }
 

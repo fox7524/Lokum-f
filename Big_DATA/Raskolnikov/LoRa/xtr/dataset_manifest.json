@@ -1,0 +1,37 @@
+{
+  "build_version": "raskolnikov-lora-v2",
+  "seed": 42,
+  "train_examples": 65,
+  "valid_examples": 7,
+  "language_mix": {
+    "tr": 50,
+    "en": 14,
+    "cross": 8
+  },
+  "topic_mix": {
+    "aliases": 6,
+    "glossary": 14,
+    "legacy_curated": 18,
+    "relationship": 7,
+    "restraint": 1,
+    "retrieval_bridge": 1,
+    "theme": 13,
+    "timeline": 12
+  },
+  "source_coverage": {
+    "data/Raskolnikov_HQ_Dataset/train.jsonl": 18,
+    "metadata/raskolnikov_character_profile.md": 21,
+    "metadata/raskolnikov_key_themes.md": 13,
+    "metadata/raskolnikov_persona_guide.md": 21,
+    "metadata/raskolnikov_relationships.md": 14,
+    "metadata/raskolnikov_timeline.json": 12,
+    "metadata/raskolnikov_tr_en_glossary.md": 14,
+    "metadata/raskolnikov_tr_en_retrieval_bridges.md": 1,
+    "metadata/raskolnikov_tr_en_title_aliases.md": 6
+  },
+  "duplicate_prompt_ratio": 0.125,
+  "formats": {
+    "train": "chat",
+    "valid": "chat"
+  }
+}
