@@ -23,5 +23,5 @@ Lokum-F, gücünü orijinal LokumAI mimarisinden alır:
 
 1. Python sanal ortamını oluşturun: `python3 -m venv .venv`
 2. Aktif edin: `source .venv/bin/activate`
-3. Gereksinimleri kurun: `pip install -r requirements.txt mlx-whisper sounddevice scipy numpy`
+3. Gereksinimleri kurun: `pip install -r requirements.txt`
 4. Uygulamayı başlatın: `python3 main.py`
