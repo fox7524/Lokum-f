@@ -378,10 +378,12 @@ class FinetuneEngine:
         if not os.path.isfile(valid_fp):
             raise RuntimeError("valid.jsonl not found in dataset directory.")
 
-        ts = time.strftime("%Y%m%d_%H%M%S")
+        import hashlib
+        short_hash = hashlib.md5(str(time.time()).encode()).hexdigest()[:5].upper()
+        ts = f"validate_{os.path.basename(self.model_path.rstrip('/\\'))}_{short_hash}"
         # Keep validation artifacts next to other LoRA outputs
         base = os.path.abspath(self.dataset_dir or "lora_data")
-        eval_dir = os.path.abspath(os.path.join(base, "validate_only", f"run_{ts}"))
+        eval_dir = os.path.abspath(os.path.join(base, "validate_only", ts))
         os.makedirs(eval_dir, exist_ok=True)
         shutil.copyfile(valid_fp, os.path.join(eval_dir, "test.jsonl"))
         try:

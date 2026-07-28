@@ -2144,6 +2144,10 @@ class DevPanelDialog(QWidget):
         self._fuse_btn.clicked.connect(self.start_fuse)
         fuse_layout.addWidget(self._fuse_btn, 0, 2)
         
+        self.ft_delete_adapter_after_fuse = QCheckBox("Delete Adapter After Fuse")
+        self.ft_delete_adapter_after_fuse.setChecked(True)
+        fuse_layout.addWidget(self.ft_delete_adapter_after_fuse, 1, 1, 1, 2)
+        
         self.fuse_box.setLayout(fuse_layout)
         self.fuse_box.setVisible(False)
         layout.addWidget(self.fuse_box)
@@ -2203,7 +2207,8 @@ class DevPanelDialog(QWidget):
             # Otomatik olarak en son oluşturulan adaptörü bul
             adapters_dir = os.path.join(os.path.expanduser("~"), ".lokumf", "lora_data", "adapters")
             if os.path.exists(adapters_dir):
-                runs = [os.path.join(adapters_dir, d) for d in os.listdir(adapters_dir) if d.startswith("run_")]
+                # run_ ile başlayanları VEYA yeni formatımızla başlayanları (ki model isimleriyle başlıyor) alalım
+                runs = [os.path.join(adapters_dir, d) for d in os.listdir(adapters_dir) if os.path.isdir(os.path.join(adapters_dir, d))]
                 if runs:
                     adapter_path = max(runs, key=os.path.getmtime)
 
@@ -2218,6 +2223,7 @@ class DevPanelDialog(QWidget):
         self.ft_fuse_name.setEnabled(False)
 
         self._fuse_worker = FuseWorker(base_model, adapter_path, save_path)
+        self._fuse_adapter_path = adapter_path
         self._fuse_worker.line.connect(self.train_log.appendPlainText)
         self._fuse_worker.finished.connect(self._on_fuse_finished)
         self._fuse_worker.start()
@@ -2230,6 +2236,13 @@ class DevPanelDialog(QWidget):
         self.ft_fuse_name.setEnabled(True)
         self.train_log.appendPlainText(f"[FUSE] {msg}")
         if success:
+            if getattr(self, "ft_delete_adapter_after_fuse", None) and self.ft_delete_adapter_after_fuse.isChecked():
+                import shutil
+                try:
+                    shutil.rmtree(self._fuse_adapter_path)
+                    self.train_log.appendPlainText(f"[FUSE] Adapter deleted successfully: {self._fuse_adapter_path}")
+                except Exception as e:
+                    self.train_log.appendPlainText(f"[FUSE] Failed to delete adapter: {e}")
             QMessageBox.information(self, "Fuse Complete", msg)
         else:
             QMessageBox.critical(self, "Fuse Error", msg)
@@ -2642,14 +2655,25 @@ class DevPanelDialog(QWidget):
             QMessageBox.critical(self, "Dataset Error", str(e))
             return
 
+        rank = int(self.lora_rank.value())
+        alpha = int(self.lora_alpha.value())
+        iters = int(self.lora_iters.value())
+        batch = int(self.lora_batch.value())
+        layers = int(self.lora_layers.value()) if hasattr(self, "lora_layers") else 16
+
+        import hashlib
+        model_basename = os.path.basename(model_path.rstrip("/\\"))
+        param_str = f"{rank}-{alpha}-{batch}-{layers}-{time.time()}"
+        short_hash = hashlib.md5(param_str.encode()).hexdigest()[:5].upper()
+        ts = f"{model_basename}_R{rank}_A{alpha}_B{batch}_L{layers}_{short_hash}"
+
         orig_data_dir = data_dir
         if do_train:
             try:
                 import shutil
                 train_fp = os.path.join(os.path.abspath(data_dir), "train.jsonl")
                 if os.path.isfile(train_fp):
-                    ts = time.strftime("%Y%m%d_%H%M%S")
-                    train_only = os.path.abspath(os.path.join(_lora_base_dir(), "train_only", f"run_{ts}"))
+                    train_only = os.path.abspath(os.path.join(_lora_base_dir(), "train_only", ts))
                     os.makedirs(train_only, exist_ok=True)
                     shutil.copyfile(train_fp, os.path.join(train_only, "train.jsonl"))
                     data_dir = train_only
@@ -2660,11 +2684,6 @@ class DevPanelDialog(QWidget):
             except Exception:
                 pass
 
-        rank = int(self.lora_rank.value())
-        alpha = int(self.lora_alpha.value())
-        iters = int(self.lora_iters.value())
-        batch = int(self.lora_batch.value())
-        layers = int(self.lora_layers.value()) if hasattr(self, "lora_layers") else 16
         resume_adapter_file = None
         try:
             if bool(getattr(self, "ft_resume", None) and self.ft_resume.isChecked()):
@@ -2691,10 +2710,9 @@ class DevPanelDialog(QWidget):
         except Exception:
             pass
 
-        ts = time.strftime("%Y%m%d_%H%M%S")
         adapter_path = ""
         if do_train:
-            adapter_path = os.path.abspath(os.path.join(_lora_base_dir(), "adapters", f"run_{ts}"))
+            adapter_path = os.path.abspath(os.path.join(_lora_base_dir(), "adapters", ts))
             os.makedirs(adapter_path, exist_ok=True)
         else:
             pick = QFileDialog.getExistingDirectory(self, "Select Adapter Folder (must contain adapters.safetensors)")
