@@ -1927,12 +1927,12 @@ class DevPanelDialog(QWidget):
         btn_help_lora.setText("?")
         btn_help_lora.setCursor(Qt.CursorShape.PointingHandCursor)
         btn_help_lora.setStyleSheet("color: #8b5cf6; font-weight: bold; border: 1px solid #8b5cf6; border-radius: 10px; padding: 2px 6px; margin-left: 5px;")
-        btn_help_lora.setToolTip("Rank ve Alpha hakkında detaylı bilgi")
-        btn_help_lora.clicked.connect(lambda: QMessageBox.information(self, "Rank & Alpha Nedir?", 
-            "GPU donanımları bellek hizalaması ve tensör hesaplamalarını en hızlı şekilde 2'nin kuvvetleri (8, 16, 32, 64, 128) ile yapar. Bu yüzden her zaman çift sayı (özellikle 2'nin katlarını) kullanmak OOM hatalarını azaltır ve eğitim hızını artırır.\n\n"
-            "• RANK (r): Eğitilen adaptörün boyutudur (öğrenme kapasitesi). Yükseldikçe daha ince detaylar öğrenilir ancak VRAM (RAM) tüketimi DOĞRUDAN artar.\n\n"
-            "• ALPHA: Öğrenilen ağırlıkların ana modele ne kadar şiddetli ekleneceğini belirleyen bir çarpandır (Scaling factor). RAM kullanımını ETKİLEMEZ.\n\n"
-            "💡 ALTIN KURAL: Alpha değeri genellikle Rank değerinin 2 katı (veya en az 1 katı) olarak ayarlanır.\nÖrn: Rank=16 ise Alpha=32 stabil ve verimli bir eğitim sağlar."
+        btn_help_lora.setToolTip("Detailed information about Rank and Alpha")
+        btn_help_lora.clicked.connect(lambda: QMessageBox.information(self, "What are Rank & Alpha?", 
+            "GPU hardware performs memory alignment and tensor computations most efficiently using powers of 2 (8, 16, 32, 64, 128). Therefore, always using even numbers (especially powers of 2) reduces OOM (Out of Memory) errors and increases training speed.\n\n"
+            "• RANK (r): Defines the size (learning capacity) of the trained adapter. Higher values capture finer details but DIRECTLY increase VRAM (RAM) consumption.\n\n"
+            "• ALPHA: A scaling factor that determines how strongly the learned weights are applied to the base model. It DOES NOT affect RAM usage.\n\n"
+            "💡 GOLDEN RULE: The Alpha value is typically set to 2x (or at least 1x) the Rank value.\nExample: Rank=16 and Alpha=32 provides stable and efficient training."
         ))
         c_layout.addWidget(btn_help_lora, 1, 2, 2, 1)
         

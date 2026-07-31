@@ -1,27 +1,47 @@
-# Lokum-F (Fuar Edition)
+# Lokum-F (Lokum Fine-Tuning & RAG Studio)
 
-Lokum-F, orijinal LokumAI projesinin "Fuar ve Etkinlikler" (Kiosk Mode) için özel olarak modifiye edilmiş yepyeni ve bağımsız bir koludur. 
+Lokum-F is an advanced, standalone desktop application built for Apple Silicon (M-Series) Macs. It provides a comprehensive GUI for local Large Language Model (LLM) fine-tuning, Retrieval-Augmented Generation (RAG) indexing, and model evaluation—all leveraging the native power of the Apple MLX framework.
 
-Lokum-F, sadece metin tabanlı bir asistan olmaktan çıkıp, etkinliklerde insanlarla doğrudan sesli ve görsel olarak etkileşime girebilen, önceden belirlenmiş bir karaktere (Persona) bürünebilen **interaktif bir yapay zeka avatar sistemine** dönüşmüştür.
+## 🚀 Key Features
 
-## 🚀 Yeni Özellikler (Lokum-F Farkı)
+*   **Local LoRA Fine-Tuning (MLX):** Effortlessly train and adapt large language models entirely on-device using Apple's MLX architecture. Configure advanced parameters (Rank, Alpha, Batch Size, Layers) via an intuitive UI without writing any CLI commands.
+*   **Intelligent Adapter Management:** Automatically tracks and organizes fine-tuned adapters with deterministic hashing (`R16_A32_B1_L16_A7B2C`) for pristine developer experience (DX).
+*   **One-Click Model Fusion:** Merge your trained LoRA adapters into base models seamlessly with a single click. Includes auto-cleanup to delete heavy adapter artifacts post-fusion, saving valuable disk space.
+*   **Smart RAG Engine (FAISS):** Build robust contextual memories for your models. The engine supports dynamic re-indexing, chunk compaction, and active garbage collection to prevent index bloat and ensure fast retrieval.
+*   **Developer-Friendly Diagnostics:** Real-time MLX log parsing that filters out Apple Metal API spam ("God-Mode" limits) and provides actionable, clear hints for common hardware errors (e.g., Layer mismatch, Out-Of-Memory exceptions).
+*   **Speech-to-Text Integration:** Built-in `mlx-whisper` integration for instant audio transcription directly within the chat interface.
 
-*   **Sesli Girdi (Speech-to-Text):** Uygulama arayüzündeki mikrofon (🎤) butonu ve `mlx-whisper` entegrasyonu sayesinde, kullanıcıların sesli soruları milisaniyeler içinde metne dökülür.
-*   **Animasyonlu Canlı Avatar (Yakında):** D-ID Streaming API entegrasyonu ile modelden gelen cevaplar anında sesli ve dudak senkronizasyonlu (lip-sync) bir 2D avatar videosuna dönüştürülür. Fuar katılımcıları yapay zeka ile yüz yüze konuşuyormuş hissi yaşar.
-*   **Persona (Rol Yapma) Odaklı Sistem:** Model, basit bir asistan olmak yerine (Örn: Dostoyevski'nin Raskolnikov'u gibi) belirli bir kişiliğe bürünecek şekilde tasarlanmış ve `prompts.json` üzerinden bu role kilitlenmiştir.
-*   **Tek Tıkla Model Birleştirme (Fuse):** Fine-Tune (İnce ayar) sekmesindeki yeni arayüz sayesinde, eğitim (training) bittiğinde terminale kod yazmaya gerek kalmadan tek tıkla model birleştirilir ve LM Studio klasörüne otomatik kaydedilir.
-*   **Geliştirilmiş UX/DX:** Karmaşık eğitim parametreleri gizlenmiş, LM Studio modelleri şık ve okunabilir bir arayüzle listelenmiştir. Tamamen fuar operatörlerinin hızına uygun hale getirilmiştir.
+## 🧠 Core Architecture
 
-## 🧠 Core Teknolojiler (LokumAI'den Miras)
+*   **Apple Silicon Native:** Fully optimized for M-series unified memory architecture.
+*   **PyQt6 GUI:** A modern, responsive desktop interface with built-in presets (Ultra, Good, Mid, Low, Custom) scaling to your available VRAM.
+*   **Vector Database:** FAISS-based fast semantic search using optimized embeddings.
 
-Lokum-F, gücünü orijinal LokumAI mimarisinden alır:
-*   **MLX (Apple Silicon):** Tüm eğitim ve RAG işlemleri Mac (M serisi) işlemcilerinde yerel ve ışık hızında çalışır.
-*   **RAG (Retrieval-Augmented Generation):** PDF, DOCX ve ZIM dosyalarındaki devasa metinleri okuyup karakterin hafızasına ekler.
-*   **Yerel LoRA Fine-Tuning:** SQLite veya JSONL dosyalarındaki verileri alıp, orijinal modele hiçbir zarar vermeden yepyeni yetenekler ve hafıza (Adapter) kazandırır.
+## 🛠 Installation & Usage
 
-## 🛠 Kurulum ve Kullanım
+1. **Create a virtual environment:**
+   ```bash
+   python3 -m venv .venv
+   ```
+2. **Activate the environment:**
+   ```bash
+   source .venv/bin/activate
+   ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt mlx-whisper sounddevice scipy numpy
+   ```
+4. **Run the application:**
+   ```bash
+   python3 main.py
+   ```
 
-1. Python sanal ortamını oluşturun: `python3 -m venv .venv`
-2. Aktif edin: `source .venv/bin/activate`
-3. Gereksinimleri kurun: `pip install -r requirements.txt mlx-whisper sounddevice scipy numpy`
-4. Uygulamayı başlatın: `python3 main.py`
+## ⚙️ Advanced Fine-Tuning Guidelines
+
+When using the "Custom" preset, remember the Golden Rule for Apple Silicon memory stability:
+*   **Rank (r):** Defines the learning capacity. Keep it an even power of 2 (8, 16, 32).
+*   **Alpha:** The scaling factor. Should be `2 * Rank` or at least equal to Rank.
+*   **Train Layers:** Do not exceed your model's physical layer count. Reducing this (e.g., to 16 or 8) drastically reduces VRAM consumption.
+
+---
+*Built for local AI development on macOS.*
