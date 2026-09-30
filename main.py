@@ -2883,11 +2883,11 @@ class DevPanelDialog(QWidget):
             
             # Threshold Kontrolü: Manuel Fuse istenmişti. %80 altında ise SİL.
             if score >= 80:
-                self.train_log.appendPlainText(f"✅ Puan yüksek (%{score}). Adaptör başarıyla doğrulandı. Manuel FUSE yapabilirsiniz.")
+                self.train_log.appendPlainText(f"✅ Puan yüksek (%{score}). Adaptör başarıyla doğrulandı. FUSE edebilirsiniz.")
                 if hasattr(self, "fuse_box"):
                     self.fuse_box.setVisible(True)
             else:
-                self.train_log.appendPlainText(f"❌ Puan düşük (%{score} < %80). BAŞARISIZ TRAİNİNG! Model ezberliyor olabilir.")
+                self.train_log.appendPlainText(f"❌ Puan düşük (%{score} < %80). BAŞARISIZ! Model ezberliyor olabilir. Lütfen veri setinizi gözden geçirin ve yeniden eğitin.")
                 if hasattr(self, "fuse_box"):
                     self.fuse_box.setVisible(False)
                 self.train_log.appendPlainText("🗑️ Kalitesiz adaptör siliniyor...")
